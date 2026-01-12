@@ -1,0 +1,851 @@
+/* =========================================
+   1. GLOBAL RESET & VARIABLES
+   ========================================= */
+:root {
+    --primary-green: #599553;
+    --primary-hover: #487a42;
+    --dark-text: #1a1a3a;
+    --body-text: #505060;
+    --nav-text: #666666;
+    --white: #ffffff;
+    --bg-color: #F6F7FF; /* Very clean white-blue tint */
+    --font-main: 'Poppins', sans-serif;
+    --max-width: 1280px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--dark-text);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a { text-decoration: none; }
+ul { list-style: none; }
+
+/* =========================================
+   2. HEADER STYLES (Synchronized)
+   ========================================= */
+.main-header {
+    background-color: transparent;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 1000;
+}
+
+.header-box {
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: 400;
+    color: #222;
+    letter-spacing: -0.5px;
+}
+
+.logo-green {
+    color: #34652C;
+    font-style: italic;
+    font-weight: 600;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 35px;
+}
+
+.main-nav a {
+    color: var(--nav-text);
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s;
+}
+
+/* Active State for Join Page */
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--primary-green);
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(89, 149, 83, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.mobile-donate { display: none; }
+.mobile-toggle { display: none; }
+
+/* Mobile Menu Logic */
+@media (max-width: 900px) {
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 80px; left: 0; right: 0;
+        background: var(--white);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        z-index: 999;
+    }
+    .main-nav.active { display: block; }
+    .main-nav ul { flex-direction: column; align-items: center; gap: 20px; }
+    .header-cta { display: none; }
+    .mobile-donate { display: block; }
+    .mobile-toggle {
+        display: flex; flex-direction: column; gap: 5px; cursor: pointer;
+    }
+    .mobile-toggle span { width: 25px; height: 3px; background: #333; }
+}
+
+/* =========================================
+   3. JOIN HERO SECTION (UPDATED)
+   ========================================= */
+#join-hero {
+    position: relative;
+    padding: 60px 0 100px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px; /* Reduced gap to bring text left */
+}
+
+/* --- Left Column: Text --- */
+.hero-text {
+    flex: 0.9; /* Takes slightly less than half width */
+    max-width: 650px;
+    padding-right: 20px;
+    /* Ensuring alignment is to the left */
+    margin-left: 0; 
+}
+
+.hero-text h1 {
+    font-size: 64px; /* Bigger font as per design */
+    font-weight: 500;
+    color: #1e0e4b;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 45px;
+    max-width: 90%;
+}
+
+.btn-lg {
+    padding: 18px 36px;
+    font-size: 17px;
+    border-radius: 10px;
+}
+
+/* --- Right Column: Visuals --- */
+.hero-visuals {
+    flex: 1.1; /* Takes slightly more space */
+    position: relative;
+    display: flex;
+    justify-content: flex-end; /* Pushes image to right edge */
+    align-items: center;
+    height: 600px; /* Fixed height for positioning context */
+}
+
+/* Main Student Image */
+.student-image-container {
+    height: 100%;
+    display: flex;
+    align-items: flex-end; /* Align bottom */
+    position: relative;
+    z-index: 1;
+}
+
+.main-student-img {
+    height: 100%; /* Make image fill the container height */
+    width: auto;
+    object-fit: contain;
+    /* Adjust this if your image needs mirroring */
+    /* transform: scaleX(-1); */ 
+}
+
+/* --- THE AVATAR PILL (Fixed Positioning) --- */
+.avatar-pill {
+    position: absolute;
+    
+    right: 60%;
+    top: 20%;
+    
+    transform: translateY(-50%);
+    background-color: var(--white);
+    padding: 15px 25px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    z-index: 10; /* Must be above everything */
+}
+
+/* The Avatars */
+.avatar {
+    width: 55px; /* Increased Size */
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    
+    /* THE SUBTLE LINE: A border representing the ring/progress */
+    border: 3px solid #E0E0FF; /* Light blue/purple ring */
+    padding: 2px; /* Space between image and ring */
+}
+
+/* Specific styling for the last checked avatar */
+.avatar-check {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-check .avatar {
+    border-color: #1e0e4b; /* Darker ring for the active one */
+}
+
+/* The Checkmark Badge */
+.check-badge {
+    position: absolute;
+    bottom: 0;
+    right: -5px;
+    background-color: #1e0e4b;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    z-index: 11;
+}
+
+/* Background Curve */
+.bg-shape-right {
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(230, 235, 255, 0.5) 0%, rgba(255,255,255,0) 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 1200px) {
+    .hero-text h1 { font-size: 52px; }
+    .hero-visuals { height: 500px; }
+    .avatar-pill { right: 45%; top: 45%; padding: 10px 20px; }
+    .avatar { width: 45px; height: 45px; }
+}
+
+@media (max-width: 900px) {
+    .hero-wrapper {
+        flex-direction: column-reverse; /* Stack items */
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        padding-right: 0;
+    }
+    
+    .hero-visuals {
+        width: 100%;
+        height: 400px;
+        justify-content: center;
+    }
+
+    /* On mobile, center the pill nicely */
+    .avatar-pill {
+        position: absolute;
+        right: auto;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        top: 20%; /* Move slightly above the person */
+    }
+    
+    .student-image-container {
+        align-items: flex-end;
+    }
+}
+
+/* --- FOOTER SECTION --- */
+footer {
+    background-color: var(--white);
+    padding: 80px 0 40px;
+    margin-top: 80px;
+    border-top: 1px solid #f0f0f0; 
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+
+.footer-brand {
+    max-width: 450px; 
+    flex: 1;
+}
+
+.brand-desc {
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 20px 0 30px;
+    font-size: 16px;
+    max-width: 380px;
+}
+
+.subscribe-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #f8f9fc; 
+    border-radius: 50px; 
+    padding: 5px 6px 5px 25px; 
+    max-width: 420px;
+    border: 1px solid #eef0f7;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 10px;
+}
+
+.mail-icon {
+    font-size: 18px;
+    color: #1e0e4b; 
+    opacity: 0.6;
+}
+
+.subscribe-form input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-family: var(--font-main);
+    color: #333;
+    font-size: 15px;
+}
+
+.subscribe-form button {
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    border-radius: 40px;
+    padding: 12px 30px;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    white-space: nowrap;
+}
+
+.subscribe-form button:hover {
+    background-color: var(--primary-hover);
+}
+
+.privacy-note {
+    font-size: 13px;
+    color: #6b7280;
+    margin-top: 15px;
+}
+
+.privacy-note a {
+    color: #1e0e4b;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.footer-links-wrapper {
+    display: flex;
+    gap: 80px; 
+    margin-left: auto; 
+}
+
+.footer-col h4 {
+    color: #1e0e4b;
+    font-size: 17px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 18px;
+}
+
+.footer-col a, .contact-list li {
+    text-decoration: none;
+    color: #6b7280; 
+    font-size: 15px;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover {
+    color: var(--primary-green);
+}
+
+
+.footer-divider {
+    height: 1px;
+    background-color: #e5e7eb;
+    margin-bottom: 40px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p {
+    color: #6b7280;
+    font-size: 15px;
+}
+
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+
+.social-btn {
+    width: 45px;
+    height: 45px;
+    background-color: #ecf3ea; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+        border-radius: 30px;
+
+}
+
+.social-btn img {
+    width: 20px; 
+    height: auto;
+    object-fit: contain;
+    transition: filter 0.3s;
+}
+
+.social-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+/* --- RESPONSIVE FOOTER --- */
+@media (max-width: 1024px) {
+    .footer-links-wrapper {
+        gap: 40px;
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: 900px) {
+    .footer-top {
+        flex-direction: column;
+    }
+    
+    .footer-links-wrapper {
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .footer-brand {
+        max-width: 100%;
+    }
+    
+    .subscribe-form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-links-wrapper {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column-reverse;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+/* --- LINKEDIN & VALUES SECTION --- */
+#linkedin-connect {
+    padding: 20px 0 80px;
+}
+
+.linkedin-banner {
+    background-color: var(--primary-green);
+    background-image: radial-gradient(circle at 0% 0%, rgba(0, 0, 0, 0.2) 0%, transparent 50%);
+    border-radius: 40px;
+    padding: 90px 20px;
+    text-align: center;
+    color: var(--white);
+    margin-bottom: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.bg-lines {
+    position: absolute;
+    top: 0;
+    height: 100%; 
+    width: auto;
+    z-index: 1; 
+    pointer-events: none; 
+    opacity: 0.4; 
+}
+
+.line-left {
+    left: 0;
+    object-position: left center;
+}
+
+.line-right {
+    right: 0;
+    object-position: right center;
+}
+
+.banner-content-wrapper {
+    position: relative;
+    z-index: 10; 
+}
+
+.linkedin-banner h2 {
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.banner-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.info-tooltip {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-family: serif;
+    font-style: italic;
+    cursor: help;
+}
+
+.btn-white {
+    background-color: var(--white);
+    color: var(--primary-green);
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-white:hover {
+    background-color: #f0fdf4;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.values-row {
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+    flex-wrap: wrap;
+}
+
+.value-pill {
+    background-color: var(--white);
+    padding: 18px 60px;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1e0e4b;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dot {
+    color: #1e0e4b;
+    font-size: 20px;
+    line-height: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .linkedin-banner {
+        border-radius: 24px;
+        padding: 40px 20px;
+    }
+
+    .linkedin-banner h2 {
+        font-size: 26px;
+    }
+    .bg-lines {
+        opacity: 0.2; 
+    }
+    
+    .values-row {
+        gap: 15px;
+    }
+    
+    .value-pill {
+        width: 100%;
+        justify-content: center;
+        padding: 15px;
+    }
+}
+/* --- REGISTRATION SECTION --- */
+#registration {
+    padding: 50px 0 100px;
+}
+
+.registration-card {
+    background-color: var(--white);
+    border-radius: 50px;
+    padding: 60px 80px;
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+
+.registration-card h2 {
+    font-size: 42px;
+    font-weight: 600;
+    color: #1e0e4b;
+    margin-bottom: 40px;
+}
+
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px; 
+}
+
+.form-group.full-width {
+    margin-bottom: 25px;
+}
+
+/* Labels */
+.form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1e0e4b; 
+}
+
+/* Inputs */
+.form-group input {
+    padding: 18px 20px;
+    border-radius: 12px;
+    border: 1px solid #dbeafe; 
+    font-size: 15px;
+    font-family: var(--font-main);
+    color: #333;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input::placeholder {
+    color: #9ca3af; 
+}
+
+.form-group input:focus {
+    border-color: var(--primary-green);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
+    width: 100%;
+}
+
+.info-icon {
+    position: absolute;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    background-color: #a3cba0; 
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-family: serif;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: help;
+}
+
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+}
+
+.submit-btn {
+    padding: 16px 32px;
+    font-size: 16px;
+    border-radius: 13px;
+}
+
+.slack-cta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slack-cta span {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.slack-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+/* Responsive Styles for Registration */
+@media (max-width: 1024px) {
+    .registration-card {
+        padding: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .registration-card {
+        padding: 30px;
+        border-radius: 24px;
+    }
+
+    .form-row {
+        flex-direction: column; 
+        gap: 0; 
+    }
+    
+    .form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    
+    .submit-btn {
+        width: 100%;
+    }
+    
+    .slack-cta {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}
