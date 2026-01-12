@@ -1,208 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback - iCodeGuru</title>
+<!-- Add this line inside <head> -->
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Linking Specific Feedback CSS -->
+    <link rel="stylesheet" href="feedback.css">
 </head>
+
 <body>
 
-    <!-- HEADER SECTION -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="logo.png" alt="iCodeGuru Logo">
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-box">
+                <a href="../index.html" class="logo">
+                    <span class="logo-text">iCode<span class="logo-green">Guru</span></span>
+                </a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../About/about.html">About us</a></li>
+                        <li><a href="../Join/join.html">Join</a></li>
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="#">Stories</a></li>
+                        <li><a href="../Alumni/alumni.html">Alumni</a></li>
+                        <li><a href="#" class="active">Feedback</a></li>
+                        <li class="mobile-donate">
+                            <button type="button" class="btn btn-primary">Donate</button>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="header-cta">
+                    <button type="button" class="btn btn-primary">Donate</button>
+                </div>
+                <div class="mobile-toggle">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="join.html">Join</a></li>
-                    <li><a href="courses.html">Courses</a></li>
-                    <li><a href="stories.html">Stories</a></li>
-                    <li><a href="alumni.html">Alumni</a></li>
-                    <li><a href="feedback.html" class="active">Feedback</a></li>
-                </ul>
-            </nav>
-            <button type="button" class="btn-donate">Donate</button>
         </div>
     </header>
 
     <main>
-        <!-- HERO SECTION -->
-        <section class="feedback-hero">
-            <div class="hero-content">
-                <h1>We value your feedback and are here to answer your questions</h1>
-                <p>Share you experience at iCodeGuru by adding you feedback.</p>
-                <button type="button" class="btn-share">Share Feedback</button>
-            </div>
-            <div class="hero-image">
-                <img src="woman-holding-bubbles.png" alt="Person holding speech bubble icons">
-            </div>
-        </section>
-
-        <!-- FAQ SECTION -->
-        <section class="faq-section">
-            <div class="faq-header">
-                <h2>Frequently Asked Question</h2>
-                <div class="faq-sub-header">
-                    <p>Find quick solutions to common queries and get the most out of your learning experience</p>
-                    <button type="button">View More Questions &gt;</button>
+        <!-- 1. FEEDBACK HERO SECTION -->
+        <section id="feedback-hero">
+            <div class="container f-hero-wrapper">
+                <div class="f-hero-text">
+                    <h1>We value your feedback and are here to answer your questions</h1>
+                    <p>Share you experience at iCodeGuru by adding you feedback.</p>
+                    <button class="btn btn-primary btn-lg">Share Feedback</button>
                 </div>
-            </div>
-
-            <div class="faq-list">
-                <!-- Accordion Item 1 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Can I Access The Courses Anytime, Anywhere?</h3>
-                        <span class="icon">+</span>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 2 (Expanded) -->
-                <div class="faq-item expanded">
-                    <div class="faq-question">
-                        <h3>What Courses Are Available. And Who Can Take Them?</h3>
-                        <span class="icon">-</span>
-                    </div>
-                    <div class="faq-answer">
-                        <p>We offer a wide range of courses across various fields, designed for learners at all levels. Whether you're just starting or looking to upskill, there's something for everyone</p>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 3 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>Will I Receive A Certificate Upon Completion?</h3>
-                        <span class="icon">+</span>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 4 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>What Kind Of Support Is Available During My Course?</h3>
-                        <span class="icon">+</span>
-                    </div>
-                </div>
-
-                <!-- Accordion Item 5 -->
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <h3>How Can I Become An Instructor On Your Platform?</h3>
-                        <span class="icon">+</span>
-                    </div>
+                <div class="f-hero-image">
+                    <!-- Replace with the woman holding bubbles image -->
+                    <img src="Images/Woman Thoughts.png" alt="We Value Feedback">
                 </div>
             </div>
         </section>
 
-        <!-- FEEDBACK FORM SECTION -->
-        <section class="feedback-form-section">
-            <div class="form-container">
-                <div class="form-header">
-                    <h2>Share Your Feedback</h2>
-                    <p>You must have a LinkedIn account to share the feedback.</p>
-                    <span class="info-icon">i</span>
+        <!-- 2. FAQ SECTION (UPDATED LAYOUT) -->
+<section id="faq-section">
+    <div class="container">
+        
+        <!-- Top Header Area -->
+        <div class="faq-top-row">
+            <h2 class="faq-main-title">Frequently<br>Asked Question</h2>
+            
+            <div class="faq-right-info">
+                <p class="faq-info-text">Find quick solutions to common queries and get the most out of your learning experience</p>
+                <button class="btn btn-primary view-more-btn">View More Questions <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <!-- Accordion List (Full Width Below) -->
+        <div class="accordion-list">
+            
+            <!-- Item 1 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>Can I Access The Courses Anytime, Anywhere?</span>
+                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+                </button>
+                <div class="accordion-body">
+                    <p>Yes, all our courses are available 24/7 online, allowing you to learn at your own pace from anywhere in the world.</p>
                 </div>
-                
-                <form action="#">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name (Optional)</label>
-                            <input type="text" id="name" placeholder="Hassan">
+            </div>
+
+            <!-- Item 2 (Active Example) -->
+            <div class="accordion-item active">
+                <button class="accordion-header">
+                    <span>What Courses Are Available. And Who Can Take Them?</span>
+                    <div class="icon-circle"><i class="fa-solid fa-minus"></i></div>
+                </button>
+                <div class="accordion-body">
+                    <p>We offer a wide range of courses across various fields, designed for learners at all levels. Whether you're just starting or looking to upskill, there's something for everyone</p>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>Will I Receive A Certificate Upon Completion?</span>
+                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+                </button>
+                <div class="accordion-body">
+                    <p>Yes, certificates are awarded upon the successful completion of courses and assessments.</p>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>What Kind Of Support Is Available During My Course?</span>
+                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+                </button>
+                <div class="accordion-body">
+                    <p>We provide mentorship support, community forums, and direct access to instructors for guidance.</p>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span>How Can I Become An Instructor On Your Platform?</span>
+                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+                </button>
+                <div class="accordion-body">
+                    <p>You can apply through our "Join Us" page to become a volunteer instructor or mentor.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+        <!-- 3. FEEDBACK FORM SECTION -->
+        <section id="feedback-form-section">
+            <div class="container">
+                <div class="form-card">
+                    <h2 class="form-title">Share Your Feedback</h2>
+                    <div class="form-header-row">
+                        <p class="form-sub">You must have a LinkedIn account to share the feedback.</p>
+                        <span class="info-badge"><i class="fa-solid fa-info"></i></span>
+                    </div>
+
+                    <form>
+                        <!-- Row 1 -->
+                        <div class="form-row-2">
+                            <div class="input-group">
+                                <label>Name (Optional)</label>
+                                <input type="text" placeholder="Hassan">
+                            </div>
+                            <div class="input-group">
+                                <label>Email Address</label>
+                                <input type="email" placeholder="hassan.abdullah@email.com">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="hassan.abdullah@email.com">
+
+                        <!-- Row 2 -->
+                        <div class="input-group full">
+                            <label>Your Message</label>
+                            <textarea placeholder="Share your thoughts, suggestions or concerns.."></textarea>
                         </div>
-                    </div>
 
-                    <div class="form-group full-width">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" placeholder="Share your thoughts, suggestions or concerns.."></textarea>
-                    </div>
-
-                    <div class="form-group full-width">
-                        <label for="linkedin">LinkedIn Profile</label>
-                        <div class="input-wrapper">
-                            <input type="url" id="linkedin" placeholder="Share your LinkedIn Profile">
-                            <span class="info-icon-small">i</span>
+                        <!-- Row 3 -->
+                        <div class="input-group full">
+                            <label>LinkedIn Profile</label>
+                            <div class="input-wrapper-icon">
+                                <input type="text" placeholder="Share your LinkedIn Profile">
+                                <span class="icon-inside"><i class="fa-solid fa-info"></i></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <button type="submit" class="btn-submit">Submit Feedback</button>
-                </form>
+                        <!-- Submit -->
+                        <div class="form-submit">
+                            <button type="submit" class="btn btn-primary submit-btn">Submit Feedback</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </section>
 
-        <!-- VALUES BAR -->
-        <section class="values-bar">
-            <ul>
-                <li>• Share •</li>
-                <li>• Learn •</li>
-                <li>• Grow •</li>
-            </ul>
-        </section>
+
+        </div>
+                        <!-- Values Row -->
+                <div class="values-row">
+                    <div class="value-pill">
+                        <span class="dot">•</span> Share <span class="dot">•</span>
+                    </div>
+                    <div class="value-pill">
+                        <span class="dot">•</span> Learn <span class="dot">•</span>
+                    </div>
+                    <div class="value-pill">
+                        <span class="dot">•</span> Grow <span class="dot">•</span>
+                    </div>
+                </div>
     </main>
+            <!-- FOOTER -->
+        <footer>
+            <div class="container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="logo">
+                            <span class="logo-text">iCode<span class="logo-green">Guru</span></span>
+                        </div>
+                        <p class="brand-desc">Pakistan's trusted Non-Profit Organization helping students secure fully
+                            funded scholarships.</p>
 
-    <!-- FOOTER SECTION -->
-    <footer>
-        <div class="footer-top">
-            <div class="footer-brand">
-                <img src="logo-green.png" alt="iCodeGuru">
-                <p>Pakistan's trusted Non-Profit Organization helping students secure fully funded scholarships.</p>
-                
-                <form class="newsletter-form">
-                    <div class="input-group">
-                        <span class="email-icon">✉</span>
-                        <input type="email" placeholder="Enter your email address">
-                        <button type="submit">Subscribe</button>
+                        <form class="subscribe-form">
+                            <div class="input-container">
+                                <img src="../Images/Vector.png" alt="">
+                                <input type="email" placeholder="Enter your email address">
+                            </div>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                        <br>
+                        <p class="privacy-note">By subscribe to you agree with our <a href="#">Privacy policy</a></p>
                     </div>
-                </form>
-                <p class="privacy-note">By subscribe to you agree with ur <a href="#">Privacy policy</a></p>
-            </div>
 
-            <div class="footer-nav">
-                <div class="footer-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Join Us</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Alumni</a></li>
-                    </ul>
+                    <div class="footer-links-wrapper">
+                        <div class="footer-col">
+                            <h4>Quick Links</h4>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Join Us</a></li>
+                                <li><a href="#">Courses</a></li>
+                                <li><a href="#">Alumni</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4>Support</h4>
+                            <ul>
+                                <li><a href="#">Feedback</a></li>
+                                <li><a href="#">Need Help?</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Donate</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="footer-col">
+                            <h4>Connect with Us</h4>
+                            <ul class="contact-list">
+                                <li>info@icodeguru.com</li>
+                                <li>+92 XXX XXXXXXX</li>
+                                <li>Pakistan</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Feedback</a></li>
-                        <li><a href="#">Need Help?</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Donate</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Connect with Us</h4>
-                    <p>info@icodeguru.com</p>
-                    <p>+92 XXX XXXXXXX</p>
-                    <p>Pakistan</p>
+
+                <div class="footer-divider"></div>
+
+                <div class="footer-bottom">
+                    <p>© iCodeGuru Inc. All Rights Reserved.</p>
+
+                    <div class="social-icons">
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/twitter.png" alt="X">
+                        </a>
+
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/facebook.png" alt="Facebook">
+                        </a>
+
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/instagram.png" alt="Instagram">
+                        </a>
+
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/linkedin.png" alt="LinkedIn">
+                        </a>
+
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/titok.png" alt="TikTok">
+                        </a>
+
+                        <a href="#" class="social-btn">
+                            <img src="../Images/Social-Icons/youtube.png" alt="YouTube">
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© iCodeGuru Inc. All Rights Reserved.</p>
-            <div class="social-links">
-                <a href="#" aria-label="X">X-Icon</a>
-                <a href="#" aria-label="Facebook">FB-Icon</a>
-                <a href="#" aria-label="Instagram">IG-Icon</a>
-                <a href="#" aria-label="LinkedIn">IN-Icon</a>
-                <a href="#" aria-label="TikTok">TK-Icon</a>
-                <a href="#" aria-label="YouTube">YT-Icon</a>
-            </div>
-        </div>
-    </footer>
-
+        </footer>
+    <script src="feedback.js"></script>
 </body>
 </html>
