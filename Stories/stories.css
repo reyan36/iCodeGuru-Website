@@ -2,15 +2,15 @@
    1. GLOBAL RESET & VARIABLES
    ========================================= */
 :root {
-    --primary-green: #599553;
-    --primary-hover: #487a42;
-    --dark-text: #1a1a3a;
-    --body-text: #505060;
-    --nav-text: #666666;
-    --white: #ffffff;
-    --bg-color: #F6F7FF;
-    --font-main: 'Poppins', sans-serif;
-    --max-width: 1280px;
+	--primary-green: #599553;
+	--primary-hover: #487a42;
+	--dark-text: #1a1a3a;
+	--body-text: #5F5F86;
+	--nav-text: #666666;
+	--white: #ffffff;
+	--bg-color: #F3F4FF;
+	--font-main: 'General Sans', sans-serif;
+	--max-width: 1280px;
 }
 
 * {
@@ -36,6 +36,7 @@ body {
 a {
 	text-decoration: none;
 }
+
 ul {
 	list-style: none;
 }
@@ -43,126 +44,252 @@ ul {
 /* =========================================
    2. HEADER STYLES (Synchronized)
    ========================================= */
+/* =========================================
+   NAVIGATION STYLES
+========================================== */
 .main-header {
-	background-color: transparent;
-	padding-top: 25px;
-	padding-bottom: 10px;
-	position: relative;
-	z-index: 1000;
+    background-color: transparent;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: relative;
+    z-index: 1000;
 }
 
+/* Floating White Box */
 .header-box {
-	background-color: var(--white);
-	border-radius: 16px;
-	padding: 15px 30px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
 }
 
+/* Logo Styling */
 .logo-text {
-	font-size: 22px;
-	font-weight: 400;
-	color: #222;
-	letter-spacing: -0.5px;
+    font-size: 22px;
+    font-weight: 400;
+    /* Made bolder to match Home Page design */
+    color: #222;
+    letter-spacing: -0.5px;
 }
 
 .logo-green {
-	color: #34652c;
-	font-style: italic;
-	font-weight: 600;
+    color: #34652C;
+    font-style: italic;
+    font-weight: 600;
 }
 
+
+/* Desktop Menu Links */
 .main-nav ul {
-	display: flex;
-	gap: 35px;
+    list-style: none;
+    display: flex;
+    gap: 35px;
 }
 
 .main-nav a {
-	color: var(--nav-text);
-	font-size: 15px;
-	font-weight: 400;
-	transition: color 0.3s;
+    text-decoration: none;
+    color: var(--nav-text);
+    font-size: 15px;
+    font-weight: 400;
+    transition: color 0.3s;
 }
 
-/* Active State for Join Page */
-.main-nav a:hover,
-.main-nav a.active {
-	color: var(--primary-green);
-	font-weight: 600;
+.main-nav a:hover, .main-nav a.active {
+    color: var(--primary-green);
+    font-weight: 500;
 }
 
-/* Buttons */
+/* Mobile Elements (Hidden on Desktop) */
+.mobile-donate {
+    display: none;
+}
+
+.mobile-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.mobile-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #1a1a3a;
+    transition: 0.3s ease;
+}
+
+/* --- RESPONSIVE / MOBILE MENU LOGIC --- */
+@media (max-width: 900px) {
+
+    /* 1. Hide Desktop CTA */
+    .header-cta {
+        display: none;
+    }
+
+    /* 2. Show Hamburger Icon */
+    .mobile-toggle {
+        display: flex;
+    }
+
+    /* 3. Style the Dropdown Menu */
+    .main-nav {
+        display: none;
+        /* Hidden by default */
+        position: absolute;
+        top: 85px;
+        /* Pushes it slightly below the white box */
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        z-index: 99;
+    }
+
+    /* 4. State when Open (Added via JS) */
+    .main-nav.active {
+        display: flex;
+        flex-direction: column;
+        animation: slideDown 0.3s ease forwards;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .main-nav a {
+        font-size: 15px;
+    }
+
+    /* 5. Mobile Donate Button */
+    .mobile-donate {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .mobile-donate .btn {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+
+    /* 6. Hamburger Animation (Turns into X) */
+    .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .btn {
-	padding: 12px 24px;
-	border-radius: 8px;
-	font-size: 15px;
-	font-weight: 500;
-	cursor: pointer;
-	border: none;
-	transition: all 0.3s ease;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    color: var(--Secondary-Deep-Violet, #1E0A52);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 100%;
 }
 
 .btn-primary {
-	background-color: var(--primary-green);
-	color: var(--white);
-	box-shadow: 0 4px 10px rgba(89, 149, 83, 0.2);
+    border-radius: 14px;
+    background: linear-gradient(177deg, #34652C -13.59%, #6FAB65 109.86%);
+    color: var(--white);
+    border: 1px solid;
 }
 
-.btn-primary:hover {
-	background-color: var(--primary-hover);
-	transform: translateY(-2px);
+.btn-outline {
+    color: var(--dark-text);
+    border-radius: 14px;
+    border: 1px solid var(--Primary-Periwinkle, #CCCCE9);
+    background: var(--Primary-White, #FFF);
 }
 
-.mobile-donate {
-	display: none;
-}
-.mobile-toggle {
-	display: none;
+.btn-outline:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+    background-color: var(--white);
 }
 
-/* Mobile Menu Logic */
+.mobile-donate, .mobile-toggle {
+    display: none;
+}
+
 @media (max-width: 900px) {
-	.main-nav {
-		display: none;
-		position: absolute;
-		top: 80px;
-		left: 0;
-		right: 0;
-		background: var(--white);
-		padding: 20px;
-		border-radius: 16px;
-		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-		z-index: 999;
-	}
-	.main-nav.active {
-		display: block;
-	}
-	.main-nav ul {
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
-	}
-	.header-cta {
-		display: none;
-	}
-	.mobile-donate {
-		display: block;
-	}
-	.mobile-toggle {
-		display: flex;
-		flex-direction: column;
-		gap: 5px;
-		cursor: pointer;
-	}
-	.mobile-toggle span {
-		width: 25px;
-		height: 3px;
-		background: #333;
-	}
-}
+    .main-nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        border-radius: 16px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        z-index: 99;
+    }
 
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .header-cta {
+        display: none;
+    }
+
+    .mobile-donate {
+        display: block;
+    }
+
+    .mobile-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+    }
+
+    .mobile-toggle span {
+        width: 25px;
+        height: 3px;
+        background: #333;
+    }
+}
 /* =========================================
    3. STORIES HERO SECTION 
    ========================================= */
@@ -183,7 +310,8 @@ ul {
 
 /* --- Left Column: Text --- */
 .hero-text {
-	flex: 0.9; /* Takes slightly less than half width */
+	flex: 0.9;
+	/* Takes slightly less than half width */
 	max-width: 650px;
 	padding-right: 20px;
 	/* Ensuring alignment is to the left */
@@ -191,7 +319,8 @@ ul {
 }
 
 .hero-text h1 {
-	font-size: 46px; /* Bigger font as per design */
+	font-size: 46px;
+	/* Bigger font as per design */
 	font-weight: 500;
 	color: #1e0e4b;
 	line-height: 1.1;
@@ -282,20 +411,24 @@ ul {
 .info-section {
 	display: flex;
 	flex-direction: column;
-	gap: 16px; /* space between Before & Learned sections */
+	gap: 16px;
+	/* space between Before & Learned sections */
 }
 
 /* Each horizontal row: bullet + text */
 .info-item {
 	display: flex;
 	flex-direction: row;
-	align-items: center; /* bullet vertically centered with content */
-	gap: 12px; /* space between bullet and text */
+	align-items: center;
+	/* bullet vertically centered with content */
+	gap: 12px;
+	/* space between bullet and text */
 }
 
 /* Bullet image */
 .bullet {
-	width: 16px; /* size of your bullet PNG */
+	width: 16px;
+	/* size of your bullet PNG */
 	height: 16px;
 	flex-shrink: 0;
 }
@@ -356,6 +489,7 @@ ul {
 	flex-direction: column;
 	gap: 32px;
 }
+
 .journey-timeline h3 {
 	font-size: 30px;
 	font-weight: 500;
@@ -374,8 +508,10 @@ ul {
 
 .journey-timeline li {
 	display: flex;
-	align-items: center; /* vertically center the dot with content */
-	gap: 16px; /* space between dot and text */
+	align-items: center;
+	/* vertically center the dot with content */
+	gap: 16px;
+	/* space between dot and text */
 }
 
 .journey-timeline .dot {
@@ -467,6 +603,7 @@ ul {
 		font-size: 28px;
 		line-height: 38px;
 	}
+
 	.values-row {
 		gap: 15px;
 	}
@@ -486,11 +623,9 @@ ul {
 	transform: translateY(-50%);
 	width: 600px;
 	height: 600px;
-	background: radial-gradient(
-		circle,
-		rgba(230, 235, 255, 0.5) 0%,
-		rgba(255, 255, 255, 0) 70%
-	);
+	background: radial-gradient(circle,
+			rgba(230, 235, 255, 0.5) 0%,
+			rgba(255, 255, 255, 0) 70%);
 	z-index: -1;
 	pointer-events: none;
 }
@@ -500,14 +635,17 @@ ul {
 	.hero-text h1 {
 		font-size: 52px;
 	}
+
 	.hero-visuals {
 		height: 500px;
 	}
+
 	.avatar-pill {
 		right: 45%;
 		top: 45%;
 		padding: 10px 20px;
 	}
+
 	.avatar {
 		width: 45px;
 		height: 45px;
@@ -516,7 +654,8 @@ ul {
 
 @media (max-width: 900px) {
 	.hero-wrapper {
-		flex-direction: column-reverse; /* Stack items */
+		flex-direction: column-reverse;
+		/* Stack items */
 		text-align: center;
 		gap: 40px;
 	}
@@ -538,13 +677,73 @@ ul {
 		align-items: flex-end;
 	}
 }
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+    .hero-text h1 {
+        font-size: 42px; /* Smaller font */
+    }
+    
+    .hero-wrapper {
+        gap: 30px;
+    }
+    
+    .hero-image img {
+        max-width: 450px; /* Shrink image slightly */
+    }
+}
 
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+    #stories-hero {
+        padding: 40px 0 60px; /* Reduce vertical padding */
+    }
+
+    .hero-wrapper {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center;     /* Center align text */
+        gap: 40px;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Center button */
+    }
+    
+    .hero-text h1 {
+		margin-top: 30px;
+        font-size: 36px; /* Mobile readable font size */
+        margin-bottom: 15px;
+    }
+    
+    .hero-text p {
+        font-size: 16px;
+        margin-bottom: 30px;
+        max-width: 100%;
+    }
+
+    .hero-image {
+        justify-content: center; /* Center image horizontally */
+        width: 100%;
+    }
+
+    .hero-image img {
+		margin-top: 30px;
+        width: 85%; /* Make image take up most of screen width */
+        max-width: 350px;
+    }
+}
+/* --- FOOTER SECTION --- */
+/* =========================================
+   8. FOOTER
+   ========================================= */
 /* --- FOOTER SECTION --- */
 footer {
     background-color: var(--white);
     padding: 80px 0 40px;
     margin-top: 80px;
-    border-top: 1px solid #f0f0f0; 
+    border-top: 1px solid #f0f0f0;
 }
 
 .footer-top {
@@ -557,7 +756,7 @@ footer {
 
 
 .footer-brand {
-    max-width: 450px; 
+    max-width: 450px;
     flex: 1;
 }
 
@@ -573,9 +772,9 @@ footer {
     display: flex;
     align-items: center;
     gap: 10px;
-    background-color: #f8f9fc; 
-    border-radius: 50px; 
-    padding: 5px 6px 5px 25px; 
+    background-color: #f8f9fc;
+    border-radius: 50px;
+    padding: 5px 6px 5px 25px;
     max-width: 420px;
     border: 1px solid #eef0f7;
 }
@@ -589,7 +788,7 @@ footer {
 
 .mail-icon {
     font-size: 18px;
-    color: #1e0e4b; 
+    color: #1e0e4b;
     opacity: 0.6;
 }
 
@@ -634,8 +833,8 @@ footer {
 
 .footer-links-wrapper {
     display: flex;
-    gap: 80px; 
-    margin-left: auto; 
+    gap: 80px;
+    margin-left: auto;
 }
 
 .footer-col h4 {
@@ -656,7 +855,7 @@ footer {
 
 .footer-col a, .contact-list li {
     text-decoration: none;
-    color: #6b7280; 
+    color: #6b7280;
     font-size: 15px;
     transition: color 0.2s;
 }
@@ -693,18 +892,18 @@ footer {
 .social-btn {
     width: 45px;
     height: 45px;
-    background-color: #ecf3ea; 
+    background-color: #ecf3ea;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     transition: all 0.3s ease;
-        border-radius: 30px;
+    border-radius: 30px;
 
 }
 
 .social-btn img {
-    width: 20px; 
+    width: 20px;
     height: auto;
     object-fit: contain;
     transition: filter 0.3s;
@@ -719,7 +918,7 @@ footer {
 @media (max-width: 1024px) {
     .footer-links-wrapper {
         gap: 40px;
-        margin-left: 0; 
+        margin-left: 0;
     }
 }
 
@@ -727,16 +926,16 @@ footer {
     .footer-top {
         flex-direction: column;
     }
-    
+
     .footer-links-wrapper {
         justify-content: space-between;
         width: 100%;
     }
-    
+
     .footer-brand {
         max-width: 100%;
     }
-    
+
     .subscribe-form {
         max-width: 100%;
     }
@@ -747,13 +946,13 @@ footer {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .footer-bottom {
         flex-direction: column-reverse;
         gap: 20px;
         text-align: center;
     }
-    
+
     .social-icons {
         justify-content: center;
     }
@@ -766,11 +965,9 @@ footer {
 
 .linkedin-banner {
 	background-color: var(--primary-green);
-	background-image: radial-gradient(
-		circle at 0% 0%,
-		rgba(0, 0, 0, 0.2) 0%,
-		transparent 50%
-	);
+	background-image: radial-gradient(circle at 0% 0%,
+			rgba(0, 0, 0, 0.2) 0%,
+			transparent 50%);
 	border-radius: 40px;
 	padding: 90px 20px;
 	text-align: center;
@@ -863,7 +1060,283 @@ footer {
 	.linkedin-banner h2 {
 		font-size: 26px;
 	}
+
 	.bg-lines {
 		opacity: 0.2;
 	}
+}
+
+
+/* =========================================
+   DONATION MODAL STYLES
+========================================== */
+/* 1. Prevent Horizontal Scroll Globally */
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+	/* Critical Fix */
+}
+
+.modal-overlay {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 9999;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+	display: flex;
+	opacity: 1;
+}
+
+.modal-container {
+	background: #fff;
+	width: 100%;
+	max-width: 900px;
+	border-radius: 30px;
+	padding: 40px;
+	position: relative;
+	max-height: 95vh;
+	overflow-y: auto;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
+	position: absolute;
+	top: 20px;
+	right: 25px;
+	background: none;
+	border: none;
+	font-size: 30px;
+	color: #1e0e4b;
+	cursor: pointer;
+}
+
+.modal-header h2 {
+	font-size: 40px;
+	color: #1e0e4b;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+
+.legal-text {
+	font-size: 14px;
+	color: var(--body-text);
+	margin-bottom: 15px;
+	line-height: 1.6;
+}
+
+/* TABS */
+.donation-tabs {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin: 30px 0;
+	flex-wrap: wrap;
+}
+
+.tab-btn {
+	padding: 12px 24px;
+	border-radius: 12px;
+	border: 1px solid #e5e7eb;
+	background: #fff;
+	color: #1e0e4b;
+	font-weight: 600;
+	font-size: 15px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	transition: all 0.3s;
+}
+
+.icon-space {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+}
+
+.tab-btn:hover {
+	border-color: var(--primary-green);
+}
+
+.tab-btn.active {
+	background: var(--primary-green);
+	color: #fff;
+	border-color: var(--primary-green);
+	box-shadow: 0 4px 12px rgba(89, 149, 83, 0.3);
+}
+
+/* CONTENT */
+.tab-content {
+	display: none;
+	text-align: center;
+	animation: fadeIn 0.4s;
+}
+
+.tab-content.active-content {
+	display: block;
+}
+
+.tab-content h3 {
+	font-size: 24px;
+	color: #1e0e4b;
+	margin-bottom: 15px;
+	font-weight: 500;
+}
+
+.donate-label {
+	font-size: 18px;
+	color: #1e0e4b;
+	margin-bottom: 10px;
+	font-weight: 600;
+}
+
+.highlight {
+	color: #555;
+	font-weight: 500;
+}
+
+.donate-instruction {
+	font-size: 15px;
+	color: var(--body-text);
+	margin-bottom: 25px;
+}
+
+.cta-btn {
+	display: inline-block;
+	background: var(--primary-green);
+	color: #fff;
+	padding: 15px 40px;
+	border-radius: 12px;
+	text-decoration: none;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+}
+
+.cta-btn:hover {
+	background: var(--primary-hover);
+}
+
+/* BANK GRID */
+.bank-details-grid {
+	text-align: left;
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+}
+
+.bank-row {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 12px 0;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.b-label {
+	font-weight: 600;
+	color: #1e0e4b;
+	font-size: 14px;
+	width: 40%;
+	padding-right: 10px;
+}
+
+.b-value {
+	color: var(--body-text);
+	font-size: 14px;
+	flex: 1;
+	word-break: break-word;
+	line-height: 1.5;
+}
+
+.copy-btn {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--primary-green);
+	padding: 5px;
+	margin-left: 10px;
+}
+
+.icon-space-copy {
+	font-size: 18px;
+}
+
+.small-note {
+	font-size: 12px;
+	margin-top: 20px;
+	font-style: italic;
+	color: #888;
+}
+
+/* TOAST */
+#customToast {
+	visibility: hidden;
+	min-width: 250px;
+	background: #599553;
+	color: #fff;
+	text-align: center;
+	border-radius: 8px;
+	padding: 12px 20px;
+	position: fixed;
+	z-index: 10000;
+	left: 50%;
+	bottom: 30px;
+	transform: translateX(-50%);
+	font-size: 14px;
+	font-weight: 500;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	opacity: 0;
+	transition: opacity 0.3s, bottom 0.3s;
+}
+
+#customToast.show {
+	visibility: visible;
+	opacity: 1;
+	bottom: 50px;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Mobile Modal */
+@media (max-width: 600px) {
+	.modal-container {
+		padding: 20px;
+	}
+
+	.bank-row {
+		flex-direction: column;
+		gap: 5px;
+	}
+
+	.b-label {
+		width: 100%;
+	}
+
+	.copy-btn {
+		align-self: flex-end;
+	}
+
 }

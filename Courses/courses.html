@@ -1,240 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses - iCodeGuru</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Courses - iCodeGuru</title>
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
+		<!-- Linking ONLY the self-contained courses css -->
+		<link rel="stylesheet" href="courses.css" />
+	</head>
+	<body>
+		<!-- HEADER SECTION -->
+		<header class="main-header">
+			<div class="container">
+				<div class="header-box">
+					<div class="logo">
+						<span class="logo-text"
+							>iCode<span class="logo-green">Guru</span></span
+						>
+					</div>
+					<nav class="main-nav">
+						<ul>
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../About/about.html">About us</a></li>
+							<li><a href="../Join/join.html">Join</a></li>
+							<li><a href="#" class="active">Courses</a></li>
+							<li><a href="../Stories/stories.html">Stories</a></li>
+							<li><a href="../Alumni/alumni.html">Alumni</a></li>
+							<li><a href="../Feedback/feedback.html">Feedback</a></li>
 
-    <!-- HEADER SECTION -->
-    <header>
-        <div class="logo">
-            <img src="logo.png" alt="iCodeGuru Logo">
+							<!-- This button will only appear inside the mobile menu -->
+							<li class="mobile-donate">
+								<button type="button" class="btn btn-primary">Donate</button>
+							</li>
+						</ul>
+					</nav>
+
+					<div class="header-cta">
+						<button type="button" class="btn btn-primary">Donate</button>
+					</div>
+
+					<!-- Mobile Menu Toggle -->
+					<div class="mobile-toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<!-- HERO SECTION -->
+			<section class="hero">
+				<div class="hero-content">
+					<h1>Elevate your Skills with our Experts</h1>
+
+					<ul class="hero-features">
+						<li>
+							<span class="dot"></span>
+							<span class="feature-text">Take courses with Google Chrome.</span>
+						</li>
+						<li>
+							<span class="dot"></span>
+							<span class="feature-text"
+								>Channels for each course, join Slack.</span
+							>
+						</li>
+						<li>
+							<span class="dot"></span>
+							<span class="feature-text">Attend online classes with Zoom.</span>
+						</li>
+						<li>
+							<span class="dot"></span>
+							<span class="feature-text">View live sessions on YouTube.</span>
+						</li>
+					</ul>
+
+					<button type="button" class="btn btn-primary btn-lg">
+						Explore iCodeGuru
+					</button>
+				</div>
+
+				<div class="hero-image">
+					<img
+						src="images/instructor.png"
+						alt="Instructor with headset and laptop"
+					/>
+				</div>
+			</section>
+			<!-- LEARNING TRACKS SECTION -->
+			<section class="learning-tracks-container">
+				<!-- Section Header -->
+				<div class="learning-tracks-header">
+					<h2>Our Learning Tracks</h2>
+					<p>
+						Teaching Students 100 Percent Free programming, under the guidance
+						of Silicon Valley Engineers
+					</p>
+				</div>
+
+				<!-- Calendar Placeholder -->
+				<!-- Calendar Section -->
+<div class="learning-tracks-calendar">
+    <!-- Calendar Top Row -->
+    <div class="calendar-top-row">
+        <!-- Left side: Month and Year -->
+        <div class="calendar-month-year" id="currentMonthYear">
+            <!-- JS will inject "January 2026" here -->
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About us</a></li>
-                <li><a href="join.html">Join</a></li>
-                <li><a href="courses.html" class="active">Courses</a></li>
-                <li><a href="stories.html">Stories</a></li>
-                <li><a href="alumni.html">Alumni</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
-            </ul>
-        </nav>
-        <button class="btn-donate">Donate</button>
-    </header>
 
-    <main>
-        <!-- HERO SECTION -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Elevate your Skills with our Experts</h1>
-                <ul class="hero-features">
-                    <li>Take courses date with Google Chrome.</li>
-                    <li>Channels for each courses, Join Slack.</li>
-                    <li>Attend online classes with Zoom</li>
-                    <li>View live session on Youtube</li>
-                </ul>
-                <button class="btn-explore">Explore iCodeGuru</button>
-            </div>
-            <div class="hero-image">
-                <img src="instructor.png" alt="Instructor with headset and laptop">
-            </div>
-        </section>
-
-        <!-- LEARNING TRACKS (CALENDAR) SECTION -->
-        <section class="learning-tracks">
-            <h2>Our Learning Tracks</h2>
-            <p>Teaching Students 100 Percent Free programming, under the guidance of Silicon Valley Engineers</p>
-            
-            <div class="calendar-container">
-                <div class="calendar-header">
-                    <h3>December 2025</h3>
-                    <div class="calendar-controls">
-                        <button class="prev">&lt;</button>
-                        <button class="next">&gt;</button>
-                        <select name="view-type">
-                            <option value="monthly">Monthly</option>
-                        </select>
-                        <select name="category">
-                            <option value="fully-funded">Fully Funded Scholarship</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- HTML Table or Grid representing the December Calendar as shown in Image 2 -->
-                <div class="calendar-grid">
-                    <!-- Days and course labels would go here -->
-                </div>
-            </div>
-        </section>
-
-        <!-- COURSE CARDS SECTION -->
-        <section class="course-cards-grid">
-            
-            <!-- Card 01 -->
-            <article class="course-card">
-                <span class="card-number">01</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-                <h3>iCodeGuru Weekly Webinars</h3>
-                <p>We conduct weekly webinars ever Saturday 9:00 PM PKT to help students interact with Silicon Valley Engineers.</p>
-                <img src="webinar.png" alt="Webinar Session">
-            </article>
-
-            <!-- Card 02 -->
-            <article class="course-card">
-                <img src="dsa.png" alt="DSA Visualization">
-                <h3>Data Structures and Algorithms</h3>
-                <p>If you want to boost your learning, you should learn skills in a cohort. We provide many cohorts so you can engage with others to enhance skills</p>
-                <span class="card-number">02</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-            </article>
-
-            <!-- Card 03 -->
-            <article class="course-card">
-                <span class="card-number">03</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-                <h3>Career Services</h3>
-                <p>Get your CV, Statement of Purpose, LinkedIn reviewed by our experts for free.</p>
-                <img src="career-services.png" alt="Resume Review">
-            </article>
-
-            <!-- Card 04 (Special Design) -->
-            <article class="course-card announcement-card">
-                <div class="announcement-content">
-                    <img src="hackathon.png" alt="Hackathon Illustration">
-                    <p>Our dedicated team is responsible for announcing webinars every month.</p>
-                    <h3>Hackathon Announcement</h3>
-                    <span class="card-number">04</span>
-                    <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-                </div>
-            </article>
-
-            <!-- Card 05 -->
-            <article class="course-card">
-                <span class="card-number">05</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-                <h3>IELTS & GRE Classes</h3>
-                <p>Prepare IELTS & GRE for 100 percent free to avail international opportunities.</p>
-                <img src="ielts-gre.png" alt="Speak English Book">
-            </article>
-
-            <!-- Card 06 -->
-            <article class="course-card">
-                <img src="ml-ds.png" alt="Machine Learning Robot">
-                <h3>Machine Learning/ Data Science Announcement</h3>
-                <p>Learn emerging technologies in cohort to maximize your learning journey.</p>
-                <span class="card-number">06</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-            </article>
-
-            <!-- Card 07 -->
-            <article class="course-card">
-                <span class="card-number">07</span>
-                <select class="schedule-dropdown"><option>Thu, Dec 05, 09:00 PM</option></select>
-                <h3>Full Stack Web and App Development Courses</h3>
-                <p>Advance Courses of Website & Application development are taught by experts.</p>
-                <img src="web-dev.png" alt="Coding on Laptop">
-            </article>
-
-        </section>
-
-        <!-- APPLICATION FORM SECTION -->
-        <section class="join-form">
-            <h2>Start Your Journey</h2>
-            <form action="#">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fname">First Name</label>
-                        <input type="text" id="fname" placeholder="Hassan">
-                    </div>
-                    <div class="form-group">
-                        <label for="lname">Last Name</label>
-                        <input type="text" id="lname" placeholder="Abdullah">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="hassan.abdullah@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">WhatsApp Phone Number</label>
-                        <input type="tel" id="phone" placeholder="+92 123 4567890">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="campus">University / Campus</label>
-                    <input type="text" id="campus" placeholder="GIFT University, Gujranwala Campus">
-                </div>
-                <div class="form-group">
-                    <label for="linkedin">LinkedIn Profile</label>
-                    <input type="text" id="linkedin" placeholder="Share your LinkedIn Profile">
-                </div>
-                <div class="form-actions">
-                    <button type="submit" class="btn-submit">Submit Application</button>
-                    <div class="slack-link">
-                        Already registered? Join our Slack community <button class="btn-slack">Join Slack</button>
-                    </div>
-                </div>
-            </form>
-        </section>
-
-        <!-- VALUES BAR -->
-        <section class="values-bar">
-            <span>&bull; Share &bull;</span>
-            <span>&bull; Learn &bull;</span>
-            <span>&bull; Grow &bull;</span>
-        </section>
-    </main>
-
-    <!-- FOOTER SECTION -->
-    <footer>
-        <div class="footer-top">
-            <div class="footer-info">
-                <img src="logo-green.png" alt="iCodeGuru">
-                <p>Pakistan's trusted Non-Profit Organization helping students secure fully funded scholarships.</p>
-                <div class="newsletter">
-                    <input type="email" placeholder="Enter your email address">
-                    <button class="btn-subscribe">Subscribe</button>
-                </div>
-                <p class="privacy">By subscribe to you agree with ur <a href="#">Privacy policy</a></p>
-            </div>
-            <div class="footer-links">
-                <div class="link-col">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Join Us</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Alumni</a></li>
-                    </ul>
-                </div>
-                <div class="link-col">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Feedback</a></li>
-                        <li><a href="#">Need Help?</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Donate</a></li>
-                    </ul>
-                </div>
-                <div class="link-col">
-                    <h4>Connect with Us</h4>
-                    <p>info@icodeguru.com</p>
-                    <p>+92 XXX XXXXXXX</p>
-                    <p>Pakistan</p>
-                </div>
-            </div>
+        <!-- Middle: Navigation Arrows -->
+        <div class="calendar-nav-arrows">
+            <button class="prev-month" id="prevMonth">&lt;</button>
+            <button class="next-month" id="nextMonth">&gt;</button>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; iCodeGuru Inc. All Rights Reserved.</p>
-            <div class="social-icons">
-                <!-- Social media icons here -->
-            </div>
-        </div>
-    </footer>
 
-</body>
+        <!-- Right side: Dropdowns -->
+        <div class="calendar-dropdowns">
+            <button class="calendar-dropdown">Monthly</button>
+            <button class="calendar-dropdown">Fully Funded Scholarship</button>
+        </div>
+    </div>
+
+    <!-- Calendar Grid -->
+    <div class="calendar-grid">
+        <!-- Days of the Week Header -->
+        <div class="calendar-weekdays">
+            <div class="calendar-day">Sun</div>
+            <div class="calendar-day">Mon</div>
+            <div class="calendar-day">Tue</div>
+            <div class="calendar-day">Wed</div>
+            <div class="calendar-day">Thu</div>
+            <div class="calendar-day">Fri</div>
+            <div class="calendar-day">Sat</div>
+        </div>
+
+        <!-- JS will inject the days here -->
+        <div class="calendar-days-grid" id="calendarDays"></div>
+    </div>
+</div>
+
+				<!-- Courses Cards Placeholder -->
+				<div class="learning-tracks-cards">
+					<!-- Row 1: 2 cards -->
+					<div class="cards-row cards-row--2">
+						<article class="course-card large-card">
+							<div class="card-header">
+								<span class="card-index">01</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+
+							<div class="card-content">
+								<h3 class="card-title">iCodeGuru Weekly Webinars</h3>
+								<p class="card-description">
+									We conduct weekly webinars ever Saturday 9:00 PM PKT to help
+									students interact with Silicon Valley Engineers.
+								</p>
+							</div>
+
+							<hr class="card-divider" />
+
+							<img
+								class="card-image"
+								src="images/webinar.png"
+								alt="Webinar Session"
+							/>
+						</article>
+						<article class="course-card large-card">
+							<img
+								class="card-image"
+								src="images/dsa.png"
+								alt="Webinar Session"
+							/>
+							<hr class="card-divider" />
+							<div class="card-content">
+								<h3 class="card-title">Data Structures and Algorithms</h3>
+								<p class="card-description">
+									If you want to boost your learning, you should learn skills in
+									a cohort. We provide many cohorts so you can engage with
+									others to enhance skills
+								</p>
+							</div>
+							<div class="card-header">
+								<span class="card-index">02</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+						</article>
+					</div>
+
+					<!-- Row 2: 3 cards -->
+					<div class="cards-row cards-row--3">
+						<article class="course-card medium-card">
+							<div class="card-header">
+								<span class="card-index">03</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3 class="card-title">Career Services</h3>
+								<p class="card-description">
+									Get your CV, Statement of Purpose, LinkedIn reviewed by our
+									experts for free.
+								</p>
+							</div>
+							<hr class="card-divider" />
+
+							<img
+								class="card-image"
+								src="images/career-services.png"
+								alt="Webinar Session"
+							/>
+						</article>
+						<article class="course-card medium-card card-4-gradient">
+							<img
+								class="card-image"
+								src="images/hackathon.png"
+								alt="Webinar Session"
+							/>
+							<hr class="card-divider" />
+							<div class="card-content">
+								<h3 class="card-title">Hackathon Announcement</h3>
+								<p class="card-description">
+									Our dedicated team is responsible for announcing webinars
+									every month.
+								</p>
+							</div>
+							<div class="card-header">
+								<span class="card-index">04</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+						</article>
+						<article class="course-card medium-card">
+							<div class="card-header">
+								<span class="card-index">05</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+							<div class="card-content">
+								<h3 class="card-title">IELTS & GRE Classes</h3>
+								<p class="card-description">
+									Prepare IELTS & GRE for 100 percent free to avail
+									international opportunities.
+								</p>
+							</div>
+							<hr class="card-divider" />
+							<img
+								class="card-image"
+								src="images/ielts-gre.png"
+								alt="Webinar Session"
+							/>
+						</article>
+					</div>
+
+					<!-- Row 3: 2 cards -->
+					<div class="cards-row cards-row--2">
+						<article class="course-card large-card">
+							<div class="card-header">
+								<span class="card-index">06</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+
+							<div class="card-content">
+								<h3 class="card-title">
+									Machine Learning/ Data Science Announcement
+								</h3>
+								<p class="card-description">
+									Learn emerging technologies in cohort to maximize your
+									learning journey.
+								</p>
+							</div>
+
+							<hr class="card-divider" />
+
+							<img
+								class="card-image"
+								src="images/ml-ds.png"
+								alt="Webinar Session"
+							/>
+						</article>
+						<article class="course-card large-card">
+							<img
+								class="card-image"
+								src="images/web-dev.png"
+								alt="Webinar Session"
+							/>
+							<hr class="card-divider" />
+							<div class="card-content">
+								<h3 class="card-title">
+									Full Stack Web and App Development Courses
+								</h3>
+								<p class="card-description">
+									Advance Courses of Website & Application development are
+									taught by experts.
+								</p>
+							</div>
+							<div class="card-header">
+								<span class="card-index">07</span>
+
+								<div class="card-schedule">
+									<span class="schedule-text">Thu, Dec 05, 09:00 PM</span>
+									<span class="schedule-arrow"></span>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+			<!-- REGISTRATION FORM SECTION -->
+			<section id="registration">
+				<div class="container">
+					<div class="registration-card">
+						<h2>Start Your Journey</h2>
+
+						<form action="#">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="firstname">First Name</label>
+									<input type="text" id="firstname" placeholder="Hassan" />
+								</div>
+								<div class="form-group">
+									<label for="lastname">Last Name</label>
+									<input type="text" id="lastname" placeholder="Abdullah" />
+								</div>
+							</div>
+
+							<div class="form-row">
+								<div class="form-group">
+									<label for="email">Email Address</label>
+									<input
+										type="email"
+										id="email"
+										placeholder="hassan.abdullah@email.com"
+									/>
+								</div>
+								<div class="form-group">
+									<label for="whatsapp">WhatsApp Phone Number</label>
+									<input
+										type="tel"
+										id="whatsapp"
+										placeholder="+92 123 4567890"
+									/>
+								</div>
+							</div>
+
+							<div class="form-group full-width">
+								<label for="university">University / Campus</label>
+								<input
+									type="text"
+									id="university"
+									placeholder="GIFT University, Gujranwala Campus"
+								/>
+							</div>
+
+							<div class="form-group full-width icon-input">
+								<label for="linkedin">LinkedIn Profile</label>
+								<div class="input-wrapper">
+									<input
+										type="url"
+										id="linkedin"
+										placeholder="Share your LinkedIn Profile"
+									/>
+									<span class="info-icon" title="Paste your profile link here"
+										>i</span
+									>
+								</div>
+							</div>
+
+							<div class="form-footer">
+								<button type="submit" class="btn btn-primary submit-btn">
+									Submit Application
+								</button>
+
+								<div class="slack-cta">
+									<span>Already registered? Join our Slack community</span>
+									<button type="button" class="btn btn-outline slack-btn">
+										Join Slack
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+			<!-- Values Row -->
+			<div class="values-row">
+				<div class="value-pill">
+					<span class="dot">•</span> Share <span class="dot">•</span>
+				</div>
+				<div class="value-pill">
+					<span class="dot">•</span> Learn <span class="dot">•</span>
+				</div>
+				<div class="value-pill">
+					<span class="dot">•</span> Grow <span class="dot">•</span>
+				</div>
+			</div>
+		</main>
+
+		<!-- FOOTER SECTION -->
+		<footer>
+			<div class="container">
+				<div class="footer-top">
+					<div class="footer-brand">
+						<div class="logo">
+							<span class="logo-text"
+								>iCode<span class="logo-green">Guru</span></span
+							>
+						</div>
+						<p class="brand-desc">
+							Pakistan's trusted Non-Profit Organization helping students secure
+							fully funded scholarships.
+						</p>
+
+						<form class="subscribe-form">
+							<div class="input-container">
+								<img src="Images/Vector.png" alt="" />
+								<input type="email" placeholder="Enter your email address" />
+							</div>
+							<button type="submit">Subscribe</button>
+						</form>
+						<br />
+						<p class="privacy-note">
+							By subscribe to you agree with our <a href="#">Privacy policy</a>
+						</p>
+					</div>
+
+					<div class="footer-links-wrapper">
+						<div class="footer-col">
+							<h4>Quick Links</h4>
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Join Us</a></li>
+								<li><a href="#">Courses</a></li>
+								<li><a href="#">Alumni</a></li>
+							</ul>
+						</div>
+
+						<div class="footer-col">
+							<h4>Support</h4>
+							<ul>
+								<li><a href="#">Feedback</a></li>
+								<li><a href="#">Need Help?</a></li>
+								<li><a href="#">Contact</a></li>
+								<li><a href="#">Donate</a></li>
+							</ul>
+						</div>
+
+						<div class="footer-col">
+							<h4>Connect with Us</h4>
+							<ul class="contact-list">
+								<li>info@icodeguru.com</li>
+								<li>+92 XXX XXXXXXX</li>
+								<li>Pakistan</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer-divider"></div>
+
+				<div class="footer-bottom">
+					<p>© iCodeGuru Inc. All Rights Reserved.</p>
+
+					<div class="social-icons">
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/twitter.png" alt="X" />
+						</a>
+
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/facebook.png" alt="Facebook" />
+						</a>
+
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/instagram.png" alt="Instagram" />
+						</a>
+
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/linkedin.png" alt="LinkedIn" />
+						</a>
+
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/titok.png" alt="TikTok" />
+						</a>
+
+						<a href="#" class="social-btn">
+							<img src="/Images/Social Icons/youtube.png" alt="YouTube" />
+						</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<script src="courses.js"></script>
+	</body>
 </html>

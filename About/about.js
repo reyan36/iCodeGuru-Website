@@ -1,26 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. MOBILE MENU (Keep this as is) ---
+    // ==========================================
+    // 1. MOBILE MENU LOGIC
+    // ==========================================
     const mobileToggle = document.querySelector('.mobile-toggle');
     const mainNav = document.querySelector('.main-nav');
-    if (mobileToggle) {
+
+    if (mobileToggle && mainNav) {
         mobileToggle.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             mobileToggle.classList.toggle('active');
         });
     }
 
-    // --- 2. TEAM SCROLL FIX (PC & Mobile) ---
+    // ==========================================
+    // 2. TEAM SECTION: DRAG SCROLL & PROGRESS BAR
+    // ==========================================
     const slider = document.querySelector('.team-track');
     const progressBar = document.querySelector('.scroll-thumb');
-    const scrollContainer = document.querySelector('.custom-scrollbar'); // The grey line container
+    const scrollContainer = document.querySelector('.custom-scrollbar');
 
     if (slider && progressBar && scrollContainer) {
         let isDown = false;
         let startX;
         let scrollLeft;
 
-        // Mouse Down (Start Drag)
+        // Mouse Events for Dragging
         slider.addEventListener('mousedown', (e) => {
             isDown = true;
             slider.classList.add('active');
@@ -28,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollLeft = slider.scrollLeft;
         });
 
-        // Mouse Leave/Up (Stop Drag)
         slider.addEventListener('mouseleave', () => {
             isDown = false;
             slider.classList.remove('active');
@@ -39,73 +43,129 @@ document.addEventListener('DOMContentLoaded', () => {
             slider.classList.remove('active');
         });
 
-        // Mouse Move (The Dragging Motion)
         slider.addEventListener('mousemove', (e) => {
             if (!isDown) return;
-            e.preventDefault(); // This stops weird browser selections
+            e.preventDefault();
             const x = e.pageX - slider.offsetLeft;
-            const walk = (x - startX) * 2; // Speed multiplier (2x speed)
+            const walk = (x - startX) * 2; // Scroll speed
             slider.scrollLeft = scrollLeft - walk;
         });
 
-        // --- 3. SCROLLBAR SYNCHRONIZATION ---
-        // We listen to the 'scroll' event so it works with Touch, MouseDrag, and Touchpad
+        // Scrollbar Synchronization
         slider.addEventListener('scroll', () => {
-            // How much have we scrolled? (0 to 1)
             const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
-            
-            // Avoid division by zero if content fits on screen
             if (maxScrollLeft === 0) return;
 
             const scrollRatio = slider.scrollLeft / maxScrollLeft;
-
-            // Calculate widths to move the bar correctly
             const containerWidth = scrollContainer.clientWidth;
             const barWidth = progressBar.clientWidth;
-            
-            // The empty space the bar can move into
             const availableSpace = containerWidth - barWidth;
-
-            // Move the bar
             const movePixels = scrollRatio * availableSpace;
+            
             progressBar.style.left = `${movePixels}px`;
         });
     }
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-
-    /* --- 1. MOBILE MENU --- */
-    const mobileToggle = document.querySelector('.mobile-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-            mobileToggle.classList.toggle('active');
-        });
-    }
-
-    /* --- 2. TEAM DRAG SCROLL (Keep your existing Team code here) --- */
-    const teamSlider = document.querySelector('.team-track');
-    // ... include your previous team slider code here ...
-
-    /* --- 3. TESTIMONIAL SLIDER BUTTONS (FIXED) --- */
+    // ==========================================
+    // 3. TESTIMONIAL SLIDER BUTTONS
+    // ==========================================
     const testiTrack = document.querySelector('.testimonial-track');
     const nextBtn = document.querySelector('.next-btn');
     const prevBtn = document.querySelector('.prev-btn');
 
     if (testiTrack && nextBtn && prevBtn) {
-        
         nextBtn.addEventListener('click', () => {
-            // Scroll right by width of one card (approx 600px)
-            // We use 'scrollBy' on the track itself
             testiTrack.scrollBy({ left: 600, behavior: 'smooth' });
         });
 
         prevBtn.addEventListener('click', () => {
-            // Scroll left
             testiTrack.scrollBy({ left: -600, behavior: 'smooth' });
         });
     }
 
+    // ==========================================
+    // 4. DONATION MODAL LOGIC
+    // ==========================================
+    const modal = document.getElementById('donationModal');
+    const closeBtn = document.getElementById('closeModal');
+
+    // Only run if modal exists on this page
+    if (modal) {
+        const openModal = (e) => {
+            if(e) e.preventDefault(); 
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden'; 
+        };
+
+        // A. Handle Buttons (Header "Donate")
+        const allButtons = document.querySelectorAll('button'); 
+        allButtons.forEach(btn => {
+            if(btn.innerText.includes('Donate')) {
+                btn.addEventListener('click', openModal);
+            }
+        });
+
+        // B. Handle Links (Footer Link)
+        const donateLinks = document.querySelectorAll('a[href="#donationModal"]');
+        donateLinks.forEach(link => {
+            link.addEventListener('click', openModal);
+        });
+
+        // C. Close Logic
+        if(closeBtn){
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
+    }
+
 });
+
+// ==========================================
+// 5. GLOBAL FUNCTIONS (Tabs & Copy)
+// ==========================================
+// These must be outside DOMContentLoaded so HTML onclick="" works
+
+function openTab(evt, tabName) {
+    var i, tabcontent, tablinks;
+    
+    tabcontent = document.getElementsByClassName("tab-content");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove('active-content');
+    }
+
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+
+    const selectedTab = document.getElementById(tabName);
+    if(selectedTab) {
+        selectedTab.style.display = "block";
+        evt.currentTarget.classList.add("active");
+    }
+}
+
+function copyText(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("customToast");
+        if(toast) {
+            toast.innerText = "Copied successfully";
+            toast.className = "show";
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
