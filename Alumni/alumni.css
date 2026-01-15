@@ -464,9 +464,9 @@ ul {
 /* --- ALUMNI CARD IMAGE FIX (ZOOMED IN) --- */
 
 .card-img-box {
-    width: 100%;
+    width: 250px;
     /* Increase height slightly to show more of the person vertically */
-    height: 320px;
+    height: 300px;
     border-radius: 20px;
     overflow: hidden;
     /* This cuts off the edges when we zoom in */
@@ -482,16 +482,15 @@ ul {
     object-fit: cover;
 
     /* 2. Position: Focuses 20% from the top (Faces are usually here) */
-    object-position: center 25%;
+    object-position: center 75%;
 
     /* 3. ZOOM: This makes the image 25% larger to focus on the person */
-    transform: scale(1.25);
+    transform: scale(1.7);
 
     display: block;
     transition: transform 0.3s ease;
 }
 
-/* Optional: Zoom even more when you hover */
 
 .card-content {
     padding: 0 10px;
