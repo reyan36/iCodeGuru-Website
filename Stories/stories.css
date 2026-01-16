@@ -295,7 +295,7 @@ ul {
    ========================================= */
 
 #stories-hero {
-	background: #F6F7FF;
+	background: var(--bg-color);
 	padding: 56px 100px 0;
 }
 
@@ -306,6 +306,7 @@ ul {
 	gap: 64px;
 	max-width: 1440px;
 	margin: 0 auto;
+	padding-top: 60px;
 }
 
 /* --- Left Column: Text --- */
@@ -330,7 +331,7 @@ ul {
 
 .hero-text p {
 	font-size: 18px;
-	color: #6b7280;
+	color: var(--body-text);
 	line-height: 1.6;
 	margin-bottom: 45px;
 	max-width: 90%;
@@ -1339,4 +1340,176 @@ html, body {
 		align-self: flex-end;
 	}
 
+}
+
+
+/* =========================================
+   VIDEO GALLERY (FLEXBOX CENTERED LAYOUT)
+   ========================================= */
+#video-gallery {
+    padding: 80px 0 150px;
+    background-color: var(--bg-color);
+}
+
+.gallery-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+/* --- THE FLEX CONTAINER --- */
+.pinterest-grid {
+    display: flex;           /* Enables wrapping behavior */
+    flex-wrap: wrap;         /* Allows items to go to next line */
+    justify-content: center; /* CENTERS the last row (the 3 videos) */
+    gap: 30px;               /* Space between items */
+    
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.pin-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #6b6b6b;
+    
+    /* WIDTH CALCULATION: */
+    /* We want 4 items per row. */
+    /* 100% / 4 = 25%. Minus gap space = approx 23% */
+    width: 23%;
+    min-width: 240px; /* Prevents them getting too skinny */
+    
+    /* Phone Screen Ratio */
+    aspect-ratio: 9 / 16;
+    
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+/* --- THE STAGGER EFFECT --- */
+/* Pushes every 2nd card down by 60px */
+.pin-item:nth-child(even) {
+    margin-top: 60px; 
+}
+
+/* --- VIDEO & OVERLAY --- */
+.video-wrapper { width: 100%; height: 100%; }
+
+.video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    opacity: 0; 
+    filter: grayscale(20%);
+    transition: opacity 0.8s ease, filter 0.5s ease;
+}
+
+.video-wrapper video.is-playing { opacity: 0.6; }
+
+.dark-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent 60%);
+    opacity: 0.7;
+    pointer-events: none;
+    transition: 0.3s;
+}
+
+/* --- INTERACTIONS --- */
+.pin-item:hover {
+    z-index: 10;
+    transform: scale(1.05); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.pin-item:hover video {
+    opacity: 1; 
+    filter: grayscale(0%);
+}
+
+.pin-item:hover .dark-overlay { opacity: 0.3; }
+
+/* Info Circle */
+.info-circle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    width: 45px; height: 45px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255,255,255,0.6);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px;
+    opacity: 0; 
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.pin-item:hover .info-circle {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Student Details */
+.student-details {
+    position: absolute;
+    bottom: 15px; left: 15px; right: 15px;
+    background: #fff;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 20;
+}
+
+.student-details h3 { font-size: 14px; color: #1e0e4b; margin-bottom: 2px; font-weight: 700; }
+.student-details span { font-size: 11px; color: #599553; font-weight: 600; text-transform: uppercase; }
+
+/* Active State */
+.pin-item.active .student-details { opacity: 1; transform: translateY(0); }
+.pin-item.active .info-circle { opacity: 0; }
+
+/* Gallery Footer */
+.gallery-footer {
+    text-align: center;
+    margin-top: 150px; 
+	
+}
+.gallery-header h2{
+	font-size: 45px;
+	color: #1e0e4b;
+	margin-bottom: 20px;
+	font-weight: 500;
+}
+
+.gallery-header p {
+		font-size: 18px;
+	color: var(--body-text);
+	line-height: 1.6;
+margin-bottom: 150px;
+
+}
+/* --- RESPONSIVE FLEXBOX --- */
+@media (max-width: 1024px) {
+    .pin-item {
+        /* 3 items per row on Tablet */
+        width: 31%; 
+    }
+}
+
+@media (max-width: 768px) {
+    /* 2 items per row on Mobile */
+    .pin-item {
+        width: 47%;
+    }
+    
+    /* Remove stagger on mobile to save vertical space */
+    .pin-item:nth-child(even) { margin-top: 0; }
+    
+    .pinterest-grid { gap: 15px; }
 }

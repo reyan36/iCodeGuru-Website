@@ -108,3 +108,61 @@ function copyText(text) {
         console.error('Failed to copy: ', err);
     });
 }
+
+// ==========================================
+    // 5. VIDEO MODAL LOGIC (Updated)
+    // ==========================================
+    const videoModal = document.getElementById('videoModal');
+    const linkedinBtn = document.querySelector('#linkedinBtn'); // The trigger button
+    const closeVideoBtn = document.getElementById('closeVideo');
+    const iframe = document.getElementById('youtubeFrame');
+    const videoCover = document.getElementById('videoCover');
+    const startVideoBtn = document.getElementById('startVideoBtn');
+
+    // Your Video ID
+    const videoID = "JC9A8bvJMWQ"; 
+
+    if (videoModal && linkedinBtn) {
+        
+        // 1. OPEN MODAL
+        linkedinBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            videoModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Reset state: Show cover, remove iframe src
+            videoCover.classList.remove('hidden');
+            iframe.setAttribute('src', ''); 
+        });
+
+        // 2. PLAY VIDEO (Clicking Green Button)
+        const playVideo = () => {
+            // Hide the cover
+            videoCover.classList.add('hidden');
+            
+            // Start YouTube with Autoplay
+            // rel=0 hides related videos from others
+            // modestbranding=1 tries to hide logos
+            const autoPlayUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            iframe.setAttribute('src', autoPlayUrl);
+        };
+
+        if(startVideoBtn) startVideoBtn.addEventListener('click', playVideo);
+        if(videoCover) videoCover.addEventListener('click', playVideo);
+
+        // 3. CLOSE MODAL
+        const closeVideo = () => {
+            videoModal.classList.remove('show');
+            // Stop video
+            iframe.setAttribute('src', '');
+            document.body.style.overflow = 'auto';
+        };
+
+        if(closeVideoBtn) closeVideoBtn.addEventListener('click', closeVideo);
+
+        window.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideo();
+            }
+        });
+    }

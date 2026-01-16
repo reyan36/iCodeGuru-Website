@@ -108,3 +108,64 @@ function copyText(text) {
         console.error('Failed to copy: ', err);
     });
 }
+
+/* --- GALLERY INTERACTION --- */
+function toggleDetails(element) {
+    // 1. Check if this card is already active
+    const isActive = element.classList.contains('active');
+
+    // 2. Remove 'active' from ALL items (so only one shows at a time)
+    document.querySelectorAll('.pin-item').forEach(item => {
+        item.classList.remove('active');
+        // Unmute logic (Optional: if you want sound on click)
+        // item.querySelector('video').muted = true;
+    });
+
+    // 3. If it wasn't active before, make it active now
+    if (!isActive) {
+        element.classList.add('active');
+        // Optional: Unmute this specific video
+        // element.querySelector('video').muted = false;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- SMART VIDEO AUTOPLAY (Fixes Lag) --- */
+    const videos = document.querySelectorAll('.video-wrapper video');
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            // If video is on screen
+            if (entry.isIntersecting) {
+                const video = entry.target;
+                
+                // Try to play
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Play started successfully
+                        video.classList.add('is-playing'); // Fade it in via CSS
+                    }).catch(error => {
+                        console.log("Autoplay prevented:", error);
+                    });
+                }
+            } 
+            // If video is OFF screen
+            else {
+                const video = entry.target;
+                video.pause(); // Pause to save bandwidth for other videos
+                // Optional: remove class if you want them to fade out when off screen
+                // video.classList.remove('is-playing'); 
+            }
+        });
+    }, {
+        threshold: 0.25 // Trigger when 25% of the video is visible
+    });
+
+    // Start observing all videos
+    videos.forEach(video => {
+        videoObserver.observe(video);
+    });
+
+});

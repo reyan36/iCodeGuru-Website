@@ -464,9 +464,9 @@ ul {
 /* --- ALUMNI CARD IMAGE FIX (ZOOMED IN) --- */
 
 .card-img-box {
-    width: 250px;
+    width: 245px;
     /* Increase height slightly to show more of the person vertically */
-    height: 300px;
+    height: 270px;
     border-radius: 20px;
     overflow: hidden;
     /* This cuts off the edges when we zoom in */
@@ -482,15 +482,30 @@ ul {
     object-fit: cover;
 
     /* 2. Position: Focuses 20% from the top (Faces are usually here) */
-    object-position: center 75%;
+    object-position: center 45%;
 
     /* 3. ZOOM: This makes the image 25% larger to focus on the person */
-    transform: scale(1.7);
+    transform: scale(1);
 
     display: block;
     transition: transform 0.3s ease;
 }
 
+/* Centering the images and text on phone */
+@media (max-width: 768px) {
+    .card-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .alumni-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
 
 .card-content {
     padding: 0 10px;
