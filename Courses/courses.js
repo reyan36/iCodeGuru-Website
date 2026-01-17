@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let currentCalendarId = CALENDARS.track1;
-    let currentView = 'month'; 
+    let currentView = 'week'; // UPDATED: Default is now WEEK
     let currentDate = new Date(); 
 
     // Elements
@@ -112,8 +112,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function changeDate(step) {
-        if (currentView === 'month') currentDate.setMonth(currentDate.getMonth() + step);
-        else currentDate.setDate(currentDate.getDate() + (step * 7));
+        if (currentView === 'month') {
+            currentDate.setMonth(currentDate.getMonth() + step);
+        } else {
+            // Jump by Week (7 Days) - Logic remains 7 days even if we only show 6
+            currentDate.setDate(currentDate.getDate() + (step * 7));
+        }
         renderCalendar();
     }
     
@@ -130,52 +134,82 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 5. RENDER CALENDAR ---
+    // --- 5. RENDER CALENDAR (UPDATED FOR MON-SAT) ---
     async function renderCalendar() {
         if(!calendarDays) return;
         calendarDays.innerHTML = '<div class="calendar-loading">Loading...</div>';
 
         let startDate, endDate, headerText;
+
         if (currentView === 'month') {
+            // Month Logic
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth();
             startDate = new Date(year, month, 1);
             endDate = new Date(year, month + 1, 1);
+            
             const monthName = currentDate.toLocaleString('default', { month: 'long' });
             headerText = `<span class="calendar-month">${monthName}</span> <span class="calendar-year">${year}</span>`;
         } else {
-            const dayOfWeek = currentDate.getDay(); 
+            // WEEK LOGIC: START ON MONDAY
+            const dayOfWeek = currentDate.getDay(); // 0 (Sun) to 6 (Sat)
+            
+            // Calculate distance to previous Monday
+            // If today is Sunday (0), distance is -6. If Monday (1), distance is 0.
+            const distanceToMonday = (dayOfWeek + 6) % 7; 
+            
             startDate = new Date(currentDate);
-            startDate.setDate(currentDate.getDate() - dayOfWeek); 
+            startDate.setDate(currentDate.getDate() - distanceToMonday); // Set to Monday
             startDate.setHours(0,0,0,0);
+
             endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + 7); 
+            endDate.setDate(startDate.getDate() + 7); // Fetch full week (incl Sunday) just in case
+
+            // Header: "Jan 12 - Jan 17, 2026" (Showing Mon-Sat range)
             const startStr = startDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
-            const endStr = new Date(endDate);
-            endStr.setDate(endStr.getDate() - 1); 
-            const endTxt = endStr.toLocaleDateString('default', { month: 'short', day: 'numeric' });
+            const endDispDate = new Date(startDate);
+            endDispDate.setDate(startDate.getDate() + 5); // Display until Saturday
+            const endTxt = endDispDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
+            
             headerText = `<span class="calendar-month">${startStr} - ${endTxt}</span> <span class="calendar-year">${startDate.getFullYear()}</span>`;
         }
 
         if(monthYearDisplay) monthYearDisplay.innerHTML = headerText;
+        
+        // Fetch events
         const events = await fetchGoogleEvents(startDate, endDate, currentCalendarId);
         calendarDays.innerHTML = ''; 
 
         if (currentView === 'month') {
             const year = startDate.getFullYear();
             const month = startDate.getMonth();
-            const firstDayIndex = startDate.getDay(); 
+            
+            // Get index of 1st day (0=Sun, 1=Mon...). 
+            // We need to shift it because our grid starts on Mon (1).
+            let firstDayIndex = new Date(year, month, 1).getDay();
+            // Convert: Sun(0)->6, Mon(1)->0, Tue(2)->1 ...
+            let adjustedFirstDayIndex = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
+
             const daysInMonth = new Date(year, month + 1, 0).getDate();
-            for (let i = 0; i < firstDayIndex; i++) {
+
+            // Render Empty Slots
+            for (let i = 0; i < adjustedFirstDayIndex; i++) {
                 const emptyDiv = document.createElement('div');
                 emptyDiv.className = 'calendar-date empty';
                 calendarDays.appendChild(emptyDiv);
             }
+
+            // Render Days
             for (let day = 1; day <= daysInMonth; day++) {
-                renderDayCell(new Date(year, month, day), events);
+                // Check if this day is a Sunday. If so, SKIP it.
+                const checkDate = new Date(year, month, day);
+                if(checkDate.getDay() !== 0) { 
+                    renderDayCell(checkDate, events);
+                }
             }
         } else {
-            for (let i = 0; i < 7; i++) {
+            // WEEK GRID RENDER (6 Days: Mon to Sat)
+            for (let i = 0; i < 6; i++) {
                 const tempDate = new Date(startDate);
                 tempDate.setDate(startDate.getDate() + i);
                 renderDayCell(tempDate, events);
@@ -183,10 +217,20 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // --- RENDER SINGLE DAY CELL (WITH HIGHLIGHT) ---
     function renderDayCell(dateObj, allEvents) {
         const day = dateObj.getDate();
         const dateCell = document.createElement('div');
         dateCell.className = 'calendar-date active';
+        
+        // CHECK IF TODAY
+        const today = new Date();
+        if (dateObj.getDate() === today.getDate() && 
+            dateObj.getMonth() === today.getMonth() && 
+            dateObj.getFullYear() === today.getFullYear()) {
+            dateCell.classList.add('today-highlight'); // ADD CLASS
+        }
+
         if(currentView === 'week') dateCell.style.height = '350px'; 
         
         const dateNum = document.createElement('div');
@@ -348,7 +392,7 @@ const t = displayTitle.toLowerCase();
         const options = select.querySelectorAll('option');
         const trigger = document.createElement('div');
         trigger.className = 'custom-select-trigger';
-        trigger.innerHTML = `<span>${options[0].text}</span> <div class="custom-arrow"></div>`;
+        trigger.innerHTML = `<span>${options[select.selectedIndex].text}</span> <div class="custom-arrow"></div>`; // Use Selected Index
         wrapper.appendChild(trigger);
         const customOptions = document.createElement('div');
         customOptions.className = 'custom-options';
@@ -383,17 +427,16 @@ const t = displayTitle.toLowerCase();
     });
 
     // =================================================================
-    // 9. DYNAMIC CARD DATES (FIXED)
+    // 9. DYNAMIC CARD DATES
     // =================================================================
-    // Run logic
     updateStaticCards();
     updateDynamicCards();
 
     function updateStaticCards() {
         const now = new Date();
-        const nextWebinar = getNextDayOfWeek(now, 6, 21, 0); // Sat 9PM
+        const nextWebinar = getNextDayOfWeek(now, 6, 21, 0); 
         updateCardText('date-webinars', nextWebinar);
-        const nextCareer = getNextDayOfWeek(now, 6, 17, 0); // Sat 5PM
+        const nextCareer = getNextDayOfWeek(now, 6, 17, 0); 
         updateCardText('date-career', nextCareer);
         const nextHackathon = getNextHackathon(now);
         updateCardText('date-hackathon', nextHackathon);
@@ -402,46 +445,54 @@ const t = displayTitle.toLowerCase();
     async function updateDynamicCards() {
         const now = new Date();
         const future = new Date();
-        future.setDate(now.getDate() + 60); // Look ahead 60 days
-        const timeMin = now.toISOString();
-        const timeMax = future.toISOString();
-
-        // FETCH ALL TRACKS (Track 1, 2, and 3) to find events anywhere
-        const p1 = fetchGoogleEvents(now, future, CALENDARS.track1);
-        const p2 = fetchGoogleEvents(now, future, CALENDARS.track2);
-        const p3 = fetchGoogleEvents(now, future, CALENDARS.track3);
+        future.setDate(now.getDate() + 60); 
+        const p1 = fetchEventsForCards(CALENDARS.track1, now, future);
+        const p2 = fetchEventsForCards(CALENDARS.track2, now, future);
+        const p3 = fetchEventsForCards(CALENDARS.track3, now, future);
         
-        const results = await Promise.all([p1, p2, p3]);
-        const allEvents = [].concat(...results);
+        try {
+            const results = await Promise.all([p1, p2, p3]);
+            const rawEvents = [].concat(...results);
+            const allEvents = rawEvents.filter(event => {
+                const endDate = new Date(event.end.dateTime || event.end.date);
+                return endDate > now; 
+            });
+            allEvents.sort((a, b) => new Date(a.start.dateTime) - new Date(b.start.dateTime));
 
-        // Sort by Date so we get the upcoming one
-        allEvents.sort((a, b) => new Date(a.start.dateTime) - new Date(b.start.dateTime));
+            const dsa = allEvents.find(e => {
+                const t = (e.summary || "").toLowerCase();
+                return t.includes("structure") || t.includes("dsa") || t.includes("algorithm");
+            });
+            updateDynamicCardText('date-dsa', dsa, "Check Calendar");
 
-        // 1. DSA
-        const dsa = allEvents.find(e => {
-            const t = (e.summary || "").toLowerCase();
-            return t.includes("structure") || t.includes("dsa") || t.includes("algorithm");
-        });
-        updateDynamicCardText('date-dsa', dsa, "Check Calendar");
+            const ielts = allEvents.find(e => (e.summary||"").toLowerCase().includes("ielts")) 
+                       || allEvents.find(e => (e.summary||"").toLowerCase().includes("gre"));
+            updateDynamicCardText('date-ielts', ielts, "Check Calendar");
 
-        // 2. IELTS (Priority) -> GRE
-        const ielts = allEvents.find(e => (e.summary||"").toLowerCase().includes("ielts")) 
-                   || allEvents.find(e => (e.summary||"").toLowerCase().includes("gre"));
-        updateDynamicCardText('date-ielts', ielts, "Check Calendar");
+            const ml = allEvents.find(e => {
+                const t = (e.summary || "").toLowerCase();
+                return t.includes("machine") || t.includes("data");
+            });
+            updateDynamicCardText('date-ml', ml, "Check Calendar");
 
-        // 3. Machine Learning
-        const ml = allEvents.find(e => {
-            const t = (e.summary || "").toLowerCase();
-            return t.includes("machine") || t.includes("data");
-        });
-        updateDynamicCardText('date-ml', ml, "Check Calendar");
+            const web = allEvents.find(e => {
+                const t = (e.summary || "").toLowerCase();
+                return t.includes("web") || t.includes("stack") || t.includes("app");
+            });
+            updateDynamicCardText('date-webdev', web, "Coming Soon");
+        } catch (err) {}
+    }
 
-        // 4. Web Dev
-        const web = allEvents.find(e => {
-            const t = (e.summary || "").toLowerCase();
-            return t.includes("web") || t.includes("stack") || t.includes("app");
-        });
-        updateDynamicCardText('date-webdev', web, "Coming Soon");
+    async function fetchEventsForCards(calendarId, start, end) {
+        if (!API_KEY || API_KEY.includes('PASTE_')) return [];
+        const timeMin = start.toISOString();
+        const timeMax = end.toISOString();
+        const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?key=${API_KEY}&timeMin=${timeMin}&timeMax=${timeMax}&singleEvents=true&orderBy=startTime`;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            return data.items || [];
+        } catch (error) { return []; }
     }
 
     function updateCardText(id, dateObj) {
@@ -481,5 +532,4 @@ const t = displayTitle.toLowerCase();
         }
         return d;
     }
-
 });

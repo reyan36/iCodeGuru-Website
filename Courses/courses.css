@@ -1120,14 +1120,13 @@ footer {
     margin-bottom: 60px;
 }
 
-
 .footer-brand {
     max-width: 450px;
     flex: 1;
 }
 
 .brand-desc {
-    color: #6b7280;
+    color: var(--body-text);
     line-height: 1.6;
     margin: 20px 0 30px;
     font-size: 16px;
@@ -1177,7 +1176,7 @@ footer {
     font-weight: 500;
     font-size: 15px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: 0.3s;
     white-space: nowrap;
 }
 
@@ -1187,13 +1186,13 @@ footer {
 
 .privacy-note {
     font-size: 13px;
-    color: #6b7280;
+    color: var(--body-text);
     margin-top: 15px;
 }
 
 .privacy-note a {
     color: #1e0e4b;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 500;
 }
 
@@ -1221,7 +1220,7 @@ footer {
 
 .footer-col a, .contact-list li {
     text-decoration: none;
-    color: #6b7280;
+    color: var(--body-text);
     font-size: 15px;
     transition: color 0.2s;
 }
@@ -1229,7 +1228,6 @@ footer {
 .footer-col a:hover {
     color: var(--primary-green);
 }
-
 
 .footer-divider {
     height: 1px;
@@ -1244,50 +1242,43 @@ footer {
 }
 
 .footer-bottom p {
-    color: #6b7280;
+    color: var(--body-text);
     font-size: 15px;
 }
 
-
+/* --- SOCIAL ICONS (Font Awesome Update) --- */
 .social-icons {
     display: flex;
     gap: 15px;
 }
 
-
 .social-btn {
     width: 45px;
     height: 45px;
-    background-color: #ecf3ea;
+    background-color: #ecf3ea; /* Light Green Background */
+    border-radius: 50%;
+    
+    /* Center the icon */
     display: flex;
     align-items: center;
     justify-content: center;
+    
     text-decoration: none;
     transition: all 0.3s ease;
-    border-radius: 30px;
-
+    
+    /* Icon Styling */
+    color: #34652C; /* Dark Green Icon Color */
+    font-size: 18px; /* Icon Size */
 }
 
-.social-btn img {
-    width: 20px;
-    height: auto;
-    object-fit: contain;
-    transition: filter 0.3s;
-}
-
+/* Hover Effect */
 .social-btn:hover {
+    background-color: var(--primary-green);
+    color: #ffffff; /* Turn icon White on hover */
     transform: translateY(-2px);
 }
 
-
-/* --- RESPONSIVE FOOTER --- */
-@media (max-width: 1024px) {
-    .footer-links-wrapper {
-        gap: 40px;
-        margin-left: 0;
-    }
-}
-
+/* Responsive Footer */
 @media (max-width: 900px) {
     .footer-top {
         flex-direction: column;
@@ -1296,13 +1287,10 @@ footer {
     .footer-links-wrapper {
         justify-content: space-between;
         width: 100%;
+        margin-left: 0;
     }
 
-    .footer-brand {
-        max-width: 100%;
-    }
-
-    .subscribe-form {
+    .footer-brand, .subscribe-form {
         max-width: 100%;
     }
 }
@@ -1323,8 +1311,17 @@ footer {
         justify-content: center;
     }
 }
-
-
+@media (max-width:370px) {
+    .subscribe-form button{
+    padding: 10px 10px;
+    }
+    .social-icons{
+        gap: 10px;
+    }
+    .footer-email-img{
+        display: none;
+    }
+}
 /* =========================================
    CALENDAR STYLES (MODERN SCROLLBAR)
    ========================================= */
@@ -1802,7 +1799,48 @@ footer {
         right: 10px;
     }
 }
+/* =========================================
+   UPDATED GRID & HIGHLIGHT STYLES
+   ========================================= */
 
+.calendar-days-grid {
+    display: grid;
+    /* CHANGED: 6 Columns (Mon-Sat) instead of 7 */
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 10px;
+    width: 100%;
+}
+
+.calendar-weekdays {
+    display: grid;
+    /* CHANGED: Match the days grid */
+    grid-template-columns: repeat(6, 1fr); 
+    margin-bottom: 10px;
+}
+
+/* SUBTLE HIGHLIGHT FOR CURRENT DAY */
+.calendar-date.today-highlight {
+    background-color: #f0fdf4; /* Very light green tint */
+    border: 2px solid #2f855a; /* Green Border */
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.15); /* Soft Glow */
+    position: relative;
+    z-index: 5;
+}
+
+/* Ensure the Today text is bold */
+.calendar-date.today-highlight .date-number {
+    color: #2f855a;
+    font-weight: 800;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .calendar-weekdays, 
+    .calendar-days-grid {
+        /* Adjust min-width since we have fewer columns now */
+        min-width: 800px; 
+    }
+}
 
 /* =========================================
    DONATION MODAL STYLES
@@ -2074,4 +2112,67 @@ html, body {
         align-self: flex-end;
     }
 
+}
+
+/* For Small Screens */
+
+@media (max-width:430px) {
+    .hero-image img{
+        margin-right: 100px;
+        width: 120%;
+    }
+    .hero{
+        padding-top: 50px;
+    }
+    .hero-features .feature-text{
+      font-size: 14px;
+    }
+}
+
+@media (max-width:330px) {
+    .custom-select-trigger {
+        padding: 0 15px; /* Reduce padding slightly to give text more room */
+    }
+    
+    .custom-select-trigger span {
+        font-size: 13px; /* Slightly smaller font to fit more text */
+    }
+}
+@media (max-width:330px) {
+    .custom-select-trigger {
+        padding: 0 15px; /* Reduce padding slightly to give text more room */
+    }
+    
+    .custom-select-trigger span {
+        font-size: 13px; /* Slightly smaller font to fit more text */
+    }
+    .card-index{
+        margin-right: 10px;
+    }
+
+}
+
+/* =========================================
+   DROPDOWN TEXT OVERFLOW FIX
+   ========================================= */
+
+/* 1. Make the text act smart */
+.custom-select-trigger span {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    flex: 1; 
+    margin-right: 8px; 
+    min-width: 0; 
+}
+
+/* 3. Mobile Specific Tweak */
+@media (max-width: 480px) {
+    .custom-select-trigger {
+        padding: 0 15px; /* Reduce padding slightly to give text more room */
+    }
+    
+    .custom-select-trigger span {
+        font-size: 13px; /* Slightly smaller font to fit more text */
+    }
 }
