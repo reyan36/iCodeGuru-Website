@@ -2176,3 +2176,16 @@ html, body {
         font-size: 13px; /* Slightly smaller font to fit more text */
     }
 }
+
+
+
+@media (max-width: 440px) {
+.medium-card .card-image{
+        width: 100%;
+    /* height: 200%; */
+    max-height: 250px;
+    object-fit: cover;
+    border-radius: 32px;
+    display: block;
+}
+}
