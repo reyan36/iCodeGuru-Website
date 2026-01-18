@@ -169,3 +169,89 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* --- 1. FILTERING LOGIC --- */
+    window.filterVideos = function(category) {
+        const items = document.querySelectorAll('.pin-item');
+        const buttons = document.querySelectorAll('.tab-btn');
+
+        // Update Button Styles
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        // Filter Items
+        items.forEach(item => {
+            const itemCat = item.getAttribute('data-category');
+            if (category === 'all' || itemCat === category) {
+                item.classList.remove('hidden');
+            } else {
+                item.classList.add('hidden');
+            }
+        });
+    };
+
+    /* --- 2. SOUND TOGGLE LOGIC --- */
+    window.toggleSound = function(event, btn) {
+        event.stopPropagation(); // Stop clicking the card itself
+        
+        const video = btn.closest('.video-wrapper').querySelector('video');
+        const icon = btn.querySelector('i');
+
+        if (video.muted) {
+            video.muted = false;
+            icon.classList.remove('fa-volume-xmark');
+            icon.classList.add('fa-volume-high');
+        } else {
+            video.muted = true;
+            icon.classList.remove('fa-volume-high');
+            icon.classList.add('fa-volume-xmark');
+        }
+    };
+
+    /* --- 3. LOADING & SMART AUTOPLAY --- */
+    const videos = document.querySelectorAll('.video-wrapper video');
+
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            const wrapper = video.closest('.video-wrapper');
+
+            if (entry.isIntersecting) {
+                // When video loads enough data to play, hide loader
+                video.addEventListener('canplay', () => {
+                    wrapper.classList.add('loaded');
+                });
+
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        video.classList.add('is-playing');
+                        wrapper.classList.add('loaded'); // Backup loader hide
+                    }).catch(err => console.log("Autoplay blocked"));
+                }
+            } else {
+                video.pause();
+                video.muted = true; // Auto-mute when scrolling away
+                // Reset icon to mute
+                const btnIcon = wrapper.querySelector('.volume-btn i');
+                if(btnIcon) {
+                    btnIcon.classList.remove('fa-volume-high');
+                    btnIcon.classList.add('fa-volume-xmark');
+                }
+            }
+        });
+    }, { threshold: 0.25 });
+
+    videos.forEach(video => videoObserver.observe(video));
+});
+
+/* --- DETAILS TOGGLE (Existing) --- */
+function toggleDetails(element) {
+    const isActive = element.classList.contains('active');
+    document.querySelectorAll('.pin-item').forEach(item => item.classList.remove('active'));
+    if (!isActive) element.classList.add('active');
+}

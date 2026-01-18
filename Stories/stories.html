@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Student Stories - iCodeGuru</title>
 <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 		<!-- Linking ONLY the self-contained stories css -->
 		<link rel="stylesheet" href="stories.css" />
 	</head>
@@ -57,14 +58,14 @@
 					<div class="hero-text">
 						<h1>Student Stories Across the Border</h1>
 						<p>Real transformation stories from our community members</p>
-						<button type="button" class="btn btn-primary btn-lg">
+						<a href="../Join/join.html"><button type="button" class="btn btn-primary btn-lg">
 							Join iCodeGuru
-						</button>
+						</button></a>
 					</div>
 					<!-- Right Image -->
 					<div class="hero-image">
 						<img
-							src="images/medium-shot-girl-with-toga-hat 1.png"
+							src="images/Untitled design.png"
 							alt="Happy graduates throwing caps"
 						/>
 					</div>
@@ -74,16 +75,28 @@
 <section id="video-gallery">
     <div class="container">
         <div class="gallery-header">
-            <h2>Hear From Our Alumni</h2>
-            <p>Watch real moments of success and gratitude.</p>
+            <h2>Hear From Our Community</h2>
+            <p>Real stories of success, struggle, and triumph.</p>
         </div>
 
+        <!-- CATEGORY TABS -->
+        <div class="gallery-tabs">
+            <button class="tab-btn active" onclick="filterVideos('all')">All Stories</button>
+            <button class="tab-btn" onclick="filterVideos('alumni')">Alumni</button>
+            <button class="tab-btn" onclick="filterVideos('ielts')">IELTS Success</button>
+            <button class="tab-btn" onclick="filterVideos('hackathon')">Hackathons</button>
+        </div>
+
+        <!-- VIDEO GRID -->
         <div class="pinterest-grid">
             
-            <!-- 1. Sobia Noor -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 1. Sobia Noor (IELTS) -->
+            <div class="pin-item" data-category="ielts" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 1.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="https://res.cloudinary.com/dghgl7zaa/video/upload/q_auto,f_auto/v1/Stories_1_xfabv2.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
@@ -93,10 +106,13 @@
                 </div>
             </div>
 
-            <!-- 2. Muhammad Abdullah -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 2. Muhammad Abdullah (IELTS) -->
+            <div class="pin-item" data-category="ielts" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 2.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="images/Videos/Stories 2.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
@@ -106,10 +122,14 @@
                 </div>
             </div>
 
-            <!-- 3. Azib Farooq -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 3. Azib Farooq (Alumni) -->
+            <div class="pin-item" data-category="alumni" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Storeis 3.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <!-- Note: Kept 'Storeis' spelling from your snippet just in case -->
+                    <video src="images/Videos/Storeis 3.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
@@ -119,63 +139,76 @@
                 </div>
             </div>
 
-            <!-- 4. Nimra Safdar -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 4. Nimra Safdar (Alumni) -->
+            <div class="pin-item" data-category="alumni" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 4.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="images/Videos/Stories 4.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
                         <h3>Nimra Safdar</h3>
-                        <span>PHD Biology At Miami University</span>
+                        <span>PhD Biology At Miami University</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 5. Mujahid Ullah Khan -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 5. Mujahid Ullah Khan (Alumni) -->
+            <div class="pin-item" data-category="alumni" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 5.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="images/Videos/Stories 5.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
                         <h3>Mujahid Ullah Khan</h3>
-                        <span>Phd Math At NMSU</span>
+                        <span>PhD Math At NMSU</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 6. Wania Habib -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 6. Wania Habib (Alumni) -->
+            <div class="pin-item" data-category="alumni" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 6.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="images/Videos/Stories 6.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
                         <h3>Wania Habib</h3>
-                        <span>Teaching Assistant At Western Michigan University</span>
+                        <span>Teaching Assistant At Western Michigan</span>
                     </div>
                 </div>
             </div>
 
-            <!-- 7. Fauzia Akbar -->
-            <div class="pin-item" onclick="toggleDetails(this)">
+            <!-- 7. Fauzia Akbar (Alumni/Hackathon) -->
+            <div class="pin-item" data-category="alumni" onclick="toggleDetails(this)">
                 <div class="video-wrapper">
-                    <video src="images/Videos/Stories 7.mp4" autoplay muted loop playsinline></video>
+                    <div class="video-loader"></div>
+                    <video src="images/Videos/Stories 7.mp4" loop playsinline muted></video>
+                    <button class="volume-btn" onclick="toggleSound(event, this)"><i class="fa-solid fa-volume-xmark"></i></button>
+                    
                     <div class="dark-overlay"></div>
                     <div class="info-circle"><i class="fa-solid fa-info"></i></div>
                     <div class="student-details">
                         <h3>Fauzia Akbar</h3>
-                        <span>SuperStar Section Leader At Stanford University</span>
+                        <span>Section Leader At Stanford University</span>
                     </div>
                 </div>
             </div>
 
-
         </div>
 
         <div class="gallery-footer">
-            <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=videos"><button class="btn btn btn-primary btn-lg">View More Stories</button></a>
+            <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=videos" target="_blank">
+                <button class="btn btn-primary btn-lg">View More Stories</button>
+            </a>
         </div>
     </div>
 </section>
