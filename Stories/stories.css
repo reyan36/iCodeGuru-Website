@@ -833,7 +833,7 @@ footer {
     width: auto;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.2;
+    opacity: 0.8;
 }
 .line-left { left: 0; object-position: left center; }
 .line-right { right: 0; object-position: right center; }
@@ -855,7 +855,21 @@ footer {
     opacity: 0.9;
     text-align: left;
 }
-
+.footer-lg-1{
+	color: #FFF;
+text-align: center;
+font-size: 24px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+.footer-lg-1 span{
+color: #FFF;
+font-size: 24px;
+font-style: italic;
+font-weight: 600;
+line-height: normal;
+}
 /* Center: Brand Stack */
 .brand-center {
     flex: 1;
@@ -1001,6 +1015,7 @@ footer {
         padding: 60px 20px;
         border-radius: 30px;
         margin: 0 10px;
+		        margin-top: 20px;
     }
 
     .banner-form {
@@ -1024,6 +1039,18 @@ footer {
         color: #4a8047;
         margin: 0;
     }
+	.line-left { 
+		display: none;
+	}
+	.line-right { 
+		display: none;
+ 	}
+	footer{
+		padding: 40px;
+	}
+	.link-col ul li{
+		margin-bottom: 18px;
+	}
 }
 
 /* --- LINKEDIN & VALUES SECTION --- */
