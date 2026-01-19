@@ -1,191 +1,250 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Join Us - iCodeGuru</title>
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Linking ONLY the self-contained join css -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+		<link rel="stylesheet" href="join.css" />
+	</head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Us - iCodeGuru</title>
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
-    <!-- Linking ONLY the self-contained join css -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="join.css">
-</head>
+	<body>
+		<!-- HEADER (Styles included in join.css) -->
+		<header class="main-header">
+			<div class="container">
+				<div class="header-box">
+					<!-- LOGO -->
+					<div class="logo">
+						<a href="index.html" style="text-decoration: none">
+							<span class="logo-text"
+								>iCode<span class="logo-green">Guru</span></span
+							>
+						</a>
+					</div>
 
-<body>
+					<!-- MENU LINKS -->
+					<nav class="main-nav">
+						<ul>
+							<!-- CHANGE 'active' CLASS BASED ON PAGE -->
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../About/about.html">About us</a></li>
+							<li><a href="#" class="active">Join</a></li>
+							<li><a href="../Courses/courses.html">Courses</a></li>
+							<li><a href="../Stories/stories.html">Stories</a></li>
+							<li><a href="../Alumni/alumni.html">Alumni</a></li>
+							<li><a href="../Feedback/feedback.html">Feedback</a></li>
 
-    <!-- HEADER (Styles included in join.css) -->
-<header class="main-header">
-    <div class="container">
-        <div class="header-box">
-            
-            <!-- LOGO -->
-            <div class="logo">
-                <a href="index.html" style="text-decoration: none;">
-                    <span class="logo-text">iCode<span class="logo-green">Guru</span></span>
-                </a>
-            </div>
-            
-            <!-- MENU LINKS -->
-            <nav class="main-nav">
-                <ul>
-                    <!-- CHANGE 'active' CLASS BASED ON PAGE -->
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../About/about.html">About us</a></li>
-                    <li><a href="#" class="active">Join</a></li>
-                    <li><a href="../Courses/courses.html">Courses</a></li>
-                    <li><a href="../Stories/stories.html">Stories</a></li>
-                    <li><a href="../Alumni/alumni.html">Alumni</a></li>
-                    <li><a href="../Feedback/feedback.html">Feedback</a></li>
-                    
-                    <!-- MOBILE-ONLY DONATE BUTTON -->
-                    <li class="mobile-donate">
-                        <button type="button" class="btn btn-primary">Donate</button>
-                    </li>
-                </ul>
-            </nav>
-            
-            <!-- DESKTOP DONATE BUTTON -->
-            <div class="header-cta">
-                <button type="button" class="btn btn-primary">Donate</button>
-            </div>
-            
-            <!-- HAMBURGER ICON -->
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-        </div>
-    </div>
-</header>
+							<!-- MOBILE-ONLY DONATE BUTTON -->
+							<li class="mobile-donate">
+								<button type="button" class="btn btn-primary">Donate</button>
+							</li>
+						</ul>
+					</nav>
 
-    <main>
-        <!-- JOIN HERO SECTION -->
-        <section id="join-hero">
-            <div class="container hero-wrapper">
-                
-                <!-- Left Text Content -->
-                <div class="hero-text">
-                    <h1>Unlock Your Potential with iCodeGuru</h1>
-                    <p>Gain in-demand skills through expert-led courses, hands-on projects, and real-world applications</p>
-                  <a href="#registration"><button class="btn btn-primary btn-lg">Start Your Learning Journey</button></a>
-                </div>
+					<!-- DESKTOP DONATE BUTTON -->
+					<div class="header-cta">
+						<button type="button" class="btn btn-primary">Donate</button>
+					</div>
 
-                <!-- Right Image & Floating Elements -->
-                <div class="hero-visuals">
-                    
-                    <!-- Floating Avatar Pill -->
-                    <div class="avatar-pill">
-                        <img src="Join Images/Avatar Image 1.png" alt="User" class="avatar">
-                        <img src="Join Images/Avatar Image 2.png" alt="User" class="avatar">
-                        <img src="Join Images/Avatar Image 3.png" alt="User" class="avatar">
-                        <div class="avatar-check">
-                            <img src="Join Images/Avatar Image 4.png" alt="User" class="avatar">
-                            <span class="check-badge">✓</span>
-                        </div>
-                    </div>
+					<!-- HAMBURGER ICON -->
+					<div class="mobile-toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</header>
 
-                    <!-- Main Student Image -->
-                    <div class="student-image-container">
-                        <img src="Join Images/Girl Pointing.png" alt="Student Pointing" class="main-student-img">
-                    </div>
-                </div>
+		<main>
+			<!-- JOIN HERO SECTION -->
+			<section id="join-hero">
+				<div class="container hero-wrapper">
+					<!-- Left Text Content -->
+					<div class="hero-text">
+						<h1>Unlock Your Potential with iCodeGuru</h1>
+						<p>
+							Gain in-demand skills through expert-led courses, hands-on
+							projects, and real-world applications
+						</p>
+						<a href="#registration"
+							><button class="btn btn-primary btn-lg">
+								Start Your Learning Journey
+							</button></a
+						>
+					</div>
 
-            </div>
-            <!-- Background Shape -->
-            <div class="bg-shape-right"></div>
-        </section>
-                <!-- REGISTRATION FORM SECTION -->
-        <section id="registration">
-            <div class="container">
-                <div class="registration-card">
-                    <h2>Start Your Journey</h2>
+					<!-- Right Image & Floating Elements -->
+					<div class="hero-visuals">
+						<!-- Floating Avatar Pill -->
+						<div class="avatar-pill">
+							<img
+								src="Join Images/Avatar Image 1.png"
+								alt="User"
+								class="avatar"
+							/>
+							<img
+								src="Join Images/Avatar Image 2.png"
+								alt="User"
+								class="avatar"
+							/>
+							<img
+								src="Join Images/Avatar Image 3.png"
+								alt="User"
+								class="avatar"
+							/>
+							<div class="avatar-check">
+								<img
+									src="Join Images/Avatar Image 4.png"
+									alt="User"
+									class="avatar"
+								/>
+								<span class="check-badge">✓</span>
+							</div>
+						</div>
 
-                    <form action="#">
+						<!-- Main Student Image -->
+						<div class="student-image-container">
+							<img
+								src="Join Images/Girl Pointing.png"
+								alt="Student Pointing"
+								class="main-student-img"
+							/>
+						</div>
+					</div>
+				</div>
+				<!-- Background Shape -->
+				<div class="bg-shape-right"></div>
+			</section>
+			<!-- REGISTRATION FORM SECTION -->
+			<section id="registration">
+				<div class="container">
+					<div class="registration-card">
+						<h2>Start Your Journey</h2>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstname">First Name</label>
-                                <input type="text" id="firstname" placeholder="Hassan">
-                            </div>
-                            <div class="form-group">
-                                <label for="lastname">Last Name</label>
-                                <input type="text" id="lastname" placeholder="Abdullah">
-                            </div>
-                        </div>
+						<form action="#">
+							<div class="form-row">
+								<div class="form-group">
+									<label for="firstname">First Name</label>
+									<input type="text" id="firstname" placeholder="Hassan" />
+								</div>
+								<div class="form-group">
+									<label for="lastname">Last Name</label>
+									<input type="text" id="lastname" placeholder="Abdullah" />
+								</div>
+							</div>
 
+							<div class="form-row">
+								<div class="form-group">
+									<label for="email">Email Address</label>
+									<input
+										type="email"
+										id="email"
+										placeholder="hassan.abdullah@email.com"
+									/>
+								</div>
+								<div class="form-group">
+									<label for="whatsapp">WhatsApp Phone Number</label>
+									<input
+										type="tel"
+										id="whatsapp"
+										placeholder="+92 123 4567890"
+									/>
+								</div>
+							</div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" placeholder="hassan.abdullah@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="whatsapp">WhatsApp Phone Number</label>
-                                <input type="tel" id="whatsapp" placeholder="+92 123 4567890">
-                            </div>
-                        </div>
+							<div class="form-group full-width">
+								<label for="university">University / Campus</label>
+								<input
+									type="text"
+									id="university"
+									placeholder="GIFT University, Gujranwala Campus"
+								/>
+							</div>
 
+							<div class="form-group full-width icon-input">
+								<label for="linkedin">LinkedIn Profile</label>
+								<div class="input-wrapper">
+									<input
+										type="url"
+										id="linkedin"
+										placeholder="Share your LinkedIn Profile"
+									/>
+									<span class="info-icon" title="Paste your profile link here"
+										>i</span
+									>
+								</div>
+							</div>
 
-                        <div class="form-group full-width">
-                            <label for="university">University / Campus</label>
-                            <input type="text" id="university" placeholder="GIFT University, Gujranwala Campus">
-                        </div>
+							<div class="form-footer">
+								<button type="submit" class="btn btn-primary submit-btn">
+									Submit Application
+								</button>
 
+								<div class="slack-cta">
+									<span>Already registered? Join our Slack community</span>
+									<button type="button" class="btn btn-outline slack-btn">
+										Join Slack
+									</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+			<section id="linkedin-connect">
+				<div class="container">
+					<div class="linkedin-banner">
+						<img
+							src="../Images/lines-left.png"
+							alt=""
+							class="bg-lines line-left"
+						/>
+						<img
+							src="../Images/lines-right.png"
+							alt=""
+							class="bg-lines line-right"
+						/>
 
-                        <div class="form-group full-width icon-input">
-                            <label for="linkedin">LinkedIn Profile</label>
-                            <div class="input-wrapper">
-                                <input type="url" id="linkedin" placeholder="Share your LinkedIn Profile">
-                                <span class="info-icon" title="Paste your profile link here">i</span>
-                            </div>
-                        </div>
+						<div class="banner-content-wrapper">
+							<h2>Ready to Start Your Learning Journey?</h2>
 
+							<a href="#registration">
+								<button type="button" class="btn btn-white">
+									Register Now
+								</button></a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                        <div class="form-footer">
-                            <button type="submit" class="btn btn-primary submit-btn">Submit Application</button>
-
-                            <div class="slack-cta">
-                                <span>Already registered? Join our Slack community</span>
-                                <button type="button" class="btn btn-outline slack-btn">Join Slack</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
-                 <section id="linkedin-connect">
-            <div class="container">
-                <div class="linkedin-banner">
-
-                    <img src="../Images/lines-left.png" alt="" class="bg-lines line-left">
-                    <img src="../Images/lines-right.png" alt="" class="bg-lines line-right">
-
-                    <div class="banner-content-wrapper">
-                        <h2>Ready to Start Your Learning Journey?</h2>
-
-                       <a href="#registration"> <button type="button" class="btn btn-white">Register Now</button></a>
-                    </div>
-                </div>
-
-        </section>
-                        <div class="values-row">
-                    <div class="value-pill">
-                        <span class="dot">•</span> Share <span class="dot">•</span>
-                    </div>
-                    <div class="value-pill">
-                        <span class="dot">•</span> Learn <span class="dot">•</span>
-                    </div>
-                    <div class="value-pill">
-                        <span class="dot">•</span> Grow <span class="dot">•</span>
-                    </div>
-                </div>
-            </div>
-    </main>
+			<!-- Values Row -->
+			<section>
+				<div class="values-row">
+					<div class="value-pill">
+						<span class="dot">•</span> Share <span class="dot">•</span>
+					</div>
+					<div class="value-pill">
+						<span class="dot">•</span> Learn <span class="dot">•</span>
+					</div>
+					<div class="value-pill">
+						<span class="dot">•</span> Grow <span class="dot">•</span>
+					</div>
+				</div>
+			</section>
+		</main>
 
             <!-- FOOTER -->
-    <footer>
+                <footer>
     <div class="container">
         
         <!-- 1. TOP SECTION: LINKS -->
@@ -241,11 +300,11 @@
                     
                     <!-- Social Icons -->
                     <div class="banner-socials">
-                        <a href="https://x.com/iCodeGuru1" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.facebook.com/iCodeguru/" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/icodeguru/?hl=en" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@iCodeGuru0" class="social-circle"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/iCodeGuru1" target="_blank" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/iCodeguru/" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/icodeguru/?hl=en"  target="_blank"class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" target="_blank" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@iCodeGuru0"  target="_blank"class="social-circle"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -266,17 +325,20 @@
 
     </div>
 </footer>
-    <!-- =========================================
+	   <!-- =========================================
      DONATION MODAL
 ========================================== -->
 <div id="donationModal" class="modal-overlay">
     <div class="modal-container">
         <button class="modal-close" id="closeModal">&times;</button>
         
+        <!-- HEADER (Clean, Text Only) -->
         <div class="modal-header">
-            <h2>Make a Donation</h2>
-            <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-            <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students and ensures their distribution in accordance with Shariah principles. Your support helps us continue our mission. Please choose your preferred donation method:</p>
+            <div class="header-content">
+                <h2>Make a Donation</h2>
+                <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
+                <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students. Your support helps us continue our mission.</p>
+            </div>
         </div>
 
         <!-- TABS (Icons removed, space left for you) -->
@@ -302,13 +364,24 @@
             <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="cta-btn">Donate with PayPal</a>
         </div>
 
-        <!-- 2. ZELLE CONTENT -->
+        <!-- 2. ZELLE CONTENT (With QR Code) -->
         <div id="zelle" class="tab-content">
             <h3>Donate via Zelle</h3>
-            <p class="donate-instruction">To complete your donation, please send your donation via Zelle to:</p>
-            <p class="donate-label">Zelle ID: <span class="highlight">donations@icode.guru</span></p>
-            <p class="donate-instruction">In the message, please include your name and donation amount.</p>
-           <a href="https://www.zelle.com/go/zelle" target="_blank"><button class="cta-btn">Open Zelle App</button></a>
+            <p class="donate-instruction">Scan the QR code or send to the ID below:</p>
+            
+            <!-- ZELLE QR CODE -->
+            <div class="zelle-qr-container">
+                <!-- Make sure to name your Zelle QR image 'qrcode.png' or update this path -->
+                <img src="../Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
+            </div>
+
+            <div class="copy-row centered">
+                <span class="donate-label">Zelle ID:</span>
+                <span class="highlight">donations@icode.guru</span>
+            </div>
+
+            <p class="small-note">In the message, please include your name and donation amount.</p>
+            <a href="https://www.zelle.com/go/zelle" target="_blank" class="cta-btn">Open Zelle App</a>
         </div>
 
         <!-- 3. BANK CONTENT (Full Details) -->
@@ -399,6 +472,6 @@
 <!-- TOAST (Green Background) -->
 <div id="customToast">Copied successfully</div>
 
-    <script src="join.js"></script>
-</body>
+		<script src="join.js"></script>
+	</body>
 </html>

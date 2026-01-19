@@ -136,6 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- 5. RENDER CALENDAR ---
+    // --- 5. RENDER CALENDAR (MON-SUN) ---
     async function renderCalendar() {
         if(!calendarDays) return;
         calendarDays.innerHTML = '<div class="calendar-loading">Loading...</div>';
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let startDate, endDate, headerText;
 
         if (currentView === 'month') {
+            // Month Logic
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth();
             startDate = new Date(year, month, 1);
@@ -151,8 +153,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const monthName = currentDate.toLocaleString('default', { month: 'long' });
             headerText = `<span class="calendar-month">${monthName}</span> <span class="calendar-year">${year}</span>`;
         } else {
-            // Week Logic (Monday Start)
-            const dayOfWeek = currentDate.getDay(); // 0 (Sun) - 6 (Sat)
+            // WEEK LOGIC: START ON MONDAY
+            const dayOfWeek = currentDate.getDay(); // 0 (Sun) to 6 (Sat)
+            
+            // Calculate distance to previous Monday
+            // If Sun(0), dist is 6. If Mon(1), dist is 0.
             const distanceToMonday = (dayOfWeek + 6) % 7; 
             
             startDate = new Date(currentDate);
@@ -162,10 +167,10 @@ document.addEventListener('DOMContentLoaded', function() {
             endDate = new Date(startDate);
             endDate.setDate(startDate.getDate() + 7); 
 
-            // Header: Mon - Sat
+            // Header: "Jan 12 - Jan 18" (Mon - Sun)
             const startStr = startDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
             const endDispDate = new Date(startDate);
-            endDispDate.setDate(startDate.getDate() + 5); // Show until Sat
+            endDispDate.setDate(startDate.getDate() + 6); // Display until Sunday
             const endTxt = endDispDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
             
             headerText = `<span class="calendar-month">${startStr} - ${endTxt}</span> <span class="calendar-year">${startDate.getFullYear()}</span>`;
@@ -180,27 +185,30 @@ document.addEventListener('DOMContentLoaded', function() {
             const year = startDate.getFullYear();
             const month = startDate.getMonth();
             
-            // Adjust 1st day index for Monday start
+            // Grid starts on Mon(1). 
+            // If 1st is Sun(0) -> needs 6 empty slots. 
+            // If 1st is Mon(1) -> needs 0 empty slots.
             let firstDayIndex = new Date(year, month, 1).getDay();
             let adjustedFirstDayIndex = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
 
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
+            // Render Empty Slots
             for (let i = 0; i < adjustedFirstDayIndex; i++) {
                 const emptyDiv = document.createElement('div');
                 emptyDiv.className = 'calendar-date empty';
                 calendarDays.appendChild(emptyDiv);
             }
 
+            // Render Days
             for (let day = 1; day <= daysInMonth; day++) {
                 const checkDate = new Date(year, month, day);
-                if(checkDate.getDay() !== 0) { // Skip Sundays
-                    renderDayCell(checkDate, events);
-                }
+                // We removed the "if !Sunday" check, so Sunday now renders!
+                renderDayCell(checkDate, events);
             }
         } else {
-            // Week View (6 Days: Mon-Sat)
-            for (let i = 0; i < 6; i++) {
+            // WEEK GRID RENDER (7 Days: Mon to Sun)
+            for (let i = 0; i < 7; i++) { // Changed 6 to 7
                 const tempDate = new Date(startDate);
                 tempDate.setDate(startDate.getDate() + i);
                 renderDayCell(tempDate, events);

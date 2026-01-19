@@ -1899,16 +1899,14 @@ line-height: normal;
 
 .calendar-days-grid {
     display: grid;
-    /* CHANGED: 6 Columns (Mon-Sat) instead of 7 */
-    grid-template-columns: repeat(6, 1fr); 
+    grid-template-columns: repeat(7, 1fr); /* Changed 6 to 7 */
     gap: 10px;
     width: 100%;
 }
 
 .calendar-weekdays {
     display: grid;
-    /* CHANGED: Match the days grid */
-    grid-template-columns: repeat(6, 1fr); 
+    grid-template-columns: repeat(7, 1fr); /* Changed 6 to 7 */
     margin-bottom: 10px;
 }
 
@@ -2086,7 +2084,7 @@ html, body {
     padding: 15px 40px;
     border-radius: 12px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     border: none;
     cursor: pointer;
 }
@@ -2145,6 +2143,7 @@ html, body {
     font-size: 12px;
     margin-top: 20px;
     font-style: italic;
+    margin-bottom: 6px;
     color: #888;
 }
 
@@ -2208,6 +2207,32 @@ html, body {
 
 }
 
+
+@media (max-width:450px) {
+    .info-badge{
+        display: none;
+    }
+    .icon-inside{
+        display: none;
+    }
+}
+/* --- ZELLE QR CODE STYLES --- */
+.zelle-qr-container {
+    margin: 20px auto;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    width: fit-content; /* Only as wide as the image */
+}
+
+.zelle-qr-img {
+    width: 150px;       /* Good size for scanning */
+    height: 150px;
+    object-fit: contain;
+    display: block;
+}
 /* For Small Screens */
 
 @media (max-width:430px) {

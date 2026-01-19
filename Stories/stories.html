@@ -716,32 +716,21 @@
     </div>
 </footer>
 
-		         <!-- =========================================
+		       <!-- =========================================
      DONATION MODAL
 ========================================== -->
 <div id="donationModal" class="modal-overlay">
     <div class="modal-container">
         <button class="modal-close" id="closeModal">&times;</button>
         
-<div class="modal-header">
-    
-    <!-- LEFT COLUMN: Text -->
-    <div class="header-content">
-        <h2>Make a Donation</h2>
-        <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-        <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students and ensures their distribution in accordance with Shariah principles. Your support helps us continue our mission. Please choose your preferred donation method:</p>
-    </div>
-
-    <!-- RIGHT COLUMN: QR Code -->
-    <div class="header-qr">
-        <div class="qr-box">
-            <!-- Check your image path -->
-            <img src="../Images/Qr.png" alt="QR Code">
-            <span>Scan to Donate</span>
+        <!-- HEADER (Clean, Text Only) -->
+        <div class="modal-header">
+            <div class="header-content">
+                <h2>Make a Donation</h2>
+                <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
+                <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students. Your support helps us continue our mission.</p>
+            </div>
         </div>
-    </div>
-
-</div>
 
         <!-- TABS (Icons removed, space left for you) -->
         <div class="donation-tabs">
@@ -766,13 +755,24 @@
             <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="cta-btn">Donate with PayPal</a>
         </div>
 
-        <!-- 2. ZELLE CONTENT -->
+        <!-- 2. ZELLE CONTENT (With QR Code) -->
         <div id="zelle" class="tab-content">
             <h3>Donate via Zelle</h3>
-            <p class="donate-instruction">To complete your donation, please send your donation via Zelle to:</p>
-            <p class="donate-label">Zelle ID: <span class="highlight">donations@icode.guru</span></p>
-            <p class="donate-instruction">In the message, please include your name and donation amount.</p>
-           <a href="https://www.zelle.com/go/zelle" target="_blank"><button class="cta-btn">Open Zelle App</button></a>
+            <p class="donate-instruction">Scan the QR code or send to the ID below:</p>
+            
+            <!-- ZELLE QR CODE -->
+            <div class="zelle-qr-container">
+                <!-- Make sure to name your Zelle QR image 'qrcode.png' or update this path -->
+                <img src="../Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
+            </div>
+
+            <div class="copy-row centered">
+                <span class="donate-label">Zelle ID:</span>
+                <span class="highlight">donations@icode.guru</span>
+            </div>
+
+            <p class="small-note">In the message, please include your name and donation amount.</p>
+            <a href="https://www.zelle.com/go/zelle" target="_blank" class="cta-btn">Open Zelle App</a>
         </div>
 
         <!-- 3. BANK CONTENT (Full Details) -->

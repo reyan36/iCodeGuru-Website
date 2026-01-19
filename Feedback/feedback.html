@@ -1,295 +1,350 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Feedback - iCodeGuru</title>
+		<!-- Add this line inside <head> -->
+		<link
+			href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
+			rel="stylesheet"
+		/>
+		<!-- Font Awesome -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback - iCodeGuru</title>
-<!-- Add this line inside <head> -->
-<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Linking Specific Feedback CSS -->
-    <link rel="stylesheet" href="feedback.css">
-</head>
+		<!-- Linking Specific Feedback CSS -->
+		<link rel="stylesheet" href="feedback.css" />
+	</head>
 
-<body>
+	<body>
+		<!-- HEADER -->
+		<header class="main-header">
+			<div class="container">
+				<div class="header-box">
+					<!-- LOGO -->
+					<div class="logo">
+						<a href="index.html" style="text-decoration: none">
+							<span class="logo-text"
+								>iCode<span class="logo-green">Guru</span></span
+							>
+						</a>
+					</div>
 
-    <!-- HEADER -->
-<header class="main-header">
-    <div class="container">
-        <div class="header-box">
-            
-            <!-- LOGO -->
-            <div class="logo">
-                <a href="../index.html" style="text-decoration: none;">
-                    <span class="logo-text">iCode<span class="logo-green">Guru</span></span>
-                </a>
-            </div>
-            
-            <!-- MENU LINKS -->
-            <nav class="main-nav">
-                <ul>
-                    <!-- CHANGE 'active' CLASS BASED ON PAGE -->
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../About/about.html">About us</a></li>
-                    <li><a href="../Join/join.html" >Join</a></li>
-                    <li><a href="../Courses/courses.html">Courses</a></li>
-                    <li><a href="../Stories/stories.html">Stories</a></li>
-                    <li><a href="../Alumni/alumni.html">Alumni</a></li>
-                    <li><a href="#" class="active">Feedback</a></li>
-                    
-                    <!-- MOBILE-ONLY DONATE BUTTON -->
-                    <li class="mobile-donate">
-                        <button type="button" class="btn btn-primary">Donate</button>
-                    </li>
-                </ul>
-            </nav>
-            
-            <!-- DESKTOP DONATE BUTTON -->
-            <div class="header-cta">
-                <button type="button" class="btn btn-primary">Donate</button>
-            </div>
-            
-            <!-- HAMBURGER ICON -->
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            
-        </div>
-    </div>
-</header>
+					<!-- MENU LINKS -->
+					<nav class="main-nav">
+						<ul>
+							<!-- CHANGE 'active' CLASS BASED ON PAGE -->
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../About/about.html">About us</a></li>
+							<li><a href="../Join/join.html">Join</a></li>
+							<li><a href="../Courses/courses.html">Courses</a></li>
+							<li><a href="../Stories/stories.html">Stories</a></li>
+							<li><a href="../Alumni/alumni.html">Alumni</a></li>
+							<li><a href="#" class="active">Feedback</a></li>
 
+							<!-- MOBILE-ONLY DONATE BUTTON -->
+							<li class="mobile-donate">
+								<button type="button" class="btn btn-primary">Donate</button>
+							</li>
+						</ul>
+					</nav>
 
-    <main>
-        <!-- 1. FEEDBACK HERO SECTION -->
-        <section id="feedback-hero">
-            <div class="container f-hero-wrapper">
-                <div class="f-hero-text">
-                    <h1>We value your feedback and are here to answer your questions</h1>
-                    <p>Share you experience at iCodeGuru by adding you feedback.</p>
-                    <a href="#feedback-form-section"><button class="btn btn-primary btn-lg">Share Feedback</button></a>
-                </div>
-                <div class="f-hero-image">
-                    <!-- Replace with the woman holding bubbles image -->
-                    <img src="Images/Woman Thoughts.png" alt="We Value Feedback">
-                </div>
-            </div>
-        </section>
+					<!-- DESKTOP DONATE BUTTON -->
+					<div class="header-cta">
+						<button type="button" class="btn btn-primary">Donate</button>
+					</div>
 
-        <!-- 2. FAQ SECTION (UPDATED LAYOUT) -->
-<section id="faq-section">
-    <div class="container">
-        
-        <!-- Top Header Area -->
-        <div class="faq-top-row">
-            <h2 class="faq-main-title">Frequently<br>Asked Question</h2>
-            
-            <div class="faq-right-info">
-                <p class="faq-info-text">Find quick solutions to common queries and get the most out of your learning experience</p>
-                <a href="#faq-section"><button class="btn btn-primary view-more-btn">View More Questions <i class="fa-solid fa-chevron-right"></i></button></a>
-            </div>
-        </div>
+					<!-- HAMBURGER ICON -->
+					<div class="mobile-toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</header>
 
-        <!-- Accordion List (Full Width Below) -->
-        <div class="accordion-list">
-            
-            <!-- Item 1 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>What is iCodeGuru?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>iCodeGuru is an initiative by Silicon Valley engineers helping underprivileged students get fully funded
-                         scholarships, mainly in the USA , it also teaches coding and guides students to study abroad.</p>
-                </div>
-            </div>
+		<main>
+			<!-- 1. FEEDBACK HERO SECTION -->
+			<section id="feedback-hero">
+				<div class="container f-hero-wrapper">
+					<div class="f-hero-text">
+						<h1>
+							We value your feedback and are here to answer your questions
+						</h1>
+						<p>Share you experience at iCodeGuru by adding you feedback.</p>
+						<button class="btn btn-primary btn-lg">Share Feedback</button>
+					</div>
+					<div class="f-hero-image">
+						<!-- Replace with the woman holding bubbles image -->
+						<img src="Images/Woman Thoughts.png" alt="We Value Feedback" />
+					</div>
+				</div>
+			</section>
 
-            <!-- Item 2 (Active Example) -->
-            <div class="accordion-item active">
-                <button class="accordion-header">
-                    <span>What is the main focus of iCodeGuru?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-minus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>We focus on fully funded scholarships, building technical & professional skills, providing a study abroad
-                         roadmap. and polishing students for global opportunities.</p>
-                </div>
-            </div>
+			<!-- 2. FAQ SECTION (UPDATED LAYOUT) -->
+			<section id="faq-section">
+				<div class="container">
+					<!-- Top Header Area -->
+					<div class="faq-top-row">
+						<h2 class="faq-main-title">Frequently<br />Asked Question</h2>
 
-            <!-- Item 3 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>What does iCodeGuru offer?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>We offer coding courses, scholarships guidance, atudy roadmaps, profile building (CV.SOP,projects),
-                         and mentorships from experts.</p>
-                </div>
-            </div>
+						<div class="faq-right-info">
+							<p class="faq-info-text">
+								Find quick solutions to common queries and get the most out of
+								your learning experience
+							</p>
+							<button class="btn btn-primary view-more-btn">
+								View More Questions <i class="fa-solid fa-chevron-right"></i>
+							</button>
+						</div>
+					</div>
 
-            <!-- Item 4 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Who Should join iCodeGuru?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>Students aiming for scholarships, beginners in coding, university students, fresh graduates, 
-                        or anyone planning to study or work abroad.</p>
-                </div>
-            </div>
+					<!-- Accordion List (Full Width Below) -->
+					<div class="accordion-list">
+						<!-- Item 1 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>What is iCodeGuru?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									iCodeGuru is an initiative by Silicon Valley engineers helping
+									underprivileged students get fully funded scholarships, mainly
+									in the USA , it also teaches coding and guides students to
+									study abroad.
+								</p>
+							</div>
+						</div>
 
-            <!-- Item 5 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Do I need prior coding experience to join?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>No experience is needed. We start from the basics and gradually build skills aligned with international standards.</p>
-                </div>
-            </div>
-             <!-- Item 6 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>How does iCodeGuru help with fully funded scholarships?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>We guide students on programme selection, profile building. SOPs, CVs, scholarships timelines,
-                         and avoiding application mistakes</p>
-                </div>
-             
-            </div>
-                <!-- Item 7 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>How does coding help in getting scholarships?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>Coding strengthens your profile, supports projects & internships, and increases acceptance 
-                        chances in STEM and interdisciplinary programmes.</p>
-                </div>    
-            </div>
-                <!-- Item 08 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Is iCodeGuru only for computer science students?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>No Students from buisness, management, nutrition, sciences, and other non-tech fields can join..</p>
-                </div>
-           </div>
-           <!-- Item 09 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>How Much time do we spend preparing students for a fully funded scholarship?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>We prepare students in about 4 to 6 months, focusing on skills building, projects, 
-                        and guided scholarship application support.</p>
-            </div>
-            </div>
-               <!-- Item 10 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Why should i chose iCodeGuru?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>Because we combine coding, mentorship and scholarship guidance to shape your future 
-                        and make studying abroad achievable.</p>
-                </div>
-                </div>
-                 <!-- Item 11 -->
-            <div class="accordion-item">
-                <button class="accordion-header">
-                    <span>Is iCodeGuru completely free?</span>
-                    <div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
-                </button>
-                <div class="accordion-body">
-                    <p>Yes! Everything is free, with no hidden fees, making it accessible to all students, 
-                        especially the underprivileged.</p>
-                </div>
-                </div>
-                <!-- NEW: GOT MORE QUESTIONS CARD -->
-<div class="more-questions-card">
-    <h3>Got More Questions?</h3>
-    <p>If you have any more questions that have not been answered in this FAQ, please get in touch with us directly through email at <a href="mailto:info@icode.guru">info@icode.guru</a></p>
-</div>
-</section>
+						<!-- Item 2 (Active Example) -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>What is the main focus of iCodeGuru?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We focus on fully funded scholarships, building technical &
+									professional skills, providing a study abroad roadmap. and
+									polishing students for global opportunities.
+								</p>
+							</div>
+						</div>
 
-        <!-- 3. FEEDBACK FORM SECTION -->
-        <section id="feedback-form-section">
-            <div class="container">
-                <div class="form-card">
-                    <h2 class="form-title">Share Your Feedback</h2>
-                    <div class="form-header-row">
-                        <p class="form-sub">You must have a LinkedIn account to share the feedback.</p>
-                        <span class="info-badge" title="LinkedIn Account is Mandatory."><i class="fa-solid fa-info"></i></span>
-                    </div>
+						<!-- Item 3 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>What does iCodeGuru offer?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We offer coding courses, scholarships guidance, atudy
+									roadmaps, profile building (CV.SOP,projects), and mentorships
+									from experts.
+								</p>
+							</div>
+						</div>
 
-                    <form>
-                        <!-- Row 1 -->
-                        <div class="form-row-2">
-                            <div class="input-group">
-                                <label>Name (Optional)</label>
-                                <input type="text" placeholder="Hassan">
-                            </div>
-                            <div class="input-group">
-                                <label>Email Address</label>
-                                <input type="email" placeholder="hassan.abdullah@email.com">
-                            </div>
-                        </div>
+						<!-- Item 4 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>Who Should join iCodeGuru?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Students aiming for scholarships, beginners in coding,
+									university students, fresh graduates, or anyone planning to
+									study or work abroad.
+								</p>
+							</div>
+						</div>
 
-                        <!-- Row 2 -->
-                        <div class="input-group full">
-                            <label>Your Message</label>
-                            <textarea placeholder="Share your thoughts, suggestions or concerns.."></textarea>
-                        </div>
+						<!-- Item 5 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>Do I need prior coding experience to join?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									No experience is needed. We start from the basics and
+									gradually build skills aligned with international standards.
+								</p>
+							</div>
+						</div>
+						<!-- Item 6 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span
+									>How does iCodeGuru help with fully funded scholarships?</span
+								>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We guide students on programme selection, profile building.
+									SOPs, CVs, scholarships timelines, and avoiding application
+									mistakes
+								</p>
+							</div>
+						</div>
+						<!-- Item 7 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>How does coding help in getting scholarships?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Coding strengthens your profile, supports projects &
+									internships, and increases acceptance chances in STEM and
+									interdisciplinary programmes.
+								</p>
+							</div>
+						</div>
+						<!-- Item 08 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>Is iCodeGuru only for computer science students?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									No Students from buisness, management, nutrition, sciences,
+									and other non-tech fields can join..
+								</p>
+							</div>
+						</div>
+						<!-- Item 09 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span
+									>How Much time do we spend preparing students for a fully
+									funded scholarship?</span
+								>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									We prepare students in about 4 to 6 months, focusing on skills
+									building, projects, and guided scholarship application
+									support.
+								</p>
+							</div>
+						</div>
+						<!-- Item 10 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>Why should i chose iCodeGuru?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Because we combine coding, mentorship and scholarship guidance
+									to shape your future and make studying abroad achievable.
+								</p>
+							</div>
+						</div>
+						<!-- Item 11 -->
+						<div class="accordion-item">
+							<button class="accordion-header">
+								<span>Is iCodeGuru completely free?</span>
+								<div class="icon-circle"><i class="fa-solid fa-plus"></i></div>
+							</button>
+							<div class="accordion-body">
+								<p>
+									Yes! Everything is free, with no hidden fees, making it
+									accessible to all students, especially the underprivileged.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-                        <!-- Row 3 -->
-                        <div class="input-group full">
-                            <label>LinkedIn Profile</label>
-                            <div class="input-wrapper-icon">
-                                <input type="text" placeholder="Share your LinkedIn Profile">
-                                <span class="icon-inside" title="Paste Profile URL Here."><i class="fa-solid fa-info"></i></span>
-                            </div>
-                        </div>
+			<!-- 3. FEEDBACK FORM SECTION -->
+			<section id="feedback-form-section">
+				<div class="container">
+					<div class="form-card">
+						<h2 class="form-title">Share Your Feedback</h2>
+						<div class="form-header-row">
+							<p class="form-sub">
+								You must have a LinkedIn account to share the feedback.
+							</p>
+							<span class="info-badge" title="LinkedIn Account is Mandatory."
+								><i class="fa-solid fa-info"></i
+							></span>
+						</div>
 
-                        <!-- Submit -->
-                        <div class="form-submit">
-                            <button type="submit" class="btn btn-primary submit-btn">Submit Feedback</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
+						<form>
+							<!-- Row 1 -->
+							<div class="form-row-2">
+								<div class="input-group">
+									<label>Name (Optional)</label>
+									<input type="text" placeholder="Hassan" />
+								</div>
+								<div class="input-group">
+									<label>Email Address</label>
+									<input type="email" placeholder="hassan.abdullah@email.com" />
+								</div>
+							</div>
 
+							<!-- Row 2 -->
+							<div class="input-group full">
+								<label>Your Message</label>
+								<textarea
+									placeholder="Share your thoughts, suggestions or concerns.."
+								></textarea>
+							</div>
 
-        </div>
-                        <!-- Values Row -->
-                <div class="values-row">
-                    <div class="value-pill">
-                        <span class="dot">•</span> Share <span class="dot">•</span>
-                    </div>
-                    <div class="value-pill">
-                        <span class="dot">•</span> Learn <span class="dot">•</span>
-                    </div>
-                    <div class="value-pill">
-                        <span class="dot">•</span> Grow <span class="dot">•</span>
-                    </div>
-                </div>
-    </main>
+							<!-- Row 3 -->
+							<div class="input-group full">
+								<label>LinkedIn Profile</label>
+								<div class="input-wrapper-icon">
+									<input
+										type="text"
+										placeholder="Share your LinkedIn Profile"
+									/>
+									<span class="icon-inside" title="Paste Profile URL Here."
+										><i class="fa-solid fa-info"></i
+									></span>
+								</div>
+							</div>
+
+							<!-- Submit -->
+							<div class="form-submit">
+								<button type="submit" class="btn btn-primary submit-btn">
+									Submit Feedback
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</section>
+
+			<!-- Values Row -->
+			<section>
+				<div class="values-row">
+					<div class="value-pill">
+						<span class="dot">•</span> Share <span class="dot">•</span>
+					</div>
+					<div class="value-pill">
+						<span class="dot">•</span> Learn <span class="dot">•</span>
+					</div>
+					<div class="value-pill">
+						<span class="dot">•</span> Grow <span class="dot">•</span>
+					</div>
+				</div>
+			</section>
+		</main>
+            <!-- FOOTER -->
             <!-- FOOTER -->
                 <footer>
     <div class="container">
@@ -372,32 +427,21 @@
 
     </div>
 </footer>
-         <!-- =========================================
+		       <!-- =========================================
      DONATION MODAL
 ========================================== -->
 <div id="donationModal" class="modal-overlay">
     <div class="modal-container">
         <button class="modal-close" id="closeModal">&times;</button>
         
-<div class="modal-header">
-    
-    <!-- LEFT COLUMN: Text -->
-    <div class="header-content">
-        <h2>Make a Donation</h2>
-        <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-        <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students and ensures their distribution in accordance with Shariah principles. Your support helps us continue our mission. Please choose your preferred donation method:</p>
-    </div>
-
-    <!-- RIGHT COLUMN: QR Code -->
-    <div class="header-qr">
-        <div class="qr-box">
-            <!-- Check your image path -->
-            <img src="../Images/Qr.png" alt="QR Code">
-            <span>Scan to Donate</span>
+        <!-- HEADER (Clean, Text Only) -->
+        <div class="modal-header">
+            <div class="header-content">
+                <h2>Make a Donation</h2>
+                <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
+                <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students. Your support helps us continue our mission.</p>
+            </div>
         </div>
-    </div>
-
-</div>
 
         <!-- TABS (Icons removed, space left for you) -->
         <div class="donation-tabs">
@@ -422,13 +466,24 @@
             <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="cta-btn">Donate with PayPal</a>
         </div>
 
-        <!-- 2. ZELLE CONTENT -->
+        <!-- 2. ZELLE CONTENT (With QR Code) -->
         <div id="zelle" class="tab-content">
             <h3>Donate via Zelle</h3>
-            <p class="donate-instruction">To complete your donation, please send your donation via Zelle to:</p>
-            <p class="donate-label">Zelle ID: <span class="highlight">donations@icode.guru</span></p>
-            <p class="donate-instruction">In the message, please include your name and donation amount.</p>
-           <a href="https://www.zelle.com/go/zelle" target="_blank"><button class="cta-btn">Open Zelle App</button></a>
+            <p class="donate-instruction">Scan the QR code or send to the ID below:</p>
+            
+            <!-- ZELLE QR CODE -->
+            <div class="zelle-qr-container">
+                <!-- Make sure to name your Zelle QR image 'qrcode.png' or update this path -->
+                <img src="../Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
+            </div>
+
+            <div class="copy-row centered">
+                <span class="donate-label">Zelle ID:</span>
+                <span class="highlight">donations@icode.guru</span>
+            </div>
+
+            <p class="small-note">In the message, please include your name and donation amount.</p>
+            <a href="https://www.zelle.com/go/zelle" target="_blank" class="cta-btn">Open Zelle App</a>
         </div>
 
         <!-- 3. BANK CONTENT (Full Details) -->
@@ -518,6 +573,6 @@
 
 <!-- TOAST (Green Background) -->
 <div id="customToast">Copied successfully</div>
-    <script src="feedback.js"></script>
-</body>
+		<script src="feedback.js"></script>
+	</body>
 </html>

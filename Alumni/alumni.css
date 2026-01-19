@@ -2,637 +2,691 @@
    1. GLOBAL RESET & VARIABLES
    ========================================= */
 :root {
-    --primary-green: #599553;
-    --primary-hover: #487a42;
-    --dark-text: #1a1a3a;
-    --body-text: #5F5F86;
-    --nav-text: #666666;
-    --white: #ffffff;
-    --bg-color: #F3F4FF;
-    --font-main: 'General Sans', sans-serif;
-    --max-width: 1280px;
+	--primary-green: #599553;
+	--primary-hover: #487a42;
+	--dark-text: #1a1a3a;
+	--body-text: #5f5f86;
+	--nav-text: #666666;
+	--white: #ffffff;
+	--bg-color: #f3f4ff;
+	--font-main: "General Sans", sans-serif;
+	--max-width: 1280px;
 }
 
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-main);
-    background-color: var(--bg-color);
-    color: var(--dark-text);
-    overflow-x: hidden;
+	font-family: var(--font-main);
+	background-color: var(--bg-color);
+	color: var(--dark-text);
+	overflow-x: hidden;
 }
 
 .container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 20px;
+	max-width: var(--max-width);
+	margin: 0 auto;
+	padding: 0 20px;
 }
 
 a {
-    text-decoration: none;
+	text-decoration: none;
 }
 
 ul {
-    list-style: none;
+	list-style: none;
 }
 
 /* =========================================
    NAVIGATION STYLES
 ========================================== */
 .main-header {
-    background-color: transparent;
-    padding-top: 25px;
-    padding-bottom: 10px;
-    position: relative;
-    z-index: 1000;
+	background-color: transparent;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	position: relative;
+	z-index: 1000;
 }
 
 /* Floating White Box */
 .header-box {
-    background-color: var(--white);
-    border-radius: 16px;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-    position: relative;
+	background-color: var(--white);
+	border-radius: 16px;
+	padding: 15px 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+	position: relative;
 }
 
 /* Logo Styling */
 .logo-text {
-    font-size: 22px;
-    font-weight: 400;
-    /* Made bolder to match Home Page design */
-    color: #222;
-    letter-spacing: -0.5px;
+	font-size: 22px;
+	font-weight: 400;
+	/* Made bolder to match Home Page design */
+	color: #222;
+	letter-spacing: -0.5px;
 }
 
 .logo-green {
-    color: #34652C;
-    font-style: italic;
-    font-weight: 600;
+	color: #34652c;
+	font-style: italic;
+	font-weight: 600;
 }
-
 
 /* Desktop Menu Links */
 .main-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 35px;
+	list-style: none;
+	display: flex;
+	gap: 35px;
 }
 
 .main-nav a {
-    text-decoration: none;
-    color: var(--nav-text);
-    font-size: 15px;
-    font-weight: 400;
-    transition: color 0.3s;
+	text-decoration: none;
+	color: var(--nav-text);
+	font-size: 15px;
+	font-weight: 400;
+	transition: color 0.3s;
 }
 
-.main-nav a:hover, .main-nav a.active {
-    color: var(--primary-green);
-    font-weight: 500;
+.main-nav a:hover,
+.main-nav a.active {
+	color: var(--primary-green);
+	font-weight: 500;
 }
 
 /* Mobile Elements (Hidden on Desktop) */
 .mobile-donate {
-    display: none;
+	display: none;
 }
 
 .mobile-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	cursor: pointer;
 }
 
 .mobile-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #1a1a3a;
-    transition: 0.3s ease;
+	width: 25px;
+	height: 3px;
+	background-color: #1a1a3a;
+	transition: 0.3s ease;
 }
 
 /* --- RESPONSIVE / MOBILE MENU LOGIC --- */
 @media (max-width: 900px) {
+	/* 1. Hide Desktop CTA */
+	.header-cta {
+		display: none;
+	}
 
-    /* 1. Hide Desktop CTA */
-    .header-cta {
-        display: none;
-    }
+	/* 2. Show Hamburger Icon */
+	.mobile-toggle {
+		display: flex;
+	}
 
-    /* 2. Show Hamburger Icon */
-    .mobile-toggle {
-        display: flex;
-    }
+	/* 3. Style the Dropdown Menu */
+	.main-nav {
+		display: none;
+		/* Hidden by default */
+		position: absolute;
+		top: 85px;
+		/* Pushes it slightly below the white box */
+		left: 0;
+		right: 0;
+		background-color: var(--white);
+		border-radius: 16px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		padding: 30px;
+		z-index: 99;
+	}
 
-    /* 3. Style the Dropdown Menu */
-    .main-nav {
-        display: none;
-        /* Hidden by default */
-        position: absolute;
-        top: 85px;
-        /* Pushes it slightly below the white box */
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        z-index: 99;
-    }
+	/* 4. State when Open (Added via JS) */
+	.main-nav.active {
+		display: flex;
+		flex-direction: column;
+		animation: slideDown 0.3s ease forwards;
+	}
 
-    /* 4. State when Open (Added via JS) */
-    .main-nav.active {
-        display: flex;
-        flex-direction: column;
-        animation: slideDown 0.3s ease forwards;
-    }
+	.main-nav ul {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		width: 100%;
+	}
 
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-        width: 100%;
-    }
+	.main-nav a {
+		font-size: 15px;
+	}
 
-    .main-nav a {
-        font-size: 15px;
-    }
+	/* 5. Mobile Donate Button */
+	.mobile-donate {
+		display: block;
+		width: 100%;
+		margin-top: 10px;
+	}
 
-    /* 5. Mobile Donate Button */
-    .mobile-donate {
-        display: block;
-        width: 100%;
-        margin-top: 10px;
-    }
+	.mobile-donate .btn {
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
 
-    .mobile-donate .btn {
-        width: 100%;
-        display: block;
-        text-align: center;
-    }
+	/* 6. Hamburger Animation (Turns into X) */
+	.mobile-toggle.active span:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 6px);
+	}
 
-    /* 6. Hamburger Animation (Turns into X) */
-    .mobile-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-    }
+	.mobile-toggle.active span:nth-child(2) {
+		opacity: 0;
+	}
 
-    .mobile-toggle.active span:nth-child(2) {
-        opacity: 0;
-    }
-
-    .mobile-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
-    }
+	.mobile-toggle.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(5px, -6px);
+	}
 }
 
 @keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 .btn {
-    padding: 12px 18px;
-    border-radius: 8px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    color: var(--Secondary-Deep-Violet, #1E0A52);
-    font-style: normal;
-    font-weight: 500;
-    line-height: 100%;
+	padding: 12px 18px;
+	border-radius: 8px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+	color: var(--Secondary-Deep-Violet, #1e0a52);
+	font-style: normal;
+	font-weight: 500;
+	line-height: 100%;
 }
 
 .btn-primary {
-    border-radius: 14px;
-    background: linear-gradient(177deg, #34652C -13.59%, #6FAB65 109.86%);
-    color: var(--white);
-    border: 1px solid;
+	border-radius: 14px;
+	background: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
+	color: var(--white);
+	border: 1px solid;
 }
 
 .btn-outline {
-    color: var(--dark-text);
-    border-radius: 14px;
-    border: 1px solid var(--Primary-Periwinkle, #CCCCE9);
-    background: var(--Primary-White, #FFF);
+	color: var(--dark-text);
+	border-radius: 14px;
+	border: 1px solid var(--Primary-Periwinkle, #cccce9);
+	background: var(--Primary-White, #fff);
 }
 
 .btn-outline:hover {
-    border-color: var(--primary-green);
-    color: var(--primary-green);
-    background-color: var(--white);
+	border-color: var(--primary-green);
+	color: var(--primary-green);
+	background-color: var(--white);
 }
 
-.mobile-donate, .mobile-toggle {
-    display: none;
+.mobile-donate,
+.mobile-toggle {
+	display: none;
 }
 
 @media (max-width: 900px) {
-    .main-nav {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        padding: 30px;
-        z-index: 99;
-    }
+	.main-nav {
+		display: none;
+		position: absolute;
+		top: 80px;
+		left: 0;
+		right: 0;
+		background-color: var(--white);
+		border-radius: 16px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		padding: 30px;
+		z-index: 99;
+	}
 
-    .main-nav.active {
-        display: block;
-    }
+	.main-nav.active {
+		display: block;
+	}
 
-    .main-nav ul {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
+	.main-nav ul {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
 
-    .header-cta {
-        display: none;
-    }
+	.header-cta {
+		display: none;
+	}
 
-    .mobile-donate {
-        display: block;
-    }
+	.mobile-donate {
+		display: block;
+	}
 
-    .mobile-toggle {
-        display: flex;
-        flex-direction: column;
-        gap: 5px;
-        cursor: pointer;
-    }
+	.mobile-toggle {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		cursor: pointer;
+	}
 
-    .mobile-toggle span {
-        width: 25px;
-        height: 3px;
-        background: #333;
-    }
+	.mobile-toggle span {
+		width: 25px;
+		height: 3px;
+		background: #333;
+	}
 }
-
 
 /* =========================================
    3. ALUMNI HERO SECTION (UPDATED)
    ========================================= */
 #alumni-hero {
-    /* Increased top padding for more space above text */
-    padding: 140px 0 100px;
-    position: relative;
-    overflow: visible;
-    /* Allows images to be big */
+	/* Increased top padding for more space above text */
+	padding: 40px 0 100px;
+	position: relative;
+	overflow: visible;
+	/* Allows images to be big */
 }
 
 .hero-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 40px;
 }
 
 /* Text Section */
 .hero-text {
-    flex: 1;
-    max-width: 650px;
-    z-index: 5;
-    /* Ensure text is clickable */
+	flex: 1;
+	max-width: 650px;
+	z-index: 5;
+	/* Ensure text is clickable */
 }
 
 .hero-text h1 {
-    font-size: 64px;
-    font-weight: 500;
-    color: #1e0e4b;
-    line-height: 1.1;
-    margin-bottom: 25px;
-    letter-spacing: -1px;
+	font-size: 64px;
+	font-weight: 500;
+	color: #1e0e4b;
+	line-height: 1.1;
+	margin-bottom: 25px;
+	letter-spacing: -1px;
 }
 
 .hero-text p {
-    font-size: 18px;
-    color: #6b7280;
-    line-height: 1.6;
-    margin-bottom: 45px;
-    max-width: 90%;
+	font-size: 18px;
+	color: #6b7280;
+	line-height: 1.6;
+	margin-bottom: 45px;
+	max-width: 90%;
 }
 
 .btn-lg {
-    padding: 18px 36px;
-    font-size: 16px;
-    border-radius: 10px;
+	padding: 18px 36px;
+	font-size: 16px;
+	border-radius: 10px;
 }
 
 /* Visuals Section (Right Side) */
 .hero-visuals {
-    flex: 1;
-    position: relative;
-    height: 600px;
-    /* Tall container to allow big image */
-    display: flex;
-    align-items: flex-end;
-    /* Align man to bottom */
-    justify-content: center;
+	flex: 1;
+	position: relative;
+	height: 600px;
+	/* Tall container to allow big image */
+	display: flex;
+	align-items: flex-end;
+	/* Align man to bottom */
+	justify-content: center;
 }
 
 /* 1. Background Line Image */
 .hero-line {
-    position: absolute;
-    top: 5%;
-    right: -5%;
-    width: 90%;
-    height: auto;
-    z-index: 0;
-    /* Behind */
-    opacity: 0.8;
+	position: absolute;
+	top: 5%;
+	right: -5%;
+	width: 90%;
+	height: auto;
+	z-index: 0;
+	/* Behind */
+	opacity: 0.8;
 }
 
 /* 2. The Man Image */
 .hero-man {
-    position: relative;
-    z-index: 1;
-    height: 100%;
-    /* Make him fill the 600px height */
-    width: auto;
-    object-fit: contain;
-    right: 30px;
-    /* Slight offset to left to make room for badge */
+	position: relative;
+	z-index: 1;
+	height: 100%;
+	/* Make him fill the 600px height */
+	width: auto;
+	object-fit: contain;
+	right: 30px;
+	/* Slight offset to left to make room for badge */
 }
 
 /* 3. The Icon Badge Image */
 .hero-badge {
-    position: absolute;
-    z-index: 2;
-    /* In front */
-    width: 170px;
-    /* Big Icon */
-    height: auto;
+	position: absolute;
+	z-index: 2;
+	/* In front */
+	width: 170px;
+	/* Big Icon */
+	height: auto;
 
-    /* Position */
-    right: 0;
-    top: 15%;
+	/* Position */
+	right: 0;
+	top: 15%;
 
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
+	filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.15));
 }
 
-/* responsive hero */
+/* NEW Hidden Hero Image */
+/* Tablets & Small Laptops (Images still visible, but smaller) */
 @media (max-width: 1200px) {
-    .hero-text h1 {
-        font-size: 52px;
-    }
+	.hero-text h1 {
+		font-size: 52px;
+	}
 
-    .hero-visuals {
-        height: 500px;
-    }
+	.hero-visuals {
+		height: 500px;
+	}
 
-    .hero-badge {
-        width: 140px;
-    }
+	.hero-badge {
+		width: 140px;
+	}
 }
 
+/* Medium Screens (Layout becomes vertical) */
 @media (max-width: 900px) {
-    .hero-wrapper {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 20px;
-    }
+	.hero-wrapper {
+		flex-direction: column;
+		text-align: center;
+		padding-top: 20px;
+	}
 
-    .hero-text {
-        padding-right: 0;
-        margin-bottom: 50px;
-    }
+	.hero-visuals {
+		display: none;
+	}
 
-    .hero-visuals {
-        width: 100%;
-        height: 450px;
-    }
+	.hero-text {
+		padding-right: 0;
+		margin-bottom: 50px;
+	}
 
-    .hero-man {
-        right: 0;
-    }
+	.hero-visuals {
+		width: 100%;
+		height: 450px;
+	}
 
-    .hero-badge {
-        display: none;
-    }
+	.hero-man {
+		right: 0;
+	}
+
+	.hero-badge {
+		display: none; /* Already hidden here in your original code */
+	}
+	#alumni-hero {
+		padding: 40px 0 60px;
+	}
+}
+
+/* Mobile Screens (Hide all images, show only text) */
+@media (max-width: 768px) {
+	/* Completely remove the image section */
+	.hero-visuals {
+		display: none;
+	}
+
+	/* Adjust text section for mobile */
+	.hero-text {
+		margin-bottom: 0;
+		max-width: 100%;
+	}
+
+	.hero-text h1 {
+		font-size: 40px; /* Slightly smaller text for phone screens */
+	}
+
+	.hero-text p {
+		max-width: 100%;
+		margin-bottom: 30px;
+	}
+
+	#alumni-hero {
+		padding: 40px 0 60px; /* Reduce bottom padding since images are gone */
+	}
 }
 
 /* =========================================
    4. ALUMNI GRID SECTION
    ========================================= */
 #alumni-grid {
-    padding: 0 0 100px;
+	/* padding: 0 0 100px; */
+	margin-bottom: 40px;
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 30px;
 }
 
 .alumni-card {
-    background-color: var(--white);
-    border-radius: 30px;
-    padding: 20px;
-    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
-    transition: transform 0.3s;
-    display: flex;
-    flex-direction: column;
+	background-color: var(--white);
+	border-radius: 30px;
+	padding: 20px;
+	box-shadow: 0 5px 25px rgba(0, 0, 0, 0.02);
+	transition: transform 0.3s;
+	display: flex;
+	flex-direction: column;
+	height: 100%; /* Ensures all cards in a row have equal height */
 }
 
 .alumni-card:hover {
-    transform: translateY(-5px);
+	transform: translateY(-5px);
 }
 
 /* --- ALUMNI CARD IMAGE FIX (ZOOMED IN) --- */
 
 .card-img-box {
-    width: 245px;
-    /* Increase height slightly to show more of the person vertically */
-    height: 270px;
-    border-radius: 20px;
-    overflow: hidden;
-    /* This cuts off the edges when we zoom in */
-    margin-bottom: 20px;
-    position: relative;
+	width: 100%; /* Changed to 100% to fill card width */
+	max-width: 245px;
+	height: 270px;
+	border-radius: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	position: relative;
+	margin-left: auto; /* Centers the image box */
+	margin-right: auto;
 }
 
 .card-img-box img {
-    width: 100%;
-    height: 100%;
-
-    /* 1. Cover: Ensures no whitespace */
-    object-fit: cover;
-
-    /* 2. Position: Focuses 20% from the top (Faces are usually here) */
-    object-position: center 45%;
-
-    /* 3. ZOOM: This makes the image 25% larger to focus on the person */
-    transform: scale(1);
-
-    display: block;
-    transition: transform 0.3s ease;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center 45%;
+	transform: scale(1);
+	display: block;
+	transition: transform 0.3s ease;
 }
 
-/* Centering the images and text on phone */
-@media (max-width: 768px) {
-    .card-content{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .alumni-card{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-}
+/* --- CARD CONTENT LAYOUT --- */
 
 .card-content {
-    padding: 0 10px;
+	padding: 0 10px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1; /* This is key: it fills the vertical space */
 }
 
 .card-content h3 {
-    font-size: 22px;
-    color: #1e0e4b;
-    margin-bottom: 15px;
-    font-weight: 600;
+	font-size: 22px;
+	color: #1e0e4b;
+	margin-bottom: 15px;
+	font-weight: 600;
+}
+
+.card-details {
+	flex-grow: 1; /* Pushes the button (social-row) to the absolute bottom */
 }
 
 .card-details p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 6px;
-    line-height: 1.5;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 6px;
+	line-height: 1.5;
 }
 
 .card-details .label {
-    color: #999;
-    font-weight: 400;
-    margin-right: 5px;
+	color: #999;
+	font-weight: 400;
+	margin-right: 5px;
 }
+
+/* --- LINKEDIN CTA BUTTON --- */
 
 .social-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
+	display: flex;
+	justify-content: center; /* Centers the button horizontally */
+	margin-top: 20px;
+	width: 100%;
 }
 
-.social-circle {
-    width: 35px;
-    height: 35px;
-    background-color: #EEF5EE;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #3B6B35;
-    font-size: 14px;
-    transition: 0.3s;
+.linkedin-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	width: 80%; /* Makes button wide */
+	padding: 10px 18px;
+	background-color: var(--primary-green); /* LinkedIn Blue */
+	color: #fff;
+	text-decoration: none;
+	border-radius: 12px;
+	font-weight: 600;
+	font-size: 14px;
+	transition: all 0.3s ease-in-out;
+	box-shadow: 0 4px 12px rgba(0, 119, 181, 0.15);
 }
 
-.social-circle:hover {
-    background-color: var(--primary-green);
-    color: #fff;
+.linkedin-btn i {
+	font-size: 18px;
+}
+
+.linkedin-btn:hover {
+	background-color: var(--primary-hover); /* Darker Blue */
+	color: #f5f0f0;
+	/* transform: translateY(-2px); */
+	box-shadow: 0 6px 15px rgba(80, 128, 89, 0.25);
+}
+
+/* --- RESPONSIVE FIXES --- */
+
+@media (max-width: 768px) {
+	.card-content {
+		text-align: center;
+		align-items: center;
+	}
+	.alumni-card {
+		align-items: center;
+	}
+	.linkedin-btn {
+		max-width: 245px; /* Keeps button size consistent with image on mobile */
+	}
 }
 
 /* =========================================
    5. STATS SECTION (White Strip)
    ========================================= */
 #stats-section {
-    padding-bottom: 100px;
+	/* padding-bottom: 100px; */
+	margin-bottom: 40px;
+	margin-top: 40px;
 }
 
 .stats-wrapper {
-    background-color: var(--white);
-    border-radius: 40px;
-    padding: 50px 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
-    flex-wrap: wrap;
-    gap: 20px;
+	background-color: var(--white);
+	border-radius: 40px;
+	padding: 50px 20px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+	flex-wrap: wrap;
+	gap: 20px;
 }
 
 .stat-box {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .stat-icon-top {
-    font-size: 30px;
-    color: #599553;
-    margin-bottom: 15px;
+	font-size: 30px;
+	color: #599553;
+	margin-bottom: 15px;
 }
 
 /* Specific colors */
 .stat-box:nth-child(1) .stat-icon-top {
-    color: #7CAE78;
+	color: #7cae78;
 }
 
 .stat-box:nth-child(3) .stat-icon-top {
-    color: #88C084;
+	color: #88c084;
 }
 
 .stat-box:nth-child(5) .stat-icon-top {
-    color: #599553;
+	color: #599553;
 }
 
 .stat-box:nth-child(7) .stat-icon-top {
-    color: #43703E;
+	color: #43703e;
 }
 
 .stat-box h2 {
-    font-size: 36px;
-    color: #1e0e4b;
-    font-weight: 600;
-    margin-bottom: 5px;
+	font-size: 36px;
+	color: #1e0e4b;
+	font-weight: 600;
+	margin-bottom: 5px;
 }
 
 .stat-box p {
-    color: #6b7280;
-    font-size: 16px;
+	color: #6b7280;
+	font-size: 16px;
 }
 
 .stat-divider {
-    width: 40px;
-    height: 40px;
-    background-color: #599553;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 14px;
-    margin-top: 45px;
+	width: 40px;
+	height: 40px;
+	background-color: #599553;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	font-size: 14px;
+	margin-top: 45px;
 }
 
 @media (max-width: 768px) {
-    .stat-divider {
-        display: none;
-    }
+	.stat-divider {
+		display: none;
+	}
 }
 
 /* --- FOOTER SECTION --- */
@@ -640,374 +694,534 @@ ul {
    8. FOOTER
    ========================================= */
 /* --- FOOTER SECTION --- */
+/* =========================================
+   FOOTER SECTION
+========================================== */
 footer {
-    background-color: var(--white);
-    padding: 80px 0 40px;
-    margin-top: 80px;
-    border-top: 1px solid #f0f0f0;
+	background-color: var(--white);
+	padding: 40px 0 40px;
+	margin-top: 40px;
+	border-top: 1px solid #f0f0f0;
 }
 
+/* --- 1. LINKS SECTION (With Vertical Lines) --- */
 .footer-top {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 60px;
+	margin-bottom: 60px;
 }
 
-
-.footer-brand {
-    max-width: 450px;
-    flex: 1;
+.footer-links-area {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
 }
 
-.brand-desc {
-    color: #6b7280;
-    line-height: 1.6;
-    margin: 20px 0 30px;
-    font-size: 16px;
-    max-width: 380px;
+.link-col {
+	flex: 1;
+	text-align: center;
+	padding: 0 20px;
+
+	/* THE VERTICAL GREEN LINE */
+	border-right: 1px solid #599553;
 }
 
-.subscribe-form {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background-color: #f8f9fc;
-    border-radius: 50px;
-    padding: 5px 6px 5px 25px;
-    max-width: 420px;
-    border: 1px solid #eef0f7;
+/* Remove the line from the last column */
+.link-col:last-child {
+	border-right: none;
 }
 
-.input-container {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    gap: 10px;
+.link-col h4 {
+	color: var(--dark-text); /* Or Green if you prefer */
+	font-size: 18px;
+	margin-bottom: 30px;
+	font-weight: 500;
 }
 
-.mail-icon {
-    font-size: 18px;
-    color: #1e0e4b;
-    opacity: 0.6;
+.link-col ul {
+	list-style: none;
+	padding: 0;
 }
 
-.subscribe-form input {
-    border: none;
-    background: transparent;
-    width: 100%;
-    outline: none;
-    font-family: var(--font-main);
-    color: #333;
-    font-size: 15px;
+.link-col ul li {
+	margin-bottom: 18px;
 }
 
-.subscribe-form button {
-    background-color: var(--primary-green);
-    color: var(--white);
-    border: none;
-    border-radius: 40px;
-    padding: 12px 30px;
-    font-weight: 500;
-    font-size: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    white-space: nowrap;
+.link-col a,
+.contact-info li {
+	text-decoration: none;
+	color: var(--body-text);
+	font-size: 16px;
+	transition: color 0.2s;
 }
 
-.subscribe-form button:hover {
-    background-color: var(--primary-hover);
+.link-col a:hover {
+	color: var(--primary-green);
 }
 
-.privacy-note {
-    font-size: 13px;
-    color: #6b7280;
-    margin-top: 15px;
+/* Contact List Specifics */
+.contact-info li {
+	margin-bottom: 18px;
+	display: block;
 }
 
-.privacy-note a {
-    color: #1e0e4b;
-    text-decoration: underline;
-    font-weight: 500;
+/* --- 2. BOTTOM GREEN BANNER (More Space) --- */
+.footer-banner {
+	position: relative;
+	overflow: hidden;
+	background-color: #4a8047; /* The exact green shade */
+	border-radius: 50px;
+
+	/* INCREASED PADDING (More Space) */
+	padding: 80px 60px;
+
+	color: #fff;
+	margin-top: 40px;
 }
 
-.footer-links-wrapper {
-    display: flex;
-    gap: 80px;
-    margin-left: auto;
+/* Background Lines */
+.footer-line {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: auto;
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0.8;
+}
+.line-left {
+	left: 0;
+	object-position: left center;
+}
+.line-right {
+	right: 0;
+	object-position: right center;
 }
 
-.footer-col h4 {
-    color: #1e0e4b;
-    font-size: 17px;
-    margin-bottom: 25px;
-    font-weight: 600;
+/* Content Layout */
+.banner-content {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center; /* Vertically center everything */
+	justify-content: space-between;
+	width: 100%;
 }
 
-.footer-col ul {
-    list-style: none;
-    padding: 0;
+/* Left: Copyright */
+.copyright-text {
+	flex: 1;
+	font-size: 14px;
+	opacity: 0.9;
+	text-align: left;
+}
+.footer-lg-1 {
+	color: #fff;
+	text-align: center;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.footer-lg-1 span {
+	color: #fff;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: 600;
+	line-height: normal;
+}
+/* Center: Brand Stack */
+.brand-center {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 30px; /* Space between Logo and Socials */
 }
 
-.footer-col ul li {
-    margin-bottom: 18px;
+.footer-logo-white {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	font-size: 24px;
+	font-weight: 600;
 }
 
-.footer-col a, .contact-list li {
-    text-decoration: none;
-    color: #6b7280;
-    font-size: 15px;
-    transition: color 0.2s;
+.logo-icon {
+	font-size: 32px;
+	color: #fff;
 }
 
-.footer-col a:hover {
-    color: var(--primary-green);
+/* Social Icons */
+.banner-socials {
+	display: flex;
+	gap: 12px;
 }
 
-
-.footer-divider {
-    height: 1px;
-    background-color: #e5e7eb;
-    margin-bottom: 40px;
+.social-circle {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: 0.3s;
+	font-size: 16px;
+	text-decoration: none;
 }
 
-.footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.social-circle:hover {
+	background-color: #fff;
+	color: #4a8047;
+	transform: translateY(-2px);
 }
 
-.footer-bottom p {
-    color: #6b7280;
-    font-size: 15px;
+/* Right: Subscribe Form */
+.subscribe-wrapper {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
 }
 
-
-.social-icons {
-    display: flex;
-    gap: 15px;
+.banner-form {
+	background: #fff;
+	padding: 6px;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 420px; /* Slightly wider */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-
-.social-btn {
-    width: 45px;
-    height: 45px;
-    background-color: #ecf3ea;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    border-radius: 30px;
-
+.input-with-icon {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	padding-left: 20px;
+	gap: 12px;
 }
 
-.social-btn img {
-    width: 20px;
-    height: auto;
-    object-fit: contain;
-    transition: filter 0.3s;
+.input-icon {
+	color: #1e0e4b;
+	font-size: 18px;
 }
 
-.social-btn:hover {
-    transform: translateY(-2px);
+.banner-form input {
+	border: none;
+	outline: none;
+	width: 100%;
+	font-family: var(--font-main);
+	color: #333;
+	font-size: 15px;
+	background: transparent;
 }
 
+.banner-form button {
+	background-color: #4a8047;
+	color: #fff;
+	border: none;
+	padding: 12px 30px;
+	border-radius: 40px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 0.3s;
+	white-space: nowrap;
+	margin: 4px;
+}
 
-/* --- RESPONSIVE FOOTER --- */
+.banner-form button:hover {
+	background-color: #386136;
+}
+
+/* =========================================
+   RESPONSIVE FOOTER
+========================================== */
 @media (max-width: 1024px) {
-    .footer-links-wrapper {
-        gap: 40px;
-        margin-left: 0;
-    }
+	.banner-content {
+		flex-direction: column;
+		gap: 50px;
+		text-align: center;
+	}
+
+	.brand-center {
+		order: 1;
+	}
+	.subscribe-wrapper {
+		order: 2;
+		width: 100%;
+		justify-content: center;
+	}
+	.copyright-text {
+		order: 3;
+		text-align: center;
+	}
 }
 
-@media (max-width: 900px) {
-    .footer-top {
-        flex-direction: column;
-    }
+@media (max-width: 768px) {
+	/* Stack links and remove lines on mobile */
+	.footer-links-area {
+		flex-direction: column;
+		gap: 40px;
+	}
 
-    .footer-links-wrapper {
-        justify-content: space-between;
-        width: 100%;
-    }
+	.link-col {
+		border-right: none; /* Remove vertical lines on mobile */
+		border-bottom: 1px solid #eee; /* Optional: Add horizontal lines instead */
+		padding-bottom: 30px;
+	}
 
-    .footer-brand {
-        max-width: 100%;
-    }
+	.link-col:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
 
-    .subscribe-form {
-        max-width: 100%;
-    }
-}
+	.footer-banner {
+		padding: 60px 20px;
+		border-radius: 30px;
+		margin: 0 10px;
+		margin-top: 20px;
+	}
 
-@media (max-width: 600px) {
-    .footer-links-wrapper {
-        flex-direction: column;
-        gap: 30px;
-    }
+	.banner-form {
+		flex-direction: column;
+		background: transparent;
+		box-shadow: none;
+		gap: 15px;
+	}
 
-    .footer-bottom {
-        flex-direction: column-reverse;
-        gap: 20px;
-        text-align: center;
-    }
+	.banner-form .input-with-icon {
+		background: #fff;
+		width: 100%;
+		padding: 15px 20px;
+		border-radius: 50px;
+	}
 
-    .social-icons {
-        justify-content: center;
-    }
+	.banner-form button {
+		width: 100%;
+		padding: 15px;
+		background-color: #fff;
+		color: #4a8047;
+		margin: 0;
+	}
+	.line-left {
+		display: none;
+	}
+	.line-right {
+		display: none;
+	}
+	footer {
+		padding: 40px;
+	}
+	.link-col ul li {
+		margin-bottom: 18px;
+	}
 }
 
 /* --- LINKEDIN & VALUES SECTION --- */
 #linkedin-connect {
-    padding: 20px 0 80px;
+	padding: 20px 0 20px;
+	margin-bottom: 20px;
+}
+
+@media (max-width: 628px) {
+	#linkedin-connect {
+		margin-bottom: 10px;
+	}
 }
 
 .linkedin-banner {
-    padding: 64px 20px;
-    text-align: center;
-    color: var(--white);
-    margin-bottom: 60px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 50px;
-    background: linear-gradient(122deg, #34652C -6.38%, #6FAB65 109.39%);
+	padding: 64px 20px;
+	text-align: center;
+	color: var(--white);
+	/* margin-bottom: 60px; */
+	position: relative;
+	overflow: hidden;
+	border-radius: 50px;
+	background: linear-gradient(122deg, #34652c -6.38%, #6fab65 109.39%);
 }
 
-
 .bg-lines {
-    position: absolute;
-    top: 0;
-    height: 100%;
-    width: auto;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0.8;
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: auto;
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0.8;
 }
 
 .line-left {
-    left: 0;
-    object-position: left center;
+	left: 0;
+	object-position: left center;
 }
 
 .line-right {
-    right: 0;
-    object-position: right center;
+	right: 0;
+	object-position: right center;
 }
 
 .banner-content-wrapper {
-    position: relative;
-    z-index: 10;
+	position: relative;
+	z-index: 10;
 }
 
 .linkedin-banner h2 {
-    font-size: 40px;
-    font-weight: 500;
-    margin-bottom: 15px;
+	font-size: 40px;
+	font-weight: 500;
+	margin-bottom: 15px;
 }
 
 .banner-info {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 30px;
-    font-size: 16px;
-    font-weight: 300;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 30px;
+	font-size: 16px;
+	font-weight: 300;
 }
 
 .info-tooltip {
-    width: 20px;
-    height: 20px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-family: serif;
-    font-style: italic;
-    cursor: help;
+	width: 20px;
+	height: 20px;
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	font-family: serif;
+	font-style: italic;
+	cursor: help;
 }
 
 .btn-white {
-    background-color: var(--white);
-    color: var(--primary-green);
-    padding: 14px 30px;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: all 0.3s;
+	background-color: var(--white);
+	color: var(--primary-green);
+	padding: 14px 30px;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	font-size: 15px;
+	cursor: pointer;
+	transition: all 0.3s;
 }
 
 .btn-white:hover {
-    background-color: #f0fdf4;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+	background-color: #f0fdf4;
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* =========================================
+   VALUES SECTION (FULLY RESPONSIVE)
+   ========================================= */
 .values-row {
-    display: flex;
-    justify-content: center;
-    gap: 150px;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40px; /* Reduced from 150px for better baseline behavior */
+	flex-wrap: wrap;
+	padding: 20px 20px; /* Added padding so it doesn't touch screen edges */
 }
 
 .value-pill {
-    background-color: var(--white);
-    padding: 18px 60px;
-    border-radius: 50px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #1e0e4b;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    display: flex;
-    align-items: center;
-    gap: 10px;
+	background-color: var(--white);
+	padding: 15px 45px; /* Slightly tighter padding for better fit */
+	border-radius: 50px;
+	font-size: 18px;
+	font-weight: 500;
+	color: #1e0e4b;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Slightly more visible shadow */
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	white-space: nowrap; /* Prevents text from breaking inside the pill */
+	transition: transform 0.3s ease;
+}
+
+.value-pill:hover {
+	transform: translateY(-3px);
 }
 
 .dot {
-    color: #1e0e4b;
-    font-size: 20px;
-    line-height: 0;
+	color: #1e0e4b;
+	font-size: 20px;
+	line-height: 0;
+}
+
+/* Intermediate Tablet Screens (Small Laptops/Tablets) */
+@media (max-width: 1024px) {
+	.values-row {
+		gap: 30px;
+	}
+	.value-pill {
+		padding: 12px 35px;
+		font-size: 16px;
+	}
+}
+
+/* Mobile Screens (Phones) */
+@media (max-width: 768px) {
+	.values-row {
+		gap: 15px;
+		padding: 20px 15px;
+	}
+
+	.value-pill {
+		/* On mobile, they stay small and side-by-side if they fit, 
+           or wrap naturally. If you want them stacked, 
+           uncomment 'width: 100%' and 'justify-content: center' below */
+
+		/* width: 100%; */
+		/* justify-content: center; */
+
+		padding: 10px 25px;
+		font-size: 15px;
+	}
+
+	.dot {
+		font-size: 16px;
+	}
+}
+
+/* Very Small Screens (Narrow Phones) */
+@media (max-width: 480px) {
+	.values-row {
+		flex-direction: column; /* Stack vertically on very small phones */
+		width: 100%;
+	}
+	.value-pill {
+		width: 80%; /* Takes up most of the width */
+		justify-content: center;
+	}
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .linkedin-banner {
-        border-radius: 24px;
-        padding: 40px 20px;
-    }
+	.linkedin-banner {
+		border-radius: 24px;
+		padding: 40px 20px;
+	}
 
-    .linkedin-banner h2 {
-        font-size: 26px;
-    }
+	.linkedin-banner h2 {
+		font-size: 26px;
+	}
 
-    .bg-lines {
-        opacity: 0.2;
-    }
-
-    .values-row {
-        gap: 15px;
-    }
-
-    .value-pill {
-        width: 100%;
-        justify-content: center;
-        padding: 15px;
-    }
+	.bg-lines {
+		opacity: 0.2;
+	}
 }
-
 
 .banner-content-wrapper p {
-    padding-bottom: 25px;
-    font-weight: 200;
+	padding-bottom: 25px;
+	font-weight: 200;
 }
-
-
 
 /* =========================================
    DONATION MODAL STYLES
@@ -1159,7 +1373,7 @@ html, body {
     padding: 15px 40px;
     border-radius: 12px;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     border: none;
     cursor: pointer;
 }
@@ -1218,6 +1432,7 @@ html, body {
     font-size: 12px;
     margin-top: 20px;
     font-style: italic;
+    margin-bottom: 6px;
     color: #888;
 }
 
@@ -1279,4 +1494,137 @@ html, body {
         align-self: flex-end;
     }
 
+}
+
+
+@media (max-width:450px) {
+    .info-badge{
+        display: none;
+    }
+    .icon-inside{
+        display: none;
+    }
+}
+/* --- ZELLE QR CODE STYLES --- */
+.zelle-qr-container {
+    margin: 20px auto;
+    text-align: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    width: fit-content; /* Only as wide as the image */
+}
+
+.zelle-qr-img {
+    width: 150px;       /* Good size for scanning */
+    height: 150px;
+    object-fit: contain;
+    display: block;
+}
+
+
+
+/* =========================================
+   FULL WIDTH MOBILE FOOTER FIX
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    footer{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .footer-banner {
+        width: 100% !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 50px 20px !important;
+        box-shadow: none !important;
+    }
+    .banner-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+
+    .brand-center {
+        order: 1;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .banner-socials {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .subscribe-wrapper {
+        order: 2;
+        width: 100% !important;
+    }
+
+    .banner-form {
+        background-color: transparent !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .input-with-icon {
+        background-color: #fff !important;
+        border-radius: 50px !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+
+    .banner-form input {
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 16px !important; 
+    }
+
+    .banner-form button {
+        background-color: #FFF !important; 
+        color: var(--primary-green) !important;
+        width: 100% !important;
+        padding: 15px !important;
+        border-radius: 50px !important;
+        margin: 0 !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+    }
+
+    .copyright-text {
+        order: 3;
+        font-size: 13px !important;
+        opacity: 0.7;
+    }
+}
+
+
+@media (max-width:350px) {
+    .fa-envelope:before{
+        display: none;
+    }
 }
