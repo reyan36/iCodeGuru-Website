@@ -1348,3 +1348,208 @@ html, body {
         display: none;
     }
 }
+/* --- MODAL HEADER LAYOUT --- */
+.modal-header {
+    display: flex;               /* Puts children side-by-side */
+    justify-content: space-between; 
+    align-items: flex-start;     /* Aligns them to the top */
+    gap: 20px;                   /* Space between text and QR */
+    margin-bottom: 20px;
+}
+
+/* Left Side (Text) */
+.header-content {
+    flex: 1; /* Takes up all available space */
+}
+
+/* Right Side (QR) */
+.header-qr {
+    flex-shrink: 0; /* Prevents QR from getting squished */
+    padding-top: 5px; /* Aligns visually with the Title */
+}
+
+/* QR Box Styling */
+.qr-box {
+    width: 110px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.qr-box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.qr-box span {
+    font-size: 10px;
+    color: #555;
+    font-weight: 600;
+}
+
+/* --- RESPONSIVE (Mobile) --- */
+@media (max-width: 600px) {
+    .modal-header {
+        flex-direction: column; /* Puts QR on top of text on mobile */
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header-qr {
+        margin-bottom: 15px;
+    }
+}
+
+/* =========================================
+   EXTRA QUESTION CARD
+   ========================================= */
+.more-questions-card {
+    background-color: #ffffff;
+    border: 1px solid #E5E7EB; /* Subtle border like the design */
+    border-radius: 20px;       /* Consistent rounded corners */
+    padding: 30px 40px;
+    margin-top: 30px;          /* Space between Accordion and this card */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.01); /* Very subtle shadow */
+}
+
+.more-questions-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e0e4b; /* Brand Dark Blue */
+    margin-bottom: 12px;
+}
+
+.more-questions-card p {
+    font-size: 16px;
+    color: #6b7280; /* Brand Grey Text */
+    line-height: 1.6;
+    margin: 0;
+}
+
+.more-questions-card a {
+    color: #599553; /* Brand Green */
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.more-questions-card a:hover {
+    color: #487a42; /* Darker Green on hover */
+    text-decoration: underline;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .more-questions-card {
+        padding: 25px;
+    }
+}
+
+/* =========================================
+   FULL WIDTH MOBILE FOOTER FIX
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    footer{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .footer-banner {
+        width: 100% !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 50px 20px !important;
+        box-shadow: none !important;
+    }
+    .banner-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+
+    .brand-center {
+        order: 1;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .banner-socials {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .subscribe-wrapper {
+        order: 2;
+        width: 100% !important;
+    }
+
+    .banner-form {
+        background-color: transparent !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .input-with-icon {
+        background-color: #fff !important;
+        border-radius: 50px !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+
+    .banner-form input {
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 16px !important; 
+    }
+
+    .banner-form button {
+        background-color: #FFF !important; 
+        color: var(--primary-green) !important;
+        width: 100% !important;
+        padding: 15px !important;
+        border-radius: 50px !important;
+        margin: 0 !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+    }
+
+    .copyright-text {
+        order: 3;
+        font-size: 13px !important;
+        opacity: 0.7;
+    }
+}
+
+
+@media (max-width:350px) {
+    .fa-envelope:before{
+        display: none;
+    }
+}

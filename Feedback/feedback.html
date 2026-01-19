@@ -23,7 +23,7 @@
             
             <!-- LOGO -->
             <div class="logo">
-                <a href="index.html" style="text-decoration: none;">
+                <a href="../index.html" style="text-decoration: none;">
                     <span class="logo-text">iCode<span class="logo-green">Guru</span></span>
                 </a>
             </div>
@@ -71,7 +71,7 @@
                 <div class="f-hero-text">
                     <h1>We value your feedback and are here to answer your questions</h1>
                     <p>Share you experience at iCodeGuru by adding you feedback.</p>
-                    <button class="btn btn-primary btn-lg">Share Feedback</button>
+                    <a href="#feedback-form-section"><button class="btn btn-primary btn-lg">Share Feedback</button></a>
                 </div>
                 <div class="f-hero-image">
                     <!-- Replace with the woman holding bubbles image -->
@@ -90,7 +90,7 @@
             
             <div class="faq-right-info">
                 <p class="faq-info-text">Find quick solutions to common queries and get the most out of your learning experience</p>
-                <button class="btn btn-primary view-more-btn">View More Questions <i class="fa-solid fa-chevron-right"></i></button>
+                <a href="#faq-section"><button class="btn btn-primary view-more-btn">View More Questions <i class="fa-solid fa-chevron-right"></i></button></a>
             </div>
         </div>
 
@@ -221,6 +221,11 @@
                         especially the underprivileged.</p>
                 </div>
                 </div>
+                <!-- NEW: GOT MORE QUESTIONS CARD -->
+<div class="more-questions-card">
+    <h3>Got More Questions?</h3>
+    <p>If you have any more questions that have not been answered in this FAQ, please get in touch with us directly through email at <a href="mailto:info@icode.guru">info@icode.guru</a></p>
+</div>
 </section>
 
         <!-- 3. FEEDBACK FORM SECTION -->
@@ -342,11 +347,11 @@
                     
                     <!-- Social Icons -->
                     <div class="banner-socials">
-                        <a href="https://x.com/iCodeGuru1" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.facebook.com/iCodeguru/" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/icodeguru/?hl=en" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@iCodeGuru0" class="social-circle"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://x.com/iCodeGuru1" target="_blank" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/iCodeguru/" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/icodeguru/?hl=en"  target="_blank"class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" target="_blank" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@iCodeGuru0"  target="_blank"class="social-circle"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -374,11 +379,25 @@
     <div class="modal-container">
         <button class="modal-close" id="closeModal">&times;</button>
         
-        <div class="modal-header">
-            <h2>Make a Donation</h2>
-            <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-            <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students and ensures their distribution in accordance with Shariah principles. Your support helps us continue our mission. Please choose your preferred donation method:</p>
+<div class="modal-header">
+    
+    <!-- LEFT COLUMN: Text -->
+    <div class="header-content">
+        <h2>Make a Donation</h2>
+        <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
+        <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students and ensures their distribution in accordance with Shariah principles. Your support helps us continue our mission. Please choose your preferred donation method:</p>
+    </div>
+
+    <!-- RIGHT COLUMN: QR Code -->
+    <div class="header-qr">
+        <div class="qr-box">
+            <!-- Check your image path -->
+            <img src="../Images/Qr.png" alt="QR Code">
+            <span>Scan to Donate</span>
         </div>
+    </div>
+
+</div>
 
         <!-- TABS (Icons removed, space left for you) -->
         <div class="donation-tabs">

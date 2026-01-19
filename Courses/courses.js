@@ -31,7 +31,7 @@ function copyText(text) {
 }
 
 /* =================================================================
-   MAIN LOGIC
+   MAIN LOGIC INITIALIZATION
    ================================================================= */
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // --- 2. DONATION MODAL ---
     const donationModal = document.getElementById('donationModal');
-    const closeDonationBtn = donationModal ? donationModal.querySelector('#closeModal, .close, .btn-close, button') : null;
+    // Scope the close button to inside the modal to avoid conflicts
+    const closeDonationBtn = donationModal ? donationModal.querySelector('#closeModal, .close, .btn-close, button.close-btn') : null;
 
     if (donationModal) {
         const openDonationModal = (e) => {
@@ -84,10 +85,10 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     let currentCalendarId = CALENDARS.track1;
-    let currentView = 'week'; // UPDATED: Default is now WEEK
+    let currentView = 'week'; // Default View
     let currentDate = new Date(); 
 
-    // Elements
+    // Calendar Elements
     const calendarDays = document.getElementById('calendarDays');
     const monthYearDisplay = document.getElementById('currentMonthYear');
     const prevBtn = document.getElementById('prevMonth');
@@ -115,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (currentView === 'month') {
             currentDate.setMonth(currentDate.getMonth() + step);
         } else {
-            // Jump by Week (7 Days) - Logic remains 7 days even if we only show 6
+            // Jump by Week (7 Days)
             currentDate.setDate(currentDate.getDate() + (step * 7));
         }
         renderCalendar();
@@ -134,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- 5. RENDER CALENDAR (UPDATED FOR MON-SAT) ---
+    // --- 5. RENDER CALENDAR ---
     async function renderCalendar() {
         if(!calendarDays) return;
         calendarDays.innerHTML = '<div class="calendar-loading">Loading...</div>';
@@ -142,7 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
         let startDate, endDate, headerText;
 
         if (currentView === 'month') {
-            // Month Logic
             const year = currentDate.getFullYear();
             const month = currentDate.getMonth();
             startDate = new Date(year, month, 1);
@@ -151,11 +151,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const monthName = currentDate.toLocaleString('default', { month: 'long' });
             headerText = `<span class="calendar-month">${monthName}</span> <span class="calendar-year">${year}</span>`;
         } else {
-            // WEEK LOGIC: START ON MONDAY
-            const dayOfWeek = currentDate.getDay(); // 0 (Sun) to 6 (Sat)
-            
-            // Calculate distance to previous Monday
-            // If today is Sunday (0), distance is -6. If Monday (1), distance is 0.
+            // Week Logic (Monday Start)
+            const dayOfWeek = currentDate.getDay(); // 0 (Sun) - 6 (Sat)
             const distanceToMonday = (dayOfWeek + 6) % 7; 
             
             startDate = new Date(currentDate);
@@ -163,12 +160,12 @@ document.addEventListener('DOMContentLoaded', function() {
             startDate.setHours(0,0,0,0);
 
             endDate = new Date(startDate);
-            endDate.setDate(startDate.getDate() + 7); // Fetch full week (incl Sunday) just in case
+            endDate.setDate(startDate.getDate() + 7); 
 
-            // Header: "Jan 12 - Jan 17, 2026" (Showing Mon-Sat range)
+            // Header: Mon - Sat
             const startStr = startDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
             const endDispDate = new Date(startDate);
-            endDispDate.setDate(startDate.getDate() + 5); // Display until Saturday
+            endDispDate.setDate(startDate.getDate() + 5); // Show until Sat
             const endTxt = endDispDate.toLocaleDateString('default', { month: 'short', day: 'numeric' });
             
             headerText = `<span class="calendar-month">${startStr} - ${endTxt}</span> <span class="calendar-year">${startDate.getFullYear()}</span>`;
@@ -176,7 +173,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if(monthYearDisplay) monthYearDisplay.innerHTML = headerText;
         
-        // Fetch events
         const events = await fetchGoogleEvents(startDate, endDate, currentCalendarId);
         calendarDays.innerHTML = ''; 
 
@@ -184,31 +180,26 @@ document.addEventListener('DOMContentLoaded', function() {
             const year = startDate.getFullYear();
             const month = startDate.getMonth();
             
-            // Get index of 1st day (0=Sun, 1=Mon...). 
-            // We need to shift it because our grid starts on Mon (1).
+            // Adjust 1st day index for Monday start
             let firstDayIndex = new Date(year, month, 1).getDay();
-            // Convert: Sun(0)->6, Mon(1)->0, Tue(2)->1 ...
             let adjustedFirstDayIndex = (firstDayIndex === 0) ? 6 : firstDayIndex - 1;
 
             const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-            // Render Empty Slots
             for (let i = 0; i < adjustedFirstDayIndex; i++) {
                 const emptyDiv = document.createElement('div');
                 emptyDiv.className = 'calendar-date empty';
                 calendarDays.appendChild(emptyDiv);
             }
 
-            // Render Days
             for (let day = 1; day <= daysInMonth; day++) {
-                // Check if this day is a Sunday. If so, SKIP it.
                 const checkDate = new Date(year, month, day);
-                if(checkDate.getDay() !== 0) { 
+                if(checkDate.getDay() !== 0) { // Skip Sundays
                     renderDayCell(checkDate, events);
                 }
             }
         } else {
-            // WEEK GRID RENDER (6 Days: Mon to Sat)
+            // Week View (6 Days: Mon-Sat)
             for (let i = 0; i < 6; i++) {
                 const tempDate = new Date(startDate);
                 tempDate.setDate(startDate.getDate() + i);
@@ -217,18 +208,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // --- RENDER SINGLE DAY CELL (WITH HIGHLIGHT) ---
     function renderDayCell(dateObj, allEvents) {
         const day = dateObj.getDate();
         const dateCell = document.createElement('div');
         dateCell.className = 'calendar-date active';
         
-        // CHECK IF TODAY
+        // Highlight Today
         const today = new Date();
         if (dateObj.getDate() === today.getDate() && 
             dateObj.getMonth() === today.getMonth() && 
             dateObj.getFullYear() === today.getFullYear()) {
-            dateCell.classList.add('today-highlight'); // ADD CLASS
+            dateCell.classList.add('today-highlight');
         }
 
         if(currentView === 'week') dateCell.style.height = '350px'; 
@@ -264,6 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
             displayTime = dateObj.toLocaleTimeString([], { hour: 'numeric', hour12: true }).replace(':00', ''); 
         }
 
+        // Clean Title
         displayTitle = displayTitle.replace(/^[0-9]+[AP]M-/i, ''); 
         displayTitle = displayTitle.replace(/-for-fully-funded-scholarships?/gi, '');
         displayTitle = displayTitle.replace(/-for-fully-funded-scholar/gi, ''); 
@@ -274,37 +265,37 @@ document.addEventListener('DOMContentLoaded', function() {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'event'; 
 
-        // COLOR LOGIC
-const t = displayTitle.toLowerCase();
+        // --- 4-COLOR PALETTE ---
+        const t = displayTitle.toLowerCase();
         let bgColor, borderColor;
 
         // 1. DARK BLUE (Core CS, Physics)
-        if (t.includes('algorithm') || t.includes('dsa') || t.includes('system') || t.includes('compiler') || t.includes('code') || t.includes('physics')) {
-            bgColor = '#2c5282'; 
-            borderColor = '#1a365d';
-        }
-        
-        // 2. GREEN (Data, Python, Biology)
-        else if (t.includes('python') || t.includes('machine') || t.includes('ai') || t.includes('data') || t.includes('biology') || t.includes('duolingo')) {
-            bgColor = '#2f855a'; 
-            borderColor = '#22543d';
-        }
+    if (t.includes('algorithm') || t.includes('dsa') || t.includes('system') || t.includes('compiler') || t.includes('code') || t.includes('physics')) {
+        bgColor = '#2c5282'; 
+        borderColor = '#1a365d';
+    }
+    
+    // 2. GREEN (Data, Python, Biology)
+    else if (t.includes('python') || t.includes('machine') || t.includes('ai') || t.includes('data') || t.includes('biology') || t.includes('duolingo')) {
+        bgColor = '#2f855a'; 
+        borderColor = '#22543d';
+    }
 
-        // 3. LIGHT GREEN (Applied, Web, English)
-        else if (t.includes('web') || t.includes('bootcamp') || t.includes('project') || t.includes('dev') || t.includes('gram') || t.includes('english') || t.includes('writing')) {
-            bgColor = '#65a30d'; 
-            borderColor = '#365314';
-        } 
+    // 3. LIGHT GREEN (Applied, Web, English)
+    else if (t.includes('web') || t.includes('bootcamp') || t.includes('project') || t.includes('dev') || t.includes('gram') || t.includes('english') || t.includes('writing')) {
+        bgColor = '#65a30d'; 
+        borderColor = '#365314';
+    } 
 
-        // 4. PURPLE (Default, IELTS)
-        else {
-            bgColor = '#553c9a'; 
-            borderColor = '#44337a';
-        }
+    // 4. PURPLE (Default, IELTS)
+    else {
+        bgColor = '#553c9a'; 
+        borderColor = '#44337a';
+    }
 
-        // Apply Styles
-        eventDiv.style.backgroundColor = bgColor;
-        eventDiv.style.borderLeft = `3px solid ${borderColor}`;
+    // Apply Styles
+    eventDiv.style.backgroundColor = bgColor;
+    eventDiv.style.borderLeft = `3px solid ${borderColor}`;
 
         const timeSpan = document.createElement('span');
         timeSpan.className = 'event-time';
@@ -316,6 +307,7 @@ const t = displayTitle.toLowerCase();
         eventDiv.appendChild(timeSpan);
         eventDiv.appendChild(titleSpan);
         
+        // Modal Click Listener
         eventDiv.addEventListener('click', (e) => {
             e.stopPropagation(); 
             openEventModal(displayTitle, displayTime, event.description, event.htmlLink, bgColor);
@@ -349,8 +341,10 @@ const t = displayTitle.toLowerCase();
         eventModalTitle.innerText = title;
         eventModalTime.innerText = time;
         eventModalTime.style.backgroundColor = color;
+        
         const softColor = hexToRgba(color, 0.12);
         document.querySelector('.modal-header').style.backgroundColor = softColor;
+        
         const glowColor = hexToRgba(color, 0.3);
         document.querySelector('.event-modal-content').style.boxShadow = `0 20px 60px -10px ${glowColor}`;
 
@@ -378,6 +372,8 @@ const t = displayTitle.toLowerCase();
             if (e.target === eventModalOverlay) eventModalOverlay.classList.remove('active');
         });
     }
+    
+    // Escape Key to Close Modals
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             if (eventModalOverlay) eventModalOverlay.classList.remove('active');
@@ -392,7 +388,7 @@ const t = displayTitle.toLowerCase();
         const options = select.querySelectorAll('option');
         const trigger = document.createElement('div');
         trigger.className = 'custom-select-trigger';
-        trigger.innerHTML = `<span>${options[select.selectedIndex].text}</span> <div class="custom-arrow"></div>`; // Use Selected Index
+        trigger.innerHTML = `<span>${options[select.selectedIndex].text}</span> <div class="custom-arrow"></div>`;
         wrapper.appendChild(trigger);
         const customOptions = document.createElement('div');
         customOptions.className = 'custom-options';
@@ -453,33 +449,46 @@ const t = displayTitle.toLowerCase();
         try {
             const results = await Promise.all([p1, p2, p3]);
             const rawEvents = [].concat(...results);
+            
+            // ACTIVE SESSION LOGIC (Uses End Time)
             const allEvents = rawEvents.filter(event => {
                 const endDate = new Date(event.end.dateTime || event.end.date);
                 return endDate > now; 
             });
             allEvents.sort((a, b) => new Date(a.start.dateTime) - new Date(b.start.dateTime));
 
+            // 1. DSA
             const dsa = allEvents.find(e => {
                 const t = (e.summary || "").toLowerCase();
-                return t.includes("structure") || t.includes("dsa") || t.includes("algorithm");
+                return t.includes("structure") || t.includes("dsa") || t.includes("leetcode");
             });
             updateDynamicCardText('date-dsa', dsa, "Check Calendar");
 
+            // 2. IELTS
             const ielts = allEvents.find(e => (e.summary||"").toLowerCase().includes("ielts")) 
                        || allEvents.find(e => (e.summary||"").toLowerCase().includes("gre"));
             updateDynamicCardText('date-ielts', ielts, "Check Calendar");
 
+            // 3. ML / Data Science (FIXED: STRICT FILTER)
             const ml = allEvents.find(e => {
                 const t = (e.summary || "").toLowerCase();
-                return t.includes("machine") || t.includes("data");
+                // BLOCK "Data Structure" or "Algorithms" from appearing here
+                if(t.includes("structure") || t.includes("algorithm") || t.includes("dsa")) return false;
+                
+                return t.includes("machine") || t.includes("data") || t.includes("neural") || t.includes("ai ");
             });
             updateDynamicCardText('date-ml', ml, "Check Calendar");
 
+            // 4. Web Dev (FIXED: STRICT FILTER)
             const web = allEvents.find(e => {
                 const t = (e.summary || "").toLowerCase();
-                return t.includes("web") || t.includes("stack") || t.includes("app");
+                // BLOCK "Weekly Webinar" from appearing here
+                if(t.includes("weekly")) return false;
+                
+                return t.includes("web") || t.includes("stack") || t.includes("app") || t.includes("react");
             });
             updateDynamicCardText('date-webdev', web, "Coming Soon");
+
         } catch (err) {}
     }
 
