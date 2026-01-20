@@ -563,7 +563,9 @@ ul {
 	margin-top: 20px;
 	width: 100%;
 }
-
+.social-row span{
+	font-weight: 500;
+}
 .linkedin-btn {
 	display: flex;
 	align-items: center;
@@ -574,7 +576,7 @@ ul {
 	background-color: var(--primary-green); /* LinkedIn Blue */
 	color: #fff;
 	text-decoration: none;
-	border-radius: 12px;
+	border-radius: 8px;
 	font-weight: 600;
 	font-size: 14px;
 	transition: all 0.3s ease-in-out;
@@ -1626,5 +1628,67 @@ html, body {
 @media (max-width:350px) {
     .fa-envelope:before{
         display: none;
+    }
+}
+
+/* =========================================
+   ALUMNI GRID (4 Per Row, Center Remainder)
+   ========================================= */
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers the leftover items in the last row */
+    gap: 30px;
+    max-width: 1400px; /* Width needed to fit 4 cards */
+    margin: 0 auto;
+}
+
+.alumni-card {
+    background-color: var(--white);
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.02);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+
+    /* --- THE MATH FOR 4 COLUMNS --- */
+    /* 
+       100% width divided by 4 cards = 25% each.
+       Subtract the gap (30px * 3 gaps / 4 cards = ~22.5px).
+       So width is roughly calc(25% - 22.5px).
+    */
+    width: calc(25% - 23px);
+    
+    /* Ensure cards don't shrink smaller than this on desktop */
+    min-width: 280px; 
+}
+
+.alumni-card:hover { 
+    transform: translateY(-5px); 
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+
+/* Tablet (Switch to 3 cards per row) */
+@media (max-width: 1200px) {
+    .alumni-card {
+        width: calc(33.33% - 20px);
+    }
+}
+
+/* Smaller Tablet (Switch to 2 cards per row) */
+@media (max-width: 900px) {
+    .alumni-card {
+        width: calc(50% - 15px);
+    }
+}
+
+/* Mobile (Switch to 1 card per row) */
+@media (max-width: 600px) {
+    .alumni-card {
+        width: 100%;
+        max-width: 350px; /* Keeps single card looking nice */
     }
 }

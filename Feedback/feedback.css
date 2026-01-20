@@ -1544,3 +1544,48 @@ html, body {
         display: none;
     }
 }
+
+/* =========================================
+   EXTRA QUESTION CARD
+   ========================================= */
+.more-questions-card {
+    background-color: #ffffff;
+    border: 1px solid #E5E7EB; /* Subtle border like the design */
+    border-radius: 20px;       /* Consistent rounded corners */
+    padding: 30px 40px;
+    margin-top: 30px;          /* Space between Accordion and this card */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.01); /* Very subtle shadow */
+}
+
+.more-questions-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #1e0e4b; /* Brand Dark Blue */
+    margin-bottom: 12px;
+}
+
+.more-questions-card p {
+    font-size: 16px;
+    color: #6b7280; /* Brand Grey Text */
+    line-height: 1.6;
+    margin: 0;
+}
+
+.more-questions-card a {
+    color: #599553; /* Brand Green */
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.more-questions-card a:hover {
+    color: #487a42; /* Darker Green on hover */
+    text-decoration: underline;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .more-questions-card {
+        padding: 25px;
+    }
+}
