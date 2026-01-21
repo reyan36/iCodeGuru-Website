@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Join Us - iCodeGuru</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What is Slack? - iCodeGuru</title>
+    <!-- Fonts & Icons -->
 		<link
 			href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
 			rel="stylesheet"
@@ -13,11 +14,12 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 		/>
-		<link rel="stylesheet" href="join.css" />
-	</head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
 
-	<body>
-		<!-- HEADER (Styles included in join.css) -->
+    <!-- HEADER (Styles included in join.css) -->
 		<header class="main-header">
 			<div class="container">
 				<div class="header-box">
@@ -36,7 +38,7 @@
 							<!-- CHANGE 'active' CLASS BASED ON PAGE -->
 							<li><a href="../index.html">Home</a></li>
 							<li><a href="../About/about.html">About us</a></li>
-							<li><a href="#" class="active">Join</a></li>
+							<li><a href="../join.html">Join</a></li>
 							<li><a href="../Courses/courses.html">Courses</a></li>
 							<li><a href="../Stories/stories.html">Stories</a></li>
 							<li><a href="../Alumni/alumni.html">Alumni</a></li>
@@ -64,217 +66,195 @@
 			</div>
 		</header>
 
-		<main>
-			<!-- JOIN HERO SECTION -->
-			<section id="join-hero">
-				<div class="container hero-wrapper">
-					<!-- Left Text Content -->
-					<div class="hero-text">
-						<h1>Unlock Your Potential with iCodeGuru</h1>
-						<p>
-							Gain in-demand skills through expert-led courses, hands-on
-							projects, and real-world applications
-						</p>
-						<a href="#registration"
-							><button class="btn btn-primary btn-lg">
-								Start Your Learning Journey
-							</button></a
-						>
-					</div>
-
-					<!-- Right Image & Floating Elements -->
-					<div class="hero-visuals">
-						<!-- Floating Avatar Pill -->
-						<div class="avatar-pill">
-							<img
-								src="Join Images/Avatar Image 1.png"
-								alt="User"
-								class="avatar"
-							/>
-							<img
-								src="Join Images/Avatar Image 2.png"
-								alt="User"
-								class="avatar"
-							/>
-							<img
-								src="Join Images/Avatar Image 3.png"
-								alt="User"
-								class="avatar"
-							/>
-							<div class="avatar-check">
-								<img
-									src="Join Images/Avatar Image 4.png"
-									alt="User"
-									class="avatar"
-								/>
-								<span class="check-badge">✓</span>
-							</div>
-						</div>
-
-						<!-- Main Student Image -->
-						<div class="student-image-container">
-							<img
-								src="Join Images/Girl Pointing.png"
-								alt="Student Pointing"
-								class="main-student-img"
-							/>
-						</div>
-					</div>
-				</div>
-				<!-- Background Shape -->
-				<div class="bg-shape-right"></div>
-			</section>
-
-			<section id="join-timeline">
+    <main class="page-content">
+    <!-- 0. BACK BUTTON (Added Here) -->
     <div class="container">
-        
-        <div class="timeline-wrapper">
+        <a href="../join.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i> Back to Join
+        </a>
+    </div>
+        <!-- 1. PAGE TITLE -->
+        <section class="slack-intro">
+            <div class="container">
+                <h1>New to Slack ? </h1>
+                <p>Slack is where all activities of iCodeGuru take place. Watch a video below to know what it is or use the demo below for a quick tutorial.</p>
+            </div>
+        </section>
+
+        <!-- 2. EMBEDDED VIDEO PLAYER -->
+        <section class="slack-video-section">
+            <div class="container">
+                <div class="embed-box">
+                    <div class="video-wrapper">
+                        <!-- YouTube Iframe -->
+                        <iframe 
+                            id="slackPageFrame"
+                            src="" 
+                            title="Slack Tutorial" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+
+                        <!-- Custom Cover Image -->
+                        <div class="video-cover" id="slackPageCover">
+                            <!-- REPLACE WITH YOUR IMAGE -->
+                            <img src="../../Images/Video Thumbnail.png" alt="Slack Tutorial" class="cover-img">
+                            
+                            <!-- Green Play Button -->
+                            <button class="custom-play-btn" id="playSlackPageBtn">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. INTERACTIVE HOTSPOTS -->
+        <!-- 3. INTERACTIVE HOTSPOTS & FEATURES -->
+<section class="slack-interactive">
+    <div class="container">
+        <div class="interactive-header">
+            <h2>What is inside Slack?</h2>
+            <p class="desktop-hint">Hover over the pulsing dots to explore features.</p>
+            <p class="mobile-hint">Explore the key features below.</p>
+        </div>
+
+        <!-- IMAGE WRAPPER -->
+        <div class="hotspot-wrapper">
+            <img src="../Join Images/Slack Image.png" alt="Slack Interface" class="base-image">
+
+            <!-- --- HOTSPOTS (Visible on Desktop Only) --- -->
             
-            <!-- CENTRAL LINE -->
-            <div class="line-container">
-                <div class="line-static"></div>
-                <div class="line-moving" id="scrollLine"></div>
-            </div>
-
-            <!-- STEP 01 (RIGHT) -->
-            <div class="timeline-row row-right">
-                <!-- The Dot on the Line -->
-                <div class="line-dot"></div>
-                
-                <!-- The Content (Number + Text) -->
-                <div class="time-content">
-                    <div class="step-number num-white">01</div>
-                    <span class="text-dark">Fill out the following</span>
-                    <span class="text-fade">registration form.</span>
+            <!-- Spot 1 -->
+            <div class="hotspot" style="top: 35%; left: 5%;">
+                <div class="pulsing-dot"></div>
+                <div class="tooltip">
+                    <h4>Channels</h4>
+                    <p>Join specific channels for topics like #dsa, #announcements.</p>
                 </div>
             </div>
 
-            <!-- STEP 02 (LEFT) -->
-            <div class="timeline-row row-left">
-                <div class="line-dot"></div>
-                <div class="time-content">
-                    <div class="step-number num-green">02</div>
-                    <span class="text-dark">Join our Slack</span>
-                    <span class="text-fade">community.</span>
+            <!-- Spot 2 -->
+            <div class="hotspot" style="top: 72%; left: 28%;">
+                <div class="pulsing-dot"></div>
+                <div class="tooltip">
+                    <h4>Join Classes</h4>
+                    <p>Click on the zoom link to join the class.</p>
                 </div>
             </div>
 
-            <!-- STEP 03 (RIGHT) -->
-            <div class="timeline-row row-right">
-                <div class="line-dot"></div>
-                <div class="time-content">
-                    <div class="step-number num-white">03</div>
-                    <span class="text-dark">Ask queries on Slack and</span>
-                    <span class="text-fade">start learning.</span>
+            <!-- Spot 3 -->
+            <div class="hotspot" style="top: 90%; right: 10%;">
+                <div class="pulsing-dot"></div>
+                <div class="tooltip">
+                    <h4>Send Messages</h4>
+                    <p>Directly message in the channels to get guidance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- --- MOBILE FEATURE LIST (Visible on Phones Only) --- -->
+        <div class="mobile-feature-list">
+            
+            <div class="feature-row">
+                <div class="f-icon"><i class="fa-solid fa-hashtag"></i></div>
+                <div class="f-text">
+                    <h4>Channels</h4>
+                    <p>Join specific topics like #python, #visas, or #announcements.</p>
                 </div>
             </div>
 
-            <!-- STEP 04 (LEFT) -->
-            <div class="timeline-row row-left">
-                <div class="line-dot"></div>
-                <div class="time-content">
-                    <div class="step-number num-green">04</div>
-                    <span class="text-dark">Start learning and track</span>
-                    <span class="text-fade">your progress.</span>
+            <div class="feature-row">
+                <div class="f-icon"><i class="fa-regular fa-comments"></i></div>
+                <div class="f-text">
+                    <h4>Discussions</h4>
+                    <p>Ask questions and get answers from mentors in real-time.</p>
+                </div>
+            </div>
+
+            <div class="feature-row">
+                <div class="f-icon"><i class="fa-regular fa-paper-plane"></i></div>
+                <div class="f-text">
+                    <h4>Direct Messages</h4>
+                    <p>Directly message admins and alumni for guidance.</p>
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+<!-- 4. INTERACTIVE SLACK SIMULATOR -->
+<section class="slack-demo">
+    <div class="container">
+        <div class="demo-header">
+            <h2>Learn How to Use Slack</h2>
+            <p>Follow the steps to know slack better. It will make using slack easier than ever.</p>
+        </div>
 
-			<!-- REGISTRATION FORM SECTION -->
-			<section id="registration">
-				<div class="container">
-					<div class="registration-card">
-						<h2>Start Your Journey</h2>
+        <div class="slack-window">
+            <!-- LEFT SIDEBAR -->
+            <div class="slack-sidebar">
+                <div class="sidebar-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                </div>
+                <div class="channel-group">
+                    <p class="group-title">CHANNELS</p>
+                    <ul id="channelList">
+                        <!-- Step 1: Start here -->
+                        <li id="chan-general" class="active" data-name="general"># general</li>
+                        <!-- Step 2: Auto moves here -->
+                        <li id="chan-announce" data-name="announcements"># announcements</li>
+                        <!-- Step 3: User must click here -->
+                        <li id="chan-python" data-name="python-course"># python-course</li>
+                        <li id="chan-wins" data-name="wins"># wins</li>
+                    </ul>
+                </div>
+            </div>
 
-						<form action="#">
-							<div class="form-row">
-								<div class="form-group">
-									<label for="firstname">First Name</label>
-									<input type="text" id="firstname" placeholder="Hassan" />
-								</div>
-								<div class="form-group">
-									<label for="lastname">Last Name</label>
-									<input type="text" id="lastname" placeholder="Abdullah" />
-								</div>
-							</div>
+            <!-- RIGHT CHAT AREA -->
+            <div class="slack-chat-area">
+                <div class="chat-header">
+                    <strong id="headerTitle"># general</strong>
+                    <span id="headerMeta">29,232 Members • Live</span>
+                </div>
+                
+                <!-- CHAT FEED -->
+                <div class="chat-feed" id="demoFeed">
+                    <div class="date-divider"><span>Today</span></div>
+                    <!-- Intro Message -->
+                    <div class="msg-row">
+                        <div class="msg-avatar z-avatar">Z</div>
+                        <div class="msg-bubble">
+                            <div class="msg-name">Dr. Zafar Shahid</div>
+                            <div class="msg-content">Welcome to iCodeGuru! Type <strong>"Hi"</strong> below to begin the tutorial. 👋</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- TYPING INDICATOR -->
+                <div class="typing-indicator" id="typingIndicator">
+                    Someone is typing<span>.</span><span>.</span><span>.</span>
+                </div>
 
-							<div class="form-row">
-								<div class="form-group">
-									<label for="email">Email Address</label>
-									<input
-										type="email"
-										id="email"
-										placeholder="hassan.abdullah@email.com"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="whatsapp">WhatsApp Phone Number</label>
-									<input
-										type="tel"
-										id="whatsapp"
-										placeholder="+92 123 4567890"
-									/>
-								</div>
-							</div>
-
-							<div class="form-group full-width">
-								<label for="university">University / Campus</label>
-								<input
-									type="text"
-									id="university"
-									placeholder="GIFT University, Gujranwala Campus"
-								/>
-							</div>
-
-							<div class="form-group full-width icon-input">
-								<label for="linkedin">LinkedIn Profile</label>
-								<div class="input-wrapper">
-									<input
-										type="url"
-										id="linkedin"
-										placeholder="Share your LinkedIn Profile"
-									/>
-									<span class="info-icon" id="linkedinInfoBtn" title="Watch Tutorial"
-										>i</span
-									>
-								</div>
-							</div>
-
-							<div class="form-footer">
-								<button type="submit" class="btn btn-primary submit-btn">
-									Submit Application
-								</button>
-
-								<div class="slack-cta">
-									<span>Already registered? Join our Slack community</span>
-									<button type="button" class="btn btn-outline slack-btn">
-										Join Slack
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
-
-			<!-- Values Row -->
-			<section>
-				<div class="values-row">
-					<div class="value-pill">
-						<span class="dot">•</span> Share <span class="dot">•</span>
-					</div>
-					<div class="value-pill">
-						<span class="dot">•</span> Learn <span class="dot">•</span>
-					</div>
-					<div class="value-pill">
-						<span class="dot">•</span> Grow <span class="dot">•</span>
-					</div>
-				</div>
-			</section>
-		</main>
+                <!-- INPUT AREA -->
+                <div class="chat-input-wrapper">
+                    <div class="tutorial-tooltip" id="demoTooltip">Type "Hi" here!</div>
+                    <form id="demoForm" class="chat-form">
+                        <input type="text" id="demoInput" placeholder="Message #general" autocomplete="off">
+                        <button type="submit" class="send-btn">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
 
             <!-- FOOTER -->
                 <footer>
@@ -504,59 +484,6 @@
 
 <!-- TOAST (Green Background) -->
 <div id="customToast">Copied successfully</div>
-<!-- =========================================
-     VIDEO MODAL (Copy to Join Page)
-========================================== -->
-<div id="videoModal" class="modal-overlay">
-    <div class="video-box clean-box">
-        <button class="close-video" id="closeVideo">&times;</button>
-        
-        <!-- Video Wrapper -->
-        <div class="video-wrapper">
-            <!-- 1. The YouTube Iframe -->
-            <iframe 
-                id="youtubeFrame"
-                src="" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-
-            <!-- 2. The Custom Overlay -->
-            <div class="video-cover" id="videoCover">
-                <!-- Ensure this image path is correct relative to your Join page -->
-                <img src="../Images/Video Thumbnail.png" alt="Video Thumbnail" class="cover-img">
-                
-                <!-- Green Play Button -->
-                <button class="custom-play-btn" id="startVideoBtn">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- =========================================
-     FLOATING SLACK HELPERS
-========================================== -->
-<div id="slackFloatingNav" class="floating-nav">
-    <!-- Button 1: What is Slack? -->
-    <a href="What is slack/what-is-slack.html" class="float-pill">
-        <i class="fa-brands fa-slack pill-icon"></i>
-        <span>What is Slack?</span>
-    </a>
-    
-    <!-- Button 2: Video Popup -->
-    <button id="slackVideoBtn" class="float-pill">
-        <i class="fa-solid fa-play pill-icon"></i>
-        <span>How to join Slack</span>
-    </button>
-</div>
-
-<audio id="notificationSound" src="https://res.cloudinary.com/dghgl7zaa/video/upload/v1768996094/SFX_Sucess_scyp4i.wav" preload="auto"></audio>
-		<script src="join.js"></script>
-	</body>
+    <script src="script.js"></script>
+</body>
 </html>
