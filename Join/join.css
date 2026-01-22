@@ -382,6 +382,7 @@ ul {
 	gap: 15px;
 	box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 	z-index: 10;
+	display: none;
 }
 
 .avatar {
@@ -1848,3 +1849,118 @@ html, body {
     }
 }
 
+/* =========================================
+   VALUES CARDS STYLES
+========================================== */
+.values-cards-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Or match your section bg */
+}
+
+.v-card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* Base Card Style */
+.v-card-box {
+    width: 280px; /* Fixed width like the image */
+    height: 180px; /* Fixed height */
+    border-radius: 24px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.v-card-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
+/* --- STYLE 1: OUTLINE (White BG, Green Border) --- */
+.v-outline {
+    background-color: #ffffff;
+    border: 1.5px solid #34652C; /* Your Brand Green */
+    color: #34652C;
+}
+
+.v-outline .v-dashed-line {
+    border-top: 1px dashed #d1dbe0; /* Light Grey Dash */
+}
+
+/* --- STYLE 2: FILLED (Green BG, White Text) --- */
+.v-filled {
+    background-color: #538b4f; /* The specific matte green from image */
+    border: 1.5px solid #538b4f;
+    color: #ffffff;
+}
+
+.v-filled .v-dashed-line {
+    border-top: 1px dashed rgba(255, 255, 255, 0.4); /* Semi-transparent White Dash */
+}
+
+/* Layout Parts */
+.v-card-top {
+    flex: 1;
+    display: flex;
+    align-items: flex-start; /* Icon top-left */
+	justify-content: center;
+}
+
+.v-icon {
+    font-size: 40px; /* Big Icon */
+    margin-bottom: 10px;
+}
+
+/* The Dashed Line Separator */
+.v-dashed-line {
+    width: 100%;
+    height: 1px;
+    margin: 15px 0;
+}
+
+.v-card-bottom h3 {
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0;
+    text-align: center; /* Text bottom-left */
+}
+
+/* --- MOBILE FIX FOR VALUES CARDS --- */
+@media (max-width: 768px) {
+    
+    .v-card-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px; /* Reduce gap between cards */
+    }
+    
+    .v-card-box {
+        width: 220px !important;  /* Much narrower */
+        height: 140px !important; /* Shorter */
+        padding: 15px 20px !important;
+        border-radius: 18px;
+    }
+
+    /* Make Icon Smaller */
+    .v-icon {
+        font-size: 28px !important; 
+        margin-bottom: 5px;
+    }
+
+    /* Make Text Smaller */
+    .v-card-bottom h3 {
+        font-size: 20px !important;
+    }
+
+    /* Adjust the line spacing */
+    .v-dashed-line {
+        margin: 10px 0 !important;
+    }
+}
