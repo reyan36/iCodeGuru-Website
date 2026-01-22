@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - iCodeGuru</title>
+    
+    <!-- Fonts: General Sans -->
+    <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="donation.css"> 
+</head>
+<body>
+    <!-- HEADER -->
+		<header class="main-header">
+			<div class="container">
+				<div class="header-box">
+					<!-- LOGO -->
+					<div class="logo">
+						<a href="../index.html" style="text-decoration: none">
+							<span class="logo-text"
+								>iCode<span class="logo-green">Guru</span></span
+							>
+						</a>
+					</div>
+
+					<!-- MENU LINKS -->
+					<nav class="main-nav">
+						<ul>
+							<!-- CHANGE 'active' CLASS BASED ON PAGE -->
+							<li><a href="../index.html">Home</a></li>
+							<li><a href="../About/about.html">About us</a></li>
+							<li><a href="../Join/join.html">Join</a></li>
+							<li><a href="../Courses/courses.html">Courses</a></li>
+							<li><a href="../Stories/stories.html">Stories</a></li>
+							<li><a href="../Alumni/alumni.html">Alumni</a></li>
+							<li><a href="../Feedback/feedback.html">Feedback</a></li>
+
+							<!-- MOBILE-ONLY DONATE BUTTON -->
+							<li class="mobile-donate">
+								<a href="#"><button type="button" class="btn btn-primary">Donate</button></a>
+							</li>
+						</ul>
+					</nav>
+
+					<!-- DESKTOP DONATE BUTTON -->
+					<div class="header-cta">
+						<a href="#"><button type="button" class="btn btn-primary">Donate</button> </a>
+					</div>
+
+					<!-- HAMBURGER ICON -->
+					<div class="mobile-toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</header>
+
+    <!-- HERO / PAGE HEADER -->
+    <section class="page-header">
+        <div class="container text-center">
+            <h1 class="page-title">Donate</h1>
+            <div class="header-content">
+                <p> iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with <strong>EIN: 99-2776198.</strong></p>
+                <p>iCodeGuru gratefully accepts <strong>Zakat</strong> and <strong>Sadaqah</strong> contributions on behalf of deserving students. Your support helps us continue our mission.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="donation-page-wrapper">
+        <div class="container donation-layout">
+            
+            <!-- LEFT COLUMN: Impact & Payment Accordions -->
+            <div class="donation-info-col">
+                
+                <!-- Section 1: Impact -->
+                <div class="info-card mb-4">
+                    <h2 class="section-title">What your generosity can achieve:</h2>
+                    <ul class="impact-list">
+                        <li><span class="amount">$165</span> Provides a first-generation girl with one year of primary school education.</li>
+                        <li><span class="amount">$2,500</span> Funds a master's level teacher's annual salary, ensuring quality education.</li>
+                        <li><span class="amount">$5,000</span> Covers a university degree for a student committed to giving back.</li>
+                        <li><span class="amount">$35,000</span> Builds new washrooms, removing a major barrier to education.</li>
+                    </ul>
+                </div>
+
+                <!-- Section 2: Other Ways to Give (Accordion) -->
+                <div class="info-card">
+                    <h2 class="section-title">Other Ways to Give</h2>
+                    <p class="mb-3 text-muted">Click to expand details</p>
+                    
+                    <!-- ACCORDION SECTION -->
+<div class="accordion">
+                        
+    <!-- 1. PayPal -->
+    <div class="accordion-item">
+        <button class="accordion-header">
+            <span><i class="fa-brands fa-paypal"></i> PayPal</span>
+            <i class="fa-solid fa-chevron-down arrow"></i>
+        </button>
+        <div class="accordion-content">
+            <div class="content-inner">
+                <div class="simple-flex-row">
+                    <!-- Text Side -->
+                    <div class="copy-trigger" onclick="copyToClipboard('donations@icode.guru')">
+                        <span class="label-tiny">PayPal ID</span>
+                        <div class="value-text">
+                            donations@icode.guru 
+                            <i class="fa-regular fa-copy copy-icon" title="Click to copy"></i>
+                        </div>
+                    </div>
+                    <!-- Button Side -->
+                     <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="btn-mini-primary">
+                        Go to PayPal
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Zelle -->
+    <div class="accordion-item">
+        <button class="accordion-header">
+            <span><i class="fa-solid fa-z"></i> Zelle</span>
+            <i class="fa-solid fa-chevron-down arrow"></i>
+        </button>
+        <div class="accordion-content">
+            <div class="content-inner">
+                <div class="simple-flex-row">
+                    <div class="copy-trigger" onclick="copyToClipboard('donations@icode.guru')">
+                        <span class="label-tiny">Zelle ID</span>
+                        <div class="value-text">
+                            donations@icode.guru 
+                            <i class="fa-regular fa-copy copy-icon"></i>
+                        </div>
+                    </div>
+                    <!-- QR Code (Optional) -->
+            <div class="zelle-qr-container">
+                <img src="../Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Bank Transfer -->
+    <div class="accordion-item">
+        <button class="accordion-header">
+            <span><i class="fa-solid fa-building-columns"></i> Bank Transfer</span>
+            <i class="fa-solid fa-chevron-down arrow"></i>
+        </button>
+        <div class="accordion-content">
+            <div class="content-inner">
+                <div class="bank-grid-clean">
+                    
+                    <!-- Account Name -->
+                    <div class="bank-item copy-trigger" onclick="copyToClipboard('iCodeGuru')">
+                        <span class="label-tiny">Account Name</span>
+                        <div class="value-text">iCodeGuru <i class="fa-regular fa-copy copy-icon"></i></div>
+                    </div>
+
+                    <!-- Account Number -->
+                    <div class="bank-item copy-trigger" onclick="copyToClipboard('231-069-2419')">
+                        <span class="label-tiny">Account Number</span>
+                        <div class="value-text">231-069-2419 <i class="fa-regular fa-copy copy-icon"></i></div>
+                    </div>
+
+                    <!-- Routing -->
+                    <div class="bank-item copy-trigger" onclick="copyToClipboard('121000248')">
+                        <span class="label-tiny">Wire Routing (RTN/ABA)</span>
+                        <div class="value-text">121000248 <i class="fa-regular fa-copy copy-icon"></i></div>
+                    </div>
+
+                    <!-- Swift -->
+                    <div class="bank-item copy-trigger" onclick="copyToClipboard('WFBIUS6S')">
+                        <span class="label-tiny">SWIFT/BIC Code</span>
+                        <div class="value-text">WFBIUS6S <i class="fa-regular fa-copy copy-icon"></i></div>
+                    </div>
+
+                    <!-- CHIPS -->
+                    <div class="bank-item copy-trigger" onclick="copyToClipboard('0407')">
+                        <span class="label-tiny">CHIPS Participant</span>
+                        <div class="value-text">0407 <i class="fa-regular fa-copy copy-icon"></i></div>
+                    </div>
+
+                    <!-- Full Width Bank Address -->
+                    <div class="bank-item full-width">
+                        <span class="label-tiny">Bank Name & Address</span>
+                        <div class="value-text no-copy">
+                            Wells Fargo Bank, N.A. <br>
+                            <span style="font-weight: 400; font-size: 14px; color: #666;">420 Montgomery San Francisco, CA 94104</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Form -->
+<!-- RIGHT COLUMN: Form -->
+<div class="donation-form-col">
+    
+    <!-- STEP 1: AMOUNT SELECTION -->
+    <div class="donation-card" id="step-1">
+        <h3 class="form-heading">Choose Your Amount</h3>
+
+        <div class="amount-grid">
+            <button type="button" class="amount-btn active" data-amount="165">$165</button>
+            <button type="button" class="amount-btn" data-amount="2500">$2500</button>
+            <button type="button" class="amount-btn" data-amount="5000">$5000</button>
+            <button type="button" class="amount-btn" id="btn-other">Other</button>
+        </div>
+
+        <div class="custom-amount-wrapper" id="custom-amount-box" style="display: none;">
+            <div class="input-prefix-group">
+                <span class="prefix">$</span>
+                <input type="number" id="custom-input" class="form-input custom-field" placeholder="Enter amount">
+            </div>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="coverFee" checked>
+            <label for="coverFee">
+                I'll cover the <span id="fee-display">$4.78</span> processing fee.
+            </label>
+        </div>
+
+        <div class="frequency-toggle">
+            <button type="button" class="freq-btn active" id="freq-onetime" data-freq="One Time">One Time</button>
+            <button type="button" class="freq-btn" id="freq-monthly" data-freq="Monthly">Monthly</button>
+        </div>
+
+<!-- Designation -->
+        <div class="form-group">
+            <label class="input-label required">* Designate your Donation</label>
+            <div class="select-wrapper">
+                <select class="form-input" id="designation-select">
+                    <option>No Selection</option>
+                    <option>Unrestricted</option>
+                    <option>Zakat</option>
+                </select>
+            </div>
+            
+            <!-- NEW ERROR MESSAGE ELEMENT (Hidden by default) -->
+            <p id="designation-error" class="error-message" style="display: none;">
+                <i class="fa-solid fa-circle-exclamation"></i> Please select a designation.
+            </p>
+        </div>
+
+        <h4 class="sub-heading">Additional Information</h4>
+        <div class="form-group">
+            <label class="input-label">This gift is in Memory of:</label>
+            <input type="text" class="form-input">
+        </div>
+        <div class="form-group">
+            <label class="input-label">This gift is in Honor of:</label>
+            <input type="text" class="form-input">
+        </div>
+
+        <!-- Continue Button (No Total here anymore) -->
+        <button class="btn btn-primary btn-full-width" id="to-step-2">
+            Continue <i class="fa-solid fa-chevron-right"></i>
+        </button>
+
+        <div class="secure-footer">
+            <i class="fa-solid fa-lock"></i> Securely processed by <strong>Stripe</strong>
+        </div>
+    </div>
+
+    <!-- STEP 2: PAYMENT & BILLING (Hidden by default) -->
+<!-- STEP 2: PAYMENT & BILLING -->
+    <div class="donation-card" id="step-2" style="display: none;">
+        
+        <!-- Back Button -->
+        <div class="step-header">
+            <button class="back-btn" id="back-to-step-1"><i class="fa-solid fa-chevron-left"></i></button>
+        </div>
+
+        <h3 class="form-heading">Enter your payment method</h3>
+
+        <!-- Payment Method Toggle -->
+        <div class="payment-method-toggles">
+            <button type="button" class="pm-btn active" data-method="card">Debit Card</button>
+            <button type="button" class="pm-btn" data-method="card">Credit Card</button>
+        </div>
+        <div class="payment-method-single mb-4">
+             <button type="button" class="pm-btn-block" id="btn-bank-toggle">Bank Account</button>
+        </div>
+
+        <!-- DYNAMIC PAYMENT FIELDS -->
+        <div class="payment-fields-container">
+            
+            <!-- Card Fields -->
+            <div id="fields-card">
+                <div class="input-with-icon">
+                    <i class="fa-regular fa-credit-card"></i>
+                    <input type="text" class="form-input pl-icon" placeholder="Card number">
+                    <span class="card-extras">MM / YY CVC</span>
+                </div>
+            </div>
+
+            <!-- Bank Fields -->
+            <div id="fields-bank" style="display: none;">
+                <div class="form-group">
+                    <div class="select-wrapper">
+                        <i class="fa-solid fa-building-columns input-icon"></i>
+                        <select class="form-input pl-icon">
+                            <option>Checking</option>
+                            <option>Savings</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <input type="text" class="form-input pl-icon" placeholder="Routing Number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-money-check-dollar"></i>
+                        <input type="text" class="form-input pl-icon" placeholder="Account Number">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="form-heading mt-4">Billing details</h3>
+
+        <!-- Billing Entity Toggle -->
+        <div class="billing-toggles">
+            <button type="button" class="pm-btn active" id="bill-indiv">Individual</button>
+            <button type="button" class="pm-btn" id="bill-org">Organization</button>
+        </div>
+
+        <!-- DYNAMIC NAME FIELDS -->
+        <div id="billing-names-container">
+            <!-- Individual Inputs -->
+            <div class="split-inputs" id="inputs-indiv">
+                <div class="input-with-icon">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" class="form-input pl-icon" placeholder="First Name">
+                </div>
+                <div class="input-with-icon">
+                    <i class="fa-regular fa-user"></i>
+                    <input type="text" class="form-input pl-icon" placeholder="Last Name">
+                </div>
+            </div>
+
+            <!-- Organization Inputs -->
+            <div id="inputs-org" style="display: none;">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-building"></i>
+                        <input type="text" class="form-input pl-icon" placeholder="Organization Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" class="form-input pl-icon" placeholder="Primary Contact">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Common Contact Fields -->
+        <div class="form-group">
+            <div class="input-with-icon">
+                <i class="fa-regular fa-envelope"></i>
+                <input type="email" class="form-input pl-icon" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-with-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" class="form-input pl-icon" placeholder="Street Address">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="input-with-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" class="form-input pl-icon" placeholder="City">
+            </div>
+        </div>
+
+<div class="split-inputs">
+            <div class="input-with-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <!-- CHANGED TO TEXT INPUT -->
+                <input type="text" class="form-input pl-icon" placeholder="State / Province">
+            </div>
+            <div class="input-with-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" class="form-input pl-icon" placeholder="Postal Code">
+            </div>
+        </div>
+
+        <!-- Split Row: Phone & Country -->
+        <div class="split-inputs">
+            <div class="input-with-icon">
+                <i class="fa-solid fa-phone"></i>
+                <input type="tel" class="form-input pl-icon" placeholder="Phone">
+            </div>
+            <div class="select-wrapper">
+                <!-- Country Select (Populated by JS) -->
+                <select class="form-input" id="country-select">
+                    <option value="" disabled selected>Select Country</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Final Donate Button -->
+        <button class="btn btn-donate-final" id="final-donate-btn">
+            <i class="fa-solid fa-lock"></i> Donate <span id="final-amount-text">$0.00</span>
+        </button>
+
+        <div class="secure-footer">
+            <i class="fa-solid fa-lock"></i> Securely processed by <strong>Stripe</strong>
+        </div>
+
+    </div>
+</div>
+
+        </div>
+    </main>
+
+    <!-- Toast Notification for Copy -->
+    <div id="copyToast" class="toast">Copied to Clipboard</div>
+                <footer>
+    <div class="container">
+        
+        <!-- 1. TOP SECTION: LINKS -->
+<!-- TOP LINKS -->
+<div class="footer-links-area">
+    <div class="link-col">
+        <h4>Quick Links</h4>
+        <ul>
+                            <li><a href="../About/about.html">About Us</a></li>
+                            <li><a href="../Join/join.html">Join Us</a></li>
+                            <li><a href="../Courses/courses.html">Courses</a></li>
+                            <li><a href="../Alumni/alumni.html">Alumni</a></li>
+        </ul>
+    </div>
+    <div class="link-col">
+        <h4>Support</h4>
+        <ul>
+                            <li><a href="../Feedback/feedback.html">Feedback</a></li>
+                            <li><a href="../Feedback/feedback.html">Need Help?</a></li>
+                            <li><a href="../Feedback/feedback.html">Contact</a></li>
+                            <li><a href="#donationModal">Donate</a></li>
+        </ul>
+    </div>
+    <div class="link-col">
+        <h4>Connect with Us</h4>
+        <ul class="contact-info">
+            <li><a href="mailto:info@icodeguru.com">info@icode.guru</a></li>
+            <li>San Jose, CA, USA</li>
+        </ul>
+    </div>
+</div>
+
+        <!-- 2. BOTTOM SECTION: GREEN BANNER -->
+        <div class="footer-banner">
+    <!-- BACKGROUND LINES (Add your images here) -->
+    <img src="../Images/lines-left.png " alt="" class="footer-line line-left">
+    <img src="../Images/lines-right.png" alt="" class="footer-line line-right">
+
+            <div class="banner-content">
+                
+                <!-- Left: Copyright -->
+                <div class="copyright-text">
+                    &copy; iCodeGuru Inc. All Rights Reserved.
+                </div>
+
+                <!-- Center: Logo & Socials -->
+                <div class="brand-center">
+                    <div class="footer-logo-white">
+                        <!-- FontAwesome Cap Icon -->
+                        <img src="../Images/logo book.png" alt="">
+                        <span class="footer-lg-1">iCode<span>Guru</span>
+                    </div>
+                    
+                    <!-- Social Icons -->
+                    <div class="banner-socials">
+                        <a href="https://x.com/iCodeGuru1" target="_blank" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.facebook.com/iCodeguru/" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/icodeguru/?hl=en"  target="_blank"class="social-circle"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" target="_blank" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.youtube.com/@iCodeGuru0"  target="_blank"class="social-circle"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <!-- Right: Subscribe Form -->
+                <div class="subscribe-wrapper">
+                    <form class="banner-form">
+                        <div class="input-with-icon">
+                            <!-- Envelope Icon -->
+                            <i class="fa-regular fa-envelope input-icon"></i>
+                            <input type="email" placeholder="Enter your email address">
+                        </div>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</footer>
+    <script src="donation.js"></script>
+</body>
+</html>

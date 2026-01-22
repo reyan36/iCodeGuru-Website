@@ -37,13 +37,13 @@
 
 							<!-- This button will only appear inside the mobile menu -->
 							<li class="mobile-donate">
-								<button type="button" class="btn btn-primary">Donate</button>
+								<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
 							</li>
 						</ul>
 					</nav>
 
 					<div class="header-cta">
-						<button type="button" class="btn btn-primary">Donate</button>
+						<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
 					</div>
 
 					<!-- Mobile Menu Toggle -->
@@ -73,25 +73,9 @@
 
 						<div class="hero-buttons">
 							<a href="Join/join.html"
-								><button type="button" class="btn btn-primary">
-									Join on Slack
-								</button></a
-							>
-							<a href="Join/join.html"
-								><button type="button" class="btn btn-outline">
-									Join as Student
-								</button></a
-							>
-							<a href="Join/join.html"
-								><button type="button" class="btn btn-outline">
-									Become Volunteer
-								</button></a
-							>
-							<a href="#donationModal"
-								><button type="button" class="btn btn-outline">
-									Support Us
-								</button></a
-							>
+								><button type="button" class="btn btn-primary heading-button">
+									Be a Part of iCodeGuru
+								</button></a>
 						</div>
 					</div>
 
@@ -105,36 +89,37 @@
 				<div class="bg-shape"></div>
 			</section>
 
-			<!-- WHO ARE WE SECTION -->
-			<section id="who-are-we">
-				<div class="container">
-					<div class="who-card">
-						<div class="who-text">
-							<h2>Who Are We?</h2>
-							<p>
-								We believe education should be accessible to all, and we're
-								committed to providing mentorship, resources, and end-to-end
-								support to help talented students succeed globally while
-								enabling them to become financially independent through
-								scholarships and career opportunities.
-							</p>
-							<a href="About/about.html"
-								><button type="button" class="btn btn-primary who-btn">
-									More About Us
-								</button></a
-							>
-						</div>
-						<div class="who-image">
-							<img
-								src="Images/Student working on laptop.png"
-								alt="Student working on laptop"
-							/>
-						</div>
-					</div>
-				</div>
-			</section>
+			<!-- WHO ARE WE (NEW DESIGN) -->
+<section id="who-are-we-new">
+    <div class="container">
+        <div class="who-card-center">
+            
+            <!-- 1. Centered Header -->
+            <div class="who-header-center">
+                <h2>Who Are We?</h2>
+                <p>We believe education should be accessible to all, and we're committed to providing mentorship, resources, and end-to-end support to help talented students succeed globally while enabling them to become financially independent through scholarships and career opportunities.</p>
+            </div>
 
-			<!-- ENRICHMENT SECTION -->
+            <!-- 2. Photo Gallery Grid -->
+            <div class="who-gallery-grid">
+                <!-- ROW 1 (3 Images) -->
+                <div class="gallery-item"><img src="images/Dr Zafar Speaking.jpg" alt="President Speaking"></div>
+                <div class="gallery-item portrait"><img src="images/Amir Group.jpg" alt="Speaker with Mic"></div>
+                <div class="gallery-item"><img src="images/Group Photo.jpg" alt="Meta Sign"></div>
+                
+                <!-- ROW 2 (2 Images) -->
+                <div class="gallery-item wide"><img src="images/Sir Rizwan Speaking.jpg" alt="Event Speaking"></div>
+                <div class="gallery-item wide"><img src="images/Group Photo 2.jpg" alt="Group Photo"></div>
+            </div>
+
+            <!-- 3. Button -->
+            <div class="who-footer-btn">
+                <button type="button" class="btn btn-primary more-btn">More About Us</button>
+            </div>
+
+        </div>
+    </div>
+</section>
 			<!-- ENRICHMENT SECTION -->
 			<section id="enrichment">
 				<div class="container">
@@ -267,127 +252,50 @@
 					</div>
 				</div>
 			</section>
-			<!-- REGISTRATION FORM SECTION -->
-			<section id="registration">
-				<div class="container">
-					<div class="registration-card">
-						<h2>Start Your Journey</h2>
+<!-- VALUES CARDS SECTION -->
+<section class="values-cards-section">
+    <div class="container">
+        <div class="v-card-grid">
+            
+            <!-- Card 1: SHARE (White) -->
+            <div class="v-card-box v-outline">
+                <div class="v-card-top">
+                    <!-- Icon: Brain/Knowledge Share -->
+                    <i class="fa-solid fa-brain v-icon"></i>
+                </div>
+                <div class="v-dashed-line"></div>
+                <div class="v-card-bottom">
+                    <h3>Share</h3>
+                </div>
+            </div>
 
-						<form action="#">
-							<div class="form-row">
-								<div class="form-group">
-									<label for="firstname">First Name</label>
-									<input type="text" id="firstname" placeholder="Hassan" />
-								</div>
-								<div class="form-group">
-									<label for="lastname">Last Name</label>
-									<input type="text" id="lastname" placeholder="Abdullah" />
-								</div>
-							</div>
+            <!-- Card 2: LEARN (Green - Center) -->
+            <div class="v-card-box v-filled">
+                <div class="v-card-top">
+                    <!-- Icon: Lightbulb/Learning -->
+                    <i class="fa-solid fa-lightbulb v-icon"></i>
+                </div>
+                <div class="v-dashed-line light"></div>
+                <div class="v-card-bottom">
+                    <h3>Learn</h3>
+                </div>
+            </div>
 
-							<div class="form-row">
-								<div class="form-group">
-									<label for="email">Email Address</label>
-									<input
-										type="email"
-										id="email"
-										placeholder="hassan.abdullah@email.com"
-									/>
-								</div>
-								<div class="form-group">
-									<label for="whatsapp">WhatsApp Phone Number</label>
-									<input
-										type="tel"
-										id="whatsapp"
-										placeholder="+92 123 4567890"
-									/>
-								</div>
-							</div>
+            <!-- Card 3: GROW (White) -->
+            <div class="v-card-box v-outline">
+                <div class="v-card-top">
+                    <!-- Icon: Growth Chart -->
+                    <i class="fa-solid fa-arrow-trend-up v-icon"></i>
+                </div>
+                <div class="v-dashed-line"></div>
+                <div class="v-card-bottom">
+                    <h3>Grow</h3>
+                </div>
+            </div>
 
-							<div class="form-group full-width">
-								<label for="university">University / Campus</label>
-								<input
-									type="text"
-									id="university"
-									placeholder="GIFT University, Gujranwala Campus"
-								/>
-							</div>
-
-							<div class="form-group full-width icon-input">
-								<label for="linkedin">LinkedIn Profile</label>
-								<div class="input-wrapper">
-									<input
-										type="url"
-										id="linkedin"
-										placeholder="Share your LinkedIn Profile"
-									/>
-									<span class="info-icon" title="Paste your profile link here"
-										>i</span
-									>
-								</div>
-							</div>
-
-							<div class="form-footer">
-								<button type="submit" class="btn btn-primary submit-btn">
-									Submit Application
-								</button>
-
-								<div class="slack-cta">
-									<span>Already registered? Join our Slack community</span>
-									<button type="button" class="btn btn-outline slack-btn">
-										Join Slack
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</section>
-			<!-- LINKEDIN CONNECT & VALUES SECTION -->
-			<section id="linkedin-connect">
-				<div class="container">
-					<div class="linkedin-banner">
-						<img
-							src="Images/lines-left.png"
-							alt=""
-							class="bg-lines line-left"
-						/>
-						<img
-							src="Images/lines-right.png"
-							alt=""
-							class="bg-lines line-right"
-						/>
-
-						<div class="banner-content-wrapper">
-							<h2>Want to connect with our alumni on LinkedIn?</h2>
-
-							<div class="banner-info">
-								<p>Here is you can create your own LinkedIn Account</p>
-								<span class="info-tooltip" title="Info">i</span>
-							</div>
-
-							<!-- UPDATE THIS BUTTON IN YOUR LINKEDIN BANNER -->
-							<button type="button" class="btn btn-white" id="linkedinBtn">
-								LinkedIn Account Tutorial
-							</button>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- Values Row -->
-			<section>
-				<div class="values-row">
-					<div class="value-pill">
-						<span class="dot">•</span> Share <span class="dot">•</span>
-					</div>
-					<div class="value-pill">
-						<span class="dot">•</span> Learn <span class="dot">•</span>
-					</div>
-					<div class="value-pill">
-						<span class="dot">•</span> Grow <span class="dot">•</span>
-					</div>
-				</div>
-			</section>
+        </div>
+    </div>
+</section>
 		</main>
                 <footer>
     <div class="container">
@@ -410,7 +318,7 @@
                             <li><a href="../Feedback/feedback.html">Feedback</a></li>
                             <li><a href="../Feedback/feedback.html">Need Help?</a></li>
                             <li><a href="../Feedback/feedback.html">Contact</a></li>
-                            <li><a href="#donationModal">Donate</a></li>
+                            <li><a href="Donation/donation.html">Donate</a></li>
         </ul>
     </div>
     <div class="link-col">
@@ -470,201 +378,6 @@
 
     </div>
 </footer>
-         <!-- =========================================
-     DONATION MODAL
-========================================== -->
-<div id="donationModal" class="modal-overlay">
-    <div class="modal-container">
-        <button class="modal-close" id="closeModal">&times;</button>
-        
-        <!-- HEADER (Clean, Text Only) -->
-        <div class="modal-header">
-            <div class="header-content">
-                <h2>Make a Donation</h2>
-                <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-                <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students. Your support helps us continue our mission.</p>
-            </div>
-        </div>
-
-        <!-- TABS (Icons removed, space left for you) -->
-        <div class="donation-tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'paypal')">
-                <!-- PASTE PAYPAL ICON HERE -->
-                <img src="Images/Paypal.png" alt="">
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'zelle')">
-                <!-- PASTE ZELLE ICON HERE -->
-                <img src="Images/Zelle.png" alt="">
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'bank')">
-                Bank Transfer
-            </button>
-        </div>
-
-        <!-- 1. PAYPAL CONTENT -->
-        <div id="paypal" class="tab-content active-content">
-            <h3>Donate via PayPal</h3>
-            <p class="donate-label">PayPal ID: <span class="highlight">donations@icode.guru</span></p>
-            <p class="donate-instruction">To complete your donation, click the button below to donate via PayPal:</p>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="cta-btn">Donate with PayPal</a>
-        </div>
-
-        <!-- 2. ZELLE CONTENT (With QR Code) -->
-        <div id="zelle" class="tab-content">
-            <h3>Donate via Zelle</h3>
-            <p class="donate-instruction">Scan the QR code or send to the ID below:</p>
-            
-            <!-- ZELLE QR CODE -->
-            <div class="zelle-qr-container">
-                <!-- Make sure to name your Zelle QR image 'qrcode.png' or update this path -->
-                <img src="Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
-            </div>
-
-            <div class="copy-row centered">
-                <span class="donate-label">Zelle ID:</span>
-                <span class="highlight">donations@icode.guru</span>
-            </div>
-
-            <p class="small-note">In the message, please include your name and donation amount.</p>
-            <a href="https://www.zelle.com/go/zelle" target="_blank" class="cta-btn">Open Zelle App</a>
-        </div>
-
-        <!-- 3. BANK CONTENT (Full Details) -->
-        <div id="bank" class="tab-content">
-            <h3>Donate via Bank Transfer</h3>
-            <p class="donate-instruction">To complete your donation, please transfer your donation to the following bank account:</p>
-            
-            <div class="bank-details-grid">
-                <!-- Account Name -->
-                <div class="bank-row">
-                    <span class="b-label">Account Name:</span>
-                    <span class="b-value">iCodeGuru</span>
-                    <button class="copy-btn" onclick="copyText('iCodeGuru')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Account Number -->
-                <div class="bank-row">
-                    <span class="b-label">Account Number:</span>
-                    <span class="b-value">231-069-2419</span>
-                    <button class="copy-btn" onclick="copyText('2310692419')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Domestic Wires -->
-                <div class="bank-row">
-                    <span class="b-label">For Domestic Wires:</span>
-                    <span class="b-value">Wire Routing Transit Number (RTN/ABA) 121000248</span>
-                    <button class="copy-btn" onclick="copyText('121000248')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- International -->
-                <div class="bank-row">
-                    <span class="b-label">For International:</span>
-                    <span class="b-value">SWIFT/BIC code WFBIUS6S</span>
-                    <button class="copy-btn" onclick="copyText('WFBIUS6S')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Bank Name -->
-                <div class="bank-row">
-                    <span class="b-label">Bank Name:</span>
-                    <span class="b-value">Wells Fargo Bank, N.A.</span>
-                    <button class="copy-btn" onclick="copyText('Wells Fargo Bank, N.A.')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Bank Address -->
-                <div class="bank-row">
-                    <span class="b-label">Bank Address, City & State:</span>
-                    <span class="b-value">420 Montgomery San Francisco, CA 94104 (regardless of where your account is located)</span>
-                    <button class="copy-btn" onclick="copyText('420 Montgomery San Francisco, CA 94104')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- BNF Field -->
-                <div class="bank-row">
-                    <span class="b-label">BNF/Field 4200 Beneficiary Acct. #:</span>
-                    <span class="b-value">Your complete Wells Fargo account number including leading zeros</span>
-                    <button class="copy-btn" onclick="copyText('Your complete Wells Fargo account number')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Beneficiary Name -->
-                <div class="bank-row">
-                    <span class="b-label">Beneficiary Account Name And Address:</span>
-                    <span class="b-value">The name and address of your account as it appears on your statement</span>
-                    <button class="copy-btn" onclick="copyText('The name and address of your account')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- CHIPS -->
-                <div class="bank-row">
-                    <span class="b-label">CHIPS Participant:</span>
-                    <span class="b-value">0407</span>
-                    <button class="copy-btn" onclick="copyText('0407')">
-                        <img src="Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-            </div>
-            
-            <p class="legal-text small-note">In the reference, please include your name and donation amount.</p>
-        </div>
-    </div>
-</div>
-
-<!-- TOAST (Green Background) -->
-<div id="customToast">Copied successfully</div>
-		<!-- =========================================
-     CUSTOM VIDEO MODAL
-========================================== -->
-		<!-- =========================================
-     CUSTOM VIDEO MODAL
-========================================== -->
-		<div id="videoModal" class="modal-overlay">
-			<div class="video-box clean-box">
-				<button class="close-video" id="closeVideo">&times;</button>
-
-				<!-- Video Wrapper -->
-				<div class="video-wrapper">
-					<!-- 1. The YouTube Iframe -->
-					<iframe
-						id="youtubeFrame"
-						src=""
-						title="YouTube video player"
-						frameborder="0"
-						allow="
-							accelerometer;
-							autoplay;
-							clipboard-write;
-							encrypted-media;
-							gyroscope;
-							picture-in-picture;
-						"
-						allowfullscreen
-					>
-					</iframe>
-
-					<!-- 2. The Custom Overlay -->
-					<div class="video-cover" id="videoCover">
-						<!-- Replace with your actual thumbnail image path -->
-						<img
-							src="Images/Video Thumbnail.png"
-							alt="Video Thumbnail"
-							class="cover-img"
-						/>
-
-						<!-- Fixed Green Play Button -->
-						<button class="custom-play-btn" id="startVideoBtn">
-							<svg viewBox="0 0 24 24" fill="currentColor">
-								<path d="M8 5v14l11-7z" />
-							</svg>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
 		<script src="script.js"></script>
 	</body>
 </html>

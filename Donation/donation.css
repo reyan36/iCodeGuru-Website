@@ -1,0 +1,1697 @@
+/* =========================================
+   1. VARIABLES & RESET (iCodeGuru Theme)
+   ========================================= */
+:root {
+    --primary-green: #599553;
+    --primary-hover: #487a42;
+    --secondary-violet: #1e0a52;
+    --dark-text: #1a1a3a;
+    --body-text: #5f5f86;
+    --white: #ffffff;
+    --bg-color: #f3f4ff;
+    --card-bg: #ffffff;
+    --border-color: #e0e0e0;
+    --font-main: "General Sans", sans-serif;
+    --max-width: 1280px;
+    --gradient-primary: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================
+   2. HEADER & LAYOUT
+   ========================================= */
+.page-header {
+    background: var(--bg-color);
+    padding: 60px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.page-title {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--secondary-violet);
+    margin-bottom: 20px;
+}
+.header-content {
+    display: flex;
+    flex-direction: column;
+        justify-content: center;
+    align-items: center;
+}
+.header-content p {
+    color: var(--body-text);
+    margin-bottom: 8px;
+    font-size: 16px;
+    max-width: 900px;
+}
+
+.highlight-text {
+    font-weight: 700;
+    color: var(--primary-green);
+    font-size: 18px !important;
+    margin-top: 10px;
+}
+
+.donation-page-wrapper { padding: 50px 0; }
+
+.donation-layout {
+    display: grid;
+    grid-template-columns: 1fr 450px;
+    gap: 40px;
+    align-items: start;
+}
+
+/* =========================================
+   3. LEFT COL: IMPACT & ACCORDION
+   ========================================= */
+.info-card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    margin-top: 30px;
+}
+
+.section-title {
+    color: var(--secondary-violet);
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.impact-list li {
+    list-style: none;
+    margin-bottom: 15px;
+    color: var(--body-text);
+    padding-left: 15px;
+    border-left: 3px solid var(--primary-green);
+}
+
+.impact-list .amount {
+    font-weight: 700;
+    color: var(--primary-green);
+    margin-right: 5px;
+}
+
+/* --- ACCORDION STYLES --- */
+.accordion {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid var(--border-color);
+    background: #fff;
+}
+
+.accordion-item:last-child { border-bottom: none; }
+
+.accordion-header {
+    width: 100%;
+    padding: 18px 20px;
+    background: #fff;
+    border: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-family: var(--font-main);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-text);
+    transition: background 0.2s;
+}
+
+.accordion-header:hover { background-color: #f9f9f9; }
+
+.accordion-header i.fa-brands, 
+.accordion-header i.fa-solid:not(.arrow) {
+    margin-right: 10px;
+    color: var(--primary-green);
+    width: 20px;
+}
+
+.accordion-header .arrow {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+    color: #999;
+}
+
+.accordion-item.active .arrow { transform: rotate(180deg); }
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #fafafa;
+}
+
+.content-inner { padding: 20px; }
+
+/* Copy Features */
+.copy-row {
+    display: inline-flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.copy-row.small {
+    padding: 4px 8px;
+    font-size: 14px;
+}
+
+.copy-text {
+    font-family: monospace;
+    color: var(--secondary-violet);
+    margin-right: 10px;
+    font-weight: 600;
+}
+
+.copy-btn {
+    background: none;
+    border: none;
+    color: var(--primary-green);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.copy-btn:hover { text-decoration: underline; }
+
+/* Bank Grid */
+.bank-details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.detail-group { margin-bottom: 5px; }
+
+.detail-group.full-width { grid-column: span 2; }
+
+.label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.text-sm { font-size: 14px; color: var(--dark-text); }
+
+.qr-placeholder {
+    width: 120px;
+    height: 120px;
+    background: #eee;
+    border: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    border-radius: 8px;
+}
+
+/* =========================================
+   4. RIGHT COL: FORM
+   ========================================= */
+.donation-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 20px;
+}
+
+.form-heading {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--secondary-violet);
+    margin-bottom: 20px;
+    margin-top: 8px;
+}
+
+.amount-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.amount-btn {
+    padding: 12px 0;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--body-text);
+    transition: 0.2s;
+}
+
+.amount-btn:hover { border-color: var(--primary-green); color: var(--primary-green); }
+
+.amount-btn.active {
+    background: var(--primary-green);
+    color: white;
+    border-color: var(--primary-green);
+}
+
+.frequency-toggle {
+    display: flex;
+    background: #f1f1f1;
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 20px;
+}
+
+.freq-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--body-text);
+}
+
+.freq-btn.active {
+    background: var(--white);
+    color: var(--primary-green);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-main);
+}
+
+.form-input:focus {
+    border-color: var(--primary-green);
+    outline: none;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--body-text);
+    margin-bottom: 20px;
+}
+
+.btn-full-width {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.secure-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* Toast Notification */
+.toast {
+    visibility: hidden;
+    min-width: 250px;
+    background-color: var(--primary-green);
+    color: #fff;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    padding: 16px;
+    position: fixed;
+    z-index: 100;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 14px;
+}
+
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .donation-layout { grid-template-columns: 1fr; }
+    .bank-details-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 32px; }
+}
+
+/* =========================================
+   NAVIGATION STYLES
+========================================== */
+.main-header {
+	background-color: transparent;
+	padding-top: 25px;
+	padding-bottom: 10px;
+	position: relative;
+	z-index: 1000;
+}
+
+/* Floating White Box */
+.header-box {
+	background-color: var(--white);
+	border-radius: 16px;
+	padding: 15px 30px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+	position: relative;
+}
+
+/* Logo Styling */
+.logo-text {
+	font-size: 22px;
+	font-weight: 400;
+	/* Made bolder to match Home Page design */
+	color: #222;
+	letter-spacing: -0.5px;
+}
+
+.logo-green {
+	color: #34652c;
+	font-style: italic;
+	font-weight: 600;
+}
+
+/* Desktop Menu Links */
+.main-nav ul {
+	list-style: none;
+	display: flex;
+	gap: 35px;
+}
+
+.main-nav a {
+	text-decoration: none;
+	color: var(--nav-text);
+	font-size: 15px;
+	font-weight: 400;
+	transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+	color: var(--primary-green);
+	font-weight: 500;
+}
+
+/* Mobile Elements (Hidden on Desktop) */
+.mobile-donate {
+	display: none;
+}
+
+.mobile-toggle {
+	display: none;
+	flex-direction: column;
+	gap: 5px;
+	cursor: pointer;
+}
+
+.mobile-toggle span {
+	width: 25px;
+	height: 3px;
+	background-color: #1a1a3a;
+	transition: 0.3s ease;
+}
+
+/* --- RESPONSIVE / MOBILE MENU LOGIC --- */
+@media (max-width: 900px) {
+	/* 1. Hide Desktop CTA */
+	.header-cta {
+		display: none;
+	}
+
+	/* 2. Show Hamburger Icon */
+	.mobile-toggle {
+		display: flex;
+	}
+
+	/* 3. Style the Dropdown Menu */
+	.main-nav {
+		display: none;
+		/* Hidden by default */
+		position: absolute;
+		top: 85px;
+		/* Pushes it slightly below the white box */
+		left: 0;
+		right: 0;
+		background-color: var(--white);
+		border-radius: 16px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		padding: 30px;
+		z-index: 99;
+	}
+
+	/* 4. State when Open (Added via JS) */
+	.main-nav.active {
+		display: flex;
+		flex-direction: column;
+		animation: slideDown 0.3s ease forwards;
+	}
+
+	.main-nav ul {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+		width: 100%;
+	}
+
+	.main-nav a {
+		font-size: 15px;
+	}
+
+	/* 5. Mobile Donate Button */
+	.mobile-donate {
+		display: block;
+		width: 100%;
+		margin-top: 10px;
+	}
+
+	.mobile-donate .btn {
+		width: 100%;
+		display: block;
+		text-align: center;
+	}
+
+	/* 6. Hamburger Animation (Turns into X) */
+	.mobile-toggle.active span:nth-child(1) {
+		transform: rotate(45deg) translate(5px, 6px);
+	}
+
+	.mobile-toggle.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.mobile-toggle.active span:nth-child(3) {
+		transform: rotate(-45deg) translate(5px, -6px);
+	}
+}
+
+@keyframes slideDown {
+	from {
+		opacity: 0;
+		transform: translateY(-10px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.btn {
+	padding: 12px 18px;
+	border-radius: 8px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	white-space: nowrap;
+	color: var(--Secondary-Deep-Violet, #1e0a52);
+	font-style: normal;
+	font-weight: 500;
+	line-height: 100%;
+}
+
+.btn-primary {
+	border-radius: 10   px;
+	background: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
+	color: var(--white);
+	border: 1px solid;
+}
+
+.btn-outline {
+	color: var(--dark-text);
+	border-radius: 14px;
+	border: 1px solid var(--Primary-Periwinkle, #cccce9);
+	background: var(--Primary-White, #fff);
+}
+
+.btn-outline:hover {
+	border-color: var(--primary-green);
+	color: var(--primary-green);
+	background-color: var(--white);
+}
+
+.mobile-donate,
+.mobile-toggle {
+	display: none;
+}
+
+@media (max-width: 900px) {
+	.main-nav {
+		display: none;
+		position: absolute;
+		top: 80px;
+		left: 0;
+		right: 0;
+		background-color: var(--white);
+		border-radius: 16px;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		padding: 30px;
+		z-index: 99;
+	}
+
+	.main-nav.active {
+		display: block;
+	}
+
+	.main-nav ul {
+		flex-direction: column;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.header-cta {
+		display: none;
+	}
+
+	.mobile-donate {
+		display: block;
+	}
+
+	.mobile-toggle {
+		display: flex;
+		flex-direction: column;
+		gap: 5px;
+		cursor: pointer;
+	}
+
+	.mobile-toggle span {
+		width: 25px;
+		height: 3px;
+		background: #333;
+	}
+}
+
+
+/* =========================================
+   FOOTER SECTION
+========================================== */
+footer {
+	background-color: var(--white);
+	padding: 40px 0 40px;
+	margin-top: 40px;
+	border-top: 1px solid #f0f0f0;
+}
+
+/* --- 1. LINKS SECTION (With Vertical Lines) --- */
+.footer-top {
+	margin-bottom: 60px;
+}
+
+.footer-links-area {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.link-col {
+	flex: 1;
+	text-align: center;
+	padding: 0 20px;
+
+	/* THE VERTICAL GREEN LINE */
+	border-right: 1px solid #599553;
+}
+
+/* Remove the line from the last column */
+.link-col:last-child {
+	border-right: none;
+}
+
+.link-col h4 {
+	color: var(--dark-text); /* Or Green if you prefer */
+	font-size: 18px;
+	margin-bottom: 30px;
+	font-weight: 500;
+}
+
+.link-col ul {
+	list-style: none;
+	padding: 0;
+}
+
+.link-col ul li {
+	margin-bottom: 18px;
+}
+
+.link-col a,
+.contact-info li {
+	text-decoration: none;
+	color: var(--body-text);
+	font-size: 16px;
+	transition: color 0.2s;
+}
+
+.link-col a:hover {
+	color: var(--primary-green);
+}
+
+/* Contact List Specifics */
+.contact-info li {
+	margin-bottom: 18px;
+	display: block;
+}
+
+/* --- 2. BOTTOM GREEN BANNER (More Space) --- */
+.footer-banner {
+	position: relative;
+	overflow: hidden;
+	background-color: #4a8047; /* The exact green shade */
+	border-radius: 50px;
+
+	/* INCREASED PADDING (More Space) */
+	padding: 80px 60px;
+
+	color: #fff;
+	margin-top: 40px;
+}
+
+/* Background Lines */
+.footer-line {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	width: auto;
+	z-index: 1;
+	pointer-events: none;
+	opacity: 0.8;
+}
+.line-left {
+	left: 0;
+	object-position: left center;
+}
+.line-right {
+	right: 0;
+	object-position: right center;
+}
+
+/* Content Layout */
+.banner-content {
+	position: relative;
+	z-index: 2;
+	display: flex;
+	align-items: center; /* Vertically center everything */
+	justify-content: space-between;
+	width: 100%;
+}
+
+/* Left: Copyright */
+.copyright-text {
+	flex: 1;
+	font-size: 14px;
+	opacity: 0.9;
+	text-align: left;
+}
+.footer-lg-1 {
+	color: #fff;
+	text-align: center;
+	font-size: 24px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.footer-lg-1 span {
+	color: #fff;
+	font-size: 24px;
+	font-style: italic;
+	font-weight: 600;
+	line-height: normal;
+}
+/* Center: Brand Stack */
+.brand-center {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 30px; /* Space between Logo and Socials */
+}
+
+.footer-logo-white {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.logo-icon {
+	font-size: 32px;
+	color: #fff;
+}
+
+/* Social Icons */
+.banner-socials {
+	display: flex;
+	gap: 12px;
+}
+
+.social-circle {
+	width: 40px;
+	height: 40px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #fff;
+	transition: 0.3s;
+	font-size: 16px;
+	text-decoration: none;
+}
+
+.social-circle:hover {
+	background-color: #fff;
+	color: #4a8047;
+	transform: translateY(-2px);
+}
+
+/* Right: Subscribe Form */
+.subscribe-wrapper {
+	flex: 1;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.banner-form {
+	background: #fff;
+	padding: 6px;
+	border-radius: 50px;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	max-width: 420px; /* Slightly wider */
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.input-with-icon {
+	display: flex;
+	align-items: center;
+	flex: 1;
+	gap: 12px;
+}
+
+.input-icon {
+	color: #1e0e4b;
+	font-size: 18px;
+}
+
+.banner-form input {
+	border: none;
+	outline: none;
+	width: 100%;
+	font-family: var(--font-main);
+	color: #333;
+	font-size: 15px;
+	background: transparent;
+}
+
+.banner-form button {
+	background-color: #4a8047;
+	color: #fff;
+	border: none;
+	padding: 12px 30px;
+	border-radius: 40px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: 0.3s;
+	white-space: nowrap;
+	margin: 4px;
+}
+
+.banner-form button:hover {
+	background-color: #386136;
+}
+
+/* =========================================
+   RESPONSIVE FOOTER
+========================================== */
+@media (max-width: 1024px) {
+	.banner-content {
+		flex-direction: column;
+		gap: 50px;
+		text-align: center;
+	}
+
+	.brand-center {
+		order: 1;
+	}
+	.subscribe-wrapper {
+		order: 2;
+		width: 100%;
+		justify-content: center;
+	}
+	.copyright-text {
+		order: 3;
+		text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+	/* Stack links and remove lines on mobile */
+	.footer-links-area {
+		flex-direction: column;
+		gap: 40px;
+	}
+
+	.link-col {
+		border-right: none; /* Remove vertical lines on mobile */
+		border-bottom: 1px solid #eee; /* Optional: Add horizontal lines instead */
+		padding-bottom: 30px;
+	}
+
+	.link-col:last-child {
+		border-bottom: none;
+		padding-bottom: 0;
+	}
+
+	.footer-banner {
+		padding: 60px 20px;
+		border-radius: 30px;
+		margin: 0 10px;
+		margin-top: 20px;
+	}
+
+	.banner-form {
+		flex-direction: column;
+		background: transparent;
+		box-shadow: none;
+		gap: 15px;
+	}
+
+	.banner-form .input-with-icon {
+		background: #fff;
+		width: 100%;
+		padding: 15px 20px;
+		border-radius: 50px;
+	}
+
+	.banner-form button {
+		width: 100%;
+		padding: 15px;
+		background-color: #fff;
+		color: #4a8047;
+		margin: 0;
+	}
+	.line-left {
+		display: none;
+	}
+	.line-right {
+		display: none;
+	}
+	footer {
+		padding: 40px;
+	}
+	.link-col ul li {
+		margin-bottom: 18px;
+	}
+}
+
+/* =========================================
+   7. RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+	.f-hero-wrapper {
+		flex-direction: column;
+		text-align: center;
+		gap: 40px;
+	}
+
+	.f-hero-text {
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+	.f-hero-image {
+		justify-content: center;
+	}
+	.f-hero-text h1 {
+		font-size: 36px;
+	}
+
+	.faq-layout {
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.faq-title-col h2 {
+		font-size: 42px;
+		text-align: center;
+	}
+
+	.faq-header {
+		flex-direction: column;
+		gap: 20px;
+		text-align: center;
+		align-items: center;
+	}
+
+	.faq-desc {
+		max-width: 100%;
+	}
+
+	.form-card {
+		padding: 40px;
+	}
+}
+
+@media (max-width: 768px) {
+	.f-hero-wrapper {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	/* .f-hero-image {
+		order: -1;
+	} */
+
+	/* Image on top */
+	.form-row-2 {
+		flex-direction: column;
+		gap: 20px;
+	}
+
+	.form-card {
+		padding: 25px;
+	}
+
+	.form-title {
+		font-size: 32px;
+	}
+
+	.pills-row {
+		flex-direction: column;
+	}
+
+	.footer-flex {
+		flex-direction: column;
+	}
+
+	.footer-links {
+		flex-direction: column;
+		gap: 30px;
+	}
+
+	.footer-btm {
+		flex-direction: column-reverse;
+		gap: 20px;
+	}
+
+	.social-icons {
+		justify-content: center;
+	}
+}
+
+/* --- CLEANER COPY & ACCORDION STYLES --- */
+
+/* Wrapper for PayPal/Zelle rows */
+.simple-flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* The Clickable Text Area */
+.copy-trigger {
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 0;
+    transition: opacity 0.2s;
+}
+
+.copy-trigger:hover .copy-icon {
+    color: var(--primary-green);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.copy-trigger:hover .value-text {
+    color: var(--primary-green); /* Optional: text turns green on hover */
+}
+
+/* Labels (Small gray text) */
+.label-tiny {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin-bottom: 2px;
+    font-weight: 600;
+}
+
+/* The Data Text */
+.value-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-text);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-main);
+    transition: color 0.2s;
+}
+
+.value-text.no-copy {
+    cursor: default;
+}
+
+/* The Icon */
+.copy-icon {
+    font-size: 14px;
+    color: #ccc; /* Subtle gray by default */
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+/* Small Button for PayPal */
+.btn-mini-primary {
+    background-color: var(--primary-green);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 8px; /* Pill shape */
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.3s;
+    white-space: nowrap;
+}
+
+.btn-mini-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* QR Placeholder styling */
+.qr-mini {
+    font-size: 12px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #f0f0f0;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+/* Bank Grid Layout */
+.bank-grid-clean {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px 30px; /* Row gap 20px, Col gap 30px */
+}
+
+.bank-item {
+    position: relative;
+}
+
+.bank-item.full-width {
+    grid-column: span 2;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed #eee;
+}
+
+/* Responsive adjust for mobile */
+@media (max-width: 600px) {
+    .simple-flex-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .bank-grid-clean {
+        grid-template-columns: 1fr; /* 1 column on mobile */
+    }
+    
+    .value-text {
+        font-size: 16px;
+    }
+}
+.zelle-qr-container {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid #eee;
+    width: fit-content; /* Only as wide as the image */
+}
+
+.zelle-qr-img {
+    width: 150px;       /* Good size for scanning */
+    height: 150px;
+    object-fit: contain;
+    display: block;
+}
+
+/* =========================================
+   RIGHT COL: FORM STYLING
+   ========================================= */
+.donation-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.08); /* Soft shadow */
+    position: sticky;
+    top: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.form-heading {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--secondary-violet); /* Deep Blue/Violet */
+    margin-bottom: 25px;
+    margin-top: 8px;
+}
+
+/* --- Amount Grid --- */
+.amount-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.amount-btn {
+    padding: 14px 0;
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #666;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    font-family: var(--font-main);
+}
+
+.amount-btn:hover {
+    border-color: var(--primary-green);
+    color: var(--primary-green);
+    background: #f9fff9;
+}
+
+/* Active State (Green Background) */
+.amount-btn.active {
+    background-color: #599553; /* iCodeGuru Green */
+    color: white;
+    border-color: #599553;
+    box-shadow: 0 4px 10px rgba(89, 149, 83, 0.3);
+    font-weight: 400;
+}
+
+/* --- Custom Amount Input --- */
+.custom-amount-wrapper {
+    margin-bottom: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.input-prefix-group {
+    position: relative;
+}
+
+.input-prefix-group .prefix {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-green);
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.custom-field {
+    padding-left: 35px !important; /* Space for $ sign */
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Checkbox --- */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--body-text);
+    margin-bottom: 25px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    accent-color: var(--primary-green); /* Makes the checkmark green */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* --- Frequency Toggle (Pill Shape) --- */
+.frequency-toggle {
+    display: flex;
+    background: #f0f0f0; /* Gray background */
+    border-radius: 8px;
+    padding: 5px;
+    margin-bottom: 25px;
+    border: 1px solid #eaeaea;
+}
+
+.freq-btn {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #888;
+    transition: all 0.3s ease;
+    font-family: var(--font-main);
+}
+
+/* Active Toggle (White with Green Text) */
+.freq-btn.active {
+    background: #ffffff;
+    color: var(--primary-green);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- Inputs --- */
+.input-label {
+    font-weight: 500;
+    color: var(--dark-text);
+    font-size: 15px;
+}
+
+.sub-heading {
+    font-size: 18px;
+    color: var(--secondary-violet);
+    font-weight: 400;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-full-width {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 6px;
+}
+
+/* =========================================
+   STEP 2: PAYMENT & BILLING STYLES
+   ========================================= */
+
+/* --- Toggles (Debit, Credit, Individual, etc) --- */
+.payment-method-toggles, .billing-toggles {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.pm-btn {
+    flex: 1;
+    padding: 14px;
+    background: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-weight: 400;
+    color: #666;
+    cursor: pointer;
+    font-family: var(--font-main);
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.pm-btn:hover { background: #d9d9d9; }
+
+/* ACTIVE STATE = GREEN */
+.pm-btn.active {
+    background-color: #599553 !important;
+    color: white !important;
+    border-color: #599553 !important;
+    box-shadow: 0 4px 12px rgba(89, 149, 83, 0.2);
+}
+
+.pm-btn-block {
+    width: 100%;
+    padding: 14px;
+    background: #e6e6e6;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-weight: 400;
+    cursor: pointer;
+    color: #666;
+    font-size: 15px;
+    transition: all 0.3s;
+        margin-bottom: 15px;
+}
+
+.pm-btn-block.active {
+    background-color: #599553 !important;
+    color: white !important;
+    border-color: #599553 !important;
+}
+
+/* --- Input Fields & Icons --- */
+.form-group {
+    margin-bottom: 15px; /* Consistent spacing */
+}
+
+.form-input {
+    width: 100%;
+    height: 50px; /* Enforce height */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: var(--font-main);
+    font-size: 15px;
+    color: #333;
+    background: #fff;
+    transition: border 0.3s;
+}
+
+.form-input:focus {
+    border-color: var(--primary-green);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(89, 149, 83, 0.1);
+}
+
+/* WRAPPER FOR ICONS */
+.input-with-icon, .select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* ICON POSITIONING */
+.input-with-icon i,
+.select-wrapper i.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #599553; /* Green Icon */
+    font-size: 16px;
+    pointer-events: none;
+    z-index: 10;
+    width: 20px; /* Fixed width for alignment */
+    text-align: center;
+}
+
+/* PADDING FOR TEXT INSIDE INPUT */
+.form-input.pl-icon {
+    padding-left: 50px; /* Space for icon */
+}
+
+/* CARD EXTRAS (MM/YY CVC) */
+.card-extras {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #bbb;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+    letter-spacing: 0.5px;
+}
+
+/* --- Split Columns (Responsive) --- */
+.split-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50/50 Split */
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+/* Custom Dropdown Arrow */
+select.form-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 10px auto;
+    cursor: pointer;
+}
+
+/* --- Final Donate Button --- */
+.btn-donate-final {
+    background: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
+    color: var(--white);
+    border: 1px solid;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 3px;
+    border-radius: 6px;
+    padding: 16px;
+    width: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    transition: opacity 0.3s;
+}
+.btn-donate-final:hover { opacity: 0.9; }
+
+/* Back Button */
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.back-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+    padding: 0;
+}
+.back-btn:hover { color: var(--primary-green); }
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 600px) {
+    .split-inputs {
+        grid-template-columns: 1fr; /* Stack vertically on mobile */
+        gap: 15px;
+    }
+
+    .payment-method-toggles {
+        gap: 10px;
+    }
+
+    .pm-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
+
+/* --- Error Message Styling --- */
+.error-message {
+    color: #d9534f; /* Red */
+    font-size: 13px;
+    margin-top: 6px;
+    font-weight: 500;
+    animation: fadeIn 0.3s ease;
+}
+
+/* State when input has error */
+.form-input.input-error {
+    border-color: #d9534f !important;
+    background-color: #fff8f8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-3px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   FULL WIDTH MOBILE FOOTER FIX
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    footer{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+
+    .footer-banner {
+        width: 100% !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+        padding: 50px 20px !important;
+        box-shadow: none !important;
+    }
+    .banner-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 40px !important;
+    }
+
+    .brand-center {
+        order: 1;
+        width: 100% !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .banner-socials {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+
+    .subscribe-wrapper {
+        order: 2;
+        width: 100% !important;
+    }
+
+    .banner-form {
+        background-color: transparent !important;
+        padding: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    .input-with-icon {
+        background-color: #fff !important;
+        border-radius: 50px !important;
+        padding: 15px 20px !important;
+        width: 100% !important;
+        margin: 0 !important;
+        border: none !important;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+    }
+
+    .banner-form input {
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 16px !important; 
+    }
+
+    .banner-form button {
+        background-color: #FFF !important; 
+        color: var(--primary-green) !important;
+        width: 100% !important;
+        padding: 15px !important;
+        border-radius: 50px !important;
+        margin: 0 !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+    }
+
+    .copyright-text {
+        order: 3;
+        font-size: 13px !important;
+        opacity: 0.7;
+    }
+}
+
+
+@media (max-width:350px) {
+    .fa-envelope:before{
+        display: none;
+    }
+}
+
+/* --- STATS ICONS STYLING --- */
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    /* Light Greenish/Grey Background */
+    background-color: #f0f4f0; 
+    border-radius: 50%;
+    
+    /* Center the icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    /* Transition for hover effects (optional) */
+    transition: all 0.3s ease;
+}
+
+.stat-icon i {
+    font-size: 22px; /* Icon Size */
+    color: var(--primary-green); /* Your Brand Green (#599553) */
+}
