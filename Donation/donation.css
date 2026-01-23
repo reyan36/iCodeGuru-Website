@@ -1460,9 +1460,6 @@ footer {
 }
 
 /* PADDING FOR TEXT INSIDE INPUT */
-.form-input.pl-icon {
-    padding-left: 50px; /* Space for icon */
-}
 
 /* CARD EXTRAS (MM/YY CVC) */
 .card-extras {
