@@ -433,7 +433,7 @@ body {
 
 .main-nav a {
 	text-decoration: none;
-	color: var(--nav-text);
+	color: #666666;
 	font-size: 15px;
 	font-weight: 400;
 	transition: color 0.3s;
@@ -563,7 +563,7 @@ body {
 }
 
 .btn-primary {
-	border-radius: 10   px;
+	border-radius: 14px;
 	background: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
 	color: var(--white);
 	border: 1px solid;
@@ -843,6 +843,9 @@ footer {
 	align-items: center;
 	flex: 1;
 	gap: 12px;
+
+
+    padding-left: 20px;
 }
 
 .input-icon {
@@ -1443,7 +1446,6 @@ footer {
 }
 
 /* ICON POSITIONING */
-.input-with-icon i,
 .select-wrapper i.input-icon {
     position: absolute;
     left: 15px;

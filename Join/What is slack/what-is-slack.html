@@ -46,14 +46,14 @@
 
 							<!-- MOBILE-ONLY DONATE BUTTON -->
 							<li class="mobile-donate">
-								<button type="button" class="btn btn-primary">Donate</button>
+								<a href="../../Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
 							</li>
 						</ul>
 					</nav>
 
 					<!-- DESKTOP DONATE BUTTON -->
 					<div class="header-cta">
-						<button type="button" class="btn btn-primary">Donate</button>
+						<a href="../../Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
 					</div>
 
 					<!-- HAMBURGER ICON -->
@@ -278,7 +278,7 @@
                             <li><a href="../Feedback/feedback.html">Feedback</a></li>
                             <li><a href="../Feedback/feedback.html">Need Help?</a></li>
                             <li><a href="../Feedback/feedback.html">Contact</a></li>
-                            <li><a href="#donationModal">Donate</a></li>
+                            <li><a href="../../Donation/donation.html">Donate</a></li>
         </ul>
     </div>
     <div class="link-col">
@@ -338,152 +338,7 @@
 
     </div>
 </footer>
-	   <!-- =========================================
-     DONATION MODAL
-========================================== -->
-<div id="donationModal" class="modal-overlay">
-    <div class="modal-container">
-        <button class="modal-close" id="closeModal">&times;</button>
-        
-        <!-- HEADER (Clean, Text Only) -->
-        <div class="modal-header">
-            <div class="header-content">
-                <h2>Make a Donation</h2>
-                <p class="legal-text">iCodeGuru is registered as a nonprofit organization in California, USA, and received Tax Exempt Status 501(c)(3) from Internal Revenue Services (IRS) in 2024, with EIN: 99-2776198.</p>
-                <p class="legal-text">iCodeGuru gratefully accepts Zakat and Sadaqah contributions on behalf of deserving students. Your support helps us continue our mission.</p>
-            </div>
-        </div>
 
-        <!-- TABS (Icons removed, space left for you) -->
-        <div class="donation-tabs">
-            <button class="tab-btn active" onclick="openTab(event, 'paypal')">
-                <!-- PASTE PAYPAL ICON HERE -->
-                <img src="../Images/Paypal.png" alt="">
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'zelle')">
-                <!-- PASTE ZELLE ICON HERE -->
-                <img src="../Images/Zelle.png" alt="">
-            </button>
-            <button class="tab-btn" onclick="openTab(event, 'bank')">
-                Bank Transfer
-            </button>
-        </div>
-
-        <!-- 1. PAYPAL CONTENT -->
-        <div id="paypal" class="tab-content active-content">
-            <h3>Donate via PayPal</h3>
-            <p class="donate-label">PayPal ID: <span class="highlight">donations@icode.guru</span></p>
-            <p class="donate-instruction">To complete your donation, click the button below to donate via PayPal:</p>
-            <a href="https://www.paypal.com/donate/?hosted_button_id=JFCWM7HQ6YS4N" target="_blank" class="cta-btn">Donate with PayPal</a>
-        </div>
-
-        <!-- 2. ZELLE CONTENT (With QR Code) -->
-        <div id="zelle" class="tab-content">
-            <h3>Donate via Zelle</h3>
-            <p class="donate-instruction">Scan the QR code or send to the ID below:</p>
-            
-            <!-- ZELLE QR CODE -->
-            <div class="zelle-qr-container">
-                <!-- Make sure to name your Zelle QR image 'qrcode.png' or update this path -->
-                <img src="../Images/Qr.png" alt="Zelle QR Code" class="zelle-qr-img">
-            </div>
-
-            <div class="copy-row centered">
-                <span class="donate-label">Zelle ID:</span>
-                <span class="highlight">donations@icode.guru</span>
-            </div>
-
-            <p class="small-note">In the message, please include your name and donation amount.</p>
-            <a href="https://www.zelle.com/go/zelle" target="_blank" class="cta-btn">Open Zelle App</a>
-        </div>
-
-        <!-- 3. BANK CONTENT (Full Details) -->
-        <div id="bank" class="tab-content">
-            <h3>Donate via Bank Transfer</h3>
-            <p class="donate-instruction">To complete your donation, please transfer your donation to the following bank account:</p>
-            
-            <div class="bank-details-grid">
-                <!-- Account Name -->
-                <div class="bank-row">
-                    <span class="b-label">Account Name:</span>
-                    <span class="b-value">iCodeGuru</span>
-                    <button class="copy-btn" onclick="copyText('iCodeGuru')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Account Number -->
-                <div class="bank-row">
-                    <span class="b-label">Account Number:</span>
-                    <span class="b-value">231-069-2419</span>
-                    <button class="copy-btn" onclick="copyText('2310692419')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Domestic Wires -->
-                <div class="bank-row">
-                    <span class="b-label">For Domestic Wires:</span>
-                    <span class="b-value">Wire Routing Transit Number (RTN/ABA) 121000248</span>
-                    <button class="copy-btn" onclick="copyText('121000248')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- International -->
-                <div class="bank-row">
-                    <span class="b-label">For International:</span>
-                    <span class="b-value">SWIFT/BIC code WFBIUS6S</span>
-                    <button class="copy-btn" onclick="copyText('WFBIUS6S')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Bank Name -->
-                <div class="bank-row">
-                    <span class="b-label">Bank Name:</span>
-                    <span class="b-value">Wells Fargo Bank, N.A.</span>
-                    <button class="copy-btn" onclick="copyText('Wells Fargo Bank, N.A.')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Bank Address -->
-                <div class="bank-row">
-                    <span class="b-label">Bank Address, City & State:</span>
-                    <span class="b-value">420 Montgomery San Francisco, CA 94104 (regardless of where your account is located)</span>
-                    <button class="copy-btn" onclick="copyText('420 Montgomery San Francisco, CA 94104')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- BNF Field -->
-                <div class="bank-row">
-                    <span class="b-label">BNF/Field 4200 Beneficiary Acct. #:</span>
-                    <span class="b-value">Your complete Wells Fargo account number including leading zeros</span>
-                    <button class="copy-btn" onclick="copyText('Your complete Wells Fargo account number')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- Beneficiary Name -->
-                <div class="bank-row">
-                    <span class="b-label">Beneficiary Account Name And Address:</span>
-                    <span class="b-value">The name and address of your account as it appears on your statement</span>
-                    <button class="copy-btn" onclick="copyText('The name and address of your account')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-                <!-- CHIPS -->
-                <div class="bank-row">
-                    <span class="b-label">CHIPS Participant:</span>
-                    <span class="b-value">0407</span>
-                    <button class="copy-btn" onclick="copyText('0407')">
-                        <img src="../Images/Copy Icon.png" alt=""> 
-                    </button>
-                </div>
-            </div>
-            
-            <p class="legal-text small-note">In the reference, please include your name and donation amount.</p>
-        </div>
-    </div>
-</div>
-
-<!-- TOAST (Green Background) -->
-<div id="customToast">Copied successfully</div>
     <script src="script.js"></script>
 </body>
 </html>
