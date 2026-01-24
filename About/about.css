@@ -2180,3 +2180,98 @@ html, body {
         margin: 10px 0 !important;
     }
 }
+
+/* =========================================
+   VISUALS SECTION (MOVED TO RIGHT)
+   ========================================= */
+
+/* 1. The Container */
+.who-visuals {
+    flex: 1;
+    position: relative;
+    height: 450px; 
+    display: flex;
+    /* CHANGE: Aligns the whole group to the right */
+    justify-content: flex-end; 
+    align-items: center;
+}
+
+.bubbles-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* Create a max-width so they stay grouped */
+    max-width: 600px; 
+    margin-left: auto; /* Pushes container to the right */
+}
+
+/* 2. The Background Lines */
+.bg-lines {
+    position: absolute;
+    right: -100px; /* Pushes lines further right off-screen style */
+    top: -10%;
+    opacity: 0.5;
+    height: 120%;
+    width: auto;
+}
+
+/* 3. The Bubbles (Updated Positioning) */ 
+
+/* Big Top Bubble (Man in Green) */
+.b1 {
+    width: 180px;
+    height: 180px;
+    top: 0;
+    /* CHANGE: Anchored to Right instead of Left */
+    right: 10%; 
+    z-index: 2;
+}
+
+/* Middle Small Bubble (Green BG) */
+.b2 {
+    width: 100px;
+    height: 100px;
+    top: 45%;
+    /* CHANGE: Moved to Right */
+    right: 0; 
+    z-index: 1;
+}
+
+/* Bottom Left of Cluster (Man in Shirt) */
+.b3 {
+    width: 130px;
+    height: 130px;
+    bottom: 27%;
+    /* CHANGE: Positioned relative to the cluster center */
+    right: 45%; 
+    z-index: 3;
+}
+
+/* Bottom Right (Man in Stripes) */
+.b4 {
+    width: 150px;
+    height: 150px;
+    bottom: 30px;
+    /* CHANGE: Anchored Right */
+    right: 15%; 
+    z-index: 4;
+}
+
+/* --- RESPONSIVE FIX (Keep them centered on Mobile) --- */
+@media (max-width: 900px) {
+    .who-visuals {
+        justify-content: center; /* Back to center for mobile */
+        margin-top: 40px;
+    }
+    
+    .bubbles-container {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    /* Reset positions for small screens */
+    .b1 { right: 30%; top: 0; }
+    .b2 { right: 5%; top: 30%; }
+    .b3 { right: 60%; bottom: 10%; }
+    .b4 { right: 20%; bottom: 0; }
+}

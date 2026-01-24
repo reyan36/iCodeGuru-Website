@@ -22,11 +22,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const amountBtns = document.querySelectorAll(".amount-btn");
     const customAmountBox = document.getElementById("custom-amount-box");
     const customInput = document.getElementById("custom-input");
-    const feeCheckbox = document.getElementById("coverFee");
-    const feeDisplay = document.getElementById("fee-display");
+    // Removed feeCheckbox
     const toStep2Btn = document.getElementById("to-step-2");
     const freqBtns = document.querySelectorAll(".freq-btn");
-    const designationSelect = document.getElementById("designation-select"); // New Variable
+    const designationSelect = document.getElementById("designation-select");
 
     // --- STEP 2 ELEMENTS ---
     const step2 = document.getElementById("step-2");
@@ -48,38 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // State Data
     let currentAmount = 165;
-    let isFeeCovered = true;
+    // Removed isFeeCovered and processingRate variables
     let currentFreq = "One Time"; // Default
-    const processingRate = 0.029;
 
     // --- CALCULATION LOGIC ---
-    function updateCalculations() {
+    // Simplified: Just ensures amount is a valid number
+    function getCleanAmount() {
         let amount = parseFloat(currentAmount);
-        
-        // Safety check for NaN
         if (isNaN(amount) || amount < 0) {
             amount = 0;
         }
-
-        // Calculate Fee
-        let fee = amount * processingRate;
-        let formattedFee = fee.toFixed(2);
-
-        // Update Checkbox Text
-        if(feeDisplay) feeDisplay.textContent = `$${formattedFee}`;
-
-        // Calculate Total (Internal logic for Step 2 transfer)
-        let total = amount;
-        if (feeCheckbox && feeCheckbox.checked) {
-            total += fee;
-        }
-    }
-
-    function getTotal() {
-        let amount = parseFloat(currentAmount);
-        if (isNaN(amount) || amount < 0) amount = 0;
-        let fee = amount * processingRate;
-        return isFeeCovered ? (amount + fee) : amount;
+        return amount;
     }
 
     // --- EVENT LISTENERS: STEP 1 ---
@@ -103,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 customAmountBox.style.display = "none";
                 currentAmount = parseFloat(btn.dataset.amount);
             }
-            updateCalculations();
         });
     });
 
@@ -111,17 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if(customInput) {
         customInput.addEventListener("input", (e) => {
             currentAmount = e.target.value;
-            updateCalculations();
         });
     }
 
-    // 3. Fee Checkbox Toggle
-    if(feeCheckbox) {
-        feeCheckbox.addEventListener("change", (e) => {
-            isFeeCovered = e.target.checked;
-            updateCalculations();
-        });
-    }
+    // 3. (Fee Checkbox Listener REMOVED)
 
     // 4. Frequency Toggles
     freqBtns.forEach(btn => {
@@ -132,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-// 5. Designation Change Listener (Real-time validation)
+    // 5. Designation Change Listener (Real-time validation)
     if(designationSelect) {
         designationSelect.addEventListener("change", () => {
             const errorMsg = document.getElementById("designation-error");
@@ -151,9 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toStep2Btn.addEventListener("click", () => {
             
             // VALIDATION 1: Amount
-            if (currentAmount <= 0) {
-                // You can add a similar inline error for amount if you want, 
-                // for now we focus on the Designation as requested.
+            if (getCleanAmount() <= 0) {
                 alert("Please enter a valid donation amount."); 
                 if(customInput && customAmountBox.style.display !== 'none') customInput.focus();
                 return;
@@ -163,16 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const errorMsg = document.getElementById("designation-error");
 
             if (designationSelect && designationSelect.value === "No Selection") {
-                
-                // 1. Add Red Border class
                 designationSelect.classList.add("input-error");
-                
-                // 2. Show Error Message Text
                 if(errorMsg) errorMsg.style.display = "block";
-                
-                // 3. Scroll slightly if needed or just focus
-                // designationSelect.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                
                 return; // STOP HERE
             } 
 
@@ -183,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
             step2.style.display = "block";
             
             // Update Donate Button Text
-            const total = getTotal().toFixed(2);
+            const total = getCleanAmount().toFixed(2);
             let freqText = currentFreq === "Monthly" ? " Monthly" : ""; 
             if(finalDonateBtn) finalDonateBtn.textContent = `$${total}${freqText}`;
             
@@ -281,8 +241,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Initialize Calculations
-    updateCalculations();
 });
 
 // --- GLOBAL COPY FUNCTION ---

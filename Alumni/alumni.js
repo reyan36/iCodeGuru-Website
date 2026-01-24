@@ -108,3 +108,25 @@ function copyText(text) {
         console.error('Failed to copy: ', err);
     });
 }
+
+// ==========================================
+    // ALUMNI CARD HOVER GLOW EFFECT
+    // ==========================================
+    const cards = document.querySelectorAll(".alumni-card");
+
+    // Check if device is desktop (to save resources on mobile)
+    if (window.matchMedia("(min-width: 1025px)").matches) {
+        
+        cards.forEach((card) => {
+            card.addEventListener("mousemove", (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                // Update CSS variables for this specific card
+                card.style.setProperty("--mouse-x", `${x}px`);
+                card.style.setProperty("--mouse-y", `${y}px`);
+            });
+        });
+        
+    }

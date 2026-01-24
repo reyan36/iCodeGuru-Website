@@ -311,9 +311,9 @@ ul {
 
 /* --- Left Column: Text --- */
 .hero-text {
-	flex: 0.9;
+	flex: 2;
 	/* Takes slightly less than half width */
-	max-width: 650px;
+	max-width: 900px;
 	padding-right: 20px;
 	/* Ensuring alignment is to the left */
 	margin-left: 0;
@@ -2057,7 +2057,7 @@ TESTIMONIALS SECTION
 	font-size: 50px;
 	font-weight: 500;
 	letter-spacing: -0.02em;
-
+	text-align: center;
 	color: #1e0a52;
 }
 

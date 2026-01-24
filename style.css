@@ -511,6 +511,7 @@ background: linear-gradient(177deg, #34652C -13.59%, #6FAB65 109.86%);
 	line-height: 84px;
 	letter-spacing: -1.98px;
 	margin-bottom: 50px;
+	text-align: center;
 }
 
 .features-grid {
@@ -645,7 +646,7 @@ background: linear-gradient(177deg, #34652C -13.59%, #6FAB65 109.86%);
 .stats-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 30px 20px;
+	gap: 30px 90px;
 }
 
 .stat-item {
