@@ -296,7 +296,7 @@ ul {
 
 #stories-hero {
 	background: var(--bg-color);
-	padding: 56px 100px 0;
+	padding: 56px 118px 0;
 }
 
 .hero-wrapper {
@@ -719,7 +719,7 @@ ul {
 	.hero-wrapper {
 		flex-direction: column; /* Stack items vertically */
 		text-align: center; /* Center align text */
-		gap: 40px;
+		gap: 20px;
 	}
 
 	.hero-text {
@@ -1515,7 +1515,7 @@ body {
 	justify-content: center; /* CENTERS the last row (the 3 videos) */
 	gap: 30px; /* Space between items */
 
-	max-width: 1250px;
+	max-width: 1050px;
 	margin: 0 auto;
 }
 
