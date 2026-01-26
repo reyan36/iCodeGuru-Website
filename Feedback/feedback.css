@@ -1094,6 +1094,12 @@ footer {
 }
 
 @media (max-width: 768px) {
+	f-hero-text{
+		padding: 5px;
+	}
+	f-hero-text p{
+		padding: 5px;
+	}
 	.f-hero-wrapper {
 		flex-direction: column;
 		text-align: center;

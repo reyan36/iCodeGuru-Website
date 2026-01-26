@@ -1,383 +1,407 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>iCodeGuru</title>
-		<link
-			href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
-			rel="stylesheet"
-		/>
-		<link rel="stylesheet" href="style.css" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-		/>
-	</head>
 
-	<body>
-		<!-- HEADER -->
-		<header class="main-header">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>iCodeGuru</title>
+	<link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header class="main-header">
+		<div class="container">
+			<div class="header-box">
+				<div class="logo">
+					<span class="logo-text">iCode<span class="logo-green">Guru</span></span>
+				</div>
+				<nav class="main-nav">
+					<ul>
+						<li><a href="#" class="active">Home</a></li>
+						<li><a href="About/about.html">About us</a></li>
+						<li><a href="Join/join.html">Join</a></li>
+						<li><a href="Courses/courses.html">Courses</a></li>
+						<li><a href="Stories/stories.html">Stories</a></li>
+						<li><a href="Alumni/alumni.html">Alumni</a></li>
+						<li><a href="Feedback/feedback.html">Feedback</a></li>
+
+						<!-- This button will only appear inside the mobile menu -->
+						<li class="mobile-donate">
+							<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
+						</li>
+					</ul>
+				</nav>
+
+				<div class="header-cta">
+					<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
+				</div>
+
+				<!-- Mobile Menu Toggle -->
+				<div class="mobile-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- HERO SECTION -->
+	<main>
+		<section id="hero">
+			<div class="container hero-container">
+				<div class="hero-content">
+					<h1>
+						Pakistan's Trusted Non-Profit Organization Helping Students Secure
+						Fully Funded Scholarships
+					</h1>
+					<p>
+						iCode Guru is a non-profit organization offering scholarship
+						guidance, visa support, free prep classes, and complete
+						study-abroad guidance.
+					</p>
+
+					<div class="hero-buttons">
+						<a href="Join/join.html"><button type="button" class="btn btn-primary heading-button">
+								Be a Part of iCodeGuru
+							</button></a>
+					</div>
+				</div>
+
+				<div class="hero-image">
+					<img src="Images/Student in graduation gown.png" alt="Student in graduation gown" />
+				</div>
+			</div>
+			<div class="bg-shape"></div>
+		</section>
+
+		<!-- WHO ARE WE (NEW DESIGN) -->
+		<section id="who-are-we-new">
 			<div class="container">
-				<div class="header-box">
-					<div class="logo">
-						<span class="logo-text"
-							>iCode<span class="logo-green">Guru</span></span
-						>
-					</div>
-					<nav class="main-nav">
-						<ul>
-							<li><a href="#" class="active">Home</a></li>
-							<li><a href="About/about.html">About us</a></li>
-							<li><a href="Join/join.html">Join</a></li>
-							<li><a href="Courses/courses.html">Courses</a></li>
-							<li><a href="Stories/stories.html">Stories</a></li>
-							<li><a href="Alumni/alumni.html">Alumni</a></li>
-							<li><a href="Feedback/feedback.html">Feedback</a></li>
+				<div class="who-card-center">
 
-							<!-- This button will only appear inside the mobile menu -->
-							<li class="mobile-donate">
-								<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
-							</li>
-						</ul>
-					</nav>
-
-					<div class="header-cta">
-						<a href="Donation/donation.html"><button type="button" class="btn btn-primary">Donate</button></a>
+					<!-- 1. Centered Header -->
+					<div class="who-header-center">
+						<h2>Who Are We?</h2>
+						<p>We believe education should be accessible to all, and we're committed to providing mentorship, resources,
+							and end-to-end support to help talented students succeed globally while enabling them to become
+							financially independent through scholarships and career opportunities.</p>
 					</div>
 
-					<!-- Mobile Menu Toggle -->
-					<div class="mobile-toggle">
-						<span></span>
-						<span></span>
-						<span></span>
+					<!-- 2. Photo Gallery Grid -->
+					<div class="who-gallery-grid">
+						<!-- ROW 1 (3 Images) -->
+						<div class="gallery-item"><img src="Images/Dr Zafar Speaking.jpg" alt="President Speaking"></div>
+						<div class="gallery-item portrait"><img src="Images/Group Photo.jpg" alt="Speaker with Mic"></div>
+						<div class="gallery-item"><img src="Images/1740835403472.jpeg" alt="Meta Sign"> </div>
+
+						<!-- ROW 2 (2 Images) -->
+						<div class="gallery-item wide"><img src="Images/Sir Rizwan Speaking.jpg" alt="Event Speaking"
+								style="object-position: center top"></div>
+						<div class="gallery-item wide"><img src="Images/Group Photo 2.jpg" alt="Group Photo"></div>
+					</div>
+
+					<!-- 3. Button -->
+					<div class="who-footer-btn">
+						<button type="button" class="btn btn-primary more-btn">More About Us</button>
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!-- ENRICHMENT SECTION -->
+		<section id="enrichment">
+			<div class="container">
+				<h2>How iCodeGuru<br />Empowers You?</h2>
+
+				<div class="features-grid">
+					<!-- 1. Guide -> Compass (Direction/Guidance) -->
+					<div class="feature-card">
+						<div class="icon-box">
+							<i class="fa-solid fa-compass"></i>
+						</div>
+						<div class="text-box">
+							<h3>Guide</h3>
+							<p>Free guidance to secure fully funded scholarships.</p>
+						</div>
+					</div>
+
+					<!-- 2. Empowerment -> Trending Up Arrow (Financial Growth/Stability) -->
+					<div class="feature-card">
+						<div class="icon-box">
+							<i class="fa-solid fa-arrow-trend-up"></i>
+						</div>
+						<div class="text-box">
+							<h3>Empowerment</h3>
+							<p>Empowering students toward financial stability.</p>
+						</div>
+					</div>
+
+					<!-- 3. Courses -> Book/Reader (Learning) -->
+					<div class="feature-card">
+						<div class="icon-box">
+							<i class="fa-solid fa-book-open-reader"></i>
+						</div>
+						<div class="text-box">
+							<h3>Courses</h3>
+							<p>Free and scholarship-focused courses.</p>
+						</div>
+					</div>
+
+					<!-- 4. Development -> File Pen (CV/Resume Editing) -->
+					<div class="feature-card">
+						<div class="icon-box">
+							<i class="fa-solid fa-file-pen"></i>
+						</div>
+						<div class="text-box">
+							<h3>Development</h3>
+							<p>CV development aligned with international standards.</p>
+						</div>
+					</div>
+
+					<!-- 5. Exposure -> Globe (Global Connection) -->
+					<div class="feature-card">
+						<div class="icon-box">
+							<i class="fa-solid fa-globe"></i>
+						</div>
+						<div class="text-box">
+							<h3>Exposure</h3>
+							<p>Career counselling & global exposure speakers.</p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</header>
+		</section>
 
-		<!-- HERO SECTION -->
-		<main>
-			<section id="hero">
-				<div class="container hero-container">
-					<div class="hero-content">
-						<h1>
-							Pakistan's Trusted Non-Profit Organization Helping Students Secure
-							Fully Funded Scholarships
-						</h1>
+		<!-- MISSION SECTION -->
+		<section id="mission">
+			<div class="container">
+				<div class="mission-card">
+					<div class="mission-image">
+						<img src="Images/HOME PAGE OUR MISSION.jpg" alt="Global Education Mission" />
+					</div>
+
+					<div class="mission-content">
+						<h2>Our Mission</h2>
 						<p>
-							iCode Guru is a non-profit organization offering scholarship
-							guidance, visa support, free prep classes, and complete
-							study-abroad guidance.
+							To make global learning opportunities accessible to every
+							learner, regardless of financial, social, or geographical
+							barriers.
 						</p>
 
-						<div class="hero-buttons">
-							<a href="Join/join.html"
-								><button type="button" class="btn btn-primary heading-button">
-									Be a Part of iCodeGuru
-								</button></a>
-						</div>
-					</div>
-
-					<div class="hero-image">
-						<img
-							src="Images/Student in graduation gown.png"
-							alt="Student in graduation gown"
-						/>
-					</div>
-				</div>
-				<div class="bg-shape"></div>
-			</section>
-
-			<!-- WHO ARE WE (NEW DESIGN) -->
-<section id="who-are-we-new">
-    <div class="container">
-        <div class="who-card-center">
-            
-            <!-- 1. Centered Header -->
-            <div class="who-header-center">
-                <h2>Who Are We?</h2>
-                <p>We believe education should be accessible to all, and we're committed to providing mentorship, resources, and end-to-end support to help talented students succeed globally while enabling them to become financially independent through scholarships and career opportunities.</p>
-            </div>
-
-            <!-- 2. Photo Gallery Grid -->
-            <div class="who-gallery-grid">
-                <!-- ROW 1 (3 Images) -->
-                <div class="gallery-item"><img src="Images/Dr Zafar Speaking.jpg" alt="President Speaking"></div>
-                <div class="gallery-item portrait"><img src="Images/Group Photo.jpg" alt="Speaker with Mic"></div>
-                <div class="gallery-item"><img src="Images/1740835403472.jpeg" alt="Meta Sign"> </div>
-                
-                <!-- ROW 2 (2 Images) -->
-                <div class="gallery-item wide"><img src="Images/Sir Rizwan Speaking.jpg" alt="Event Speaking" style="object-position: center top"></div>
-                <div class="gallery-item wide"><img src="Images/Group Photo 2.jpg" alt="Group Photo"></div>
-            </div>
-
-            <!-- 3. Button -->
-            <div class="who-footer-btn">
-                <button type="button" class="btn btn-primary more-btn">More About Us</button>
-            </div>
-
-        </div>
-    </div>
-</section>
-			<!-- ENRICHMENT SECTION -->
-			<section id="enrichment">
-				<div class="container">
-					<h2>How iCodeGuru<br />Empowers You?</h2>
-
-					<div class="features-grid">
-						<!-- 1. Guide -> Compass (Direction/Guidance) -->
-						<div class="feature-card">
-							<div class="icon-box">
-								<i class="fa-solid fa-compass"></i>
+						<div class="stats-grid">
+							<!-- 1. Students -->
+							<div class="stat-item">
+								<div class="stat-icon">
+									<i class="fa-solid fa-graduation-cap"></i>
+								</div>
+								<div class="stat-text">
+									<strong>100,000+</strong>
+									<span>Students Trained</span>
+								</div>
 							</div>
-							<div class="text-box">
-								<h3>Guide</h3>
-								<p>Free guidance to secure fully funded scholarships.</p>
-							</div>
-						</div>
 
-						<!-- 2. Empowerment -> Trending Up Arrow (Financial Growth/Stability) -->
-						<div class="feature-card">
-							<div class="icon-box">
-								<i class="fa-solid fa-arrow-trend-up"></i>
+							<!-- 2. Courses -->
+							<div class="stat-item">
+								<div class="stat-icon">
+									<i class="fa-solid fa-video"></i>
+								</div>
+								<div class="stat-text">
+									<strong>20+</strong>
+									<span>Digital Courses</span>
+								</div>
 							</div>
-							<div class="text-box">
-								<h3>Empowerment</h3>
-								<p>Empowering students toward financial stability.</p>
-							</div>
-						</div>
 
-						<!-- 3. Courses -> Book/Reader (Learning) -->
-						<div class="feature-card">
-							<div class="icon-box">
-								<i class="fa-solid fa-book-open-reader"></i>
+							<!-- 3. Communities -->
+							<div class="stat-item">
+								<div class="stat-icon">
+									<i class="fa-solid fa-users"></i>
+								</div>
+								<div class="stat-text">
+									<strong>5+</strong>
+									<span>Communities</span>
+								</div>
 							</div>
-							<div class="text-box">
-								<h3>Courses</h3>
-								<p>Free and scholarship-focused courses.</p>
-							</div>
-						</div>
 
-						<!-- 4. Development -> File Pen (CV/Resume Editing) -->
-						<div class="feature-card">
-							<div class="icon-box">
-								<i class="fa-solid fa-file-pen"></i>
-							</div>
-							<div class="text-box">
-								<h3>Development</h3>
-								<p>CV development aligned with international standards.</p>
-							</div>
-						</div>
-
-						<!-- 5. Exposure -> Globe (Global Connection) -->
-						<div class="feature-card">
-							<div class="icon-box">
-								<i class="fa-solid fa-globe"></i>
-							</div>
-							<div class="text-box">
-								<h3>Exposure</h3>
-								<p>Career counselling & global exposure speakers.</p>
+							<!-- 4. Volunteers -->
+							<div class="stat-item">
+								<div class="stat-icon">
+									<i class="fa-solid fa-hand-holding-heart"></i>
+								</div>
+								<div class="stat-text">
+									<strong>150+</strong>
+									<span>Active Volunteers</span>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</section>
+			</div>
+		</section>
+		<!-- VALUES CARDS SECTION -->
+		<section class="values-cards-section">
+			<div class="container">
+				<div class="v-card-grid">
 
-			<!-- MISSION SECTION -->
-			<section id="mission">
-				<div class="container">
-					<div class="mission-card">
-						<div class="mission-image">
-							<img
-								src="Images/HOME PAGE OUR MISSION.jpg"
-								alt="Global Education Mission"
-							/>
+					<!-- Card 1: SHARE (White) -->
+					<div class="v-card-box v-outline">
+						<div class="v-card-top">
+							<!-- Icon: Brain/Knowledge Share -->
+							<i class="fa-solid fa-brain v-icon"></i>
 						</div>
-
-						<div class="mission-content">
-							<h2>Our Mission</h2>
-							<p>
-								To make global learning opportunities accessible to every
-								learner, regardless of financial, social, or geographical
-								barriers.
-							</p>
-
-							<div class="stats-grid">
-    <!-- 1. Students -->
-    <div class="stat-item">
-        <div class="stat-icon">
-            <i class="fa-solid fa-graduation-cap"></i>
-        </div>
-        <div class="stat-text">
-            <strong>100,000+</strong>
-            <span>Students Trained</span>
-        </div>
-    </div>
-
-    <!-- 2. Courses -->
-    <div class="stat-item">
-        <div class="stat-icon">
-            <i class="fa-solid fa-video"></i>
-        </div>
-        <div class="stat-text">
-            <strong>20+</strong>
-            <span>Digital Courses</span>
-        </div>
-    </div>
-
-    <!-- 3. Communities -->
-    <div class="stat-item">
-        <div class="stat-icon">
-            <i class="fa-solid fa-users"></i>
-        </div>
-        <div class="stat-text">
-            <strong>5+</strong>
-            <span>Communities</span>
-        </div>
-    </div>
-
-    <!-- 4. Volunteers -->
-    <div class="stat-item">
-        <div class="stat-icon">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-        </div>
-        <div class="stat-text">
-            <strong>150+</strong>
-            <span>Active Volunteers</span>
-        </div>
-    </div>
-</div>
+						<div class="v-dashed-line"></div>
+						<div class="v-card-bottom">
+							<h3>Share</h3>
 						</div>
 					</div>
+
+					<!-- Card 2: LEARN (Green - Center) -->
+					<div class="v-card-box v-filled">
+						<div class="v-card-top">
+							<!-- Icon: Lightbulb/Learning -->
+							<i class="fa-solid fa-lightbulb v-icon"></i>
+						</div>
+						<div class="v-dashed-line light"></div>
+						<div class="v-card-bottom">
+							<h3>Learn</h3>
+						</div>
+					</div>
+
+					<!-- Card 3: GROW (White) -->
+					<div class="v-card-box v-outline">
+						<div class="v-card-top">
+							<!-- Icon: Growth Chart -->
+							<i class="fa-solid fa-arrow-trend-up v-icon"></i>
+						</div>
+						<div class="v-dashed-line"></div>
+						<div class="v-card-bottom">
+							<h3>Grow</h3>
+						</div>
+					</div>
+
 				</div>
-			</section>
-<!-- VALUES CARDS SECTION -->
-<section class="values-cards-section">
-    <div class="container">
-        <div class="v-card-grid">
-            
-            <!-- Card 1: SHARE (White) -->
-            <div class="v-card-box v-outline">
-                <div class="v-card-top">
-                    <!-- Icon: Brain/Knowledge Share -->
-                    <i class="fa-solid fa-brain v-icon"></i>
-                </div>
-                <div class="v-dashed-line"></div>
-                <div class="v-card-bottom">
-                    <h3>Share</h3>
-                </div>
-            </div>
+			</div>
+		</section>
+	</main>
+	<footer>
+		<div class="container">
 
-            <!-- Card 2: LEARN (Green - Center) -->
-            <div class="v-card-box v-filled">
-                <div class="v-card-top">
-                    <!-- Icon: Lightbulb/Learning -->
-                    <i class="fa-solid fa-lightbulb v-icon"></i>
-                </div>
-                <div class="v-dashed-line light"></div>
-                <div class="v-card-bottom">
-                    <h3>Learn</h3>
-                </div>
-            </div>
+			<!-- 1. TOP SECTION: LINKS -->
+			<!-- TOP LINKS -->
+			<div class="footer-links-area">
+				<div class="link-col">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="../About/about.html">About Us</a></li>
+						<li><a href="../Join/join.html">Join Us</a></li>
+						<li><a href="../Courses/courses.html">Courses</a></li>
+						<li><a href="../Alumni/alumni.html">Alumni</a></li>
+					</ul>
+				</div>
+				<div class="link-col">
+					<h4>Support</h4>
+					<ul>
+						<li><a href="../Feedback/feedback.html">Feedback</a></li>
+						<li><a href="../Feedback/feedback.html">Need Help?</a></li>
+						<li><a href="../Feedback/feedback.html">Contact</a></li>
+						<li><a href="Donation/donation.html">Donate</a></li>
+					</ul>
+				</div>
+				<div class="link-col">
+					<h4>Connect with Us</h4>
+					<ul class="contact-info">
+						<li><a href="mailto:info@icodeguru.com">info@icode.guru</a></li>
+						<li>San Jose, CA, USA</li>
+					</ul>
+				</div>
+			</div>
 
-            <!-- Card 3: GROW (White) -->
-            <div class="v-card-box v-outline">
-                <div class="v-card-top">
-                    <!-- Icon: Growth Chart -->
-                    <i class="fa-solid fa-arrow-trend-up v-icon"></i>
-                </div>
-                <div class="v-dashed-line"></div>
-                <div class="v-card-bottom">
-                    <h3>Grow</h3>
-                </div>
-            </div>
+			<!-- 2. BOTTOM SECTION: GREEN BANNER -->
+			<div class="footer-banner">
+				<!-- BACKGROUND LINES (Add your images here) -->
+				<img src="Images/lines-left.png " alt="" class="footer-line line-left">
+				<img src="Images/lines-right.png" alt="" class="footer-line line-right">
 
-        </div>
-    </div>
-</section>
-		</main>
-                <footer>
-    <div class="container">
-        
-        <!-- 1. TOP SECTION: LINKS -->
-<!-- TOP LINKS -->
-<div class="footer-links-area">
-    <div class="link-col">
-        <h4>Quick Links</h4>
-        <ul>
-                            <li><a href="../About/about.html">About Us</a></li>
-                            <li><a href="../Join/join.html">Join Us</a></li>
-                            <li><a href="../Courses/courses.html">Courses</a></li>
-                            <li><a href="../Alumni/alumni.html">Alumni</a></li>
-        </ul>
-    </div>
-    <div class="link-col">
-        <h4>Support</h4>
-        <ul>
-                            <li><a href="../Feedback/feedback.html">Feedback</a></li>
-                            <li><a href="../Feedback/feedback.html">Need Help?</a></li>
-                            <li><a href="../Feedback/feedback.html">Contact</a></li>
-                            <li><a href="Donation/donation.html">Donate</a></li>
-        </ul>
-    </div>
-    <div class="link-col">
-        <h4>Connect with Us</h4>
-        <ul class="contact-info">
-            <li><a href="mailto:info@icodeguru.com">info@icode.guru</a></li>
-            <li>San Jose, CA, USA</li>
-        </ul>
-    </div>
-</div>
+				<div class="banner-content">
 
-        <!-- 2. BOTTOM SECTION: GREEN BANNER -->
-        <div class="footer-banner">
-    <!-- BACKGROUND LINES (Add your images here) -->
-    <img src="Images/lines-left.png " alt="" class="footer-line line-left">
-    <img src="Images/lines-right.png" alt="" class="footer-line line-right">
+					<!-- Left: Copyright -->
+					<div class="copyright-text">
+						&copy; iCodeGuru Inc. All Rights Reserved.
+					</div>
 
-            <div class="banner-content">
-                
-                <!-- Left: Copyright -->
-                <div class="copyright-text">
-                    &copy; iCodeGuru Inc. All Rights Reserved.
-                </div>
+					<!-- Center: Logo & Socials -->
+					<div class="brand-center">
+						<div class="footer-logo-white">
+							<!-- FontAwesome Cap Icon -->
+							<img src="../Images/logo book.png" alt="">
+							<span class="footer-lg-1">iCode<span>Guru</span>
+						</div>
 
-                <!-- Center: Logo & Socials -->
-                <div class="brand-center">
-                    <div class="footer-logo-white">
-                        <!-- FontAwesome Cap Icon -->
-                        <img src="../Images/logo book.png" alt="">
-                        <span class="footer-lg-1">iCode<span>Guru</span>
-                    </div>
-                    
-                    <!-- Social Icons -->
-                    <div class="banner-socials">
-                        <a href="https://x.com/iCodeGuru1" target="_blank" class="social-circle"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="https://www.facebook.com/iCodeguru/" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/icodeguru/?hl=en"  target="_blank"class="social-circle"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" target="_blank" class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://www.youtube.com/@iCodeGuru0"  target="_blank"class="social-circle"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
+						<!-- Social Icons -->
+						<div class="banner-socials">
+							<a href="https://x.com/iCodeGuru1" target="_blank" class="social-circle"><i
+									class="fa-brands fa-x-twitter"></i></a>
+							<a href="https://www.facebook.com/iCodeguru/" target="_blank" class="social-circle"><i
+									class="fa-brands fa-facebook-f"></i></a>
+							<a href="https://www.instagram.com/icodeguru/?hl=en" target="_blank" class="social-circle"><i
+									class="fa-brands fa-instagram"></i></a>
+							<a href="https://www.linkedin.com/company/icode-guru/posts/?feedView=all" target="_blank"
+								class="social-circle"><i class="fa-brands fa-linkedin-in"></i></a>
+							<a href="https://www.youtube.com/@iCodeGuru0" target="_blank" class="social-circle"><i
+									class="fa-brands fa-youtube"></i></a>
+						</div>
+					</div>
 
-                <!-- Right: Subscribe Form -->
-                <div class="subscribe-wrapper">
-                    <form class="banner-form">
-                        <div class="input-with-icon">
-                            <!-- Envelope Icon -->
-                            <i class="fa-regular fa-envelope input-icon"></i>
-                            <input type="email" placeholder="Enter your email address">
-                        </div>
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
+					<!-- Right: Subscribe Form -->
+					<div class="subscribe-wrapper">
+						<form class="banner-form">
+							<div class="input-with-icon">
+								<!-- Envelope Icon -->
+								<i class="fa-regular fa-envelope input-icon"></i>
+								<input type="email" placeholder="Enter your email address">
+							</div>
+							<button type="submit">Subscribe</button>
+						</form>
+					</div>
 
-            </div>
-        </div>
+				</div>
+			</div>
 
-    </div>
-</footer>
-		<script src="script.js"></script>
-	</body>
+		</div>
+
+		<div class="modal-overlay" id="registrationModal">
+			<div class="modal-box"> <button class="modal-close" onclick="closeRegistrationModal()">✕</button>
+				<div class="modal-content">
+					<div class="registration-card modal-card">
+						<h2>Start Your Journey</h2>
+						<form>
+							<div class="form-row">
+								<div class="form-group"> <label>First Name</label> <input type="text" placeholder="Hassan" /> </div>
+								<div class="form-group"> <label>Last Name</label> <input type="text" placeholder="Abdullah" /> </div>
+							</div>
+							<div class="form-row">
+								<div class="form-group"> <label>Email</label> <input type="email" placeholder="hassan@email.com" />
+								</div>
+								<div class="form-group"> <label>WhatsApp</label> <input type="tel" placeholder="+92 300 1234567" />
+								</div>
+							</div>
+							<div class="form-group full-width"> <label>University</label> <input type="text"
+									placeholder="GIFT University" /> </div>
+							<div class="form-group full-width"> <label>LinkedIn</label> <input type="url"
+									placeholder="linkedin.com/in/..." /> </div>
+							<div class="form-footer modal-footer"> <button class="btn btn-primary submit-btn"> Submit Application
+								</button> </div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="script.js"></script>
+</body>
+
 </html>
