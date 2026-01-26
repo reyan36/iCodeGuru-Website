@@ -307,6 +307,7 @@ ul {
 .who-text {
 	flex: 1;
 	max-width: 600px;
+	padding: 5px;
 }
 
 .who-text h1 {
@@ -558,6 +559,18 @@ ul {
 		font-size: 16px;
 		line-height: 28px;
 	}
+	
+.who-text h1 {
+	margin-bottom: 10px;
+
+	
+}
+
+.who-text p {
+
+	margin-bottom: 20px;
+}
+
 }
 
 /* Small Mobile */

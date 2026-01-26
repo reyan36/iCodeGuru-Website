@@ -589,7 +589,9 @@ background: linear-gradient(177deg, #34652C -13.59%, #6FAB65 109.86%);
 		line-height: 1.2;
 		text-align: center;
 	}
-
+.hero-content h1 {
+padding: 5px;
+}
 	.feature-card {
 		width: 100%;
 		min-width: auto;
