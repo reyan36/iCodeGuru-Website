@@ -984,23 +984,15 @@ ul {
 /* Update these specific classes in about.css */
 
 .team-track {
-	display: flex;
-	gap: 30px;
-	overflow-x: auto;
-	padding-bottom: 30px;
-	justify-content: flex-start;
-
-	scrollbar-width: none;
-	-ms-overflow-style: none;
-
-	cursor: grab;
-	/* FIX 1: Prevent text selection while dragging */
-	user-select: none;
-	-webkit-user-select: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* 🔥 rows center */
+  padding: 10px 0 30px;
 }
 
-.team-track.active {
-	cursor: grabbing;
+.team-card {
+  width: 300px; /* fixed card width */
 }
 
 /* FIX 2: Stop images from being 'dragged' by the browser */
@@ -1013,6 +1005,8 @@ ul {
 	/* Fixed width per card */
 	text-align: left;
 	display: flex;
+	padding: 10px;
+	justify-items: center;
 	flex-direction: column;
 }
 
