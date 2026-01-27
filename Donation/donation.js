@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const inputsOrg = document.getElementById("inputs-org");
 
     // State Data
-    let currentAmount = 165;
+    let currentAmount = 0;
     // Removed isFeeCovered and processingRate variables
     let currentFreq = "One Time"; // Default
 

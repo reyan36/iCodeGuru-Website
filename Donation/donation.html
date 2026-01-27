@@ -83,9 +83,9 @@
                     <h2 class="section-title">What Your Donation Helps Us Cover
 :</h2>
                     <ul class="impact-list">
+                        <li><span class="amount">USD 50–100</span> Supports U.S. university application fees per institution.</li>
                         <li><span class="amount">USD 235 </span> Covers IELTS exam fees, removing a major financial barrier to studying abroad.</li>
                         <li><span class="amount">USD 220</span> Funds GRE examination costs, opening doors to top international universities.</li>
-                        <li><span class="amount">USD 50–100</span> Supports U.S. university application fees per institution.</li>
                         <li><span class="amount">Up to USD 1,000</span> Provides international airfare support, helping students begin their journey overseas.</li>
                     </ul>
                 </div>
@@ -215,17 +215,22 @@
     <div class="donation-card" id="step-1">
         <h3 class="form-heading">Choose Your Amount</h3>
 
-        <div class="amount-grid">
-            <button type="button" class="amount-btn active" data-amount="165">$165</button>
-            <button type="button" class="amount-btn" data-amount="2500">$2500</button>
-            <button type="button" class="amount-btn" data-amount="5000">$5000</button>
-            <button type="button" class="amount-btn" id="btn-other">Other</button>
+<div class="amount-grid">
+            <!-- REMOVED 'active' from $165 -->
+            <button type="button" class="amount-btn" data-amount="165">$100</button>
+            <button type="button" class="amount-btn" data-amount="2500">$220</button>
+            <button type="button" class="amount-btn" data-amount="5000">$1000</button>
+            
+            <!-- ADDED 'active' to Other -->
+            <button type="button" class="amount-btn active" id="btn-other">Custom</button>
         </div>
 
-        <div class="custom-amount-wrapper" id="custom-amount-box" style="display: none;">
+        <!-- Custom Amount Field -->
+        <!-- REMOVED style="display: none;" so it shows by default -->
+        <div class="custom-amount-wrapper" id="custom-amount-box">
             <div class="input-prefix-group">
                 <span class="prefix">$</span>
-                <input type="number" id="custom-input" class="form-input custom-field" placeholder="Enter amount">
+                <input type="number" id="custom-input" class="form-input custom-field" placeholder="Enter any amount">
             </div>
         </div>
 

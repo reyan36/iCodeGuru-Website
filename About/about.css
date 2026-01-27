@@ -1096,93 +1096,103 @@ ul {
 }
 
 /* =========================================
-   VALUES SECTION (FULLY RESPONSIVE)
-   ========================================= */
-.values-row {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	gap: 40px; /* Reduced from 150px for better baseline behavior */
-	flex-wrap: wrap;
-	padding: 20px 20px; /* Added padding so it doesn't touch screen edges */
+   VALUES PILLS DESIGN
+========================================== */
+.values-pills-section {
+    padding: 80px 0;
+    background-color: var(--bg-color); /* Matches page background */
+    overflow: hidden; /* Prevents scrollbar if they slide in */
 }
 
-.value-pill {
-	background-color: var(--white);
-	padding: 15px 45px; /* Slightly tighter padding for better fit */
-	border-radius: 50px;
-	font-size: 18px;
-	font-weight: 500;
-	color: #1e0e4b;
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Slightly more visible shadow */
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	white-space: nowrap; /* Prevents text from breaking inside the pill */
-	transition: transform 0.3s ease;
+/* Container for rows */
+.pill-row {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px; /* Space between rows */
 }
 
-.value-pill:hover {
-	transform: translateY(-3px);
+/* Alignment Classes */
+.row-left { justify-content: flex-start; }
+.row-center { justify-content: center; }
+.row-right { justify-content: flex-end; }
+
+/* --- THE PILL BOX --- */
+.pill-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 500px; /* Fixed long width */
+    max-width: 100%;
+    padding: 24px 28px;
+    border-radius: 30px; /* Full pill shape */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
 }
 
-.dot {
-	color: #1e0e4b;
-	font-size: 20px;
-	line-height: 0;
+.pill-box:hover {
+    transform: translateY(-5px);
 }
 
-/* Intermediate Tablet Screens (Small Laptops/Tablets) */
-@media (max-width: 1024px) {
-	.values-row {
-		gap: 30px;
-	}
-	.value-pill {
-		padding: 12px 35px;
-		font-size: 16px;
-	}
+.pill-icon {
+    font-size: 32px;
 }
 
-/* Mobile Screens (Phones) */
+.pill-text {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* The Dashed Line (Fills space between icon and text) */
+.dashed-line {
+    flex-grow: 1; /* Expands to fill gap */
+    height: 1px;
+    border-top: 1px dashed;
+    margin: 0 20px;
+    opacity: 0.5;
+}
+
+/* --- THEMES --- */
+
+/* White Pill (Share & Grow) */
+.white-style {
+    background-color: #ffffff;
+    color: #1e0e4b; /* Dark Purple Text/Icon */
+}
+.white-style .dashed-line {
+    border-color: #CCCCE9; /* Light Purple Dash */
+}
+
+/* Green Pill (Learn) */
+.green-style {
+    background-color: #538b4f; /* The specific Green */
+    color: #ffffff;
+}
+.green-style .dashed-line {
+    border-color: rgba(255, 255, 255, 0.6); /* Semi-transparent White Dash */
+}
+
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-	.values-row {
-		gap: 15px;
-		padding: 20px 15px;
-	}
+    /* On mobile, center everything and stack them */
+    .pill-row {
+        justify-content: center !important;
+        margin-bottom: 20px;
+    }
 
-	.value-pill {
-		/* On mobile, they stay small and side-by-side if they fit, 
-           or wrap naturally. If you want them stacked, 
-           uncomment 'width: 100%' and 'justify-content: center' below */
+    .pill-box {
+        width: 100%; /* Full width on phone */
+        padding: 20px 25px;
+            width: 500px; /* Fixed long width */
+    max-width: 100%;
+    border-radius: 24px; /* Full pill shape */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
+    }
 
-		/* width: 100%; */
-		/* justify-content: center; */
-
-		padding: 10px 25px;
-		font-size: 15px;
-	}
-
-	.dot {
-		font-size: 16px;
-	}
+    .pill-icon { font-size: 24px; }
+    .pill-text { font-size: 20px; }
 }
 
-/* Very Small Screens (Narrow Phones) */
-@media (max-width: 480px) {
-	.values-row {
-		flex-direction: column; /* Stack vertically on very small phones */
-		width: 100%;
-	}
-	.value-pill {
-		width: 80%; /* Takes up most of the width */
-		justify-content: center;
-	}
-}
-
-/* --- FOOTER SECTION --- */
-/* =========================================
-   8. FOOTER
-   ========================================= */
 /* --- FOOTER SECTION --- */
 /* =========================================
    FOOTER SECTION
@@ -2235,15 +2245,6 @@ html, body {
 }
 
 /* Middle Small Bubble (Green BG) */
-.b2 {
-    width: 100px;
-    height: 100px;
-    top: 45%;
-    /* CHANGE: Moved to Right */
-    right: 0; 
-    z-index: 1;
-}
-
 /* Bottom Left of Cluster (Man in Shirt) */
 .b3 {
     width: 130px;
@@ -2260,7 +2261,7 @@ html, body {
     height: 150px;
     bottom: 30px;
     /* CHANGE: Anchored Right */
-    right: 15%; 
+    right: 20%; 
     z-index: 4;
 }
 
@@ -2278,7 +2279,7 @@ html, body {
 
     /* Reset positions for small screens */
     .b1 { right: 30%; top: 0; }
-    .b2 { right: 5%; top: 30%; }
     .b3 { right: 60%; bottom: 10%; }
     .b4 { right: 20%; bottom: 0; }
 }
+

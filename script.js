@@ -1,36 +1,55 @@
 document.addEventListener("DOMContentLoaded", () => {
-function openRegistrationModal() {
-    const modal = document.getElementById("registrationModal");
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-}
-
-function closeRegistrationModal() {
-    const modal = document.getElementById("registrationModal");
-    modal.classList.remove("active");
-    document.body.style.overflow = "auto";
-}
-
-
-window.addEventListener("load", () => {
-    setTimeout(openRegistrationModal, 10000);
-});
-
-document.getElementById("registrationModal").addEventListener("click", function(e) {
-    if (e.target === this) closeRegistrationModal();
-});
-
-// Optional: close modal if you click outside the modal-box
-document.getElementById("registrationModal").addEventListener("click", function(e) {
-    if (e.target === this) { // click outside modal-box
-        closeModal();
+  
+  // ==========================================
+  // NEW JOIN MODAL LOGIC - FIXED VERSION
+  // ==========================================
+  function openJoinModal() {
+    const modal = document.getElementById("joinModal");
+    if (modal) {
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
-});
+  }
+
+  function closeJoinModal() {
+    const modal = document.getElementById("joinModal");
+    if (modal) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
+  }
+
+  // Make closeJoinModal globally accessible
+  window.closeJoinModal = closeJoinModal;
+
+  // Open modal after 5 seconds
+  window.addEventListener("load", () => {
+    setTimeout(openJoinModal, 3000);
+  });
+
+  // Close modal when clicking outside
+  const joinModal = document.getElementById("joinModal");
+  if (joinModal) {
+    joinModal.addEventListener("click", function(e) {
+      if (e.target === this) {
+        closeJoinModal();
+      }
+    });
+  }
+
+  // Handle form submission
+  const joinForm = document.getElementById("joinForm");
+  if (joinForm) {
+    joinForm.addEventListener("submit", function(e) {
+      e.preventDefault();
+      // Redirect to join page
+      window.location.href = "Join/join.html";
+    });
+  }
 
   // ==========================================
   // 1. MOBILE MENU LOGIC (PRIORITY)
   // ==========================================
-  // We put this first so it always works, even if other parts fail.
   const mobileToggle = document.querySelector(".mobile-toggle");
   const mainNav = document.querySelector(".main-nav");
 
@@ -42,54 +61,49 @@ document.getElementById("registrationModal").addEventListener("click", function(
   }
 
   // ==========================================
-  // 2. MODAL LOGIC
+  // 2. DONATION MODAL LOGIC
   // ==========================================
-  const modal = document.getElementById("donationModal");
+  const donationModal = document.getElementById("donationModal");
   const closeBtn = document.getElementById("closeModal");
 
-  // SAFETY CHECK: If the modal HTML is missing on this page, stop here.
-  // This prevents the script from crashing.
-  if (!modal) {
-    return;
-  }
+  if (donationModal) {
+    // Helper function to open the modal
+    const openModal = (e) => {
+      if (e) e.preventDefault();
+      donationModal.classList.add("show");
+      document.body.style.overflow = "hidden";
+    };
 
-  // Helper function to open the modal
-  const openModal = (e) => {
-    if (e) e.preventDefault();
-    modal.classList.add("show");
-    document.body.style.overflow = "hidden";
-  };
+    // A. Handle Buttons (Checks for any button with text "Donate")
+    const allButtons = document.querySelectorAll("button");
+    allButtons.forEach((btn) => {
+      if (btn.innerText.includes("Donate")) {
+        btn.addEventListener("click", openModal);
+      }
+    });
 
-  // A. Handle Buttons (Checks for any button with text "Donate")
-  const allButtons = document.querySelectorAll("button");
-  allButtons.forEach((btn) => {
-    // Use includes() instead of trim()=== to be safer with icons/spaces
-    if (btn.innerText.includes("Donate")) {
-      btn.addEventListener("click", openModal);
+    // B. Handle Links
+    const donateLinks = document.querySelectorAll('a[href="#donationModal"]');
+    donateLinks.forEach((link) => {
+      link.addEventListener("click", openModal);
+    });
+
+    // C. Close on X button
+    if (closeBtn) {
+      closeBtn.addEventListener("click", () => {
+        donationModal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      });
     }
-  });
 
-  // B. Handle Links (Footer links pointing to #donationModal)
-  const donateLinks = document.querySelectorAll('a[href="#donationModal"]');
-  donateLinks.forEach((link) => {
-    link.addEventListener("click", openModal);
-  });
-
-  // C. Close on X button
-  if (closeBtn) {
-    closeBtn.addEventListener("click", () => {
-      modal.classList.remove("show");
-      document.body.style.overflow = "auto";
+    // D. Close on Outside Click
+    window.addEventListener("click", (e) => {
+      if (e.target === donationModal) {
+        donationModal.classList.remove("show");
+        document.body.style.overflow = "auto";
+      }
     });
   }
-
-  // D. Close on Outside Click
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("show");
-      document.body.style.overflow = "auto";
-    }
-  });
 });
 
 // ==========================================
@@ -139,16 +153,15 @@ function copyText(text) {
 }
 
 // ==========================================
-// 5. VIDEO MODAL LOGIC (Updated)
+// 5. VIDEO MODAL LOGIC
 // ==========================================
 const videoModal = document.getElementById("videoModal");
-const linkedinBtn = document.querySelector("#linkedinBtn"); // The trigger button
+const linkedinBtn = document.querySelector("#linkedinBtn");
 const closeVideoBtn = document.getElementById("closeVideo");
 const iframe = document.getElementById("youtubeFrame");
 const videoCover = document.getElementById("videoCover");
 const startVideoBtn = document.getElementById("startVideoBtn");
 
-// Your Video ID
 const videoID = "JC9A8bvJMWQ";
 
 if (videoModal && linkedinBtn) {
@@ -158,19 +171,13 @@ if (videoModal && linkedinBtn) {
     videoModal.classList.add("show");
     document.body.style.overflow = "hidden";
 
-    // Reset state: Show cover, remove iframe src
     videoCover.classList.remove("hidden");
     iframe.setAttribute("src", "");
   });
 
-  // 2. PLAY VIDEO (Clicking Green Button)
+  // 2. PLAY VIDEO
   const playVideo = () => {
-    // Hide the cover
     videoCover.classList.add("hidden");
-
-    // Start YouTube with Autoplay
-    // rel=0 hides related videos from others
-    // modestbranding=1 tries to hide logos
     const autoPlayUrl = `https://www.youtube.com/embed/${videoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
     iframe.setAttribute("src", autoPlayUrl);
   };
@@ -181,7 +188,6 @@ if (videoModal && linkedinBtn) {
   // 3. CLOSE MODAL
   const closeVideo = () => {
     videoModal.classList.remove("show");
-    // Stop video
     iframe.setAttribute("src", "");
     document.body.style.overflow = "auto";
   };

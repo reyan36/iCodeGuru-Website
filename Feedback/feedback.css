@@ -1597,117 +1597,99 @@ html, body {
 }
 
 /* =========================================
-   VALUES CARDS STYLES
+   VALUES PILLS DESIGN
 ========================================== */
-.values-cards-section {
+.values-pills-section {
     padding: 80px 0;
-    background-color: var(--bg-color); /* Or match your section bg */
+    background-color: var(--bg-color); /* Matches page background */
+    overflow: hidden; /* Prevents scrollbar if they slide in */
 }
 
-.v-card-grid {
+/* Container for rows */
+.pill-row {
     display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 20px; /* Space between rows */
 }
 
-/* Base Card Style */
-.v-card-box {
-    width: 280px; /* Fixed width like the image */
-    height: 180px; /* Fixed height */
-    border-radius: 24px;
-    padding: 25px;
+/* Alignment Classes */
+.row-left { justify-content: flex-start; }
+.row-center { justify-content: center; }
+.row-right { justify-content: flex-end; }
+
+/* --- THE PILL BOX --- */
+.pill-box {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
+    width: 500px; /* Fixed long width */
+    max-width: 100%;
+    padding: 24px 28px;
+    border-radius: 30px; /* Full pill shape */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
 }
 
-/* Hover Effect */
-.v-card-box:hover {
+.pill-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
 }
 
-/* --- STYLE 1: OUTLINE (White BG, Green Border) --- */
-.v-outline {
+.pill-icon {
+    font-size: 32px;
+}
+
+.pill-text {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* The Dashed Line (Fills space between icon and text) */
+.dashed-line {
+    flex-grow: 1; /* Expands to fill gap */
+    height: 1px;
+    border-top: 1px dashed;
+    margin: 0 20px;
+    opacity: 0.5;
+}
+
+/* --- THEMES --- */
+
+/* White Pill (Share & Grow) */
+.white-style {
     background-color: #ffffff;
-    border: 1.5px solid #34652C; /* Your Brand Green */
-    color: #34652C;
+    color: #1e0e4b; /* Dark Purple Text/Icon */
+}
+.white-style .dashed-line {
+    border-color: #CCCCE9; /* Light Purple Dash */
 }
 
-.v-outline .v-dashed-line {
-    border-top: 1px dashed #d1dbe0; /* Light Grey Dash */
-}
-
-/* --- STYLE 2: FILLED (Green BG, White Text) --- */
-.v-filled {
-    background-color: #538b4f; /* The specific matte green from image */
-    border: 1.5px solid #538b4f;
+/* Green Pill (Learn) */
+.green-style {
+    background-color: #538b4f; /* The specific Green */
     color: #ffffff;
 }
-
-.v-filled .v-dashed-line {
-    border-top: 1px dashed rgba(255, 255, 255, 0.4); /* Semi-transparent White Dash */
+.green-style .dashed-line {
+    border-color: rgba(255, 255, 255, 0.6); /* Semi-transparent White Dash */
 }
 
-/* Layout Parts */
-.v-card-top {
-    flex: 1;
-    display: flex;
-    align-items: flex-start; /* Icon top-left */
-	justify-content: center;
-}
-
-.v-icon {
-    font-size: 40px; /* Big Icon */
-    margin-bottom: 10px;
-}
-
-/* The Dashed Line Separator */
-.v-dashed-line {
-    width: 100%;
-    height: 1px;
-    margin: 15px 0;
-}
-
-.v-card-bottom h3 {
-    font-size: 28px;
-    font-weight: 500;
-    margin: 0;
-    text-align: center; /* Text bottom-left */
-}
-
-/* --- MOBILE FIX FOR VALUES CARDS --- */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
-    
-    .v-card-grid {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px; /* Reduce gap between cards */
-    }
-    
-    .v-card-box {
-        width: 220px !important;  /* Much narrower */
-        height: 140px !important; /* Shorter */
-        padding: 15px 20px !important;
-        border-radius: 18px;
+    /* On mobile, center everything and stack them */
+    .pill-row {
+        justify-content: center !important;
+        margin-bottom: 20px;
     }
 
-    /* Make Icon Smaller */
-    .v-icon {
-        font-size: 28px !important; 
-        margin-bottom: 5px;
+    .pill-box {
+        width: 100%; /* Full width on phone */
+        padding: 20px 25px;
+            width: 500px; /* Fixed long width */
+    max-width: 100%;
+    border-radius: 24px; /* Full pill shape */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease;
     }
 
-    /* Make Text Smaller */
-    .v-card-bottom h3 {
-        font-size: 20px !important;
-    }
-
-    /* Adjust the line spacing */
-    .v-dashed-line {
-        margin: 10px 0 !important;
-    }
+    .pill-icon { font-size: 24px; }
+    .pill-text { font-size: 20px; }
 }
