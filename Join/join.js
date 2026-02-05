@@ -260,18 +260,20 @@ document.addEventListener('scroll', () => {
     const slackBtn = document.getElementById('slackVideoBtn');      // The new float button
 
     // -- DATA VARIABLES --
-    let currentVideoID = ""; 
+    let currentVideoID = "";
+    let currentStartTime = 0;
 
     // Function to Open Modal with Specific Data
-    const openModalWithVideo = (videoId, thumbnailPath) => {
+    const openModalWithVideo = (videoId, thumbnailPath, startTime = 0) => {
         if(videoModal) {
             // 1. Set Data
             currentVideoID = videoId;
+            currentStartTime = startTime;
             if(coverImg) coverImg.src = thumbnailPath; // Swap Image
-            
+
             // 2. Reset Player State
             if(videoCover) videoCover.classList.remove('hidden');
-            if(iframe) iframe.setAttribute('src', ''); 
+            if(iframe) iframe.setAttribute('src', '');
 
             // 3. Show Modal
             videoModal.classList.add('show');
@@ -279,12 +281,12 @@ document.addEventListener('scroll', () => {
         }
     };
 
-    // EVENT 1: Clicked LinkedIn Icon
+    // EVENT 1: Clicked LinkedIn Icon (starts at 3:50 for LinkedIn account creation)
     if (linkedinBtn) {
         linkedinBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Pass LinkedIn ID and LinkedIn Thumbnail
-            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
+            // Pass LinkedIn ID, Thumbnail, and start time (230 seconds = 3:50)
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png", 230);
         });
     }
 
@@ -310,7 +312,10 @@ document.addEventListener('scroll', () => {
     const playVideo = () => {
         if(videoCover) videoCover.classList.add('hidden');
         if(iframe && currentVideoID) {
-            const autoPlayUrl = `https://www.youtube.com/embed/${currentVideoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            let autoPlayUrl = `https://www.youtube.com/embed/${currentVideoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            if(currentStartTime > 0) {
+                autoPlayUrl += `&start=${currentStartTime}`;
+            }
             iframe.setAttribute('src', autoPlayUrl);
         }
     };
