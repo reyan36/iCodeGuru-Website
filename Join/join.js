@@ -288,13 +288,21 @@ document.addEventListener('scroll', () => {
         });
     }
 
-    // EVENT 2: Clicked Slack Button
+    // EVENT 2: Clicked Slack Button (floating)
     if (slackBtn) {
         slackBtn.addEventListener('click', (e) => {
             e.preventDefault();
             // Pass Slack ID and Slack Thumbnail
-            // REPLACE THESE WITH YOUR ACTUAL SLACK VIDEO ID AND IMAGE
-            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png"); 
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
+        });
+    }
+
+    // EVENT 3: Clicked Video Help Card (new prominent section)
+    const slackVideoCard = document.getElementById('slackVideoCard');
+    if (slackVideoCard) {
+        slackVideoCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
         });
     }
 
