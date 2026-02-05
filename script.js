@@ -3,50 +3,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // NEW JOIN MODAL LOGIC - FIXED VERSION
   // ==========================================
-  function openJoinModal() {
-    const modal = document.getElementById("joinModal");
+// ==========================================
+//   JOIN MODAL — PERFORMANCE-OPTIMIZED
+//   Replace your existing modal JS with this
+// ==========================================
+
+function openJoinModal() {
+    var modal = document.getElementById("joinModal");
     if (modal) {
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
+        // Just add the class — CSS handles the rest
+        // No display toggling, no requestAnimationFrame needed
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
     }
-  }
+}
 
-  function closeJoinModal() {
-    const modal = document.getElementById("joinModal");
+function closeJoinModal() {
+    var modal = document.getElementById("joinModal");
     if (modal) {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
+        // Just remove the class — CSS transition handles fade out
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
     }
-  }
+}
 
-  // Make closeJoinModal globally accessible
-  window.closeJoinModal = closeJoinModal;
+// Make globally accessible
+window.openJoinModal = openJoinModal;
+window.closeJoinModal = closeJoinModal;
 
-  // Open modal after 5 seconds
-  window.addEventListener("load", () => {
+// Open modal after 3 seconds
+window.addEventListener("load", function () {
     setTimeout(openJoinModal, 3000);
-  });
+});
 
-  // Close modal when clicking outside
-  const joinModal = document.getElementById("joinModal");
-  if (joinModal) {
-    joinModal.addEventListener("click", function(e) {
-      if (e.target === this) {
-        closeJoinModal();
-      }
+// Close when clicking the dark overlay (not the modal box)
+var joinModal = document.getElementById("joinModal");
+if (joinModal) {
+    joinModal.addEventListener("click", function (e) {
+        if (e.target === this) {
+            closeJoinModal();
+        }
     });
-  }
+}
 
-  // Handle form submission
-  const joinForm = document.getElementById("joinForm");
-  if (joinForm) {
-    joinForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      // Redirect to join page
-      window.location.href = "Join/join.html";
-    });
-  }
-
+// Close on Escape key
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        var modal = document.getElementById("joinModal");
+        if (modal && modal.classList.contains("active")) {
+            closeJoinModal();
+        }
+    }
+});
   // ==========================================
   // 1. MOBILE MENU LOGIC (PRIORITY)
   // ==========================================
