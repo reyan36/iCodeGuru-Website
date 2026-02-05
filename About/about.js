@@ -169,3 +169,93 @@ function copyText(text) {
         console.error('Failed to copy: ', err);
     });
 }
+
+// ==========================================
+// ANIMATIONS
+// ==========================================
+
+// Hero bubble smooth entrance animation handler
+function initBubbleAnimations() {
+    const bubbles = document.querySelectorAll('.bubble');
+
+    bubbles.forEach((bubble, index) => {
+        // Add breathing class after smooth entrance animation finishes
+        const delay = index * 150; // 0, 0.15s, 0.3s
+        const animationDuration = 2000 + delay + 100; // 2s animation + delay + small buffer
+        setTimeout(() => {
+            bubble.classList.add('breathing');
+        }, animationDuration);
+    });
+}
+
+// ==========================================
+// SCROLL-TRIGGERED ANIMATIONS
+// ==========================================
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            // Add staggered delay for multiple elements
+            setTimeout(() => {
+                entry.target.classList.add('scroll-visible');
+            }, index * 150);
+        }
+    });
+}, observerOptions);
+
+// Function to initialize scroll animations
+function initScrollAnimations() {
+    // Add scroll-hidden class to elements that should animate on scroll
+    const scrollElements = [
+        '#founder-message',
+        '#mission',
+        '#vision',
+        '#team',
+        '.values-pills-section',
+        '.founder-img',
+        '.founder-text',
+        '.mission-text',
+        '.mission-img',
+        '.vision-img',
+        '.vision-text',
+        '.v-point',
+        '.team-header',
+        '.team-card',
+        '.pill-row'
+    ];
+
+    scrollElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((element, index) => {
+            element.classList.add('scroll-hidden');
+
+            // Add specific animation classes based on element type
+            if (element.classList.contains('founder-img') || element.classList.contains('mission-text') || element.classList.contains('vision-img')) {
+                element.classList.add('scroll-left');
+            } else if (element.classList.contains('founder-text') || element.classList.contains('mission-img') || element.classList.contains('vision-text')) {
+                element.classList.add('scroll-right');
+            } else if (element.classList.contains('team-header') || element.classList.contains('pill-row')) {
+                element.classList.add('scroll-scale');
+            } else if (element.classList.contains('v-point')) {
+                element.classList.add('scroll-stagger', `stagger-${(index % 6) + 1}`);
+            } else if (element.classList.contains('team-card')) {
+                element.classList.add('scroll-stagger', `stagger-${(index % 6) + 1}`);
+            }
+
+            observer.observe(element);
+        });
+    });
+}
+
+// Initialize all animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Call existing initialization functions
+    initBubbleAnimations();
+    initScrollAnimations();
+});

@@ -296,27 +296,23 @@ ul {
 
 #stories-hero {
 	background: var(--bg-color);
-	padding: 56px 26px 0;
+	padding: 40px 0 100px; /* Removed left/right padding, added bottom padding like alumni */
 }
 
 .hero-wrapper {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: space-between; /* Changed from space-evenly to match alumni layout */
 	align-items: center;
 	gap: 64px;
-	max-width: 1440px;
-	margin: 0 auto;
 	padding-top: 20px;
+	/* Removed max-width and margin since container handles this */
 }
 
 /* --- Left Column: Text --- */
 .hero-text {
-	flex: 2;
-	/* Takes slightly less than half width */
+	flex: 1; /* Changed from flex: 2 to match alumni layout */
 	max-width: 900px;
-	padding-right: 20px;
-	/* Ensuring alignment is to the left */
-	margin-left: 0;
+	/* Removed padding-right and margin-left since container provides spacing */
 }
 
 .hero-text h1 {
@@ -720,13 +716,12 @@ ul {
 		flex-direction: column; /* Stack items vertically */
 		text-align: center; /* Center align text */
 		gap: 20px;
-				padding: 5px;
-
+		/* Removed padding since container handles spacing */
 	}
 
 	.hero-text {
 		max-width: 100%;
-		padding: 5px;
+		/* Removed padding since container handles spacing */
 		display: flex;
 		flex-direction: column;
 		align-items: center; /* Center button */
