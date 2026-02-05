@@ -2283,3 +2283,342 @@ html, body {
     .b4 { right: 20%; bottom: 0; }
 }
 
+/* =========================================
+   SCROLL-TRIGGERED ANIMATIONS
+   Works with existing HTML — no markup changes.
+   Only uses transform & opacity (GPU-composited).
+   Include AFTER about.css, pair with scroll-animations.js
+   ========================================= */
+
+/* -----------------------------------------
+   1. HERO SECTION (#who-are-we)
+   ----------------------------------------- */
+
+/* Headline */
+.who-text h1 {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.who-text h1.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Paragraph */
+.who-text > p {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.who-text > p.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA Button wrapper (the <a> around the button) */
+.who-text > a {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.who-text > a.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bubbles — each enters from a different angle */
+.bubble {
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.bubble.b1 {
+  transform: translateY(-30px) scale(0.85);
+  transition-delay: 0.15s;
+}
+
+.bubble.b3 {
+  transform: translateX(-25px) scale(0.85);
+  transition-delay: 0.3s;
+}
+
+.bubble.b4 {
+  transform: translateY(25px) scale(0.85);
+  transition-delay: 0.45s;
+}
+
+.bubble.in-view {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}
+
+/* Gentle continuous float after bubbles appear */
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.bubble.b1.in-view { animation: gentleFloat 4s ease-in-out 1.2s infinite; }
+.bubble.b3.in-view { animation: gentleFloat 4.5s ease-in-out 1.5s infinite; }
+.bubble.b4.in-view { animation: gentleFloat 5s ease-in-out 1.8s infinite; }
+
+
+/* -----------------------------------------
+   2. FOUNDER MESSAGE (#founder-message)
+   ----------------------------------------- */
+
+/* Whole card scales up */
+.founder-message-card {
+  opacity: 0;
+  transform: scale(0.95) translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.founder-message-card.in-view {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* Title slides in from the left */
+.founder-text h2 {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.7s ease 0.3s,
+              transform 0.7s ease 0.3s;
+}
+
+.founder-text h2.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Description fades up */
+.founder-desc {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease 0.45s,
+              transform 0.6s ease 0.45s;
+}
+
+.founder-desc.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Founder image zooms in gently */
+.founder-img {
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.founder-img.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+/* -----------------------------------------
+   3. MISSION (#mission)
+   ----------------------------------------- */
+
+/* Text slides from left */
+.mission-text {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mission-text.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Image slides from right */
+.mission-img {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.mission-img.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* -----------------------------------------
+   4. VISION (#vision)
+   ----------------------------------------- */
+
+/* Image slides from left */
+.vision-img {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.vision-img.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Text slides from right */
+.vision-text {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.vision-text.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Vision check-points cascade in */
+.v-point {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
+}
+
+.v-point.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.v-point:nth-child(1) { transition-delay: 0.25s; }
+.v-point:nth-child(2) { transition-delay: 0.35s; }
+.v-point:nth-child(3) { transition-delay: 0.45s; }
+.v-point:nth-child(4) { transition-delay: 0.55s; }
+.v-point:nth-child(5) { transition-delay: 0.65s; }
+
+
+/* -----------------------------------------
+   5. TEAM (#team)
+   ----------------------------------------- */
+
+/* Header fades up */
+.team-header {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-header.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cards cascade in with stagger */
+.team-card {
+  opacity: 0;
+  transform: translateY(30px) scale(0.96);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.team-card.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.team-card:nth-child(1) { transition-delay: 0.05s; }
+.team-card:nth-child(2) { transition-delay: 0.12s; }
+.team-card:nth-child(3) { transition-delay: 0.19s; }
+.team-card:nth-child(4) { transition-delay: 0.26s; }
+.team-card:nth-child(5) { transition-delay: 0.33s; }
+.team-card:nth-child(6) { transition-delay: 0.40s; }
+
+
+/* -----------------------------------------
+   6. VALUES PILLS (.values-pills-section)
+   ----------------------------------------- */
+
+.pill-box {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Left-aligned pills slide from left */
+.row-left .pill-box {
+  transform: translateX(-35px);
+}
+
+/* Center pills scale up */
+.row-center .pill-box {
+  transform: scale(0.9);
+}
+
+/* Right-aligned pills slide from right */
+.row-right .pill-box {
+  transform: translateX(35px);
+}
+
+.pill-box.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+/* Stagger rows */
+.pill-row:nth-child(1) .pill-box { transition-delay: 0.05s; }
+.pill-row:nth-child(2) .pill-box { transition-delay: 0.18s; }
+.pill-row:nth-child(3) .pill-box { transition-delay: 0.31s; }
+
+
+
+
+/* -----------------------------------------
+   8. ACCESSIBILITY — REDUCED MOTION
+   ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .who-text h1,
+  .who-text > p,
+  .who-text > a,
+  .bubble,
+  .founder-message-card,
+  .founder-text h2,
+  .founder-desc,
+  .founder-img,
+  .mission-text,
+  .mission-img,
+  .vision-img,
+  .vision-text,
+  .v-point,
+  .team-header,
+  .team-card,
+  .pill-box {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

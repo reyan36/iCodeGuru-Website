@@ -324,3 +324,71 @@ document.addEventListener('scroll', () => {
     });
 
 });
+
+/**
+ * join-scroll-animations.js
+ * Targets existing Join page HTML. No markup changes.
+ * No header or footer animations.
+ *
+ * Include in join.html:
+ *   <link rel="stylesheet" href="join-scroll-animations.css">  (after join.css)
+ *   <script src="join-scroll-animations.js" defer></script>     (before </body>)
+ */
+
+(function () {
+  'use strict';
+
+  var SELECTORS = [
+    // Hero
+    '.hero-text h1',
+    '.hero-text > p',
+    '.hero-text > a',
+    '.hero-visuals',
+
+    // Timeline
+    '.timeline-row',
+
+    // Registration
+    '.registration-card',
+    '.registration-card h2',
+    '.form-row',
+    '.form-group.full-width',
+    '.form-footer',
+
+    // Values Pills
+    '.pill-box'
+  ];
+
+  function init() {
+    var elements = document.querySelectorAll(SELECTORS.join(','));
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

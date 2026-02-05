@@ -259,3 +259,90 @@ document.addEventListener('DOMContentLoaded', () => {
     initBubbleAnimations();
     initScrollAnimations();
 });
+
+/**
+ * scroll-animations.js
+ * Targets existing HTML selectors — no markup changes needed.
+ * Uses IntersectionObserver to add `.in-view` when elements scroll into view.
+ *
+ * Include in your HTML:
+ *   <link rel="stylesheet" href="scroll-animations.css">   (after about.css)
+ *   <script src="scroll-animations.js" defer></script>     (before </body>)
+ */
+
+(function () {
+  'use strict';
+
+  // Every selector that has a corresponding CSS animation.
+  // These match classes/elements already in the HTML.
+  var SELECTORS = [
+    // Hero
+    '.who-text h1',
+    '.who-text > p',
+    '.who-text > a',        // the <a> wrapping the CTA button
+    '.bubble.b1',
+    '.bubble.b3',
+    '.bubble.b4',
+
+    // Founder
+    '.founder-message-card',
+    '.founder-text h2',
+    '.founder-desc',
+    '.founder-img',
+
+    // Mission
+    '.mission-text',
+    '.mission-img',
+
+    // Vision
+    '.vision-img',
+    '.vision-text',
+    '.v-point',
+
+    // Team
+    '.team-header',
+    '.team-card',
+
+    // Values Pills
+    '.pill-box',
+
+    // Footer
+    '.footer-links-area',
+    '.footer-banner'
+  ];
+
+  function init() {
+    var elements = document.querySelectorAll(SELECTORS.join(','));
+    if (!elements.length) return;
+
+    // Fallback: show everything immediately if Observer isn't supported
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target); // Animate only once
+          }
+        });
+      },
+      {
+        threshold: 0.15,                  // Fire when 15% visible
+        rootMargin: '0px 0px -40px 0px'   // Small bottom offset
+      }
+    );
+
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  // Run after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

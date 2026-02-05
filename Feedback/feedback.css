@@ -1693,3 +1693,284 @@ html, body {
     .pill-icon { font-size: 24px; }
     .pill-text { font-size: 20px; }
 }
+
+/* =========================================
+   FEEDBACK PAGE — SCROLL ANIMATIONS
+   Targets existing HTML. No markup changes.
+   No header or footer animations.
+   Include AFTER feedback.css
+   ========================================= */
+
+
+/* -----------------------------------------
+   1. HERO (#feedback-hero)
+   ----------------------------------------- */
+
+.f-hero-text h1 {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.f-hero-text h1.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.f-hero-text > p {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.f-hero-text > p.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA button */
+.f-hero-text > .btn {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.f-hero-text > .btn.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero image slides from right */
+.f-hero-image {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.f-hero-image.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* -----------------------------------------
+   2. FAQ SECTION (#faq-section)
+   ----------------------------------------- */
+
+/* Title slides from left */
+.faq-main-title {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-main-title.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Right info slides from right */
+.faq-right-info {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.faq-right-info.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Accordion items cascade */
+.accordion-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.accordion-item.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.accordion-item:nth-child(1) { transition-delay: 0.0s; }
+.accordion-item:nth-child(2) { transition-delay: 0.06s; }
+.accordion-item:nth-child(3) { transition-delay: 0.12s; }
+.accordion-item:nth-child(4) { transition-delay: 0.18s; }
+.accordion-item:nth-child(5) { transition-delay: 0.24s; }
+.accordion-item:nth-child(6) { transition-delay: 0.30s; }
+.accordion-item:nth-child(7) { transition-delay: 0.36s; }
+.accordion-item:nth-child(8) { transition-delay: 0.42s; }
+
+/* "Got More Questions" card */
+.more-questions-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
+}
+
+.more-questions-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   3. FEEDBACK FORM (#feedback-form-section)
+   ----------------------------------------- */
+
+/* Whole card */
+.form-card {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.form-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+.form-title {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease 0.2s,
+              transform 0.6s ease 0.2s;
+}
+
+.form-title.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Header row (subtitle + badge) */
+.form-header-row {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 0.3s,
+              transform 0.5s ease 0.3s;
+}
+
+.form-header-row.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form row (name + email) */
+.form-row-2 {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s,
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+
+.form-row-2.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Full-width input groups (message, linkedin) */
+.input-group.full {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
+}
+
+.input-group.full.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.input-group.full:nth-of-type(1) { transition-delay: 0.4s; }
+.input-group.full:nth-of-type(2) { transition-delay: 0.48s; }
+
+/* Submit area */
+.form-submit {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 0.55s,
+              transform 0.5s ease 0.55s;
+}
+
+.form-submit.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   4. VALUES PILLS
+   ----------------------------------------- */
+
+.pill-box {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row-left .pill-box {
+  transform: translateX(-35px);
+}
+
+.row-center .pill-box {
+  transform: scale(0.9);
+}
+
+.row-right .pill-box {
+  transform: translateX(35px);
+}
+
+.pill-box.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.pill-row:nth-child(1) .pill-box { transition-delay: 0.05s; }
+.pill-row:nth-child(2) .pill-box { transition-delay: 0.18s; }
+.pill-row:nth-child(3) .pill-box { transition-delay: 0.31s; }
+
+
+/* -----------------------------------------
+   5. ACCESSIBILITY — REDUCED MOTION
+   ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .f-hero-text h1,
+  .f-hero-text > p,
+  .f-hero-text > .btn,
+  .f-hero-image,
+  .faq-main-title,
+  .faq-right-info,
+  .accordion-item,
+  .more-questions-card,
+  .form-card,
+  .form-title,
+  .form-header-row,
+  .form-row-2,
+  .input-group.full,
+  .form-submit,
+  .pill-box {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

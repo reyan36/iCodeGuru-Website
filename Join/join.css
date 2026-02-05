@@ -1869,3 +1869,240 @@ html, body {
     .pill-icons { font-size: 24px; }
     .pill-text { font-size: 20px; }
 }
+
+
+
+/* =========================================
+   SCROLL ANIMATIONS — JOIN PAGE
+   Targets existing HTML selectors. No markup changes.
+   Only animates transform & opacity (GPU-composited).
+   Include AFTER join.css, pair with join-scroll-animations.js
+   No header or footer animations.
+   ========================================= */
+
+/* -----------------------------------------
+   1. JOIN HERO (#join-hero)
+   ----------------------------------------- */
+
+.hero-text h1 {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-text h1.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text > p {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.hero-text > p.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA button wrapper */
+.hero-text > a {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.hero-text > a.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Student image + avatar pill */
+.hero-visuals {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.hero-visuals.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* -----------------------------------------
+   2. TIMELINE (#join-timeline)
+   ----------------------------------------- */
+
+/* Each row slides + fades in */
+.timeline-row {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Right-aligned rows come from the right */
+.timeline-row.row-right {
+  transform: translateX(40px);
+}
+
+/* Left-aligned rows come from the left */
+.timeline-row.row-left {
+  transform: translateX(-40px);
+}
+
+.timeline-row.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger each step */
+.timeline-row:nth-child(2) { transition-delay: 0.05s; }  /* row 1 (nth-child accounts for .line-container) */
+.timeline-row:nth-child(3) { transition-delay: 0.15s; }
+.timeline-row:nth-child(4) { transition-delay: 0.25s; }
+.timeline-row:nth-child(5) { transition-delay: 0.35s; }
+
+
+/* -----------------------------------------
+   3. REGISTRATION (#registration)
+   ----------------------------------------- */
+
+.registration-card {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.registration-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form heading */
+.registration-card h2 {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease 0.2s,
+              transform 0.6s ease 0.2s;
+}
+
+.registration-card h2.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form rows stagger in */
+.form-row {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.form-row.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-row:nth-of-type(1) { transition-delay: 0.3s; }
+.form-row:nth-of-type(2) { transition-delay: 0.4s; }
+
+/* Full-width form groups (university, linkedin) */
+.form-group.full-width {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
+}
+
+.form-group.full-width.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-group.full-width:nth-of-type(1) { transition-delay: 0.45s; }
+.form-group.full-width:nth-of-type(2) { transition-delay: 0.55s; }
+
+/* Form footer (submit + slack CTA) */
+.form-footer {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 0.6s,
+              transform 0.5s ease 0.6s;
+}
+
+.form-footer.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   4. VALUES PILLS (.values-pills-section)
+   ----------------------------------------- */
+
+.pill-box {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row-left .pill-box {
+  transform: translateX(-35px);
+}
+
+.row-center .pill-box {
+  transform: scale(0.9);
+}
+
+.row-right .pill-box {
+  transform: translateX(35px);
+}
+
+.pill-box.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.pill-row:nth-child(1) .pill-box { transition-delay: 0.05s; }
+.pill-row:nth-child(2) .pill-box { transition-delay: 0.18s; }
+.pill-row:nth-child(3) .pill-box { transition-delay: 0.31s; }
+
+
+/* -----------------------------------------
+   5. ACCESSIBILITY — REDUCED MOTION
+   ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .hero-text h1,
+  .hero-text > p,
+  .hero-text > a,
+  .hero-visuals,
+  .timeline-row,
+  .registration-card,
+  .registration-card h2,
+  .form-row,
+  .form-group.full-width,
+  .form-footer,
+  .pill-box {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

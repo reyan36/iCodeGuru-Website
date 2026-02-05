@@ -138,3 +138,76 @@ function copyText(text) {
         console.error('Failed to copy: ', err);
     });
 }
+
+
+/**
+ * feedback-scroll-animations.js
+ * Targets existing Feedback page HTML. No markup changes.
+ * No header or footer animations.
+ *
+ * Include in feedback.html:
+ *   <link rel="stylesheet" href="feedback-scroll-animations.css">  (after feedback.css)
+ *   <script src="feedback-scroll-animations.js" defer></script>     (before </body>)
+ */
+
+(function () {
+  'use strict';
+
+  var SELECTORS = [
+    // Hero
+    '.f-hero-text h1',
+    '.f-hero-text > p',
+    '.f-hero-text > .btn',
+    '.f-hero-image',
+
+    // FAQ
+    '.faq-main-title',
+    '.faq-right-info',
+    '.accordion-item',
+    '.more-questions-card',
+
+    // Form
+    '.form-card',
+    '.form-title',
+    '.form-header-row',
+    '.form-row-2',
+    '.input-group.full',
+    '.form-submit',
+
+    // Values Pills
+    '.pill-box'
+  ];
+
+  function init() {
+    var elements = document.querySelectorAll(SELECTORS.join(','));
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
