@@ -260,18 +260,20 @@ document.addEventListener('scroll', () => {
     const slackBtn = document.getElementById('slackVideoBtn');      // The new float button
 
     // -- DATA VARIABLES --
-    let currentVideoID = ""; 
+    let currentVideoID = "";
+    let currentStartTime = 0;
 
     // Function to Open Modal with Specific Data
-    const openModalWithVideo = (videoId, thumbnailPath) => {
+    const openModalWithVideo = (videoId, thumbnailPath, startTime = 0) => {
         if(videoModal) {
             // 1. Set Data
             currentVideoID = videoId;
+            currentStartTime = startTime;
             if(coverImg) coverImg.src = thumbnailPath; // Swap Image
-            
+
             // 2. Reset Player State
             if(videoCover) videoCover.classList.remove('hidden');
-            if(iframe) iframe.setAttribute('src', ''); 
+            if(iframe) iframe.setAttribute('src', '');
 
             // 3. Show Modal
             videoModal.classList.add('show');
@@ -279,22 +281,30 @@ document.addEventListener('scroll', () => {
         }
     };
 
-    // EVENT 1: Clicked LinkedIn Icon
+    // EVENT 1: Clicked LinkedIn Icon (starts at 3:50 for LinkedIn account creation)
     if (linkedinBtn) {
         linkedinBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            // Pass LinkedIn ID and LinkedIn Thumbnail
-            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
+            // Pass LinkedIn ID, Thumbnail, and start time (230 seconds = 3:50)
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png", 230);
         });
     }
 
-    // EVENT 2: Clicked Slack Button
+    // EVENT 2: Clicked Slack Button (floating)
     if (slackBtn) {
         slackBtn.addEventListener('click', (e) => {
             e.preventDefault();
             // Pass Slack ID and Slack Thumbnail
-            // REPLACE THESE WITH YOUR ACTUAL SLACK VIDEO ID AND IMAGE
-            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png"); 
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
+        });
+    }
+
+    // EVENT 3: Clicked Video Help Card (new prominent section)
+    const slackVideoCard = document.getElementById('slackVideoCard');
+    if (slackVideoCard) {
+        slackVideoCard.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModalWithVideo("JC9A8bvJMWQ", "../Images/Video Thumbnail.png");
         });
     }
 
@@ -302,7 +312,10 @@ document.addEventListener('scroll', () => {
     const playVideo = () => {
         if(videoCover) videoCover.classList.add('hidden');
         if(iframe && currentVideoID) {
-            const autoPlayUrl = `https://www.youtube.com/embed/${currentVideoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            let autoPlayUrl = `https://www.youtube.com/embed/${currentVideoID}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+            if(currentStartTime > 0) {
+                autoPlayUrl += `&start=${currentStartTime}`;
+            }
             iframe.setAttribute('src', autoPlayUrl);
         }
     };
@@ -324,3 +337,71 @@ document.addEventListener('scroll', () => {
     });
 
 });
+
+/**
+ * join-scroll-animations.js
+ * Targets existing Join page HTML. No markup changes.
+ * No header or footer animations.
+ *
+ * Include in join.html:
+ *   <link rel="stylesheet" href="join-scroll-animations.css">  (after join.css)
+ *   <script src="join-scroll-animations.js" defer></script>     (before </body>)
+ */
+
+(function () {
+  'use strict';
+
+  var SELECTORS = [
+    // Hero
+    '.hero-text h1',
+    '.hero-text > p',
+    '.hero-text > a',
+    '.hero-visuals',
+
+    // Timeline
+    '.timeline-row',
+
+    // Registration
+    '.registration-card',
+    '.registration-card h2',
+    '.form-row',
+    '.form-group.full-width',
+    '.form-footer',
+
+    // Values Pills
+    '.pill-box'
+  ];
+
+  function init() {
+    var elements = document.querySelectorAll(SELECTORS.join(','));
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();

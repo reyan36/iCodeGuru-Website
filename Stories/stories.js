@@ -216,3 +216,122 @@ buttons.forEach((btn) => {
 			: "See more";
 	});
 });
+
+/* =========================================
+   ✨ SCROLL ANIMATION ENGINE
+   Add this to the BOTTOM of your stories.js
+   ========================================= */
+
+(function initScrollAnimations() {
+
+	// ── 1. HERO TITLE — Split into words for staggered reveal ──
+	const heroTitle = document.querySelector('.hero-text h1');
+	if (heroTitle) {
+		const text = heroTitle.textContent.trim();
+		const words = text.split(/\s+/);
+		heroTitle.innerHTML = words.map((word, i) =>
+			'<span class="word" style="animation-delay: ' + (0.15 + i * 0.1) + 's">' + word + '</span>'
+		).join(' ');
+	}
+
+	// ── 2. INTERSECTION OBSERVER — Triggers .is-visible on scroll ──
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px 0px -80px 0px',
+		threshold: 0.15
+	};
+
+	const scrollObserver = new IntersectionObserver(function (entries) {
+		entries.forEach(function (entry) {
+			if (entry.isIntersecting) {
+				entry.target.classList.add('is-visible');
+				scrollObserver.unobserve(entry.target);
+			}
+		});
+	}, observerOptions);
+
+	// ── 3. OBSERVE ELEMENTS ──
+
+	// Utility-class elements (if you add anim-fade-up etc. to your HTML)
+	document.querySelectorAll(
+		'.anim-fade-up, .anim-fade-down, .anim-fade-left, .anim-fade-right, .anim-scale-in, .anim-blur-in'
+	).forEach(function (el) { scrollObserver.observe(el); });
+
+	// Video cards — staggered delay
+	document.querySelectorAll('.pin-item').forEach(function (card, index) {
+		card.style.transitionDelay = (index * 0.08) + 's';
+		scrollObserver.observe(card);
+	});
+
+	// Gallery header h2 (color sweep)
+	var galleryH2 = document.querySelector('.gallery-header h2');
+	if (galleryH2) scrollObserver.observe(galleryH2);
+
+	// Section titles
+	document.querySelectorAll('.section-title').forEach(function (el) {
+		scrollObserver.observe(el);
+	});
+
+	// Testimonial cards
+	document.querySelectorAll('.testimonial-card').forEach(function (el) {
+		scrollObserver.observe(el);
+	});
+
+	// Value pill rows — staggered delay
+	document.querySelectorAll('.pill-row').forEach(function (row, i) {
+		row.style.transitionDelay = (i * 0.15) + 's';
+		scrollObserver.observe(row);
+	});
+
+	// Footer elements
+	var footerLinks = document.querySelector('.footer-links-area');
+	if (footerLinks) scrollObserver.observe(footerLinks);
+
+	var footerBanner = document.querySelector('.footer-banner');
+	if (footerBanner) scrollObserver.observe(footerBanner);
+
+	// Gallery footer button
+	var galleryFooter = document.querySelector('.gallery-footer');
+	if (galleryFooter) scrollObserver.observe(galleryFooter);
+
+})();
+
+
+/* =========================================
+   ✨ ENHANCED FILTER — Staggered re-entry
+   Replace your existing filterVideos function
+   or wrap the tab-switch logic with this.
+   ========================================= */
+
+// Store reference to original filterVideos if it exists
+var _originalFilterVideos = (typeof filterVideos === 'function') ? filterVideos : null;
+
+function filterVideos(category) {
+	// Update active tab
+	document.querySelectorAll('.gallery-tabs .tab-btn').forEach(function (btn) {
+		btn.classList.remove('active');
+	});
+	if (event && event.target) {
+		event.target.classList.add('active');
+	}
+
+	var items = document.querySelectorAll('.pin-item');
+	var visibleIndex = 0;
+
+	items.forEach(function (item) {
+		var cat = item.getAttribute('data-category');
+		if (cat === category) {
+			item.classList.remove('hidden');
+			item.classList.remove('filter-animate');
+
+			// Force reflow so animation restarts
+			void item.offsetWidth;
+			item.style.animationDelay = (visibleIndex * 0.08) + 's';
+			item.classList.add('filter-animate');
+			visibleIndex++;
+		} else {
+			item.classList.add('hidden');
+			item.classList.remove('filter-animate');
+		}
+	});
+}

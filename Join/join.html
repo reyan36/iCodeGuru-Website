@@ -14,6 +14,7 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 		/>
 		<link rel="stylesheet" href="join.css" />
+		<link rel="shortcut icon" href="../Images/iCodeGuru Favicon/4.png" type="image/x-icon">
 	</head>
 
 	<body>
@@ -193,11 +194,11 @@
 							<div class="form-row">
 								<div class="form-group">
 									<label for="firstname">First Name</label>
-									<input type="text" id="firstname" placeholder="Hassan" />
+									<input type="text" id="firstname" placeholder="John" />
 								</div>
 								<div class="form-group">
 									<label for="lastname">Last Name</label>
-									<input type="text" id="lastname" placeholder="Abdullah" />
+									<input type="text" id="lastname" placeholder="Smith" />
 								</div>
 							</div>
 
@@ -207,7 +208,7 @@
 									<input
 										type="email"
 										id="email"
-										placeholder="hassan.abdullah@email.com"
+										placeholder="john.smith@email.com"
 									/>
 								</div>
 								<div class="form-group">
@@ -215,7 +216,7 @@
 									<input
 										type="tel"
 										id="whatsapp"
-										placeholder="+92 123 4567890"
+										placeholder="+1 (555) 123-4567"
 									/>
 								</div>
 							</div>
@@ -225,7 +226,7 @@
 								<input
 									type="text"
 									id="university"
-									placeholder="GIFT University, Gujranwala Campus"
+									placeholder="Stanford University, California"
 								/>
 							</div>
 
@@ -237,7 +238,7 @@
 										id="linkedin"
 										placeholder="Share your LinkedIn Profile"
 									/>
-									<span class="info-icon" id="linkedinInfoBtn" title="Watch Tutorial"
+									<span class="info-icon" id="linkedinInfoBtn" data-tooltip="Don't have  LinkedIn account yet? Click here to make it."
 										>i</span
 									>
 								</div>
@@ -260,39 +261,80 @@
 				</div>
 			</section>
 
-			<!-- Values Row -->
-<!-- VALUES CARDS SECTION -->
-<!-- STAGGERED VALUES SECTION -->
-<section class="values-pills-section">
+			<!-- VIDEO HELP SECTION - Prominent for beginners -->
+			<section id="video-help-section">
+				<div class="container">
+					<div class="video-help-wrapper">
+						<div class="video-help-header">
+							<h2>Need Help Getting Started?</h2>
+							<p>Watch these quick tutorials to guide you through the process</p>
+						</div>
+
+						<div class="video-cards-container">
+							<!-- Card 1: What is Slack -->
+							<a href="What is slack/what-is-slack.html" class="video-help-card">
+								<div class="video-thumbnail">
+									<img src="https://res.cloudinary.com/dghgl7zaa/image/upload/v1770310776/LOB-Slack-Connect_2x_vnmzyj.jpg" alt="What is Slack?" onerror="this.src='https://via.placeholder.com/300x170/599553/ffffff?text=What+is+Slack?'">
+									<div class="play-overlay">
+										<i class="fa-brands fa-slack"></i>
+									</div>
+								</div>
+								<div class="video-card-content">
+									<h3>What is Slack?</h3>
+									<p>Learn about our community platform</p>
+								</div>
+							</a>
+
+							<!-- Card 2: How to Join Slack -->
+							<div class="video-help-card" id="slackVideoCard">
+								<div class="video-thumbnail">
+									<img src="https://res.cloudinary.com/dghgl7zaa/image/upload/v1770310868/1HkTstPFOAUoByyxA9C1JNA_wouqjt.jpg" alt="How to Join Slack" onerror="this.src='https://via.placeholder.com/300x170/1e0a52/ffffff?text=How+to+Join'">
+									<div class="play-overlay play-button">
+										<i class="fa-solid fa-play"></i>
+									</div>
+								</div>
+								<div class="video-card-content">
+									<h3>How to Join Slack</h3>
+									<p>Step-by-step video guide</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- SHARE LEARN GROW SECTION -->
+<section class="share-learn-grow-section">
     <div class="container">
-        
-        <!-- Row 1: SHARE (Left) -->
-        <div class="pill-row row-left">
-            <div class="pill-box white-style">
-                <i class="fa-solid fa-brain pill-icons"></i>
-                <div class="dashed-line"></div>
-                <span class="pill-text">Share</span>
+        <div class="slg-wrapper">
+
+            <!-- Share Card -->
+            <div class="slg-card">
+                <div class="slg-image-container">
+                    <img src="../Images/Man Standing 1.png" alt="Share - Person with phone" class="slg-person-img">
+                </div>
+                <div class="slg-line"></div>
+                <h3 class="slg-title">Share</h3>
+            </div>
+
+            <!-- Learn Card -->
+            <div class="slg-card">
+                <div class="slg-image-container">
+                    <img src="../Images/Man Standing 2.png" alt="Learn - Person with book" class="slg-person-img">
+                </div>
+                <div class="slg-line"></div>
+                <h3 class="slg-title">Learn</h3>
+            </div>
+
+            <!-- Grow Card -->
+            <div class="slg-card">
+                <div class="slg-image-container">
+                    <img src="../Images/Man Standing 3.png" alt="Grow - Person with chart" class="slg-person-img">
+                </div>
+                <div class="slg-line"></div>
+                <h3 class="slg-title">Grow</h3>
             </div>
         </div>
-
-        <!-- Row 2: LEARN (Center) -->
-        <div class="pill-row row-center">
-            <div class="pill-box green-style">
-                <i class="fa-solid fa-chalkboard-user pill-icons"></i>
-                <div class="dashed-line"></div>
-                <span class="pill-text">Learn</span>
-            </div>
-        </div>
-
-        <!-- Row 3: GROW (Right) -->
-        <div class="pill-row row-right">
-            <div class="pill-box white-style">
-                <i class="fa-solid fa-arrow-trend-up pill-icons"></i>
-                <div class="dashed-line"></div>
-                <span class="pill-text">Grow</span>
-            </div>
-        </div>
-
     </div>
 </section>
 		</main>
@@ -414,22 +456,6 @@
     </div>
 </div>
 
-<!-- =========================================
-     FLOATING SLACK HELPERS
-========================================== -->
-<div id="slackFloatingNav" class="floating-nav">
-    <!-- Button 1: What is Slack? -->
-    <a href="What is slack/what-is-slack.html" class="float-pill">
-        <i class="fa-brands fa-slack pill-icon"></i>
-        <span>What is Slack?</span>
-    </a>
-    
-    <!-- Button 2: Video Popup -->
-    <button id="slackVideoBtn" class="float-pill">
-        <i class="fa-solid fa-play pill-icon"></i>
-        <span>How to join Slack</span>
-    </button>
-</div>
 
 		<script src="join.js"></script>
 	</body>

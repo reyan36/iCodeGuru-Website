@@ -130,3 +130,60 @@ function copyText(text) {
         });
         
     }
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // Mobile Menu Toggle
+    const mobileToggle = document.querySelector('.mobile-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    if (mobileToggle && mainNav) {
+        mobileToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+    }
+
+    // Lazy Loading Cards
+    const cards = document.querySelectorAll('.alumni-card');
+    
+    if (cards.length && 'IntersectionObserver' in window) {
+        const cardObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '50px 0px', threshold: 0.1 });
+
+        cards.forEach(card => cardObserver.observe(card));
+    }
+
+    // Section Animations
+    const sections = document.querySelectorAll('.stats-wrapper, .linkedin-banner, .pill-row');
+    
+    if (sections.length && 'IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { rootMargin: '0px 0px -50px 0px', threshold: 0.2 });
+
+        sections.forEach(el => sectionObserver.observe(el));
+    }
+
+    // Mouse Glow Effect (Desktop Only)
+    if (window.innerWidth >= 1025) {
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+            });
+        });
+    }
+});

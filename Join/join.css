@@ -504,6 +504,282 @@ ul {
 }
 
 
+/* =========================================
+   VIDEO HELP SECTION - Prominent for beginners
+   ========================================= */
+#video-help-section {
+    padding: 60px 0 80px;
+    background-color: var(--bg-color);
+}
+
+.video-help-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.video-help-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.video-help-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 10px;
+}
+
+.video-help-header p {
+    font-size: 16px;
+    color: var(--body-text);
+}
+
+.video-cards-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.video-help-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.video-help-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(89, 149, 83, 0.2);
+}
+
+.video-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #1e0a52 0%, #599553 100%);
+}
+
+.video-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.video-help-card:hover .video-thumbnail img {
+    transform: scale(1.05);
+}
+
+.play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.play-overlay i {
+    font-size: 28px;
+    color: var(--primary-green);
+}
+
+.play-overlay.play-button i {
+    color: #1e0a52;
+    margin-left: 4px; /* Center play icon visually */
+}
+
+.video-help-card:hover .play-overlay {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--primary-green);
+}
+
+.video-help-card:hover .play-overlay i {
+    color: var(--white);
+}
+
+.video-card-content {
+    padding: 20px 24px;
+}
+
+.video-card-content h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 6px;
+}
+
+.video-card-content p {
+    font-size: 14px;
+    color: var(--body-text);
+    margin: 0;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+    #video-help-section {
+        padding: 50px 0 60px;
+    }
+
+    .video-help-header h2 {
+        font-size: 26px;
+    }
+
+    .video-cards-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .video-thumbnail {
+        height: 200px;
+    }
+
+    .play-overlay {
+        width: 60px;
+        height: 60px;
+    }
+
+    .play-overlay i {
+        font-size: 24px;
+    }
+}
+
+/* Responsive - Small Mobile */
+@media (max-width: 480px) {
+    .video-help-header h2 {
+        font-size: 22px;
+    }
+
+    .video-thumbnail {
+        height: 170px;
+    }
+
+    .video-card-content {
+        padding: 16px 20px;
+    }
+
+    .video-card-content h3 {
+        font-size: 18px;
+    }
+}
+
+/* =========================================
+   SHARE LEARN GROW SECTION
+   ========================================= */
+.share-learn-grow-section {
+    padding: 80px 0 100px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.slg-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 40px;
+}
+
+.slg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 280px;
+}
+
+.slg-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.slg-person-img {
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.slg-card:hover .slg-person-img {
+    transform: translateY(-10px);
+}
+
+.slg-line {
+    width: 80px;
+    height: 2px;
+    background-color: #d1d5db;
+    margin: 20px 0 15px;
+}
+
+.slg-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1e0a52;
+    margin: 0;
+    letter-spacing: -0.5px;
+    font-family: var(--font-main);
+}
+
+.slg-card:nth-child(2) .slg-person-img {
+    max-height: 210px;
+}
+
+@media (max-width: 900px) {
+    .slg-wrapper { padding: 0 20px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 170px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
+}
+
+@media (max-width: 768px) {
+    .share-learn-grow-section { padding: 60px 0 80px; }
+    .slg-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    .slg-card { max-width: 280px; width: 100%; }
+    .slg-image-container { height: 200px; }
+    .slg-person-img { max-height: 180px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 180px; }
+    .slg-title { font-size: 26px; }
+    .slg-line { width: 70px; }
+}
+
+@media (max-width: 480px) {
+    .share-learn-grow-section { padding: 50px 0 60px; }
+    .slg-wrapper { gap: 30px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
+}
+
 /* --- FOOTER SECTION --- */
 /* =========================================
    FOOTER SECTION
@@ -1097,6 +1373,7 @@ footer {
 
 .input-wrapper input {
 	width: 100%;
+	padding-right: 55px;
 }
 
 .info-icon {
@@ -1122,6 +1399,50 @@ footer {
     transform: scale(1.1);
     background-color: #599553; /* Change to brand green on hover */
 }
+
+
+
+.info-icon[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-style: normal;
+    font-family: inherit;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+    z-index: 100;
+    pointer-events: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.info-icon[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    right: 8px;
+    border: 6px solid transparent;
+    border-top-color: #333;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.15s ease, visibility 0.15s ease;
+    z-index: 100;
+}
+
+.info-icon[data-tooltip]:hover::after,
+.info-icon[data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
 .form-footer {
 	display: flex;
 	justify-content: space-between;
@@ -1868,4 +2189,241 @@ html, body {
 
     .pill-icons { font-size: 24px; }
     .pill-text { font-size: 20px; }
+}
+
+
+
+/* =========================================
+   SCROLL ANIMATIONS — JOIN PAGE
+   Targets existing HTML selectors. No markup changes.
+   Only animates transform & opacity (GPU-composited).
+   Include AFTER join.css, pair with join-scroll-animations.js
+   No header or footer animations.
+   ========================================= */
+
+/* -----------------------------------------
+   1. JOIN HERO (#join-hero)
+   ----------------------------------------- */
+
+.hero-text h1 {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-text h1.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-text > p {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.hero-text > p.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CTA button wrapper */
+.hero-text > a {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+}
+
+.hero-text > a.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Student image + avatar pill */
+.hero-visuals {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+}
+
+.hero-visuals.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* -----------------------------------------
+   2. TIMELINE (#join-timeline)
+   ----------------------------------------- */
+
+/* Each row slides + fades in */
+.timeline-row {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+/* Right-aligned rows come from the right */
+.timeline-row.row-right {
+  transform: translateX(40px);
+}
+
+/* Left-aligned rows come from the left */
+.timeline-row.row-left {
+  transform: translateX(-40px);
+}
+
+.timeline-row.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger each step */
+.timeline-row:nth-child(2) { transition-delay: 0.05s; }  /* row 1 (nth-child accounts for .line-container) */
+.timeline-row:nth-child(3) { transition-delay: 0.15s; }
+.timeline-row:nth-child(4) { transition-delay: 0.25s; }
+.timeline-row:nth-child(5) { transition-delay: 0.35s; }
+
+
+/* -----------------------------------------
+   3. REGISTRATION (#registration)
+   ----------------------------------------- */
+
+.registration-card {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.registration-card.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form heading */
+.registration-card h2 {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.6s ease 0.2s,
+              transform 0.6s ease 0.2s;
+}
+
+.registration-card h2.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Form rows stagger in */
+.form-row {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.form-row.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-row:nth-of-type(1) { transition-delay: 0.3s; }
+.form-row:nth-of-type(2) { transition-delay: 0.4s; }
+
+/* Full-width form groups (university, linkedin) */
+.form-group.full-width {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.5s ease,
+              transform 0.5s ease;
+}
+
+.form-group.full-width.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-group.full-width:nth-of-type(1) { transition-delay: 0.45s; }
+.form-group.full-width:nth-of-type(2) { transition-delay: 0.55s; }
+
+/* Form footer (submit + slack CTA) */
+.form-footer {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease 0.6s,
+              transform 0.5s ease 0.6s;
+}
+
+.form-footer.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   4. VALUES PILLS (.values-pills-section)
+   ----------------------------------------- */
+
+.pill-box {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row-left .pill-box {
+  transform: translateX(-35px);
+}
+
+.row-center .pill-box {
+  transform: scale(0.9);
+}
+
+.row-right .pill-box {
+  transform: translateX(35px);
+}
+
+.pill-box.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.pill-row:nth-child(1) .pill-box { transition-delay: 0.05s; }
+.pill-row:nth-child(2) .pill-box { transition-delay: 0.18s; }
+.pill-row:nth-child(3) .pill-box { transition-delay: 0.31s; }
+
+
+/* -----------------------------------------
+   5. ACCESSIBILITY — REDUCED MOTION
+   ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .hero-text h1,
+  .hero-text > p,
+  .hero-text > a,
+  .hero-visuals,
+  .timeline-row,
+  .registration-card,
+  .registration-card h2,
+  .form-row,
+  .form-group.full-width,
+  .form-footer,
+  .pill-box {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

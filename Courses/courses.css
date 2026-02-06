@@ -1102,6 +1102,109 @@ ul {
 }
 
 /* =========================================
+   SHARE LEARN GROW SECTION
+   ========================================= */
+.share-learn-grow-section {
+    padding: 80px 0 100px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.slg-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 40px;
+}
+
+.slg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 280px;
+}
+
+.slg-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.slg-person-img {
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.slg-card:hover .slg-person-img {
+    transform: translateY(-10px);
+}
+
+.slg-line {
+    width: 80px;
+    height: 2px;
+    background-color: #d1d5db;
+    margin: 20px 0 15px;
+}
+
+.slg-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1e0a52;
+    margin: 0;
+    letter-spacing: -0.5px;
+    font-family: var(--font-main);
+}
+
+.slg-card:nth-child(2) .slg-person-img {
+    max-height: 210px;
+}
+
+@media (max-width: 900px) {
+    .slg-wrapper { padding: 0 20px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 170px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
+}
+
+@media (max-width: 768px) {
+    .share-learn-grow-section { padding: 60px 0 80px; }
+    .slg-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    .slg-card { max-width: 280px; width: 100%; }
+    .slg-image-container { height: 200px; }
+    .slg-person-img { max-height: 180px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 180px; }
+    .slg-title { font-size: 26px; }
+    .slg-line { width: 70px; }
+}
+
+@media (max-width: 480px) {
+    .share-learn-grow-section { padding: 50px 0 60px; }
+    .slg-wrapper { gap: 30px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
+}
+
+/* =========================================
    4. FOOTER STYLES (Synchronized)
    ========================================= */
 /* =========================================
@@ -2571,4 +2674,264 @@ html, body {
 
     .pill-icon { font-size: 24px; }
     .pill-text { font-size: 20px; }
+}
+
+
+/* =========================================
+   COURSES PAGE — SCROLL ANIMATIONS + HERO FIX
+   Targets existing HTML. No markup changes.
+   No header or footer animations.
+   Include AFTER courses.css
+   ========================================= */
+
+
+/* =========================================
+   HERO ALIGNMENT FIX
+   Problem: .hero uses max-width:1440px + padding-left:100px
+   but .container (header) uses max-width:1280px.
+   Fix: Match hero to the same container width system.
+   ========================================= */
+
+.hero {
+  max-width: var(--max-width);  /* 1280px — same as .container */
+  padding-left: 20px;           /* Match .container padding */
+  padding-right: 20px;
+}
+
+.hero-content {
+  padding-left: 0;  /* Remove the extra 100px push */
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hero-content {
+    padding-left: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .hero-content {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+
+/* -----------------------------------------
+   1. HERO SECTION (.hero)
+   ----------------------------------------- */
+
+.hero-content h1 {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-content h1.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Feature list items stagger */
+.hero-features li {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-features li.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-features li:nth-child(1) { transition-delay: 0.1s; }
+.hero-features li:nth-child(2) { transition-delay: 0.18s; }
+.hero-features li:nth-child(3) { transition-delay: 0.26s; }
+.hero-features li:nth-child(4) { transition-delay: 0.34s; }
+
+/* CTA button */
+.hero-content > a {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+}
+
+.hero-content > a.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero image slides in from right */
+.hero-image {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s,
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+
+.hero-image.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* -----------------------------------------
+   2. LEARNING TRACKS HEADER
+   ----------------------------------------- */
+
+.learning-tracks-header h2 {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.learning-tracks-header h2.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.learning-tracks-header p {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
+}
+
+.learning-tracks-header p.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   3. CALENDAR
+   ----------------------------------------- */
+
+.learning-tracks-calendar {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.learning-tracks-calendar.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* -----------------------------------------
+   4. COURSE CARDS
+   ----------------------------------------- */
+
+/* Each row of cards fades up */
+.cards-row {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.cards-row.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger card rows */
+.cards-row:nth-child(1) { transition-delay: 0.0s; }
+.cards-row:nth-child(2) { transition-delay: 0.12s; }
+.cards-row:nth-child(3) { transition-delay: 0.24s; }
+
+/* Individual cards within a visible row get a subtle stagger */
+.cards-row.in-view .course-card:nth-child(1) {
+  animation: cardReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+.cards-row.in-view .course-card:nth-child(2) {
+  animation: cardReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+}
+.cards-row.in-view .course-card:nth-child(3) {
+  animation: cardReveal 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.25s both;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0.4;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* -----------------------------------------
+   5. VALUES PILLS
+   ----------------------------------------- */
+
+.pill-box {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.row-left .pill-box {
+  transform: translateX(-35px);
+}
+
+.row-center .pill-box {
+  transform: scale(0.9);
+}
+
+.row-right .pill-box {
+  transform: translateX(35px);
+}
+
+.pill-box.in-view {
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.pill-row:nth-child(1) .pill-box { transition-delay: 0.05s; }
+.pill-row:nth-child(2) .pill-box { transition-delay: 0.18s; }
+.pill-row:nth-child(3) .pill-box { transition-delay: 0.31s; }
+
+
+/* -----------------------------------------
+   6. ACCESSIBILITY — REDUCED MOTION
+   ----------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+  }
+
+  .hero-content h1,
+  .hero-features li,
+  .hero-content > a,
+  .hero-image,
+  .learning-tracks-header h2,
+  .learning-tracks-header p,
+  .learning-tracks-calendar,
+  .cards-row,
+  .pill-box {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

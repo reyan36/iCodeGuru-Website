@@ -372,7 +372,7 @@ ul {
 	/* Make him fill the 600px height */
 	width: auto;
 	object-fit: contain;
-	right: 30px;
+	left: 50px;
 	/* Slight offset to left to make room for badge */
 }
 
@@ -687,6 +687,109 @@ ul {
 	.stat-divider {
 		display: none;
 	}
+}
+
+/* =========================================
+   SHARE LEARN GROW SECTION
+   ========================================= */
+.share-learn-grow-section {
+    padding: 80px 0 100px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.slg-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 40px;
+}
+
+.slg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 280px;
+}
+
+.slg-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.slg-person-img {
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.slg-card:hover .slg-person-img {
+    transform: translateY(-10px);
+}
+
+.slg-line {
+    width: 80px;
+    height: 2px;
+    background-color: #d1d5db;
+    margin: 20px 0 15px;
+}
+
+.slg-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1e0a52;
+    margin: 0;
+    letter-spacing: -0.5px;
+    font-family: var(--font-main);
+}
+
+.slg-card:nth-child(2) .slg-person-img {
+    max-height: 210px;
+}
+
+@media (max-width: 900px) {
+    .slg-wrapper { padding: 0 20px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 170px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
+}
+
+@media (max-width: 768px) {
+    .share-learn-grow-section { padding: 60px 0 80px; }
+    .slg-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    .slg-card { max-width: 280px; width: 100%; }
+    .slg-image-container { height: 200px; }
+    .slg-person-img { max-height: 180px; }
+    .slg-card:nth-child(2) .slg-person-img { max-height: 180px; }
+    .slg-title { font-size: 26px; }
+    .slg-line { width: 70px; }
+}
+
+@media (max-width: 480px) {
+    .share-learn-grow-section { padding: 50px 0 60px; }
+    .slg-wrapper { gap: 30px; }
+    .slg-image-container { height: 180px; }
+    .slg-person-img { max-height: 160px; }
+    .slg-title { font-size: 24px; }
+    .slg-line { width: 60px; }
 }
 
 /* --- FOOTER SECTION --- */
@@ -1874,9 +1977,7 @@ html, body {
     }
 
     /* 2. Switch to 3 Cards per row (33%), but they will be WIDER now */
-    .alumni-card {
-        width: calc(33.33% - 15px); 
-    }
+
 
     /* 3. Increase Image Height */
     /* Since the cards are getting wider, we increase height 
@@ -1987,4 +2088,152 @@ html, body {
 
     .pill-icon { font-size: 24px; }
     .pill-text { font-size: 20px; }
+}
+
+
+/* =========================================
+   HERO SECTION ANIMATIONS
+   ========================================= */
+
+/* Hero text animations */
+.hero-text h1 {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: heroFadeUp 0.8s ease-out forwards;
+    animation-delay: 0.1s;
+}
+
+.hero-text p {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeUp 0.8s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.hero-text .btn {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFadeUp 0.6s ease-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes heroFadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero visuals animation */
+.hero-visuals {
+    opacity: 0;
+    transform: translateX(60px);
+    animation: heroSlideIn 1s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+@keyframes heroSlideIn {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Hero line fade in */
+.hero-line {
+    opacity: 0;
+    animation: lineFade 1.2s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+@keyframes lineFade {
+    to {
+        opacity: 0.8;
+    }
+}
+
+/* Subtle floating animation for hero man */
+.hero-man {
+    animation: gentleFloat 4s ease-in-out infinite;
+    animation-delay: 1.2s;
+}
+
+
+/* =========================================
+   LAZY LOADING CARDS ANIMATION
+   ========================================= */
+
+.alumni-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.alumni-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animation for 4 columns */
+.alumni-card.visible:nth-child(4n+1) { transition-delay: 0s; }
+.alumni-card.visible:nth-child(4n+2) { transition-delay: 0.08s; }
+.alumni-card.visible:nth-child(4n+3) { transition-delay: 0.16s; }
+.alumni-card.visible:nth-child(4n+4) { transition-delay: 0.24s; }
+
+/* 3 columns */
+@media (max-width: 1450px) {
+    .alumni-card.visible:nth-child(3n+1) { transition-delay: 0s; }
+    .alumni-card.visible:nth-child(3n+2) { transition-delay: 0.1s; }
+    .alumni-card.visible:nth-child(3n+3) { transition-delay: 0.2s; }
+}
+
+/* 2 columns */
+@media (max-width: 1100px) {
+    .alumni-card.visible:nth-child(2n+1) { transition-delay: 0s; }
+    .alumni-card.visible:nth-child(2n+2) { transition-delay: 0.12s; }
+}
+
+/* 1 column - no stagger */
+@media (max-width: 600px) {
+    .alumni-card { transition-delay: 0s !important; }
+}
+
+/* =========================================
+   SECTION ANIMATIONS (Stats, Banner, Pills)
+   ========================================= */
+
+.stats-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.stats-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.linkedin-banner {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.linkedin-banner.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.pill-row {
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.pill-row:nth-child(1) { transform: translateX(-50px); transition-delay: 0s; }
+.pill-row:nth-child(2) { transform: translateX(50px); transition-delay: 0.15s; }
+.pill-row:nth-child(3) { transform: translateX(-50px); transition-delay: 0.3s; }
+
+.pill-row.visible {
+    opacity: 1;
+    transform: translateX(0) !important;
 }

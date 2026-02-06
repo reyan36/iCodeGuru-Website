@@ -3,50 +3,58 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // NEW JOIN MODAL LOGIC - FIXED VERSION
   // ==========================================
-  function openJoinModal() {
-    const modal = document.getElementById("joinModal");
+// ==========================================
+//   JOIN MODAL — PERFORMANCE-OPTIMIZED
+//   Replace your existing modal JS with this
+// ==========================================
+
+function openJoinModal() {
+    var modal = document.getElementById("joinModal");
     if (modal) {
-      modal.classList.add("active");
-      document.body.style.overflow = "hidden";
+        // Just add the class — CSS handles the rest
+        // No display toggling, no requestAnimationFrame needed
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
     }
-  }
+}
 
-  function closeJoinModal() {
-    const modal = document.getElementById("joinModal");
+function closeJoinModal() {
+    var modal = document.getElementById("joinModal");
     if (modal) {
-      modal.classList.remove("active");
-      document.body.style.overflow = "auto";
+        // Just remove the class — CSS transition handles fade out
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
     }
-  }
+}
 
-  // Make closeJoinModal globally accessible
-  window.closeJoinModal = closeJoinModal;
+// Make globally accessible
+window.openJoinModal = openJoinModal;
+window.closeJoinModal = closeJoinModal;
 
-  // Open modal after 5 seconds
-  window.addEventListener("load", () => {
+// Open modal after 3 seconds
+window.addEventListener("load", function () {
     setTimeout(openJoinModal, 3000);
-  });
+});
 
-  // Close modal when clicking outside
-  const joinModal = document.getElementById("joinModal");
-  if (joinModal) {
-    joinModal.addEventListener("click", function(e) {
-      if (e.target === this) {
-        closeJoinModal();
-      }
+// Close when clicking the dark overlay (not the modal box)
+var joinModal = document.getElementById("joinModal");
+if (joinModal) {
+    joinModal.addEventListener("click", function (e) {
+        if (e.target === this) {
+            closeJoinModal();
+        }
     });
-  }
+}
 
-  // Handle form submission
-  const joinForm = document.getElementById("joinForm");
-  if (joinForm) {
-    joinForm.addEventListener("submit", function(e) {
-      e.preventDefault();
-      // Redirect to join page
-      window.location.href = "Join/join.html";
-    });
-  }
-
+// Close on Escape key
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+        var modal = document.getElementById("joinModal");
+        if (modal && modal.classList.contains("active")) {
+            closeJoinModal();
+        }
+    }
+});
   // ==========================================
   // 1. MOBILE MENU LOGIC (PRIORITY)
   // ==========================================
@@ -200,3 +208,98 @@ if (videoModal && linkedinBtn) {
     }
   });
 }
+
+// ==========================================
+// SCROLL-TRIGGERED ANIMATIONS
+// ==========================================
+
+// Intersection Observer for scroll animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('scroll-visible');
+    }
+  });
+}, observerOptions);
+
+// Function to initialize scroll animations
+function initScrollAnimations() {
+  // Add scroll-hidden class to elements that should animate on scroll
+  const scrollElements = document.querySelectorAll('#who-are-we-new, #enrichment, #mission, .values-pills-section');
+  scrollElements.forEach(el => {
+    el.classList.add('scroll-hidden');
+    observer.observe(el);
+  });
+
+  // Add specific animation classes to child elements
+  // Who Are We section
+  const whoHeader = document.querySelector('#who-are-we-new .who-header-center');
+  const galleryItems = document.querySelectorAll('#who-are-we-new .gallery-item');
+  const whoButton = document.querySelector('#who-are-we-new .who-footer-btn');
+
+  if (whoHeader) {
+    whoHeader.classList.add('scroll-hidden', 'scroll-left');
+    observer.observe(whoHeader);
+  }
+
+  galleryItems.forEach((item, index) => {
+    item.classList.add('scroll-hidden', 'scroll-scale');
+    item.style.transitionDelay = `${index * 0.1}s`;
+    observer.observe(item);
+  });
+
+  if (whoButton) {
+    whoButton.classList.add('scroll-hidden');
+    observer.observe(whoButton);
+  }
+
+  // Enrichment section
+  const enrichmentTitle = document.querySelector('#enrichment h2');
+  const featureCards = document.querySelectorAll('.feature-card');
+
+  if (enrichmentTitle) {
+    enrichmentTitle.classList.add('scroll-hidden', 'scroll-left');
+    observer.observe(enrichmentTitle);
+  }
+
+  featureCards.forEach((card, index) => {
+    card.classList.add('scroll-hidden', 'scroll-stagger', `stagger-${(index % 6) + 1}`);
+    observer.observe(card);
+  });
+
+  // Mission section
+  const missionImage = document.querySelector('#mission .mission-image');
+  const missionContent = document.querySelector('#mission .mission-content');
+  const statItems = document.querySelectorAll('.stat-item');
+
+  if (missionImage) {
+    missionImage.classList.add('scroll-hidden', 'scroll-left');
+    observer.observe(missionImage);
+  }
+
+  if (missionContent) {
+    missionContent.classList.add('scroll-hidden', 'scroll-right');
+    observer.observe(missionContent);
+  }
+
+  statItems.forEach((item, index) => {
+    item.classList.add('scroll-hidden', 'scroll-stagger', `stagger-${(index % 4) + 1}`);
+    observer.observe(item);
+  });
+
+  // Values pills section
+  const pillRows = document.querySelectorAll('.values-pills-section .pill-row');
+  pillRows.forEach((row, index) => {
+    row.classList.add('scroll-hidden', 'scroll-scale');
+    row.style.transitionDelay = `${index * 0.2}s`;
+    observer.observe(row);
+  });
+}
+
+// Initialize scroll animations when DOM is loaded
+document.addEventListener('DOMContentLoaded', initScrollAnimations);

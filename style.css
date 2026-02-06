@@ -25,6 +25,326 @@ body {
   overflow-x: hidden;
 }
 
+/* --- SCROLL-TRIGGERED ANIMATIONS --- */
+
+/* Initial hidden state for scroll animations */
+.scroll-hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Animation states */
+.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slide in from left */
+.scroll-left {
+  transform: translateX(-50px);
+}
+
+.scroll-left.scroll-visible {
+  transform: translateX(0);
+}
+
+/* Slide in from right */
+.scroll-right {
+  transform: translateX(50px);
+}
+
+.scroll-right.scroll-visible {
+  transform: translateX(0);
+}
+
+/* Scale in animation */
+.scroll-scale {
+  transform: scale(0.8);
+}
+
+.scroll-scale.scroll-visible {
+  transform: scale(1);
+}
+
+/* Staggered animations */
+.scroll-stagger {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.scroll-stagger.scroll-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Different stagger delays */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+.stagger-6 { transition-delay: 0.6s; }
+
+/* Initial states for animations */
+.main-header {
+  animation: fadeInDown 1s ease-out;
+}
+
+#hero .hero-content h1 {
+  animation: fadeInLeft 1.2s ease-out 0.3s both;
+}
+
+#hero .hero-content p {
+  animation: fadeInLeft 1.2s ease-out 0.5s both;
+}
+
+#hero .hero-buttons {
+  animation: fadeInUp 1s ease-out 0.7s both;
+}
+
+#hero .hero-image {
+  animation: fadeInRight 1.2s ease-out 0.4s both;
+}
+
+#who-are-we-new .who-header-center h2 {
+  /* animation: fadeInUp 1s ease-out 0.3s both; */ /* Now handled by scroll observer */
+}
+
+#who-are-we-new .who-header-center p {
+  /* animation: fadeInUp 1s ease-out 0.5s both; */ /* Now handled by scroll observer */
+}
+
+#who-are-we-new .gallery-item {
+  /* animation: fadeInScale 0.8s ease-out both; */ /* Now handled by scroll observer */
+}
+
+#who-are-we-new .gallery-item:nth-child(1) { animation-delay: 0.2s; }
+#who-are-we-new .gallery-item:nth-child(2) { animation-delay: 0.4s; }
+#who-are-we-new .gallery-item:nth-child(3) { animation-delay: 0.6s; }
+#who-are-we-new .gallery-item:nth-child(4) { animation-delay: 0.8s; }
+#who-are-we-new .gallery-item:nth-child(5) { animation-delay: 1.0s; }
+
+#who-are-we-new .who-footer-btn {
+  /* animation: fadeInUp 1s ease-out 1.2s both; */ /* Now handled by scroll observer */
+}
+
+#enrichment h2 {
+  /* animation: fadeInUp 1s ease-out 0.3s both; */ /* Now handled by scroll observer */
+}
+
+.feature-card {
+  /* animation: fadeInUp 0.8s ease-out both; */ /* Now handled by scroll observer */
+}
+
+#mission .mission-content h2 {
+  /* animation: fadeInLeft 1s ease-out 0.3s both; */ /* Now handled by scroll observer */
+}
+
+#mission .mission-content p {
+  /* animation: fadeInLeft 1s ease-out 0.5s both; */ /* Now handled by scroll observer */
+}
+
+#mission .mission-image {
+  /* animation: fadeInRight 1.2s ease-out 0.4s both; */ /* Now handled by scroll observer */
+}
+
+.stat-item {
+  /* animation: fadeInUp 0.8s ease-out both; */ /* Now handled by scroll observer */
+}
+
+.stat-item:nth-child(1) { /* animation-delay: 0.2s; */ }
+.stat-item:nth-child(2) { /* animation-delay: 0.4s; */ }
+.stat-item:nth-child(3) { /* animation-delay: 0.6s; */ }
+.stat-item:nth-child(4) { /* animation-delay: 0.8s; */ }
+
+.values-pills-section .pill-row {
+  /* animation: fadeInScale 1s ease-out both; */ /* Now handled by scroll observer */
+}
+
+.values-pills-section .row-left { /* animation-delay: 0.2s; */ }
+.values-pills-section .row-center { /* animation-delay: 0.6s; */ }
+.values-pills-section .row-right { /* animation-delay: 1.0s; */ }
+
+/* Footer animations */
+.footer-links-area {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.footer-banner {
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Responsive animation adjustments */
+@media (max-width: 768px) {
+  /* Reduce animation intensity on mobile for better performance */
+  .main-header {
+    animation-duration: 0.8s;
+  }
+  
+  #hero .hero-content h1,
+  #hero .hero-content p,
+  #hero .hero-buttons,
+  #hero .hero-image {
+    animation-duration: 0.8s;
+  }
+  
+  .feature-card,
+  .gallery-item,
+  .stat-item {
+    animation-duration: 0.6s;
+  }
+  
+  /* Stagger animations less on mobile */
+  /* .feature-card:nth-child(n+2) { animation-delay: 0.1s; } */ /* Now handled by scroll observer */
+  /* .gallery-item:nth-child(n+2) { animation-delay: 0.1s; } */ /* Now handled by scroll observer */
+  /* .stat-item:nth-child(n+2) { animation-delay: 0.1s; } */ /* Now handled by scroll observer */
+}
+
+/* Keyframe animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Smooth hover transitions */
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(89, 149, 83, 0.3);
+}
+
+.feature-card {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item {
+  transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.stat-item {
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: scale(1.05);
+}
+
+.pill-box {
+  transition: all 0.4s ease;
+}
+
+.pill-box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px rgba(89, 149, 83, 0.2);
+}
+
+/* Subtle background animation */
+body {
+  animation: subtleFadeIn 1.5s ease-out;
+}
+
+@keyframes subtleFadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Image loading animation */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img[alt] {
+  opacity: 0;
+  animation: imageLoad 0.6s ease-out 0.2s forwards;
+}
+
+@keyframes imageLoad {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Smooth text selection */
+::selection {
+  background-color: rgba(89, 149, 83, 0.2);
+  color: var(--dark-text);
+}
+
+/* Professional focus states */
+.btn:focus,
+a:focus {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
+}
+
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -2019,6 +2339,176 @@ footer {
     .pill-text { font-size: 20px; }
 }
 
+/* =========================================
+   SHARE LEARN GROW SECTION
+   ========================================= */
+.share-learn-grow-section {
+    padding: 80px 0 100px;
+    background-color: var(--bg-color);
+    overflow: hidden;
+}
+
+.slg-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 40px;
+}
+
+/* Individual Card */
+.slg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 280px;
+}
+
+/* Image Container */
+.slg-image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* Person Images */
+.slg-person-img {
+    max-height: 200px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+}
+
+.slg-card:hover .slg-person-img {
+    transform: translateY(-10px);
+}
+
+/* Individual Line Below Each Image */
+.slg-line {
+    width: 80px;
+    height: 2px;
+    background-color: #d1d5db;
+    margin: 20px 0 15px;
+}
+
+/* Title Text */
+.slg-title {
+    font-size: 28px;
+    font-weight: 500;
+    color: #1e0a52;
+    margin: 0;
+    letter-spacing: -0.5px;
+    font-family: var(--font-main);
+}
+
+/* Middle card (Learn) - slightly larger emphasis */
+.slg-card:nth-child(2) .slg-person-img {
+    max-height: 210px;
+}
+
+/* ── RESPONSIVE ── */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .slg-wrapper {
+        padding: 0 20px;
+    }
+
+    .slg-image-container {
+        height: 180px;
+    }
+
+    .slg-person-img {
+        max-height: 160px;
+    }
+
+    .slg-card:nth-child(2) .slg-person-img {
+        max-height: 170px;
+    }
+
+    .slg-title {
+        font-size: 24px;
+    }
+
+    .slg-line {
+        width: 60px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .share-learn-grow-section {
+        padding: 60px 0 80px;
+    }
+
+    .slg-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .slg-card {
+        max-width: 280px;
+        width: 100%;
+    }
+
+    .slg-image-container {
+        height: 200px;
+    }
+
+    .slg-person-img {
+        max-height: 180px;
+    }
+
+    .slg-card:nth-child(2) .slg-person-img {
+        max-height: 180px;
+    }
+
+    .slg-title {
+        font-size: 26px;
+    }
+
+    .slg-line {
+        width: 70px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .share-learn-grow-section {
+        padding: 50px 0 60px;
+    }
+
+    .slg-wrapper {
+        gap: 30px;
+    }
+
+    .slg-image-container {
+        height: 180px;
+    }
+
+    .slg-person-img {
+        max-height: 160px;
+    }
+
+    .slg-title {
+        font-size: 24px;
+    }
+
+    .slg-line {
+        width: 60px;
+    }
+}
+
 /* ===================================
    NEW JOIN MODAL - SPLIT PANEL DESIGN
    =================================== */
@@ -2471,4 +2961,449 @@ footer {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-family: 'General Sans', sans-serif;
+}
+
+/* =========================================
+   JOIN MODAL — PERFORMANCE-OPTIMIZED
+   Replace your existing modal CSS with this
+   ========================================= */
+
+/* ── OVERLAY ──
+   KEY FIX: Uses visibility + opacity instead of display:none.
+   display:none → display:flex can't be animated and causes
+   the browser to do a full layout recalculation (= lag).
+   visibility:hidden + opacity:0 is GPU-friendly.
+   ──────────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    padding: 20px;
+
+    /* Always flex — just invisible */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Hidden state */
+    visibility: hidden;
+    pointer-events: none;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+
+    /* Only animates opacity (GPU-composited, zero layout cost) */
+    transition: opacity 0.3s ease,
+                visibility 0s linear 0.3s;
+
+    will-change: opacity;
+}
+
+.modal-overlay.active {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+
+    /* visibility flips instantly on open, delays on close */
+    transition: opacity 0.3s ease,
+                visibility 0s linear 0s;
+}
+
+/* ── CONTAINER ──
+   KEY FIX: Uses translate3d (forces GPU layer).
+   No @keyframes animation — just a transition.
+   Transitions are cheaper than animations because
+   the browser only interpolates between 2 states.
+   ──────────────────────────────────────── */
+.join-modal-container {
+    background: #fff;
+    width: 100%;
+    max-width: 920px;
+    border-radius: 28px;
+    position: relative;
+    max-height: 92vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.25);
+
+    /* Hidden state */
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+
+    /* Only opacity + transform (both skip layout & paint) */
+    transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+    will-change: opacity, transform;
+}
+
+.modal-overlay.active .join-modal-container {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* ── CLOSE BUTTON ── */
+.join-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    color: #999;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, color 0.2s ease;
+    z-index: 10;
+}
+
+.join-modal-close:hover {
+    background: #f3f4ff;
+    color: #1e0e4b;
+}
+
+/* ── SPLIT LAYOUT ── */
+.join-modal-split {
+    display: flex;
+    min-height: 480px;
+}
+
+/* ── LEFT PANEL ── */
+.join-modal-left {
+    flex: 1.15;
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.join-modal-left h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1e0e4b;
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+
+.join-modal-left .subtitle {
+    font-size: 15px;
+    color: #5f5f86;
+    line-height: 1.55;
+    margin: 0;
+}
+
+/* ── BADGE ── */
+.modal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: #e8f5e6;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #34652c;
+    width: fit-content;
+}
+
+.modal-badge i {
+    font-size: 14px;
+}
+
+/* ── STATS ROW ── */
+.modal-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 18px 0;
+    border-top: 1px solid #f0f0f5;
+    border-bottom: 1px solid #f0f0f5;
+}
+
+.stat-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 26px;
+    font-weight: 700;
+    color: #34652c;
+    letter-spacing: -0.5px;
+}
+
+.stat-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #5f5f86;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 36px;
+    background: #e5e7eb;
+}
+
+/* ── ACTION BUTTONS ── */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 24px;
+    border-radius: 14px;
+    background: linear-gradient(177deg, #34652c -13.59%, #6fab65 109.86%);
+    color: #fff;
+    border: 1px solid transparent;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(89, 149, 83, 0.4);
+}
+
+.modal-cta-btn:active {
+    transform: translateY(0);
+}
+
+.modal-cta-btn i {
+    font-size: 15px;
+}
+
+.modal-secondary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 13px 24px;
+    border-radius: 14px;
+    border: 1px solid #cccce9;
+    background: #fff;
+    color: #1e0e4b;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.modal-secondary-btn:hover {
+    border-color: #599553;
+    color: #599553;
+}
+
+.modal-secondary-btn i {
+    font-size: 14px;
+}
+
+/* ── LOGIN TEXT ── */
+.login-text {
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+    margin: 0;
+}
+
+.login-text a {
+    color: #599553;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-text a:hover {
+    text-decoration: underline;
+}
+
+/* ── RIGHT PANEL ── */
+.join-modal-right {
+    flex: 0.85;
+    background: linear-gradient(160deg, #f3f4ff 0%, #e8f5e6 100%);
+    padding: 44px 36px;
+    border-radius: 0 28px 28px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+}
+
+.join-modal-right h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #1e0e4b;
+    margin: 0;
+}
+
+.join-modal-right > p {
+    font-size: 14px;
+    color: #5f5f86;
+    margin: 0;
+}
+
+/* ── BENEFITS LIST ── */
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.benefits-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e0e4b;
+    line-height: 1.45;
+}
+
+.benefits-list li i {
+    color: #34652c;
+    font-size: 13px;
+    margin-top: 3px;
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: rgba(52, 101, 44, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ── COMMUNITY AVATARS ── */
+.community-avatars {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.avatar-group {
+    display: flex;
+}
+
+.avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #fff;
+    margin-left: -8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.avatar:first-child {
+    margin-left: 0;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #5f5f86;
+    margin: 0;
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+    .join-modal-split {
+        flex-direction: column;
+    }
+
+    .join-modal-left {
+        padding: 32px 24px 24px;
+    }
+
+    .join-modal-right {
+        border-radius: 0 0 28px 28px;
+        padding: 28px 24px 32px;
+    }
+
+    .join-modal-left h2 {
+        font-size: 24px;
+    }
+
+    .stat-number {
+        font-size: 22px;
+    }
+
+    .stat-label {
+        font-size: 11px;
+    }
+
+    .join-modal-container {
+        max-height: 95vh;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .join-modal-left {
+        padding: 28px 18px 20px;
+        gap: 16px;
+    }
+
+    .join-modal-right {
+        padding: 24px 18px 28px;
+    }
+
+    .join-modal-left h2 {
+        font-size: 21px;
+    }
+
+    .modal-stats {
+        padding: 14px 0;
+    }
+
+    .stat-number {
+        font-size: 20px;
+    }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+    .modal-overlay,
+    .join-modal-container {
+        transition: none !important;
+    }
 }

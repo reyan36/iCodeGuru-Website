@@ -550,3 +550,72 @@ document.addEventListener('DOMContentLoaded', function() {
         return d;
     }
 });
+
+
+/**
+ * courses-scroll-animations.js
+ * Targets existing Courses page HTML. No markup changes.
+ * No header or footer animations.
+ *
+ * Include in courses.html:
+ *   <link rel="stylesheet" href="courses-scroll-animations.css">  (after courses.css)
+ *   <script src="courses-scroll-animations.js" defer></script>     (before </body>)
+ */
+
+(function () {
+  'use strict';
+
+  var SELECTORS = [
+    // Hero
+    '.hero-content h1',
+    '.hero-features li',
+    '.hero-content > a',
+    '.hero-image',
+
+    // Learning Tracks Header
+    '.learning-tracks-header h2',
+    '.learning-tracks-header p',
+
+    // Calendar
+    '.learning-tracks-calendar',
+
+    // Course Card Rows
+    '.cards-row',
+
+    // Values Pills
+    '.pill-box'
+  ];
+
+  function init() {
+    var elements = document.querySelectorAll(SELECTORS.join(','));
+    if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(function (el) { el.classList.add('in-view'); });
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      }
+    );
+
+    elements.forEach(function (el) { observer.observe(el); });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
