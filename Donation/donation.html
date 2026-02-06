@@ -9,7 +9,7 @@
     <link href="https://api.fontshare.com/v2/css?f[]=general-sans@200,300,400,500,600,700&display=swap" rel="stylesheet" />
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="shortcut icon" href="../Images/iCodeGuru Favicon/4.png" type="image/x-icon">
+    
     <!-- CSS -->
     <link rel="stylesheet" href="donation.css"> 
 </head>
@@ -75,7 +75,7 @@
     <main class="donation-page-wrapper">
         <div class="container donation-layout">
             
-            <!-- LEFT COLUMN: Impact & Payment Accordions - NOW CENTERED -->
+            <!-- LEFT COLUMN: Impact & Payment Accordions -->
             <div class="donation-info-col">
                 
                 <!-- Section 1: Impact -->
@@ -83,18 +83,10 @@
                     <h2 class="section-title">What Your Donation Helps Us Cover
 :</h2>
                     <ul class="impact-list">
-<<<<<<< HEAD
                         <li><span class="amount">USD 50–100</span> Supports U.S. university application fee per institution</li>
                         <li><span class="amount">USD 235 </span> Covers IELTS exam fee, removing a major financial barrier to studying abroad</li>
                         <li><span class="amount">USD 220</span> Funds GRE examination costs, opening doors to top international universities</li>
                         <li><span class="amount">Up to USD 1,000</span> Provides international airfare support, helping students begin their journey overseas</li>
-=======
-                        <li><span class="amount">USD 5000</span> Initial U.S. boarding and accommodation..</li>
-                        <li><span class="amount">USD 2000</span> Air tickets to the U.S.</li>
-                        <li><span class="amount">USD 300</span> Bachelor’s education-related expenses.</li>
-                        <li><span class="amount">USD 350</span> IELTS and GRE examination fees.</li>
-                        <li><span class="amount">USD 50-150</span> U.S. university application fee per institution.</li>
->>>>>>> 54f604e7f0432e5ccdbe9e0ba2af681050d88a4a
                     </ul>
                 </div>
 
@@ -215,20 +207,26 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: Form - COMMENTED OUT
+            <!-- RIGHT COLUMN: Form -->
+<!-- RIGHT COLUMN: Form -->
 <div class="donation-form-col">
     
+    <!-- STEP 1: AMOUNT SELECTION -->
     <div class="donation-card" id="step-1">
         <h3 class="form-heading">Choose Your Amount</h3>
 
 <div class="amount-grid">
+            <!-- REMOVED 'active' from $165 -->
             <button type="button" class="amount-btn" data-amount="165">$100</button>
             <button type="button" class="amount-btn" data-amount="2500">$220</button>
             <button type="button" class="amount-btn" data-amount="5000">$1000</button>
             
+            <!-- ADDED 'active' to Other -->
             <button type="button" class="amount-btn active" id="btn-other">Custom</button>
         </div>
 
+        <!-- Custom Amount Field -->
+        <!-- REMOVED style="display: none;" so it shows by default -->
         <div class="custom-amount-wrapper" id="custom-amount-box">
             <div class="input-prefix-group">
                 <span class="prefix">$</span>
@@ -241,6 +239,7 @@
             <button type="button" class="freq-btn" id="freq-monthly" data-freq="Monthly">Monthly</button>
         </div>
 
+<!-- Designation -->
         <div class="form-group">
             <label class="input-label required">* Designate your Donation</label>
             <div class="select-wrapper">
@@ -251,6 +250,7 @@
                 </select>
             </div>
             
+            <!-- NEW ERROR MESSAGE ELEMENT (Hidden by default) -->
             <p id="designation-error" class="error-message" style="display: none;">
                 <i class="fa-solid fa-circle-exclamation"></i> Please select a designation.
             </p>
@@ -266,6 +266,7 @@
             <input type="text" class="form-input">
         </div>
 
+        <!-- Continue Button (No Total here anymore) -->
         <button class="btn btn-primary btn-full-width" id="to-step-2">
             Continue <i class="fa-solid fa-chevron-right"></i>
         </button>
@@ -275,14 +276,18 @@
         </div>
     </div>
 
+    <!-- STEP 2: PAYMENT & BILLING (Hidden by default) -->
+<!-- STEP 2: PAYMENT & BILLING -->
     <div class="donation-card" id="step-2" style="display: none;">
         
+        <!-- Back Button -->
         <div class="step-header">
             <button class="back-btn" id="back-to-step-1"><i class="fa-solid fa-chevron-left"></i></button>
         </div>
 
         <h3 class="form-heading">Enter your payment method</h3>
 
+        <!-- Payment Method Toggle -->
         <div class="payment-method-toggles">
             <button type="button" class="pm-btn active" data-method="card">Debit Card</button>
             <button type="button" class="pm-btn" data-method="card">Credit Card</button>
@@ -291,8 +296,10 @@
              <button type="button" class="pm-btn-block" id="btn-bank-toggle">Bank Account</button>
         </div>
 
+        <!-- DYNAMIC PAYMENT FIELDS -->
         <div class="payment-fields-container">
             
+            <!-- Card Fields -->
             <div id="fields-card">
                 <div class="input-with-icon">
                     <i class="fa-regular fa-credit-card"></i>
@@ -301,6 +308,7 @@
                 </div>
             </div>
 
+            <!-- Bank Fields -->
             <div id="fields-bank" style="display: none;">
                 <div class="form-group">
                     <div class="select-wrapper">
@@ -328,12 +336,15 @@
 
         <h3 class="form-heading mt-4">Billing details</h3>
 
+        <!-- Billing Entity Toggle -->
         <div class="billing-toggles">
             <button type="button" class="pm-btn active" id="bill-indiv">Individual</button>
             <button type="button" class="pm-btn" id="bill-org">Organization</button>
         </div>
 
+        <!-- DYNAMIC NAME FIELDS -->
         <div id="billing-names-container">
+            <!-- Individual Inputs -->
             <div class="split-inputs" id="inputs-indiv">
                 <div class="input-with-icon">
                     <i class="fa-regular fa-user"></i>
@@ -345,6 +356,7 @@
                 </div>
             </div>
 
+            <!-- Organization Inputs -->
             <div id="inputs-org" style="display: none;">
                 <div class="form-group">
                     <div class="input-with-icon">
@@ -361,6 +373,7 @@
             </div>
         </div>
 
+        <!-- Common Contact Fields -->
         <div class="form-group">
             <div class="input-with-icon">
                 <i class="fa-regular fa-envelope"></i>
@@ -385,6 +398,7 @@
 <div class="split-inputs">
             <div class="input-with-icon">
                 <i class="fa-solid fa-location-dot"></i>
+                <!-- CHANGED TO TEXT INPUT -->
                 <input type="text" class="form-input pl-icon" placeholder="State / Province">
             </div>
             <div class="input-with-icon">
@@ -393,18 +407,21 @@
             </div>
         </div>
 
+        <!-- Split Row: Phone & Country -->
         <div class="split-inputs">
             <div class="input-with-icon">
                 <i class="fa-solid fa-phone"></i>
                 <input type="tel" class="form-input pl-icon" placeholder="Phone">
             </div>
             <div class="select-wrapper">
+                <!-- Country Select (Populated by JS) -->
                 <select class="form-input" id="country-select">
                     <option value="" disabled selected>Select Country</option>
                 </select>
             </div>
         </div>
 
+        <!-- Final Donate Button -->
         <button class="btn btn-donate-final" id="final-donate-btn">
             <i class="fa-solid fa-lock"></i> Donate <span id="final-amount-text">$0.00</span>
         </button>
@@ -415,7 +432,6 @@
 
     </div>
 </div>
-END OF COMMENTED OUT RIGHT COLUMN -->
 
         </div>
     </main>
